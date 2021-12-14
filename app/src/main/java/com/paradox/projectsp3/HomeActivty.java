@@ -10,8 +10,8 @@ import com.airbnb.lottie.LottieAnimationView;
 
 public class HomeActivty extends AppCompatActivity {
 
-    LottieAnimationView lottielike;
-    private boolean fav=false;
+    LottieAnimationView lottielike,lottiecomment,lottieshare;
+    private boolean fav=false,comment=false,share=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,20 +24,51 @@ public class HomeActivty extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.home_activty);
         lottielike = findViewById(R.id.animationView);
+        lottiecomment = findViewById(R.id.comment);
+        lottieshare = findViewById(R.id.share);
 
 
         lottielike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (fav){
-                    lottielike.setMinAndMaxProgress(0.5f,1.0f);
+                    lottielike.setSpeed(-1);
                     lottielike.playAnimation();
                     fav=false;
                 }else {
-                    lottielike.setMinAndMaxProgress(0.0f,1.0f);
+                    lottielike.setSpeed(1);
                     lottielike.playAnimation();
                     fav=true;
 
+                }
+            }
+        });
+        lottiecomment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (comment){
+                    lottiecomment.setSpeed(-1);
+                    lottiecomment.playAnimation();
+                    fav=false;
+                }else {
+                    lottiecomment.setSpeed(1);
+                    lottiecomment.playAnimation();
+                    comment=true;
+                }
+            }
+        });
+
+        lottieshare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (share){
+                    lottieshare.setSpeed(-1);
+                    lottieshare.playAnimation();
+                    share=false;
+                }else {
+                    lottieshare.setSpeed(1);
+                    lottieshare.playAnimation();
+                    share=true;
                 }
             }
         });
