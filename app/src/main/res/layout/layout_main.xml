@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:srcCompat="@drawable/share"
+        app:srcCompat="@drawable/ic_icon_ionic_ios_share_alt"
         tools:ignore="VectorDrawableCompat" />
 
     <ImageView
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:srcCompat="@drawable/ic_baseline_mode_comment_24"
+        app:srcCompat="@drawable/ic_icon_awesome_comment_dots"
         tools:ignore="VectorDrawableCompat" />
 
     <ImageView
@@ -50,7 +50,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:srcCompat="@drawable/ic_baseline_favorite_border_24"
+        app:srcCompat="@drawable/ic_icon_material_favorite"
         tools:ignore="VectorDrawableCompat" />
 
     <de.hdodenhof.circleimageview.CircleImageView
