@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.paradox.projectsp3.Model.MediaObject;
+import com.paradox.projectsp3.R;
 
 import java.util.List;
 
@@ -18,26 +19,17 @@ public class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.DemoViewHolder
     List<MediaObject> mediaObjectList;
     Context context;
 
-    public List<MediaObject> getMediaObjectList() {
-        return mediaObjectList;
-    }
 
-    public void setMediaObjectList(List<MediaObject> mediaObjectList) {
+    public DemoAdapter(List<MediaObject> mediaObjectList,Context context) {
         this.mediaObjectList = mediaObjectList;
-    }
-
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
         this.context = context;
     }
 
     @NonNull
     @Override
     public DemoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup , int viewType) {
-        View view = LayoutInflater.from()
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_main,viewGroup,false);
+        return new DemoViewHolder(view);
     }
 
     @Override
