@@ -15,8 +15,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.airbnb.lottie.LottieAnimationView;
-import com.bumptech.glide.Glide;
 import com.paradox.projectsp3.Adapter.DemoAdapter;
 import com.paradox.projectsp3.Model.MediaObject;
 
@@ -35,7 +33,6 @@ public class HomeActivty extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        ImageView sound_dis = (ImageView) findViewById(R.id.imageView3);
         setContentView(R.layout.home_activty);
         init();
 
@@ -46,6 +43,7 @@ public class HomeActivty extends AppCompatActivity {
     }
 
     private void init(){
+
 
         //////////////////////////////////////////////////////////////
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT< 21){

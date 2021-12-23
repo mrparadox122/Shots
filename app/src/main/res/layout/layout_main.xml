@@ -17,8 +17,8 @@
         android:elevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/disc"
-        tools:ignore="VectorDrawableCompat" />
+        android:src="@drawable/disc"
+        />
 
     <ImageView
         android:id="@+id/imageView6"
