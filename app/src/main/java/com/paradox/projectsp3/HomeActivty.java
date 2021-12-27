@@ -6,6 +6,52 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+
+
+
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.SnapHelper;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.cast.framework.SessionManager;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+
+
+
+
+
+
+
+
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
@@ -24,6 +70,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivty extends AppCompatActivity {
+
+    BottomNavigationView bottomNavigation;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private ImageView loader;
+
+
+
+    ////////////////////
+    private TextView followingText,trendingText;
+    /////////////////////////////////////////////
+
+    private static final int RC_SETTINGS_SCREEN_PERM = 123;
 
     private final List<MediaObject> mediaObjectList = new ArrayList<>();
 
