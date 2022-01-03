@@ -10,7 +10,7 @@
 
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.paradox.projectsp3.MainRecyclerView.VideoPlayerRecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"

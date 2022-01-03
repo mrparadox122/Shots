@@ -7,7 +7,7 @@ public class MediaObject {
         ////////////////////////
     }
 
-    private String title,description,date,user_id,post_categories,post_id,view,user_name,media_url,thumbnail;
+    private String title,description,date,user_id,post_categories,post_id,view,user_name,url,thumbnail;
 
     public MediaObject(String title,String description,String date,String user_id,String post_categories,String post_id,String view,String user_name,String media_url,String thumbnail)
     {
@@ -19,7 +19,7 @@ public class MediaObject {
         this.post_id = post_id;
         this.view = view;
         this.user_name = user_name;
-        this.media_url = media_url;
+        this.url = media_url;
         this.thumbnail = thumbnail;
     }
 
@@ -88,11 +88,11 @@ public class MediaObject {
     }
 
     public String getMedia_url() {
-        return media_url;
+        return url;
     }
 
     public void setMedia_url(String media_url) {
-        this.media_url = media_url;
+        this.url = media_url;
     }
 
     public String getThumbnail() {

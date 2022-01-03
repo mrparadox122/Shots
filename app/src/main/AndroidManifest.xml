@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.paradox.projectsp3">
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 
     <application
+
         android:icon="@drawable/fhh"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/Theme.ProjectSP3">
         <activity
             android:name=".Login"
@@ -17,8 +20,10 @@
         <activity
             android:name=".SignUp"
             android:exported="true" />
-        <activity android:name=".HomeActivty" />
+        <activity android:name=".HomeActivty"
+            ></activity>
         <activity android:name=".MainActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

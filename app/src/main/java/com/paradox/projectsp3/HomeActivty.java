@@ -7,83 +7,45 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 
-
-
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.PagerSnapHelper;
-import androidx.recyclerview.widget.SnapHelper;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.Manifest;
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.gms.cast.framework.SessionManager;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
-
-
-
-
-
-
-
-
-import android.app.Activity;
-import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
-
-import com.paradox.projectsp3.Adapter.DemoAdapter;
+import com.paradox.projectsp3.MainRecyclerView.VerticalSpacingItemDecorator;
+import com.paradox.projectsp3.MainRecyclerView.VideoPlayerRecyclerAdapter;
+import com.paradox.projectsp3.MainRecyclerView.VideoPlayerRecyclerView;
 import com.paradox.projectsp3.Model.MediaObject;
+import com.paradox.projectsp3.Responses.ApiClient;
+import com.paradox.projectsp3.Responses.ApiInterface;
+import com.paradox.projectsp3.Responses.Users;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivty extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigation;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private ImageView loader;
+    private ArrayList<MediaObject> mediaObjectList=new ArrayList<>();
+    private VideoPlayerRecyclerView  recyclerview;
+    public static ApiInterface apiInterface;
 
 
 
-    ////////////////////
-    private TextView followingText,trendingText;
-    /////////////////////////////////////////////
 
-    private static final int RC_SETTINGS_SCREEN_PERM = 123;
-
-    private final List<MediaObject> mediaObjectList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,10 +54,8 @@ public class HomeActivty extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.home_activty);
+        apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
         init();
-
-
-
 
 
     }
@@ -115,37 +75,60 @@ public class HomeActivty extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
-        RecyclerView recyclerview = (RecyclerView) findViewById(R.id.recyclerview);
+
+        ///// RecyclerView//////////
+
+        recyclerview = (VideoPlayerRecyclerView) findViewById(R.id.recyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerview.setLayoutManager(layoutManager);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        VerticalSpacingItemDecorator itemDecorator=new VerticalSpacingItemDecorator(0);
+        recyclerview.addItemDecoration(itemDecorator);
 
         SnapHelper mSnapHelper = new PagerSnapHelper();
         mSnapHelper.attachToRecyclerView(recyclerview);
 
+        LoadAllPosts();
 
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","","",""));
 
-        DemoAdapter demoAdapter = new DemoAdapter(mediaObjectList, getApplicationContext());
-        recyclerview.setAdapter(demoAdapter);
-        demoAdapter.notifyDataSetChanged();
+
 
 
     }
 
+    private void LoadAllPosts() {
+        Call<Users> call=apiInterface.performAllPosts();
+        call.enqueue(new Callback<Users>() {
+            @Override
+            public void onResponse(Call<Users> call, Response<Users> response) {
+                if(response.isSuccessful())
+                {
+                    mediaObjectList=(ArrayList<MediaObject>) response.body().getAllPosts();
+                    recyclerview.setMediaObjects(mediaObjectList);
+                    VideoPlayerRecyclerAdapter adapter=new VideoPlayerRecyclerAdapter(mediaObjectList,initGlide());
+                    recyclerview.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    recyclerview.setKeepScreenOn(true);
+                    recyclerview.smoothScrollToPosition(mediaObjectList.size()+1);
+
+                }
+                else
+                {
+                    Toast.makeText(HomeActivty.this,"Network Error.",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
+                Toast.makeText(HomeActivty.this,"Network Error.",Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+    }
 
     public static void setWindowFlag(@NotNull Activity activity, final int bits, boolean on){
         Window win = activity.getWindow();
@@ -157,4 +140,32 @@ public class HomeActivty extends AppCompatActivity {
         }
         win.setAttributes(winParms);
     }
+    private RequestManager initGlide()
+    {
+        RequestOptions options=new RequestOptions()
+                .placeholder(R.color.design_default_color_primary_dark)
+           .error(R.color.design_default_color_primary_dark);
+        return Glide.with(this).setDefaultRequestOptions(options);
+    }
+    @Override
+    protected void onDestroy() {
+        if(recyclerview!=null)
+        recyclerview.releasePlayer();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        recyclerview.releasePlayer();
+        finish();
+    }
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        finish();
+    }
+
+
+
 }
