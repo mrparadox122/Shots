@@ -6,7 +6,7 @@ import retrofit2.http.GET;
 public interface ApiInterface {
 
     ////getting posts///
-    @GET("api.php")
+    @GET("get_details")
     Call<Users> performAllPosts();
 
 }
