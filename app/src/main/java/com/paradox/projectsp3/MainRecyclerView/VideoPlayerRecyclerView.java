@@ -70,7 +70,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
     private enum VolumeState {ON, OFF};
 
     // ui
-    public ImageView thumbnail,volumeControl;
+    public ImageView thumbnail,volumeControl,soundDisk;
     private ProgressBar progressBar;
     private View viewHolderParent;
     private FrameLayout frameLayout;
@@ -315,11 +315,13 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         }
 
         thumbnail = holder.thumbnail;
+        soundDisk = holder.soundDisk;
         progressBar = holder.progressBar;
         volumeControl = holder.volumeControl;
         viewHolderParent = holder.itemView;
         requestManager = holder.requestManager;
         frameLayout = holder.itemView.findViewById(R.id.media_container);
+        Glide.with(context).load(R.drawable.disc).into(soundDisk);
 
 
 

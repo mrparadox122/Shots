@@ -4,13 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivty"
     android:keepScreenOn="true"
 
     android:background="#FFC0B4"
-
-    >
-
+    tools:context=".FollowingActivity">
 
     <com.paradox.projectsp3.MainRecyclerView.VideoPlayerRecyclerView
         android:id="@+id/recyclerview"
@@ -104,6 +101,7 @@
         app:layout_constraintVertical_bias="0.057" />
 
     <TextView
+        android:onClick="foryouBtn"
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,7 +117,6 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:onClick="following"
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:textStyle="bold"
@@ -127,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:textColor="#EAE3E3"
+        android:textColor="#fff"
         android:text="Following"
         app:layout_constraintBottom_toBottomOf="@+id/divider"
         app:layout_constraintEnd_toStartOf="@+id/divider"

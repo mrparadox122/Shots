@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/Project__sp3_updated_0.1/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/Project__sp3_updated_0.1/app/src/main/res/layout/home_activty.xml" value="0.1" />
-        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/Project__sp3_updated_0.1/app/src/main/res/layout/layout_main.xml" value="0.1" />
         <entry key="..\:/Users/Soosle Infotech/Desktop/ProjectSP3/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.13914473684210527" />
         <entry key="..\:/Users/Soosle Infotech/Desktop/ProjectSP3/app/src/main/res/drawable/ic_baseline_disc_full_24.xml" value="0.13914473684210527" />
         <entry key="..\:/Users/Soosle Infotech/Desktop/ProjectSP3/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.13914473684210527" />
@@ -29,13 +26,25 @@
         <entry key="..\:/Users/mdali/Documents/ProjectSP3/app/src/main/res/layout/activity_main.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/mdali/Documents/ProjectSP3/app/src/main/res/layout/home_activty.xml" value="0.1" />
         <entry key="..\:/Users/mdali/Documents/ProjectSP3/app/src/main/res/layout/layout_main.xml" value="0.16" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14629629629629629" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.18871794871794872" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable/ic_baseline_music_note_24.xml" value="0.18871794871794872" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable/ic_icon_feather_home.xml" value="0.14629629629629629" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable/ic_icon_feather_message_circle.xml" value="0.14629629629629629" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable/ic_icon_feather_plus_circle.xml" value="0.14629629629629629" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable/ic_icon_feather_search.xml" value="0.14629629629629629" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable/ic_icon_ionic_ios_share_alt.xml" value="0.14629629629629629" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable/ic_volume_off_grey_24dp.xml" value="0.14629629629629629" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable/ic_volume_up_grey_24dp.xml" value="0.18871794871794872" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/activity_camera_portrate.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/activity_following.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/activity_login.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/activity_main.xml" value="0.12" />
-        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/home_activty.xml" value="0.10666666666666667" />
-        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/layout_main.xml" value="0.1" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/activity_sign_up.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/home_activty.xml" value="0.23222748815165878" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/layout_main.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/row_text.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/layout/row_white_text.xml" value="0.17447916666666666" />
       </map>
     </option>
   </component>
