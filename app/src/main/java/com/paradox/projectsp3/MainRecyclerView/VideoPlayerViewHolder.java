@@ -1,6 +1,7 @@
 package com.paradox.projectsp3.MainRecyclerView;
 
 
+import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -35,6 +36,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         soundDisk= itemView.findViewById(R.id.imageView3);
     }
 
+    @SuppressLint("SetTextI18n")
     public void onBind(MediaObject mediaObject, RequestManager requestManager) {
         this.requestManager = requestManager;
         parent.setTag(this);
