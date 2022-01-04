@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
 
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);

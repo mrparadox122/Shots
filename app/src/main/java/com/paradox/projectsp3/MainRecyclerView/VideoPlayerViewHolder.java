@@ -19,11 +19,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
     FrameLayout media_container;
+    ImageView like;
     TextView title;
     ImageView thumbnail, volumeControl,soundDisk;
     ProgressBar progressBar;
     View parent;
     RequestManager requestManager;
+    boolean checklike=true;
 
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -34,6 +36,23 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         progressBar = itemView.findViewById(R.id.progressBar);
         volumeControl = itemView.findViewById(R.id.imageView12);
         soundDisk= itemView.findViewById(R.id.imageView3);
+        like=itemView.findViewById(R.id.imageView9);
+
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checklike==true)
+                {
+                    like.setImageResource(R.drawable.ic_icon_material_favorite_red);
+                    checklike=false;
+                }
+                else
+                {
+                    like.setImageResource(R.drawable.ic_icon_material_favorite);
+                    checklike=true;
+                }
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")

@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -41,6 +42,7 @@ import retrofit2.Response;
 
 public class HomeActivty extends AppCompatActivity {
 
+
     private ArrayList<MediaObject> mediaObjectList=new ArrayList<>();
     private VideoPlayerRecyclerView  recyclerview;
     public static ApiInterface apiInterface;
@@ -58,6 +60,7 @@ public class HomeActivty extends AppCompatActivity {
         setContentView(R.layout.home_activty);
         apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
         init();
+
 
 
     }
@@ -145,8 +148,8 @@ public class HomeActivty extends AppCompatActivity {
     private RequestManager initGlide()
     {
         RequestOptions options=new RequestOptions()
-                .placeholder(R.color.design_default_color_primary_dark)
-           .error(R.color.design_default_color_primary_dark);
+                .placeholder(R.color.black)
+           .error(R.color.black);
         return Glide.with(this).setDefaultRequestOptions(options);
     }
     @Override
