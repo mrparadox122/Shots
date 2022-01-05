@@ -38,6 +38,11 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
 
 
+    TextView share;
+
+
+
+
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
@@ -50,6 +55,12 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         like=itemView.findViewById(R.id.imageView9);
         likesn = itemView.findViewById(R.id.likesn);
         commentn = itemView.findViewById(R.id.commentn);
+
+
+
+
+
+        share = itemView.findViewById(R.id.share);
 
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +85,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         parent.setTag(this);
         likesn.setText(mediaObject.getLikes());
         commentn.setText(mediaObject.getComments());
+        commentn.setText(mediaObject.getComments());
+
         title.setText(mediaObject.getDescription()+"\n"+mediaObject.getPost_categories());
 
         this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
