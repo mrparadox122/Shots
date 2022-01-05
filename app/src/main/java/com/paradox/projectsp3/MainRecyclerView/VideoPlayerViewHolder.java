@@ -19,6 +19,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
     FrameLayout media_container;
+    ImageView home;
+    ImageView share;
+    ImageView upload;
+    ImageView comment;
     ImageView like;
     TextView title;
     ImageView thumbnail, volumeControl,soundDisk;
