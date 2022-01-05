@@ -28,8 +28,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     boolean checklike=true;
 
 
-
-
     TextView likesn;
 
 

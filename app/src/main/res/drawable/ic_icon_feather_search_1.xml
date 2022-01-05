@@ -4,11 +4,11 @@
     android:viewportWidth="31.669"
     android:viewportHeight="31.811">
   <path
-      android:pathData="M19.4,9.949A9.449,9.449 0,1 1,9.949 0.5,9.449 9.449,0 0,1 19.4,9.949Z"
-      android:fillColor="#fff"/>
+      android:fillColor="#FF000000"
+      android:pathData="M19.4,9.949A9.449,9.449 0,1 1,9.949 0.5,9.449 9.449,0 0,1 19.4,9.949Z"/>
   <path
       android:pathData="M19.398,9.949A9.449,9.449 0,1 1,9.947 0.5,9.449 9.449,0 0,1 19.398,9.949Z"
-      android:fillColor="#fff"/>
+      android:fillColor="#FFC0B4"/>
   <path
       android:strokeWidth="1"
       android:pathData="M19.4,9.949A9.449,9.449 0,1 1,9.949 0.5,9.449 9.449,0 0,1 19.4,9.949Z"

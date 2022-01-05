@@ -83,14 +83,16 @@ public class HomeActivty extends AppCompatActivity {
 
         ///// RecyclerView//////////
 
-        recyclerview = (VideoPlayerRecyclerView) findViewById(R.id.recyclerview);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-        recyclerview.setLayoutManager(layoutManager);
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
-        VerticalSpacingItemDecorator itemDecorator=new VerticalSpacingItemDecorator(0);
-        recyclerview.addItemDecoration(itemDecorator);
+
+
+      recyclerview = (VideoPlayerRecyclerView) findViewById(R.id.recyclerview);
+   LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+       layoutManager.setOrientation(RecyclerView.VERTICAL);
+       recyclerview.setLayoutManager(layoutManager);
+       layoutManager.setReverseLayout(true);
+      layoutManager.setStackFromEnd(true);
+      VerticalSpacingItemDecorator itemDecorator=new VerticalSpacingItemDecorator(0);
+       recyclerview.addItemDecoration(itemDecorator);
 
         SnapHelper mSnapHelper = new PagerSnapHelper();
         mSnapHelper.attachToRecyclerView(recyclerview);
