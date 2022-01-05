@@ -103,6 +103,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
     private void init(Context context){
 
 
+
         this.context = context.getApplicationContext();
         Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         Point point = new Point();

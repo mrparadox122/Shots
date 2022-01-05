@@ -27,6 +27,19 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     RequestManager requestManager;
     boolean checklike=true;
 
+
+
+
+    TextView likesn;
+
+
+
+
+    TextView commentn;
+
+
+
+
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
@@ -37,6 +50,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         volumeControl = itemView.findViewById(R.id.imageView12);
         soundDisk= itemView.findViewById(R.id.imageView3);
         like=itemView.findViewById(R.id.imageView9);
+        likesn = itemView.findViewById(R.id.likesn);
+        commentn = itemView.findViewById(R.id.commentn);
 
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +74,9 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     public void onBind(MediaObject mediaObject, RequestManager requestManager) {
         this.requestManager = requestManager;
         parent.setTag(this);
-        title.setText(mediaObject.getDescription()+",\n"+mediaObject.getDate());
+        likesn.setText(mediaObject.getLikes());
+        commentn.setText(mediaObject.getComments());
+        title.setText(mediaObject.getDescription()+"\n"+mediaObject.getPost_categories());
 
         this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
     }

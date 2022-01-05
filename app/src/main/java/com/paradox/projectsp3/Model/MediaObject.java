@@ -7,7 +7,7 @@ public class MediaObject {
         ////////////////////////
     }
 
-    private String title,description,date,user_id,post_categories,post_id,view,user_name,url,thumbnail;
+    private String title,description,date,user_id,post_categories,post_id,view,user_name,url,thumbnail,likes,comments,shares;
 
     public MediaObject(String title,String description,String date,String user_id,String post_categories,String post_id,String view,String user_name,String media_url,String thumbnail)
     {
@@ -21,6 +21,41 @@ public class MediaObject {
         this.user_name = user_name;
         this.url = media_url;
         this.thumbnail = thumbnail;
+
+        this.likes = likes;
+
+
+        this.shares = shares;
+
+
+        this.comments = comments;
+
+
+
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public String getLikes() {
+        return likes;
+    }
+
+    public String getShares() {
+        return shares;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public void setLikes(String likes) {
+        this.likes = likes;
+    }
+
+    public void setShares(String shares) {
+        this.shares = shares;
     }
 
     public String getTitle() {
