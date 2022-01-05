@@ -43,6 +43,9 @@ import retrofit2.Response;
 public class HomeActivty extends AppCompatActivity {
 
 
+
+   
+
     private ArrayList<MediaObject> mediaObjectList=new ArrayList<>();
     private VideoPlayerRecyclerView  recyclerview;
     public static ApiInterface apiInterface;
@@ -60,7 +63,59 @@ public class HomeActivty extends AppCompatActivity {
         setContentView(R.layout.home_activty);
         apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
         init();
+        ImageView Ghar=(ImageView)findViewById(R.id.imageView14);
+        ImageView profile=(ImageView)findViewById(R.id.imageView17);
+        ImageView comment=(ImageView)findViewById(R.id.imageView16);
+        ImageView Search=(ImageView)findViewById(R.id.imageView15) ;
 
+
+
+        //// onclick///
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ghar.setImageResource(R.drawable.ic_icon_feather_home);
+
+                comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
+                Search.setImageResource(R.drawable.ic_icon_feather_search);
+                profile.setImageResource(R.drawable.ic_icon_awesome_user_1);
+            }
+        });
+
+        comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                comment.setImageResource(R.drawable.aaa);
+                Ghar.setImageResource(R.drawable.ic_icon_feather_home);
+
+
+                Search.setImageResource(R.drawable.ic_icon_feather_search);
+                profile.setImageResource(R.drawable.ic_icon_awesome_user);
+            }
+        });
+        Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Search.setImageResource(R.drawable.ic_icon_feather_search_1);
+                Ghar.setImageResource(R.drawable.ic_icon_feather_home);
+
+                comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
+
+                profile.setImageResource(R.drawable.ic_icon_awesome_user);
+            }
+        });
+
+        Ghar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ghar.setImageResource(R.drawable.ic_icon_feather_home_1);
+
+                comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
+                Search.setImageResource(R.drawable.ic_icon_feather_search);
+                profile.setImageResource(R.drawable.ic_icon_awesome_user);
+            }
+        });
 
 
     }
