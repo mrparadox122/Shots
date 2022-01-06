@@ -138,8 +138,8 @@ public class FollowingActivity extends AppCompatActivity {
     private RequestManager initGlide()
     {
         RequestOptions options=new RequestOptions()
-                .placeholder(R.color.design_default_color_primary_dark)
-                .error(R.color.design_default_color_primary_dark);
+                .placeholder(R.color.black)
+                .error(R.color.black);
         return Glide.with(this).setDefaultRequestOptions(options);
     }
     @Override
