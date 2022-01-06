@@ -3,7 +3,6 @@ package com.paradox.projectsp3.MainRecyclerView;
 
 import android.annotation.SuppressLint;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -14,9 +13,11 @@ import com.bumptech.glide.RequestManager;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+public class VideoPlayerViewHolder extends RecyclerView.ViewHolder{
 
-public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
+
+
+
 
     FrameLayout media_container;
 
@@ -55,9 +56,9 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         soundDisk= itemView.findViewById(R.id.imageView3);
         like=itemView.findViewById(R.id.imageView9);
         likesn = itemView.findViewById(R.id.likesn);
-        commentn = itemView.findViewById(R.id.commentn);
+        commentn = itemView.findViewById(R.id.comments);
         Share=itemView.findViewById(R.id.imageView6);
-        Comment=itemView.findViewById(R.id.imageView8);
+
 
 
 
@@ -69,8 +70,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View view) {
                 if(checklike==true)
                 {
-                    Comment.setImageResource(R.drawable.ic_icon_awesome_comment_dots);
-                    Share.setImageResource(R.drawable.ic_icon_ionic_ios_share_alt);
+
                     like.setImageResource(R.drawable.ic_icon_material_favorite_red);
                     checklike=false;
                 }
@@ -78,32 +78,15 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                 {
                     like.setImageResource(R.drawable.ic_icon_material_favorite);
                     checklike=true;
-                    Comment.setImageResource(R.drawable.ic_icon_awesome_comment_dots);
-                    Share.setImageResource(R.drawable.ic_icon_ionic_ios_share_alt);
+
                 }
             }
         });
 
-        Share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Comment.setImageResource(R.drawable.ic_icon_awesome_comment_dots);
-                    Share.setImageResource(R.drawable.a);
 
 
-            }
-        });
-
-        Comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Comment.setImageResource(R.drawable.aa);
-                Share.setImageResource(R.drawable.ic_icon_ionic_ios_share_alt);
 
 
-            }
-        });
 
 
 

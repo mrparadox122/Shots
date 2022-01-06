@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+
+
 
 
     @Override
@@ -35,5 +39,11 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         },3000);
+
+
+
     }
+
+
+
 }

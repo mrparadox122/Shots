@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivty"
     android:keepScreenOn="true"
-    android:background="#FFC0B4"
+    android:background="#000"
 
     >
 
@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
     android:id="@+id/buttonback"
