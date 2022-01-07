@@ -255,7 +255,7 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
     @Override
     protected void onResume() {
         super.onResume();
-        checkPermission();
+       // checkPermission();
     }
 
     private void checkPermission() {
@@ -283,7 +283,7 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
                 }
                 else
                 {
-                    Toast.makeText(this,"permission is granted",Toast.LENGTH_SHORT).show();
+
                 }
                 break;
         }
