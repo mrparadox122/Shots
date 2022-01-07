@@ -25,6 +25,9 @@
         <activity
             android:name=".FollowingActivity"
             android:exported="false" android:screenOrientation="nosensor"/>
+
+
+
         <activity
             android:name=".Login"
             android:exported="true" />
@@ -34,6 +37,11 @@
         <activity
             android:name=".HomeActivty"
             android:screenOrientation="nosensor" />
+
+        <activity
+            android:name=".VideoEditorFolder.PortraitCameraActivity"
+            android:screenOrientation="nosensor" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

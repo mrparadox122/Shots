@@ -37,6 +37,7 @@
 
 
     <ImageView
+        android:onClick="addBtn"
         android:id="@+id/imageView13"
         android:layout_width="46dp"
         android:layout_height="47dp"

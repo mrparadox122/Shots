@@ -53,9 +53,12 @@
         <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/drawable/ic_icon_material_favorite.xml" value="0.140625" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/drawable/ic_icon_material_favorite_red.xml" value="0.1" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/drawable/share.xml" value="0.105859375" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/layout/activity_camera_portrate.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/layout/home_activty.xml" value="0.22" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/layout/home_activty.xml" value="0.1" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/layout/layout_main.xml" value="0.1" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/layout/row_video_list.xml" value="0.131640625" />
+        <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/layout/row_white_text.xml" value="0.1" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.13203125" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/ProjectSP3.4.1/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="..\:/Users/mohan/AndroidStudioProjects/Project__sp3_updated/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14629629629629629" />

@@ -1,5 +1,6 @@
 package com.paradox.projectsp3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
@@ -7,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,6 +38,7 @@ import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
 import com.paradox.projectsp3.Responses.Users;
+import com.paradox.projectsp3.VideoEditorFolder.PortraitCameraActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,12 +48,10 @@ public class HomeActivty extends AppCompatActivity {
 
 
 
-   
-
     private ArrayList<MediaObject> mediaObjectList=new ArrayList<>();
     private VideoPlayerRecyclerView  recyclerview;
     public static ApiInterface apiInterface;
-
+private static final int CAMERA_PERMISSION_REQUEST=888;
 
 
 
@@ -60,7 +62,7 @@ public class HomeActivty extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.home_activty);
+     setContentView(R.layout.home_activty);
         apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
         init();
         ImageView Ghar=(ImageView)findViewById(R.id.imageView14);
@@ -236,5 +238,54 @@ public class HomeActivty extends AppCompatActivity {
 
         Animatoo.animateSwipeRight(this);
         finish();;
+    }
+
+    public void addBtn(View view) {
+
+        checkPermission();
+        Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+        Animatoo.animateSlideUp(this);
+        finish();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkPermission();
+    }
+
+    private void checkPermission() {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+        {
+            return;
+        }
+        //request camera permission if it has not been granted
+        if(checkSelfPermission(Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED|| checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+        {
+          requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA,Manifest.permission.RECORD_AUDIO},CAMERA_PERMISSION_REQUEST);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch(requestCode)
+        {
+            case CAMERA_PERMISSION_REQUEST:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+
+
+                }
+                else
+                {
+                    Toast.makeText(this,"permission is granted",Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 }
