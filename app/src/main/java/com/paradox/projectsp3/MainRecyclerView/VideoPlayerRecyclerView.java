@@ -191,6 +191,13 @@ public class VideoPlayerRecyclerView extends RecyclerView {
 
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                viewHolderParent.setOnClickListener(videoViewClickListener);
+                 OnClickListener videoViewClickListener = new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toggleVolume();
+                    }
+                };
                 switch (playbackState) {
 
                     case Player.STATE_BUFFERING:
@@ -328,7 +335,8 @@ public class VideoPlayerRecyclerView extends RecyclerView {
 
         ///////////////////////////////////////////////////////////////////////////////////////
         videoSurfaceView.setPlayer(videoPlayer);
-        viewHolderParent.setOnClickListener(videoViewClickListener);
+        //viewHolderParent.setOnClickListener(videoViewClickListener);
+        videoSurfaceView.setOnClickListener(videoViewClickListener);
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(
                 context, Util.getUserAgent(context, "RecyclerView VideoPlayer"));
         String mediaUrld = mediaObjects.get(targetPosition).getMedia_url();
@@ -341,10 +349,11 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         /////////////////////////////////////////////////////////////////
     }
 
-    private OnClickListener videoViewClickListener = new OnClickListener() {
+    private OnClickListener videoViewClickListener= new OnClickListener() {
         @Override
         public void onClick(View v) {
             toggleVolume();
+            Log.e(TAG, "onClick: clicked/////////////////////////////////////" );
         }
     };
 
@@ -414,7 +423,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
             videoPlayer = null;
         }
 
-        viewHolderParent = null;
+
     }
 
     private void toggleVolume() {
