@@ -62,15 +62,22 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
 
 
+
+
+
         share = itemView.findViewById(R.id.share);
+
+
+
+
+
 
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(checklike==true)
                 {
-                    Comment.setImageResource(R.drawable.ic_icon_awesome_comment_dots);
-                    Share.setImageResource(R.drawable.ic_icon_ionic_ios_share_alt);
+
                     like.setImageResource(R.drawable.ic_icon_material_favorite_red);
                     checklike=false;
                 }
@@ -78,32 +85,12 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                 {
                     like.setImageResource(R.drawable.ic_icon_material_favorite);
                     checklike=true;
-                    Comment.setImageResource(R.drawable.ic_icon_awesome_comment_dots);
-                    Share.setImageResource(R.drawable.ic_icon_ionic_ios_share_alt);
+
                 }
             }
         });
 
-        Share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Comment.setImageResource(R.drawable.ic_icon_awesome_comment_dots);
-                    Share.setImageResource(R.drawable.a);
 
-
-            }
-        });
-
-        Comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Comment.setImageResource(R.drawable.aa);
-                Share.setImageResource(R.drawable.ic_icon_ionic_ios_share_alt);
-
-
-            }
-        });
 
 
 
@@ -115,7 +102,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         parent.setTag(this);
         likesn.setText(mediaObject.getLikes());
         commentn.setText(mediaObject.getComments());
-        commentn.setText(mediaObject.getComments());
+        commentn.setText(mediaObject.getShares());
 
         title.setText(mediaObject.getDescription()+"\n"+mediaObject.getPost_categories());
 

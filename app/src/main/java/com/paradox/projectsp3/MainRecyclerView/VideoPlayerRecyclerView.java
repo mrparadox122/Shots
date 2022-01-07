@@ -1,34 +1,21 @@
 package com.paradox.projectsp3.MainRecyclerView;
 
 
-import android.Manifest;
-import android.app.Activity;
-import android.app.DownloadManager;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,28 +42,25 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
-import com.google.android.gms.cast.framework.SessionManager;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 public class VideoPlayerRecyclerView extends RecyclerView {
 
     private static final String TAG = "VideoPlayerRecyclerView";
 
-    private enum VolumeState {ON, OFF};
+    private enum VolumeState {ON, OFF}
 
     // ui
     public ImageView thumbnail,volumeControl,soundDisk;
     private ProgressBar progressBar;
-    private View viewHolderParent;
+    public View viewHolderParent;
     private FrameLayout frameLayout;
     private PlayerView videoSurfaceView;
     private SimpleExoPlayer videoPlayer;
-    private TextView name,no_likes,no_comments;
     private CircleImageView profile_img;
 
     // vars
@@ -341,10 +325,10 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         /////////////////////////////////////////////////////////////////
     }
 
-    private OnClickListener videoViewClickListener = new OnClickListener() {
-        @Override
+    public OnClickListener videoViewClickListener = new OnClickListener() {
         public void onClick(View v) {
             toggleVolume();
+            Log.e(TAG, "onClick: clicked//////////////////////////////////////////////////");
         }
     };
 
@@ -418,17 +402,20 @@ public class VideoPlayerRecyclerView extends RecyclerView {
     }
 
     private void toggleVolume() {
-        if (videoPlayer != null) {
+        if (videoPlayer!=null){
+
             if (volumeState == VolumeState.OFF) {
                 Log.d(TAG, "togglePlaybackState: enabling volume.");
                 setVolumeControl(VolumeState.ON);
 
-            } else if(volumeState == VolumeState.ON) {
+            }
+            else if(volumeState == VolumeState.ON) {
                 Log.d(TAG, "togglePlaybackState: disabling volume.");
                 setVolumeControl(VolumeState.OFF);
 
             }
-        }
+
+    }
     }
 
     private void setVolumeControl(VolumeState state){
@@ -449,6 +436,13 @@ public class VideoPlayerRecyclerView extends RecyclerView {
             if(volumeState == VolumeState.OFF){
                 requestManager.load(R.drawable.ic_volume_off_grey_24dp)
                         .into(volumeControl);
+                volumeControl.animate().cancel();
+
+                volumeControl.setAlpha(1f);
+
+                volumeControl.animate()
+                        .alpha(0f)
+                        .setDuration(600).setStartDelay(1000);
             }
             else if(volumeState == VolumeState.ON){
                 requestManager.load(R.drawable.ic_volume_up_grey_24dp)
