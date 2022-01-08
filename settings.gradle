@@ -1,3 +1,4 @@
 rootProject.name = "ProjectSP3"
 include ':app'
 include ':gpuv'
+include ':gpuv'
