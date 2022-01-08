@@ -255,7 +255,7 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
     @Override
     protected void onResume() {
         super.onResume();
-       // checkPermission();
+       //  checkPermission();
     }
 
     private void checkPermission() {

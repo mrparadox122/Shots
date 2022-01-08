@@ -13,10 +13,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
