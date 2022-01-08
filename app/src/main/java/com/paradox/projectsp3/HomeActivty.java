@@ -250,12 +250,13 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
         Animatoo.animateSlideUp(this);
         finish();
 
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-       //  checkPermission();
+        checkPermission();
     }
 
     private void checkPermission() {

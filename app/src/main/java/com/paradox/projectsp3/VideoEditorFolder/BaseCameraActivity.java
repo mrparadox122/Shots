@@ -14,10 +14,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -46,7 +49,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     private SampleCameraGLView sampleGLView;
     protected GPUCameraRecorder GPUCameraRecorder;
     private String filepath;
-    private ImageView recordBtn,pauseBtn;
+    private ImageView recordBtn,Pause;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
@@ -57,32 +60,47 @@ public class BaseCameraActivity extends AppCompatActivity {
 
     private ListView lv;
 
+    @SuppressLint("CheckResult")
     protected void onCreateActivity() {
         getSupportActionBar().hide();
-        recordBtn = findViewById(R.id.btn_record);
-        pauseBtn= findViewById(R.id.btn_record);
+        recordBtn = findViewById(R.id.imageView2);
+        Pause=findViewById(R.id.imageView4);
+        
+
+
+        Glide.with(BaseCameraActivity.this).load(R.drawable.pause);
         recordBtn.setOnClickListener(v -> {
 
-            filepath = getVideoFilePath();
-            GPUCameraRecorder.start(filepath);
-            recordBtn.setVisibility(View.GONE);
-            pauseBtn.setVisibility(View.VISIBLE);
-            Glide.with(getApplicationContext()).load(R.drawable.camera);
+
+             Toast.makeText(this,"Recording Started",Toast.LENGTH_SHORT).show();
+
+                filepath = getVideoFilePath();
+                GPUCameraRecorder.start(filepath);
+                recordBtn.setVisibility(View.GONE);
+                Pause.setVisibility(View.VISIBLE);
+
+
         });
-        pauseBtn.setOnClickListener(v -> {
+
+        Pause.setOnClickListener(v -> {
+
+
 
             GPUCameraRecorder.stop();
             recordBtn.setVisibility(View.VISIBLE);
-            pauseBtn.setVisibility(View.GONE);
+            Pause.setVisibility(View.GONE);
+            Toast.makeText(this,"Recording Stopped",Toast.LENGTH_SHORT).show();
+
+
         });
-        findViewById(R.id.btn_flash).setOnClickListener(v -> {
+        findViewById(R.id.imageView7).setOnClickListener(v -> {
             if (GPUCameraRecorder != null && GPUCameraRecorder.isFlashSupport()) {
                 GPUCameraRecorder.switchFlashMode();
                 GPUCameraRecorder.changeAutoFocus();
             }
         });
 
-        findViewById(R.id.btn_switch_camera).setOnClickListener(v -> {
+        findViewById(R.id.imageView5).setOnClickListener(v -> {
             releaseCamera();
             if (lensFacing == LensFacing.BACK) {
                 lensFacing = LensFacing.FRONT;
@@ -92,16 +110,15 @@ public class BaseCameraActivity extends AppCompatActivity {
             toggleClick = true;
         });
 
-        findViewById(R.id.btn_image_capture).setOnClickListener(v -> {
-            captureBitmap(bitmap -> {
-                new Handler().post(() -> {
-                    String imagePath = getImageFilePath();
-                    saveAsPngImage(bitmap, imagePath);
-                    exportPngToGallery(getApplicationContext(), imagePath);
-                });
-            });
-        });
-
+//        findViewById(R.id.btn_image_capture).setOnClickListener(v -> {
+//            captureBitmap(bitmap -> {
+//                new Handler().post(() -> {
+//                    String imagePath = getImageFilePath();
+//                    saveAsPngImage(bitmap, imagePath);
+//                    exportPngToGallery(getApplicationContext(), imagePath);
+//                });
+//            });
+//        });
 
         lv = findViewById(R.id.filter_list);
 
@@ -174,7 +191,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                     @Override
                     public void onGetFlashSupport(boolean flashSupport) {
                         runOnUiThread(() -> {
-                            findViewById(R.id.btn_flash).setEnabled(flashSupport);
+                            findViewById(R.id.imageView7).setEnabled(flashSupport);
                         });
                     }
 
@@ -293,7 +310,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Uri.parse("file://" + filePath)));
     }
 
-    @SuppressLint("SimpleDateFormat")
     public static String getVideoFilePath() {
         return getAndroidMoviesFolder().getAbsolutePath() + "/" + new SimpleDateFormat("yyyyMM_dd-HHmmss").format(new Date()) + "GPUCameraRecorder.mp4";
     }
