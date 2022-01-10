@@ -1,3 +1,4 @@
+
 package com.paradox.projectsp3.VideoEditorFolder;
 
 import android.annotation.SuppressLint;
@@ -14,10 +15,16 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 import com.daasuu.gpuv.camerarecorder.CameraRecordListener;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorder;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorderBuilder;
@@ -38,12 +45,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+
 public class BaseCameraActivity extends AppCompatActivity {
 
     private SampleCameraGLView sampleGLView;
     protected GPUCameraRecorder GPUCameraRecorder;
     private String filepath;
-    private TextView recordBtn;
+    private ImageView recordBtn,pauseBtn;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
@@ -54,23 +62,23 @@ public class BaseCameraActivity extends AppCompatActivity {
 
     private ListView lv;
 
-    @SuppressLint("WrongViewCast")
     protected void onCreateActivity() {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.btn_record);
+        pauseBtn= findViewById(R.id.btn_record);
         recordBtn.setOnClickListener(v -> {
 
-            if (recordBtn.getText().equals(getString(R.string.app_record))) {
-                filepath = getVideoFilePath();
-                GPUCameraRecorder.start(filepath);
-                recordBtn.setText("Stop");
-                lv.setVisibility(View.GONE);
-            } else {
-                GPUCameraRecorder.stop();
-                recordBtn.setText(getString(R.string.app_record));
-                lv.setVisibility(View.VISIBLE);
-            }
+            filepath = getVideoFilePath();
+            GPUCameraRecorder.start(filepath);
+            recordBtn.setVisibility(View.GONE);
+            pauseBtn.setVisibility(View.VISIBLE);
+            Glide.with(getApplicationContext()).load(R.drawable.camera);
+        });
+        pauseBtn.setOnClickListener(v -> {
 
+            GPUCameraRecorder.stop();
+            recordBtn.setVisibility(View.VISIBLE);
+            pauseBtn.setVisibility(View.GONE);
         });
         findViewById(R.id.btn_flash).setOnClickListener(v -> {
             if (GPUCameraRecorder != null && GPUCameraRecorder.isFlashSupport()) {
@@ -98,6 +106,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                 });
             });
         });
+
 
         lv = findViewById(R.id.filter_list);
 
@@ -289,6 +298,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Uri.parse("file://" + filePath)));
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static String getVideoFilePath() {
         return getAndroidMoviesFolder().getAbsolutePath() + "/" + new SimpleDateFormat("yyyyMM_dd-HHmmss").format(new Date()) + "GPUCameraRecorder.mp4";
     }
