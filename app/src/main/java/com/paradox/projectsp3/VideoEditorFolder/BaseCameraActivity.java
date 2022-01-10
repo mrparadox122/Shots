@@ -306,7 +306,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     }
 
     public static File getAndroidMoviesFolder() {
-        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
+        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
     }
 
     private static void exportPngToGallery(Context context, String filePath) {

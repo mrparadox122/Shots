@@ -2,6 +2,10 @@ package com.paradox.projectsp3.MainRecyclerView;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -17,6 +21,8 @@ import com.paradox.projectsp3.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
+
+
 
     FrameLayout media_container;
 
