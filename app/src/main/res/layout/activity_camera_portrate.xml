@@ -18,29 +18,39 @@
       app:layout_constraintVertical_bias="1.0">
 
 
-    <ImageView
-        android:id="@+id/btn_flash"
-        android:layout_width="71dp"
-        android:layout_height="53dp"
 
-        android:layout_marginStart="320dp"
-        android:layout_marginLeft="320dp"
-        android:layout_marginTop="152dp"
-        android:src="@drawable/flash" />
-
-    <ImageView
-        android:id="@+id/btn_switch_camera"
-        android:layout_width="73dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="320dp"
-        android:layout_marginLeft="320dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/cameraclip" />
   </com.paradox.projectsp3.VideoEditorFolder.widget.PortraitFrameLayout>
 
+
+  <ImageView
+      android:id="@+id/btn_flash"
+      android:layout_width="56dp"
+      android:layout_height="43dp"
+
+      android:src="@drawable/flash"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.34"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0" />
+
+  <ImageView
+      android:id="@+id/btn_switch_camera"
+      android:layout_width="60dp"
+      android:layout_height="54dp"
+      android:src="@drawable/cameraclip"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.8"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0" />
+
   <android.widget.Button
-      android:layout_width="130dp"
-      android:layout_height="wrap_content"
+      android:id="@+id/button2"
+      android:layout_width="153dp"
+      android:layout_height="50dp"
       android:layout_marginTop="16dp"
       android:drawableLeft="@drawable/music"
       android:text=" Add sound"
@@ -49,28 +59,31 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.0" />
+
   <ImageView
-      android:id="@+id/btn_record"
-      android:layout_width="80dp"
-      android:layout_height="80dp"
+      android:id="@+id/record"
+      android:layout_width="67dp"
+      android:layout_height="63dp"
       android:layout_alignParentBottom="true"
       android:layout_centerInParent="true"
       android:src="@drawable/recording_video"
       android:text="@string/app_record"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintHorizontal_bias="0.65"
+      app:layout_constraintHorizontal_bias="0.55"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent" />
+
   <ImageView
-      android:id="@+id/btn_image_capture"
-      android:layout_width="80dp"
-      android:layout_height="80dp"
+      android:id="@+id/pause"
+      android:layout_width="67dp"
+      android:layout_height="63dp"
       android:layout_alignParentBottom="true"
       android:layout_centerInParent="true"
-      android:src="@drawable/camera"
-      android:text="@string/app_record"
+      android:src="@drawable/pause"
+
+
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintHorizontal_bias="0.65"
+      app:layout_constraintHorizontal_bias="0.55"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent" />
 

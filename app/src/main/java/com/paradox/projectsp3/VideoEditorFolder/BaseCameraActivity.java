@@ -64,21 +64,22 @@ public class BaseCameraActivity extends AppCompatActivity {
 
     protected void onCreateActivity() {
         getSupportActionBar().hide();
-        recordBtn = findViewById(R.id.btn_record);
-        pauseBtn= findViewById(R.id.btn_record);
+        recordBtn = findViewById(R.id.record);
+        pauseBtn= findViewById(R.id.pause);
         recordBtn.setOnClickListener(v -> {
 
             filepath = getVideoFilePath();
             GPUCameraRecorder.start(filepath);
             recordBtn.setVisibility(View.GONE);
             pauseBtn.setVisibility(View.VISIBLE);
-            Glide.with(getApplicationContext()).load(R.drawable.camera);
+            Toast.makeText(this,"Recording Started",Toast.LENGTH_SHORT).show();
         });
         pauseBtn.setOnClickListener(v -> {
 
             GPUCameraRecorder.stop();
             recordBtn.setVisibility(View.VISIBLE);
             pauseBtn.setVisibility(View.GONE);
+            Toast.makeText(this,"Recording Stopped",Toast.LENGTH_SHORT).show();
         });
         findViewById(R.id.btn_flash).setOnClickListener(v -> {
             if (GPUCameraRecorder != null && GPUCameraRecorder.isFlashSupport()) {
@@ -97,15 +98,15 @@ public class BaseCameraActivity extends AppCompatActivity {
             toggleClick = true;
         });
 
-        findViewById(R.id.btn_image_capture).setOnClickListener(v -> {
-            captureBitmap(bitmap -> {
-                new Handler().post(() -> {
-                    String imagePath = getImageFilePath();
-                    saveAsPngImage(bitmap, imagePath);
-                    exportPngToGallery(getApplicationContext(), imagePath);
-                });
-            });
-        });
+//        findViewById(R.id.btn_image_capture).setOnClickListener(v -> {
+//            captureBitmap(bitmap -> {
+//                new Handler().post(() -> {
+//                    String imagePath = getImageFilePath();
+//                    saveAsPngImage(bitmap, imagePath);
+//                    exportPngToGallery(getApplicationContext(), imagePath);
+//                });
+//            });
+//        });
 
 
         lv = findViewById(R.id.filter_list);
@@ -186,6 +187,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                     @Override
                     public void onRecordComplete() {
                         exportMp4ToGallery(getApplicationContext(), filepath);
+                        lv.setVisibility(View.VISIBLE);
                     }
 
                     @Override
