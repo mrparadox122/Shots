@@ -227,7 +227,7 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
     public void onBackPressed()
     {
         super.onBackPressed();
-        finish();
+        //finish();
     }
 
 
@@ -248,7 +248,7 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
         startActivity(intent);
 
         Animatoo.animateSlideUp(this);
-        finish();
+        //finish();
 
 
     }
