@@ -178,9 +178,9 @@ public class BaseCameraActivity extends AppCompatActivity {
                 .cameraRecordListener(new CameraRecordListener() {
                     @Override
                     public void onGetFlashSupport(boolean flashSupport) {
-                        runOnUiThread(() -> {
-                            findViewById(R.id.btn_flash).setEnabled(flashSupport);
-                        });
+//                        runOnUiThread(() -> {
+//                            findViewById(R.id.btn_flash).setEnabled(flashSupport);
+//                        });
                     }
 
                     @Override
