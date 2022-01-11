@@ -82,6 +82,12 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
                 comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
                 profile.setImageResource(R.drawable.ic_icon_awesome_user_1);
+
+                Intent intent=new Intent(HomeActivty.this,AccountActivity.class);
+                startActivity(intent);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Animatoo.animateSlideUp(HomeActivty.this);
+                finish();
             }
         });
 
@@ -94,6 +100,12 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
 
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
                 profile.setImageResource(R.drawable.ic_icon_awesome_user);
+
+                Intent intent=new Intent(HomeActivty.this,MessageMainActivity.class);
+                startActivity(intent);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Animatoo.animateSlideUp(HomeActivty.this);
+                finish();
             }
         });
         Search.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +117,13 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
                 comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
 
                 profile.setImageResource(R.drawable.ic_icon_awesome_user);
+
+
+                Intent intent=new Intent(HomeActivty.this,SearchActivity.class);
+                startActivity(intent);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Animatoo.animateSlideUp(HomeActivty.this);
+                finish();
             }
         });
 
@@ -248,7 +267,7 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
         startActivity(intent);
 
         Animatoo.animateSlideUp(this);
-        //finish();
+        finish();
 
 
     }
@@ -256,7 +275,7 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
     @Override
     protected void onResume() {
         super.onResume();
-        checkPermission();
+//        checkPermission();
     }
 
     private void checkPermission() {
@@ -272,6 +291,11 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
     }
 
     @Override
+
+
+
+
+
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch(requestCode)
@@ -289,4 +313,9 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
                 break;
         }
     }
+
+
+
+
+
 }

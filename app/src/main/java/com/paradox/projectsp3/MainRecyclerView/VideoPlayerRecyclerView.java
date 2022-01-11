@@ -422,6 +422,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
             videoPlayer.release();
             videoPlayer = null;
         }
+        videoPlayer = null;
 
 
     }

@@ -24,11 +24,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.daasuu.gpuv.camerarecorder.CameraRecordListener;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorder;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorderBuilder;
 import com.daasuu.gpuv.camerarecorder.LensFacing;
+import com.paradox.projectsp3.HomeActivty;
+import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.VideoEditorFolder.widget.SampleCameraGLView;
 
@@ -61,11 +64,32 @@ public class BaseCameraActivity extends AppCompatActivity {
     private boolean toggleClick = false;
 
     private ListView lv;
+    private ImageView Close;
 
     protected void onCreateActivity() {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.record);
         pauseBtn= findViewById(R.id.pause);
+        Close=findViewById(R.id.close);
+        Close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if (GPUCameraRecorder != null) {
+                    GPUCameraRecorder.stop();
+                    GPUCameraRecorder.release();
+                    GPUCameraRecorder = null;
+                }
+
+                Intent intent=new Intent(BaseCameraActivity.this, HomeActivty.class);
+                startActivity(intent);
+                Animatoo.animateSlideDown(BaseCameraActivity.this);
+                finish();
+            }
+        });
+
+
         recordBtn.setOnClickListener(v -> {
 
             filepath = getVideoFilePath();
@@ -73,6 +97,7 @@ public class BaseCameraActivity extends AppCompatActivity {
             recordBtn.setVisibility(View.GONE);
             pauseBtn.setVisibility(View.VISIBLE);
             Toast.makeText(this,"Recording Started",Toast.LENGTH_SHORT).show();
+            Glide.with(this).load(R.drawable.pause).into(pauseBtn);
         });
         pauseBtn.setOnClickListener(v -> {
 
@@ -136,6 +161,22 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         releaseCamera();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (GPUCameraRecorder != null) {
+            GPUCameraRecorder.stop();
+            GPUCameraRecorder.release();
+            GPUCameraRecorder = null;
+        }
+
+        Intent intent=new Intent(BaseCameraActivity.this, HomeActivty.class);
+        startActivity(intent);
+        Animatoo.animateSlideDown(BaseCameraActivity.this);
+        finish();
     }
 
     private void releaseCamera() {
