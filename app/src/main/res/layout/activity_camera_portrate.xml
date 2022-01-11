@@ -66,7 +66,7 @@
       app:srcCompat="@drawable/close" />
 
   <ImageView
-      android:id="@+id/imageView2"
+      android:id="@+id/gallery"
       android:layout_width="60dp"
       android:layout_height="54dp"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -122,7 +122,7 @@
       android:layout_height="63dp"
       android:layout_alignParentBottom="true"
       android:layout_centerInParent="true"
-      android:src="@drawable/recording_video"
+      android:src="@drawable/pause"
       android:text="@string/app_record"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintHorizontal_bias="0.55"
@@ -136,7 +136,7 @@
       android:layout_height="63dp"
       android:layout_alignParentBottom="true"
       android:layout_centerInParent="true"
-      android:src="@drawable/pause"
+      android:src="@drawable/recording_video"
 
 
       app:layout_constraintBottom_toBottomOf="parent"

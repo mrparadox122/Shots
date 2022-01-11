@@ -1,13 +1,16 @@
 
 package com.paradox.projectsp3.VideoEditorFolder;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.opengl.GLException;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -22,7 +25,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
@@ -64,13 +70,28 @@ public class BaseCameraActivity extends AppCompatActivity {
     private boolean toggleClick = false;
 
     private ListView lv;
-    private ImageView Close;
+    private ImageView Close,Gallery;
 
     protected void onCreateActivity() {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.record);
         pauseBtn= findViewById(R.id.pause);
         Close=findViewById(R.id.close);
+        Gallery=findViewById(R.id.gallery);
+
+        Gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkPermission();
+
+
+                Intent intent=new Intent();
+                intent.setType("video/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select Video"),100);
+
+            }
+        });
         Close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,7 +118,7 @@ public class BaseCameraActivity extends AppCompatActivity {
             recordBtn.setVisibility(View.GONE);
             pauseBtn.setVisibility(View.VISIBLE);
             Toast.makeText(this,"Recording Started",Toast.LENGTH_SHORT).show();
-            Glide.with(this).load(R.drawable.pause).into(pauseBtn);
+            Glide.with(this).load(R.drawable.recording_video).into(pauseBtn);
         });
         pauseBtn.setOnClickListener(v -> {
 
@@ -366,4 +387,44 @@ public class BaseCameraActivity extends AppCompatActivity {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
     }
 
+  public void  checkPermission()
+  {
+
+
+      if(Build.VERSION.SDK_INT <Build.VERSION_CODES.M)
+      {
+          return;
+      }
+      if(ActivityCompat.checkSelfPermission(BaseCameraActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+      {
+        ActivityCompat.requestPermissions(BaseCameraActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},101);
+
+      }
+      else
+      {
+
+      }
+  }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode)
+        {
+            case 101:
+                if(grantResults.length >0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
+                {
+
+                }
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 100) {
+         // image.setImageURI(data.getData());
+        }
+    }
 }

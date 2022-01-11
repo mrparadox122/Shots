@@ -69,8 +69,7 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
         ImageView profile=(ImageView)findViewById(R.id.imageView17);
         ImageView comment=(ImageView)findViewById(R.id.imageView16);
         ImageView Search=(ImageView)findViewById(R.id.imageView15) ;
-
-
+        checkPermission();
 
         //// onclick///
 
@@ -256,12 +255,12 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
         startActivity(intent);
 
         Animatoo.animateSwipeRight(this);
-        finish();;
+        finish();
     }
 
     public void addBtn(View view) {
 
-        checkPermission();
+
         Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -272,11 +271,11 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        checkPermission();
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//     checkPermission();
+//    }
 
     private void checkPermission() {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
