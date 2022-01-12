@@ -24,6 +24,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".VideoEditor"
+            android:exported="false" />
+        <activity
             android:name=".AccountActivity"
             android:exported="false"
             android:screenOrientation="nosensor" />
@@ -48,8 +51,7 @@
             android:exported="false" />
         <activity
             android:name=".HomeActivty"
-            android:screenOrientation="nosensor"
-            />
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".VideoEditorFolder.PortraitCameraActivity"
             android:screenOrientation="nosensor" />
