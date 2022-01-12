@@ -336,8 +336,8 @@ public class VideoPlayerRecyclerView extends RecyclerView {
 
         ///////////////////////////////////////////////////////////////////////////////////////
         videoSurfaceView.setPlayer(videoPlayer);
-        //viewHolderParent.setOnClickListener(videoViewClickListener);
-        videoSurfaceView.setOnClickListener(videoViewClickListener);
+        viewHolderParent.setOnClickListener(videoViewClickListener);
+        //videoSurfaceView.setOnClickListener(videoViewClickListener);
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(
                 context, Util.getUserAgent(context, "RecyclerView VideoPlayer"));
         String mediaUrld = mediaObjects.get(targetPosition).getMedia_url();
@@ -396,6 +396,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
             isVideoViewAdded = false;
             viewHolderParent.setOnClickListener(null);
         }
+        viewHolderParent = null;
 
     }
 

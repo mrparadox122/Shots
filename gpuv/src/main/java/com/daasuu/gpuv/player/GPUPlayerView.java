@@ -73,7 +73,7 @@ public class GPUPlayerView extends GLSurfaceView implements VideoListener {
                 break;
         }
 
-        // Log.d(TAG, "onMeasure viewWidth = " + viewWidth + " viewHeight = " + viewHeight);
+        // Log.splash_video(TAG, "onMeasure viewWidth = " + viewWidth + " viewHeight = " + viewHeight);
 
         setMeasuredDimension(viewWidth, viewHeight);
 
@@ -90,9 +90,9 @@ public class GPUPlayerView extends GLSurfaceView implements VideoListener {
 
     @Override
     public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees, float pixelWidthHeightRatio) {
-        // Log.d(TAG, "width = " + width + " height = " + height + " unappliedRotationDegrees = " + unappliedRotationDegrees + " pixelWidthHeightRatio = " + pixelWidthHeightRatio);
+        // Log.splash_video(TAG, "width = " + width + " height = " + height + " unappliedRotationDegrees = " + unappliedRotationDegrees + " pixelWidthHeightRatio = " + pixelWidthHeightRatio);
         videoAspect = ((float) width / height) * pixelWidthHeightRatio;
-        // Log.d(TAG, "videoAspect = " + videoAspect);
+        // Log.splash_video(TAG, "videoAspect = " + videoAspect);
         requestLayout();
     }
 

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bottomsheet_bg"
+    tools:context=".BottomSheet_Activity">
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Create"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="21dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="10dp"/>-->
+
+
+<LinearLayout
+    android:id="@+id/ll_createshort"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="20dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_camera"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create a Shots"
+        android:textStyle="normal"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:paddingStart="25dp"
+        android:paddingLeft="25dp" />
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_uploadvedio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_upload"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload a Video"
+            android:textStyle="normal"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:paddingStart="25dp"
+            android:paddingLeft="25dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_golive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_live"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Live"
+            android:textStyle="normal"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:paddingStart="25dp"
+            android:paddingLeft="25dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

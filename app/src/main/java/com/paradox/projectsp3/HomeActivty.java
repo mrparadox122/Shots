@@ -10,15 +10,20 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -261,16 +266,73 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
     public void addBtn(View view) {
 
 
-        Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
 
-        Animatoo.animateSlideUp(this);
-        finish();
+        showbottomsheet();
+
+
+//        Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+//
+//        Animatoo.animateSlideUp(this);
+//        finish();
 
 
     }
 
+    private void showbottomsheet() {
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_bottom_sheet);
+
+
+        LinearLayout ll_createshort = dialog.findViewById(R.id.ll_createshort);
+        LinearLayout ll_uploadvedio = dialog.findViewById(R.id.ll_uploadvedio);
+        LinearLayout ll_golive = dialog.findViewById(R.id.ll_golive);
+
+        ll_createshort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+
+        //Animatoo.animateSlideUp(this);
+        finish();
+
+            }
+        });
+
+        ll_uploadvedio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent=new Intent(HomeActivty.this, Upload_Activity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+
+                //Animatoo.animateSlideUp(this);
+                finish();
+
+            }
+        });
+
+
+        ll_golive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+    }
 
 //    @Override
 //    protected void onResume() {

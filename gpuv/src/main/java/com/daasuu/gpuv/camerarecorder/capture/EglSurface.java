@@ -31,7 +31,7 @@ public class EglSurface {
         eglSurface = this.egl.createWindowSurface(surface);
         width = this.egl.querySurface(eglSurface, EGL14.EGL_WIDTH);
         height = this.egl.querySurface(eglSurface, EGL14.EGL_HEIGHT);
-        if (DEBUG) Log.v(TAG, String.format("EglSurface:size(%d,%d)", width, height));
+        if (DEBUG) Log.v(TAG, String.format("EglSurface:size(%splash_video,%splash_video)", width, height));
     }
 
     public void makeCurrent() {
