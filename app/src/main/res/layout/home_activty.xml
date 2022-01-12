@@ -6,10 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivty"
     android:keepScreenOn="true"
-    android:background="#000"
-
-    >
-
+    android:background="#000">
 
     <com.paradox.projectsp3.MainRecyclerView.VideoPlayerRecyclerView
         android:id="@+id/recyclerview"
