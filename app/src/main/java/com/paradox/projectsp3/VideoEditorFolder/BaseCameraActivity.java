@@ -424,7 +424,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 100) {
-         // image.setImageURI(data.getData());
+
         }
     }
 }

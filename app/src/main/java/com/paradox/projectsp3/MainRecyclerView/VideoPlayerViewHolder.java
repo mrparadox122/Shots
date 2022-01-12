@@ -96,6 +96,13 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
+        Share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in
+            }
+        });
+
 
 
 
