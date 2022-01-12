@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-
     android:background="#FFC0B4"
     tools:context=".FollowingActivity">
 
@@ -120,7 +119,6 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:textStyle="bold"
-
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
