@@ -16,10 +16,10 @@ public class GlHazeFilter extends GlFilter {
                     "void main() {" +
                     "highp vec4 color = vec4(1.0);" +
 
-                    "highp float  d = vTextureCoord.y * slope  +  distance;" +
+                    "highp float  splash_video = vTextureCoord.y * slope  +  distance;" +
 
                     "highp vec4 c = texture2D(sTexture, vTextureCoord);" +
-                    "c = (c - d * color) / (1.0 -d);" +
+                    "c = (c - splash_video * color) / (1.0 -splash_video);" +
                     "gl_FragColor = c;" +    // consider using premultiply(c);
                     "}";
 

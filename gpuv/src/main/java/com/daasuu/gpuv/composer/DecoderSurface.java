@@ -86,7 +86,7 @@ class DecoderSurface implements SurfaceTexture.OnFrameAvailableListener {
         // at the Java level, so if we don't either then the object can get GCed, which
         // causes the native finalizer to run.
 
-        // if (VERBOSE) Log.d(TAG, "textureID=" + filter.getTextureId());
+        // if (VERBOSE) Log.splash_video(TAG, "textureID=" + filter.getTextureId());
         // surfaceTexture = new SurfaceTexture(filter.getTextureId());
 
         // This doesn't work if DecoderSurface is created on the thread that CTS started for
@@ -230,7 +230,7 @@ class DecoderSurface implements SurfaceTexture.OnFrameAvailableListener {
             case PRESERVE_ASPECT_FIT:
                 scale = FillMode.getScaleAspectFit(rotation.getRotation(), inputResolution.getWidth(), inputResolution.getHeight(), outputResolution.getWidth(), outputResolution.getHeight());
 
-                // Log.d(TAG, "scale[0] = " + scale[0] + " scale[1] = " + scale[1]);
+                // Log.splash_video(TAG, "scale[0] = " + scale[0] + " scale[1] = " + scale[1]);
 
                 Matrix.scaleM(MVPMatrix, 0, scale[0] * scaleDirectionX, scale[1] * scaleDirectionY, 1);
                 if (rotation != Rotation.NORMAL) {
@@ -265,10 +265,10 @@ class DecoderSurface implements SurfaceTexture.OnFrameAvailableListener {
 
                     Matrix.rotateM(MVPMatrix, 0, -(rotation.getRotation() + fillModeCustomItem.getRotate()), 0.f, 0.f, 1.f);
 
-//                    Log.d(TAG, "inputResolution = " + inputResolution.getWidth() + " height = " + inputResolution.getHeight());
-//                    Log.d(TAG, "out = " + outputResolution.getWidth() + " height = " + outputResolution.getHeight());
-//                    Log.d(TAG, "rotation = " + rotation.getRotation());
-//                    Log.d(TAG, "scale[0] = " + scale[0] + " scale[1] = " + scale[1]);
+//                    Log.splash_video(TAG, "inputResolution = " + inputResolution.getWidth() + " height = " + inputResolution.getHeight());
+//                    Log.splash_video(TAG, "out = " + outputResolution.getWidth() + " height = " + outputResolution.getHeight());
+//                    Log.splash_video(TAG, "rotation = " + rotation.getRotation());
+//                    Log.splash_video(TAG, "scale[0] = " + scale[0] + " scale[1] = " + scale[1]);
 
 
                 }
@@ -345,7 +345,7 @@ class DecoderSurface implements SurfaceTexture.OnFrameAvailableListener {
 
         filterFramebufferObject.setup(width, height);
         previewShader.setFrameSize(width, height);
-        // MCLog.d("onSurfaceChanged width = " + width + " height = " + height + " aspectRatio = " + scaleRatio);
+        // MCLog.splash_video("onSurfaceChanged width = " + width + " height = " + height + " aspectRatio = " + scaleRatio);
         Matrix.frustumM(ProjMatrix, 0, -1f, 1f, -1, 1, 5, 7);
         Matrix.setIdentityM(MMatrix, 0);
 

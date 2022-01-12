@@ -71,11 +71,11 @@ public class GlPreviewRenderer extends GlFrameBufferObjectRenderer implements Su
         Matrix.setIdentityM(MMatrix, 0);
         Matrix.rotateM(MMatrix, 0, -angle, 0.0f, 0.0f, 1.0f);
 
-//        Log.d("GPUCameraRecorder ", "angle" + angle);
-//        Log.d("GPUCameraRecorder ", "getMeasuredHeight " + glView.getMeasuredHeight());
-//        Log.d("GPUCameraRecorder ", "getMeasuredWidth " + glView.getMeasuredWidth());
-//        Log.d("GPUCameraRecorder ", "cameraPreviewWidth " + cameraPreviewWidth);
-//        Log.d("GPUCameraRecorder ", "cameraPreviewHeight " + cameraPreviewHeight);
+//        Log.splash_video("GPUCameraRecorder ", "angle" + angle);
+//        Log.splash_video("GPUCameraRecorder ", "getMeasuredHeight " + glView.getMeasuredHeight());
+//        Log.splash_video("GPUCameraRecorder ", "getMeasuredWidth " + glView.getMeasuredWidth());
+//        Log.splash_video("GPUCameraRecorder ", "cameraPreviewWidth " + cameraPreviewWidth);
+//        Log.splash_video("GPUCameraRecorder ", "cameraPreviewHeight " + cameraPreviewHeight);
 
 
         if (isLandscapeDevice) {
