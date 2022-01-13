@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SearchActivity">
 
 
@@ -39,4 +40,16 @@
     </LinearLayout>
 
 
-</LinearLayout>
+<!--    <com.denzcoskun.imageslider.ImageSlider-->
+<!--        android:id="@+id/slider"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@drawable/ic_upload"-->
+<!--        app:auto_cycle="true"-->
+<!--        app:delay="0"-->
+<!--        app:period="1000"-->
+<!--        app:corner_radius="5"-->
+<!--        app:error_image="@color/black"-->
+<!--        app:placeholder="@color/black" />-->
+    </LinearLayout>
