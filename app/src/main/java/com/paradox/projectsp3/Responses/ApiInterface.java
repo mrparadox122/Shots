@@ -4,6 +4,7 @@ import org.json.JSONArray;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -15,9 +16,8 @@ public interface ApiInterface {
     @GET("get_details")
     Call<Users> performAllPosts();
 
-//
-//    @POST("upload")
-//    Call<JSONArray> postUpload(@Body List<data> dataList);
+    @POST("upload")
+    Call<ResponseBody> postUpload(@Body ResponseBody responseBody);
 
 
 }
