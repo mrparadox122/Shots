@@ -22,6 +22,9 @@ public class Comment_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         // Inflate the layout for this fragment
         View root=inflater.inflate(R.layout.fragment_comment_fragment,container,false);
         return root;
@@ -36,7 +39,7 @@ public class Comment_fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                Intent intent = new Intent(view.getContext(), HomeActivty.class);
                 view.getContext().startActivity(intent);
                 getActivity().finish();
 
@@ -48,5 +51,10 @@ public class Comment_fragment extends Fragment {
 
 
 
+
     }
+
+
+
+
 }

@@ -38,7 +38,9 @@ import com.daasuu.gpuv.camerarecorder.GPUCameraRecorderBuilder;
 import com.daasuu.gpuv.camerarecorder.LensFacing;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.HomeActivty;
+import com.paradox.projectsp3.MainActivity;
 import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.SoundActivity;
 import com.paradox.projectsp3.VideoEditorFolder.widget.SampleCameraGLView;
 
 
@@ -60,6 +62,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     private SampleCameraGLView sampleGLView;
     protected GPUCameraRecorder GPUCameraRecorder;
     private String filepath;
+    private Button addSound;
     private ImageView recordBtn,pauseBtn;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
@@ -78,6 +81,17 @@ public class BaseCameraActivity extends AppCompatActivity {
         pauseBtn= findViewById(R.id.pause);
         Close=findViewById(R.id.close);
         Gallery=findViewById(R.id.gallery);
+        addSound=findViewById(R.id.button);
+        addSound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(BaseCameraActivity.this, SoundActivity.class);
+                startActivity(intent);
+                Animatoo.animateCard(BaseCameraActivity.this);
+                finish();
+
+            }
+        });
 
         Gallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +114,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                     GPUCameraRecorder = null;
                 }
 
-                Intent intent=new Intent(BaseCameraActivity.this, HomeActivty.class);
+                Intent intent=new Intent(BaseCameraActivity.this, MainActivity.class);
                 startActivity(intent);
                 Animatoo.animateSlideDown(BaseCameraActivity.this);
                 finish();

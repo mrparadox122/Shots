@@ -15,9 +15,13 @@ public interface ApiInterface {
     @GET("get_details")
     Call<Users> performAllPosts();
 
+//
+//    @POST("upload")
+//    Call<JSONArray> postUpload(@Body List<data> dataList);
 
-    @POST("upload")
-    Call<JSONArray> postUpload(@Body List<data> dataList);
+    /// getting all sounds ////
+
+    Call<Users> PerformAllSounds();
 
 
 }

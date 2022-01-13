@@ -18,8 +18,9 @@ public class AccountActivity extends AppCompatActivity {
 
     public void backBtn(View view) {
         Intent intent=new Intent(AccountActivity.this,MainActivity.class);
-        startActivity(intent);
+
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
         Animatoo.animateSlideDown(this);
         finish();
     }
