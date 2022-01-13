@@ -8,9 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -25,13 +23,7 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MyVideoView_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TrimVedio_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Upload_Activity"
+            android:name=".SoundActivity"
             android:exported="false" />
         <activity
             android:name=".GoLive_Activity"

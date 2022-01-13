@@ -103,7 +103,7 @@
       app:layout_constraintVertical_bias="1.0" />
 
   <android.widget.Button
-      android:id="@+id/button2"
+      android:id="@+id/button"
       android:layout_width="153dp"
       android:layout_height="50dp"
       android:layout_marginTop="16dp"

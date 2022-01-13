@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -39,11 +38,10 @@ import com.daasuu.gpuv.camerarecorder.GPUCameraRecorderBuilder;
 import com.daasuu.gpuv.camerarecorder.LensFacing;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.HomeActivty;
+import com.paradox.projectsp3.MainActivity;
 import com.paradox.projectsp3.R;
-import com.paradox.projectsp3.TrimVedio_Activity;
-import com.paradox.projectsp3.Upload_Activity;
+import com.paradox.projectsp3.SoundActivity;
 import com.paradox.projectsp3.VideoEditorFolder.widget.SampleCameraGLView;
-import com.paradox.projectsp3.WritetoExternalStorage;
 
 
 import javax.microedition.khronos.egl.EGL10;
@@ -64,6 +62,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     private SampleCameraGLView sampleGLView;
     protected GPUCameraRecorder GPUCameraRecorder;
     private String filepath;
+    private Button addSound;
     private ImageView recordBtn,pauseBtn;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
@@ -72,7 +71,6 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected int videoHeight = 720;
 
     private boolean toggleClick = false;
-    EditText videoname;
 
     private ListView lv;
     private ImageView Close,Gallery;
@@ -83,6 +81,17 @@ public class BaseCameraActivity extends AppCompatActivity {
         pauseBtn= findViewById(R.id.pause);
         Close=findViewById(R.id.close);
         Gallery=findViewById(R.id.gallery);
+        addSound=findViewById(R.id.button);
+        addSound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(BaseCameraActivity.this, SoundActivity.class);
+                startActivity(intent);
+                Animatoo.animateCard(BaseCameraActivity.this);
+                finish();
+
+            }
+        });
 
         Gallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +114,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                     GPUCameraRecorder = null;
                 }
 
-                Intent intent=new Intent(BaseCameraActivity.this, HomeActivty.class);
+                Intent intent=new Intent(BaseCameraActivity.this, MainActivity.class);
                 startActivity(intent);
                 Animatoo.animateSlideDown(BaseCameraActivity.this);
                 finish();
@@ -426,21 +435,6 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 100) {
-
-            Uri uri =  data.getData();
-            String videopath = WritetoExternalStorage.getVideopath( uri  , this);
-
-            TrimVedio_Activity.addpath( videopath );
-
-            Intent i = new Intent( BaseCameraActivity.this , TrimVedio_Activity.class );
-            i.putExtra( "key" , videoname.getText().toString() );
-            startActivity( i );
-            videoname.setText("");
-
-        }
-        else if (resultCode == RESULT_CANCELED) {
-
-            Toast.makeText(BaseCameraActivity.this ,"Video Selected Canceled ", Toast.LENGTH_SHORT).show();
 
         }
     }
