@@ -79,6 +79,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
     private TextView name,no_likes,no_comments;
     private CircleImageView profile_img;
 
+
     // vars
     private ArrayList<MediaObject> mediaObjects = new ArrayList<>();
     private int videoSurfaceDefaultHeight = 0;

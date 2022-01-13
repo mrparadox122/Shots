@@ -83,13 +83,10 @@ public class BaseCameraActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 checkPermission();
-
-
                 Intent intent=new Intent();
                 intent.setType("video/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent,"Select Video"),100);
-
             }
         });
         Close.setOnClickListener(new View.OnClickListener() {
