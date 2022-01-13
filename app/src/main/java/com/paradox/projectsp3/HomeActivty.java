@@ -1,5 +1,7 @@
 package com.paradox.projectsp3;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +19,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +37,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 
@@ -55,7 +60,6 @@ public class HomeActivty extends AppCompatActivity {
     private VideoPlayerRecyclerView  recyclerview;
     public static ApiInterface apiInterface;
     private static final int CAMERA_PERMISSION_REQUEST=888;
-
 
 
     @Override
@@ -262,7 +266,12 @@ public class HomeActivty extends AppCompatActivity {
 
     public void addBtn(View view) {
 
+
+
+
         showbottomsheet();
+
+
 
 //        Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -271,11 +280,13 @@ public class HomeActivty extends AppCompatActivity {
 //        finish();
     }
 
-    private void showbottomsheet() {
+    public void showbottomsheet() {
 
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_bottom_sheet);
+
+
 
         LinearLayout ll_createshort = dialog.findViewById(R.id.ll_createshort);
         LinearLayout ll_uploadvedio = dialog.findViewById(R.id.ll_uploadvedio);
@@ -288,26 +299,52 @@ public class HomeActivty extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
 
-        //Animatoo.animateSlideUp(this);
-        finish();
+                Log.e(TAG, "onClick: //////////////////////////////////" );
+                //Animatoo.animateSlideUp(this);
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                }, 500);
+                finish();
+
 
             }
+
+
         });
+
+
 
         ll_uploadvedio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 //                checkPermission();
-                Intent intent=new Intent(HomeActivty.this, UploadVideo_Activity.class);
+                Intent intent=new Intent(HomeActivty.this, MyVideoView_Activity.class);
                 startActivity(intent);
 //                intent.setType("video/mp4");
 //                intent.setAction(Intent.ACTION_GET_CONTENT);
 //                startActivityForResult(Intent.createChooser(intent,"Select Video"),100);
 ////                //Animatoo.animateSlideUp(this);
+
+                Log.e(TAG, "onClick: //////////////////////////////////" );
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                }, 500);
                 finish();
 
+
             }
+
         });
 
 
@@ -318,18 +355,39 @@ public class HomeActivty extends AppCompatActivity {
                 Intent intent=new Intent(HomeActivty.this, GoLive_Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                Log.e(TAG, "onClick: //////////////////////////////////" );
+
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                }, 1);
                 finish();
+
+
+
+
+
 
             }
         });
-
-
-        dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setGravity(Gravity.BOTTOM);
+        dialog.show();
+
+
+
+
+
+
+
 
     }
+
 
 //    @Override
 //    protected void onResume() {
