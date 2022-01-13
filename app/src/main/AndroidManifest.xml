@@ -25,8 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Upload_Activity"
+            android:name=".GoLive_Activity"
             android:exported="false" />
+
         <activity
             android:name=".AccountActivity"
             android:exported="false"

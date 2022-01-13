@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Upload_Activity">
+    tools:context=".GoLive_Activity">
 
 
-
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:text="Coming Soon...."
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="21dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
 
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        android:id="@+id/recyclerView_videos"/>
+
 
 </LinearLayout>

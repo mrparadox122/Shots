@@ -51,13 +51,10 @@ import retrofit2.Response;
 
 public class HomeActivty extends AppCompatActivity {
 
-
-
     private ArrayList<MediaObject> mediaObjectList=new ArrayList<>();
     private VideoPlayerRecyclerView  recyclerview;
     public static ApiInterface apiInterface;
-private static final int CAMERA_PERMISSION_REQUEST=888;
-
+    private static final int CAMERA_PERMISSION_REQUEST=888;
 
 
 
@@ -265,27 +262,20 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
 
     public void addBtn(View view) {
 
-
-
         showbottomsheet();
-
 
 //        Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //        startActivity(intent);
-//
 //        Animatoo.animateSlideUp(this);
 //        finish();
-
-
     }
 
     private void showbottomsheet() {
 
-        final Dialog dialog = new Dialog(this);
+        Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_bottom_sheet);
-
 
         LinearLayout ll_createshort = dialog.findViewById(R.id.ll_createshort);
         LinearLayout ll_uploadvedio = dialog.findViewById(R.id.ll_uploadvedio);
@@ -308,11 +298,13 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(HomeActivty.this, Upload_Activity.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                checkPermission();
+                Intent intent=new Intent(HomeActivty.this, UploadVideo_Activity.class);
                 startActivity(intent);
-
-                //Animatoo.animateSlideUp(this);
+//                intent.setType("video/mp4");
+//                intent.setAction(Intent.ACTION_GET_CONTENT);
+//                startActivityForResult(Intent.createChooser(intent,"Select Video"),100);
+////                //Animatoo.animateSlideUp(this);
                 finish();
 
             }
@@ -322,6 +314,11 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
         ll_golive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent=new Intent(HomeActivty.this, GoLive_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
 
             }
         });
@@ -353,11 +350,6 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
     }
 
     @Override
-
-
-
-
-
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch(requestCode)
@@ -375,9 +367,5 @@ private static final int CAMERA_PERMISSION_REQUEST=888;
                 break;
         }
     }
-
-
-
-
 
 }
