@@ -25,6 +25,11 @@
         <activity
             android:name=".SoundActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".MyVideoView_Activity"
+            android:exported="false" />
+
         <activity
             android:name=".GoLive_Activity"
             android:exported="false" />

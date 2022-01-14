@@ -15,8 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Upload_Activity extends AppCompatActivity {
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
+public class Upload_Activity extends AppCompatActivity {
 
 
     EditText videoname;
@@ -46,16 +47,11 @@ public class Upload_Activity extends AppCompatActivity {
                 if ( videoname.getText().toString().isEmpty() ) {
 
                     Toast.makeText(Upload_Activity.this ,"First Enter Video Name .... ", Toast.LENGTH_SHORT).show();
-
                 }
                 else {
-
-
                     Intent pickIntent = new Intent(Intent.ACTION_PICK);
                     pickIntent.setType("video/*");
                     startActivityForResult(pickIntent, 1);
-
-
                 }
 
             }
@@ -91,6 +87,16 @@ public class Upload_Activity extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(Upload_Activity.this,HomeActivty.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        Animatoo.animateSlideDown(this);
+        finish();
     }
 
 }
