@@ -1,6 +1,8 @@
 
 package com.paradox.projectsp3.VideoEditorFolder;
 
+import static com.paradox.projectsp3.R.color.red;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -16,6 +18,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -70,6 +73,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected int cameraHeight = 720;
     protected int videoWidth = 720;
     protected int videoHeight = 720;
+    TextView Time15,Time30,Time60,Time3min;
     Button sound_button;
     private MediaPlayer mp;
 
@@ -89,7 +93,73 @@ public class BaseCameraActivity extends AppCompatActivity {
         sound_url=getIntent().getStringExtra("sound_url");
         sound_title=getIntent().getStringExtra("sound_title");
         sound_button=findViewById(R.id.button);
+        Time15=findViewById(R.id.time15s);
+        Time30=findViewById(R.id.time30s);
+        Time60=findViewById(R.id.time60s);
+        Time3min=findViewById(R.id.time3min);
 
+        final Boolean[] time15 = {false};
+        final Boolean[] time30 = {false};
+        final Boolean[] time60 = {false};
+        final Boolean[] time3 = {false};
+
+        Time15.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View view) {
+                Time15.setBackgroundColor(R.color.red);
+                Time30.setBackgroundColor(R.color.black);
+                Time60.setBackgroundColor(R.color.black);
+                Time3min.setBackgroundColor(R.color.black);
+                time15[0] =true;
+                time30[0] =false;
+                time60[0] =false;
+                time3[0] =false;
+            }
+        });
+        Time30.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View view) {
+                Time15.setBackgroundColor(R.color.black);
+                Time30.setBackgroundColor(R.color.red);
+                Time60.setBackgroundColor(R.color.black);
+                Time3min.setBackgroundColor(R.color.black);
+                time15[0] =false;
+                time30[0] =true;
+                time60[0] =false;
+                time3[0] =false;
+            }
+        });
+        Time60.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View view) {
+                Time15.setBackgroundColor(R.color.black);
+                Time30.setBackgroundColor(R.color.black);
+                Time60.setBackgroundColor(R.color.red);
+                Time3min.setBackgroundColor(R.color.black);
+                time15[0] =false;
+                time30[0] =false;
+                time60[0] =true;
+                time3[0] =false;
+            }
+        });
+
+        Time3min.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View view) {
+                Time15.setBackgroundColor(R.color.black);
+                Time30.setBackgroundColor(R.color.black);
+                Time60.setBackgroundColor(R.color.black);
+                Time3min.setBackgroundColor(R.color.red);
+                time15[0] =false;
+                time30[0] =false;
+                time60[0] =false;
+                time3[0] =true;
+            }
+        });
 
         if(sound_title !=null)
         {
@@ -118,86 +188,172 @@ public class BaseCameraActivity extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent,"Select Video"),100);
             }
         });
-        Close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-                if (GPUCameraRecorder != null) {
-                    GPUCameraRecorder.stop();
-                    GPUCameraRecorder.release();
-                    GPUCameraRecorder = null;
-                }
-
-                Intent intent=new Intent(BaseCameraActivity.this, MainActivity.class);
-                startActivity(intent);
-                Animatoo.animateSlideDown(BaseCameraActivity.this);
-                finish();
-            }
-        });
 
 
         recordBtn.setOnClickListener(v -> {
 
-            filepath = getVideoFilePath();
-            GPUCameraRecorder.start(filepath);
-            recordBtn.setVisibility(View.GONE);
-            pauseBtn.setVisibility(View.VISIBLE);
-            Toast.makeText(this,"Recording Started",Toast.LENGTH_SHORT).show();
-            Glide.with(this).load(R.drawable.recording_video).into(pauseBtn);
+            if(time15[0]||time30[0]| time60[0]|time3[0]) {
+
+               lv.setVisibility(View.GONE);
+                filepath = getVideoFilePath();
+                GPUCameraRecorder.start(filepath);
+                recordBtn.setVisibility(View.GONE);
+                pauseBtn.setVisibility(View.VISIBLE);
+                Toast.makeText(this, "Recording Started", Toast.LENGTH_SHORT).show();
+                Glide.with(this).load(R.drawable.recording_video).into(pauseBtn);
 
 
 ///// play sound ///////////////
 
-            if(sound_url !=null)
-            {
-                try {
+                if (sound_url != null) {
+                    try {
 
-                        mp=new MediaPlayer();
+                        mp = new MediaPlayer();
                         mp.setDataSource(sound_url);
                         mp.prepare();
                         mp.start();
 
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-
-
-            /// stop recording in 30s ///
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    Toast.makeText(BaseCameraActivity.this,"Recording Stopped",Toast.LENGTH_SHORT).show();
-                    Toast.makeText(BaseCameraActivity.this,"You can record only 30 second video",Toast.LENGTH_SHORT).show();
-                    GPUCameraRecorder.stop();
-                    recordBtn.setVisibility(View.VISIBLE);
-                    pauseBtn.setVisibility(View.GONE);
-                    Toast.makeText(BaseCameraActivity.this,"Recording Stopped",Toast.LENGTH_SHORT).show();
-
-
-
-                    ///stop sound file///
-                    if(sound_url !=null)
-                    {
-                        try {
-
-
-                            mp.stop();
-                        }
-                        catch (IllegalStateException e)
-                        {
-                            e.printStackTrace();
-                        }
-
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    sound_button.setText("Add Sound");
                 }
-            }, 30000);
 
+
+                /// stop recording in 15s ///
+
+                if(time15[0])
+                {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+
+                            GPUCameraRecorder.stop();
+                            recordBtn.setVisibility(View.VISIBLE);
+                            pauseBtn.setVisibility(View.GONE);
+                            Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
+
+
+                            ///stop sound file///
+                            if (sound_url != null) {
+                                try {
+
+
+                                    mp.stop();
+                                } catch (IllegalStateException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                            sound_button.setText("Add Sound");
+                        }
+
+                    }, 15000);
+                }
+
+                if(time30[0])
+                {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+
+                            GPUCameraRecorder.stop();
+                            recordBtn.setVisibility(View.VISIBLE);
+                            pauseBtn.setVisibility(View.GONE);
+                            Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
+
+
+                            ///stop sound file///
+                            if (sound_url != null) {
+                                try {
+
+
+                                    mp.stop();
+                                } catch (IllegalStateException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                            sound_button.setText("Add Sound");
+                        }
+
+                    }, 30000);
+                }
+
+                if(time60[0])
+                {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+
+                            GPUCameraRecorder.stop();
+                            recordBtn.setVisibility(View.VISIBLE);
+                            pauseBtn.setVisibility(View.GONE);
+                            Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
+
+
+                            ///stop sound file///
+                            if (sound_url != null) {
+                                try {
+
+
+                                    mp.stop();
+                                } catch (IllegalStateException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                            sound_button.setText("Add Sound");
+                        }
+
+                    }, 60000);
+                }
+
+
+                if(time3[0])
+                {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+
+                            GPUCameraRecorder.stop();
+                            recordBtn.setVisibility(View.VISIBLE);
+                            pauseBtn.setVisibility(View.GONE);
+                            Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
+
+
+                            ///stop sound file///
+                            if (sound_url != null) {
+                                try {
+
+
+                                    mp.stop();
+                                } catch (IllegalStateException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                            sound_button.setText("Add Sound");
+                        }
+
+                    }, 180000);
+                }
+
+            }
+            else
+            {
+                Toast toast=Toast.makeText(BaseCameraActivity.this," Plz Select Time",Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER,0,0);
+                toast.show();
+            }
 
         });
         pauseBtn.setOnClickListener(v -> {

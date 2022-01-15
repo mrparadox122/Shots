@@ -25,7 +25,7 @@
 
 
   <TextView
-      android:id="@+id/textView30"
+      android:id="@+id/time30s"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="30 s"
@@ -40,7 +40,7 @@
 
 
   <TextView
-      android:id="@+id/textView60"
+      android:id="@+id/time60s"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="60 s"
@@ -53,22 +53,22 @@
       app:layout_constraintTop_toTopOf="@+id/btn_flash"
       app:layout_constraintVertical_bias="0.37" />
 
-  <TextView
-      android:id="@+id/textView3min"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="3 min"
-      android:textColor="@color/teal_700"
-      android:textSize="16sp"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@+id/btn_flash"
-      app:layout_constraintStart_toStartOf="@+id/btn_flash"
-      app:layout_constraintTop_toTopOf="@+id/btn_flash"
-      app:layout_constraintVertical_bias="0.37" />
+<!--  <TextView-->
+<!--      android:id="@+id/time3min"-->
+<!--      android:layout_width="wrap_content"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:text="3 min"-->
+<!--      android:textColor="@color/teal_700"-->
+<!--      android:textSize="16sp"-->
+<!--      android:textStyle="bold"-->
+<!--      app:layout_constraintBottom_toBottomOf="parent"-->
+<!--      app:layout_constraintEnd_toEndOf="@+id/btn_flash"-->
+<!--      app:layout_constraintStart_toStartOf="@+id/btn_flash"-->
+<!--      app:layout_constraintTop_toTopOf="@+id/btn_flash"-->
+<!--      app:layout_constraintVertical_bias="0.45" />-->
 
   <TextView
-      android:id="@+id/textView15"
+      android:id="@+id/time15s"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="15 s"
@@ -83,28 +83,17 @@
 
 
   <ImageView
-      android:id="@+id/close"
-      android:layout_width="32dp"
-      android:tint="@color/red"
-      android:layout_height="32dp"
-      app:layout_constraintBottom_toTopOf="@+id/filter_list"
-      app:layout_constraintEnd_toStartOf="@+id/button2"
-      app:layout_constraintHorizontal_bias="0.25"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/close" />
-
-  <ImageView
       android:id="@+id/gallery"
-      android:layout_width="60dp"
-      android:layout_height="54dp"
+      android:layout_width="38dp"
+      android:layout_height="41dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.28"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0"
-      app:srcCompat="@drawable/magic" />
+      app:srcCompat="@drawable/magic"
+      tools:ignore="VectorDrawableCompat" />
 
   <ImageView
       android:id="@+id/btn_flash"
@@ -121,8 +110,9 @@
 
   <ImageView
       android:id="@+id/btn_switch_camera"
-      android:layout_width="60dp"
-      android:layout_height="54dp"
+      android:layout_width="38dp"
+      android:layout_height="41dp"
+      android:layout_marginTop="5dp"
       android:src="@drawable/cameraclip"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
@@ -148,12 +138,12 @@
   <ImageView
       android:id="@+id/record"
       android:layout_width="67dp"
-
+      android:layout_marginTop="5dp"
       android:layout_height="63dp"
       android:layout_alignParentBottom="true"
       android:layout_centerInParent="true"
       android:src="@drawable/pause"
-      android:text="@string/app_record"
+
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintHorizontal_bias="0.55"
       app:layout_constraintLeft_toLeftOf="parent"

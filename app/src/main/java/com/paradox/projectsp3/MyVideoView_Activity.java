@@ -101,18 +101,18 @@ public class MyVideoView_Activity extends AppCompatActivity {
                 .url("http://13.127.217.99:8080/soosleApi/soosle/upload")
                 .method("POST", body)
                 .build();
-            Call<ResponseBody> call = ApiClient.
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    Log.e(TAG, "onResponse: //////////////////////////////////////////////" );
-                }
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Log.e(TAG, "onFailure: ////////////////////////////////////////////////" );
-                }
-            });
+//            Call<ResponseBody> call = ApiClient.
+//            call.enqueue(new Callback<ResponseBody>() {
+//                @Override
+//                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                    Log.e(TAG, "onResponse: //////////////////////////////////////////////" );
+//                }
+//
+//                @Override
+//                public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                    Log.e(TAG, "onFailure: ////////////////////////////////////////////////" );
+//                }
+//            });
 
 
 
