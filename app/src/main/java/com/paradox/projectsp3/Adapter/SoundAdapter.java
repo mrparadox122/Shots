@@ -41,11 +41,13 @@ public class SoundAdapter extends RecyclerView.Adapter<SoundAdapter.SoundViewHol
     public void onBindViewHolder(@NonNull SoundViewHolder holder, int position) {
         SoundModel soundModel=soundModelList.get(position);
         holder.textView.setText(soundModel.getSound_title());
+        holder.imageView.setImageResource(soundModel.getSound_img());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context, PortraitCameraActivity.class);
                 intent.putExtra("sound_url",soundModel.getSound_sound());
+                intent.putExtra("sound_title",soundModel.getSound_title());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 context.startActivity(intent);
 
@@ -63,10 +65,12 @@ public class SoundAdapter extends RecyclerView.Adapter<SoundAdapter.SoundViewHol
   public class SoundViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
+        ImageView imageView;
       public SoundViewHolder(@NonNull View itemView) {
           super(itemView);
 
           textView=itemView.findViewById(R.id.textView);
+          imageView=itemView.findViewById(R.id.imageView);
       }
   }
 

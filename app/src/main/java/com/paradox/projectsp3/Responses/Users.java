@@ -11,7 +11,7 @@ import java.util.List;
 public class Users {
     @SerializedName("soosle_details")
     private List<MediaObject> AllPosts;
-    @SerializedName("soosle-AllSound")
+    @SerializedName("soosle_AllSound")
     private List<SoundModel> AllSounds;
 
 
