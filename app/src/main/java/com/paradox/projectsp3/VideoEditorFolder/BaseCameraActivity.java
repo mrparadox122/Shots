@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.opengl.GLException;
 import android.os.Build;
@@ -69,11 +70,13 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected int cameraHeight = 720;
     protected int videoWidth = 720;
     protected int videoHeight = 720;
+    private MediaPlayer mp;
 
     private boolean toggleClick = false;
 
     private ListView lv;
     private ImageView Close,Gallery;
+    private String sound_url=null, sound_title=null;
 
     protected void onCreateActivity() {
         getSupportActionBar().hide();
@@ -82,6 +85,10 @@ public class BaseCameraActivity extends AppCompatActivity {
         Close=findViewById(R.id.close);
         Gallery=findViewById(R.id.gallery);
         addSound=findViewById(R.id.button);
+        sound_url=getIntent().getStringExtra("sound_url");
+        sound_title=getIntent().getStringExtra("sound_title");
+
+
         addSound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,6 +137,27 @@ public class BaseCameraActivity extends AppCompatActivity {
             pauseBtn.setVisibility(View.VISIBLE);
             Toast.makeText(this,"Recording Started",Toast.LENGTH_SHORT).show();
             Glide.with(this).load(R.drawable.recording_video).into(pauseBtn);
+
+
+///// play sound ///////////////
+
+            if(sound_url !=null)
+            {
+                try {
+
+                        mp=new MediaPlayer();
+                        mp.setDataSource(sound_url);
+                        mp.prepare();
+                        mp.start();
+
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+
         });
         pauseBtn.setOnClickListener(v -> {
 
@@ -137,6 +165,21 @@ public class BaseCameraActivity extends AppCompatActivity {
             recordBtn.setVisibility(View.VISIBLE);
             pauseBtn.setVisibility(View.GONE);
             Toast.makeText(this,"Recording Stopped",Toast.LENGTH_SHORT).show();
+
+
+
+            ///stop sound file///
+            if(sound_url !=null)
+            {
+                try {
+                    mp.stop();
+                }
+                catch (IllegalStateException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
         });
         findViewById(R.id.btn_flash).setOnClickListener(v -> {
             if (GPUCameraRecorder != null && GPUCameraRecorder.isFlashSupport()) {

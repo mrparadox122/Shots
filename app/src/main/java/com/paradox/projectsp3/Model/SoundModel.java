@@ -1,13 +1,14 @@
 package com.paradox.projectsp3.Model;
 
 public class SoundModel {
-    private String sound_img,sound_sound,sound_title;
+    private int sound_img;
+    private String sound_sound,sound_title;
     public SoundModel()
     {
         /////
     }
 
-    public SoundModel(String sound_img,String sound_sound,String sound_title)
+    public SoundModel(int sound_img,String sound_sound,String sound_title)
     {
         this.sound_img=sound_img;
         this.sound_sound=sound_sound;
@@ -18,7 +19,7 @@ public class SoundModel {
         return sound_sound;
     }
 
-    public String getSound_img() {
+    public int getSound_img() {
         return sound_img;
     }
 
@@ -30,11 +31,13 @@ public class SoundModel {
         this.sound_sound = sound_sound;
     }
 
-    public void setSound_img(String sound_img) {
+    public void setSound_img(int sound_img) {
         this.sound_img = sound_img;
     }
 
     public void setSound_title(String sound_title) {
         this.sound_title = sound_title;
     }
+
+
 }
