@@ -25,7 +25,7 @@
 
 
   <TextView
-      android:id="@+id/textView5"
+      android:id="@+id/textView30"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="30 s"
@@ -38,8 +38,37 @@
       app:layout_constraintTop_toTopOf="@+id/btn_flash"
       app:layout_constraintVertical_bias="0.26999998" />
 
+
   <TextView
-      android:id="@+id/textView5"
+      android:id="@+id/textView60"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="60 s"
+      android:textColor="@color/teal_700"
+      android:textSize="16sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/btn_flash"
+      app:layout_constraintStart_toStartOf="@+id/btn_flash"
+      app:layout_constraintTop_toTopOf="@+id/btn_flash"
+      app:layout_constraintVertical_bias="0.37" />
+
+  <TextView
+      android:id="@+id/textView3min"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="3 min"
+      android:textColor="@color/teal_700"
+      android:textSize="16sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/btn_flash"
+      app:layout_constraintStart_toStartOf="@+id/btn_flash"
+      app:layout_constraintTop_toTopOf="@+id/btn_flash"
+      app:layout_constraintVertical_bias="0.37" />
+
+  <TextView
+      android:id="@+id/textView15"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="15 s"
@@ -107,6 +136,7 @@
       android:layout_width="153dp"
       android:layout_height="50dp"
       android:layout_marginTop="16dp"
+      android:textAllCaps="false"
       android:drawableLeft="@drawable/music"
       android:text=" Add sound"
       app:layout_constraintBottom_toBottomOf="parent"

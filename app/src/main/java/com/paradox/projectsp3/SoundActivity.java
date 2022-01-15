@@ -37,7 +37,8 @@ public class SoundActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound);
         recyclerView=(RecyclerView) findViewById(R.id.recyclerview);
-        apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
+//        apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
+          apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
 
 
         //recyclerView.setHasFixedSize(true);

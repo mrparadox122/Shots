@@ -70,6 +70,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected int cameraHeight = 720;
     protected int videoWidth = 720;
     protected int videoHeight = 720;
+    Button sound_button;
     private MediaPlayer mp;
 
     private boolean toggleClick = false;
@@ -87,6 +88,13 @@ public class BaseCameraActivity extends AppCompatActivity {
         addSound=findViewById(R.id.button);
         sound_url=getIntent().getStringExtra("sound_url");
         sound_title=getIntent().getStringExtra("sound_title");
+        sound_button=findViewById(R.id.button);
+
+
+        if(sound_title !=null)
+        {
+            sound_button.setText(sound_title);
+        }
 
 
         addSound.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +166,39 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
 
 
+            /// stop recording in 30s ///
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    Toast.makeText(BaseCameraActivity.this,"Recording Stopped",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BaseCameraActivity.this,"You can record only 30 second video",Toast.LENGTH_SHORT).show();
+                    GPUCameraRecorder.stop();
+                    recordBtn.setVisibility(View.VISIBLE);
+                    pauseBtn.setVisibility(View.GONE);
+                    Toast.makeText(BaseCameraActivity.this,"Recording Stopped",Toast.LENGTH_SHORT).show();
+
+
+
+                    ///stop sound file///
+                    if(sound_url !=null)
+                    {
+                        try {
+
+
+                            mp.stop();
+                        }
+                        catch (IllegalStateException e)
+                        {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    sound_button.setText("Add Sound");
+                }
+            }, 30000);
+
+
         });
         pauseBtn.setOnClickListener(v -> {
 
@@ -180,6 +221,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                 }
 
             }
+            sound_button.setText("Add Sound");
         });
         findViewById(R.id.btn_flash).setOnClickListener(v -> {
             if (GPUCameraRecorder != null && GPUCameraRecorder.isFlashSupport()) {
