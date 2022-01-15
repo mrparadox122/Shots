@@ -15,15 +15,15 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class MyVideoView_Activity extends AppCompatActivity {
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
+public class MyVideoView_Activity extends AppCompatActivity {
 
     Button btn_video,btn_image;
     VideoView v_video;
     MediaController mc;
     ImageView imageview;
     int SELECT_IMAGE_CODE=2;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_my_video_view);
-
 
         btn_video = findViewById(R.id.btn_video);
         btn_image = findViewById(R.id.btn_image);
@@ -56,7 +55,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -64,7 +62,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
 
             }
         });
-
 
     }
 
@@ -84,6 +81,16 @@ public class MyVideoView_Activity extends AppCompatActivity {
             imageview.setImageURI(imageuri);
             Toast.makeText(this, String.valueOf(imageuri), Toast.LENGTH_LONG).show();
         }
-
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(MyVideoView_Activity.this,HomeActivty.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        Animatoo.animateSlideDown(this);
+        finish();
+    }
+
 }

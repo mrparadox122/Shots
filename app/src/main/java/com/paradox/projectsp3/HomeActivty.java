@@ -61,7 +61,6 @@ public class HomeActivty extends AppCompatActivity {
     public static ApiInterface apiInterface;
     private static final int CAMERA_PERMISSION_REQUEST=888;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +82,6 @@ public class HomeActivty extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Ghar.setImageResource(R.drawable.ic_icon_feather_home);
-
                 comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
                 profile.setImageResource(R.drawable.ic_icon_awesome_user_1);
@@ -102,7 +100,6 @@ public class HomeActivty extends AppCompatActivity {
                 comment.setImageResource(R.drawable.aaa);
                 Ghar.setImageResource(R.drawable.ic_icon_feather_home);
 
-
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
                 profile.setImageResource(R.drawable.ic_icon_awesome_user);
 
@@ -118,9 +115,7 @@ public class HomeActivty extends AppCompatActivity {
             public void onClick(View view) {
                 Search.setImageResource(R.drawable.ic_icon_feather_search_1);
                 Ghar.setImageResource(R.drawable.ic_icon_feather_home);
-
                 comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
-
                 profile.setImageResource(R.drawable.ic_icon_awesome_user);
 
 
@@ -200,7 +195,6 @@ public class HomeActivty extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     recyclerview.setKeepScreenOn(true);
                     recyclerview.smoothScrollToPosition(mediaObjectList.size()+1);
-
                 }
                 else
                 {
@@ -212,8 +206,6 @@ public class HomeActivty extends AppCompatActivity {
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
                 Toast.makeText(HomeActivty.this,"Network Error.",Toast.LENGTH_SHORT).show();
-
-
             }
         });
     }
@@ -265,14 +257,7 @@ public class HomeActivty extends AppCompatActivity {
     }
 
     public void addBtn(View view) {
-
-
-
-
         showbottomsheet();
-
-
-
 //        Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //        startActivity(intent);
@@ -285,8 +270,6 @@ public class HomeActivty extends AppCompatActivity {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_bottom_sheet);
-
-
 
         LinearLayout ll_createshort = dialog.findViewById(R.id.ll_createshort);
         LinearLayout ll_uploadvedio = dialog.findViewById(R.id.ll_uploadvedio);
@@ -310,13 +293,8 @@ public class HomeActivty extends AppCompatActivity {
                     }
                 }, 500);
                 finish();
-
-
             }
-
-
         });
-
 
 
         ll_uploadvedio.setOnClickListener(new View.OnClickListener() {
@@ -347,7 +325,6 @@ public class HomeActivty extends AppCompatActivity {
 
         });
 
-
         ll_golive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -356,7 +333,6 @@ public class HomeActivty extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 Log.e(TAG, "onClick: //////////////////////////////////" );
-
 
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -367,11 +343,6 @@ public class HomeActivty extends AppCompatActivity {
                 }, 1);
                 finish();
 
-
-
-
-
-
             }
         });
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -379,15 +350,7 @@ public class HomeActivty extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
         dialog.show();
 
-
-
-
-
-
-
-
     }
-
 
 //    @Override
 //    protected void onResume() {
