@@ -10,16 +10,12 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <meta-data android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version"/>
 
-    <meta-data
-        android:name="com.google.android.gms.vision.DEPENDENCIES"
-        android:value="face" />
 
     <application
         android:allowBackup="true"
@@ -56,6 +52,18 @@
             android:name=".FollowingActivity"
             android:exported="false"
             android:screenOrientation="nosensor" />
+
+        <activity
+            android:name=".FaceFilters.FaceFilterActivity"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="face" />
         <activity
             android:name=".Login"
             android:exported="false"

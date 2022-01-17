@@ -38,6 +38,47 @@
       app:layout_constraintTop_toTopOf="@+id/btn_flash"
       app:layout_constraintVertical_bias="0.26999998" />
 
+  <ImageView
+      android:id="@+id/imageView2"
+      android:layout_width="44dp"
+      android:layout_height="47dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.26"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0"
+      app:srcCompat="@drawable/face"
+      app:tint="#FFEB3B" />
+
+  <ImageView
+      android:id="@+id/gallery"
+      android:layout_width="37dp"
+      android:layout_height="30dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.88"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.110000014"
+      app:srcCompat="@drawable/magic"
+      tools:ignore="VectorDrawableCompat" />
+
+  <ImageView
+      android:id="@+id/imageView4"
+      android:layout_width="54dp"
+      android:layout_height="52dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.87"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+
+      app:layout_constraintVertical_bias="1.0" />
+
+  <!--     app:srcCompat="@drawable/ic_launcher_foreground"   -->
+
+
 
   <TextView
       android:id="@+id/time60s"
@@ -83,22 +124,9 @@
 
 
   <ImageView
-      android:id="@+id/gallery"
-      android:layout_width="38dp"
-      android:layout_height="41dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.28"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="1.0"
-      app:srcCompat="@drawable/magic"
-      tools:ignore="VectorDrawableCompat" />
-
-  <ImageView
       android:id="@+id/btn_flash"
-      android:layout_width="56dp"
-      android:layout_height="43dp"
+      android:layout_width="44dp"
+      android:layout_height="38dp"
 
       android:src="@drawable/flash"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -106,20 +134,20 @@
       app:layout_constraintHorizontal_bias="0.9"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.31" />
+      app:layout_constraintVertical_bias="0.25" />
 
   <ImageView
       android:id="@+id/btn_switch_camera"
-      android:layout_width="38dp"
-      android:layout_height="41dp"
+      android:layout_width="30dp"
+      android:layout_height="34dp"
       android:layout_marginTop="5dp"
       android:src="@drawable/cameraclip"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.8"
+      app:layout_constraintHorizontal_bias="0.88"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="1.0" />
+      app:layout_constraintVertical_bias="0.17000002" />
 
   <android.widget.Button
       android:id="@+id/button"

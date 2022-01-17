@@ -40,6 +40,7 @@ import com.daasuu.gpuv.camerarecorder.CameraRecordListener;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorder;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorderBuilder;
 import com.daasuu.gpuv.camerarecorder.LensFacing;
+import com.paradox.projectsp3.FaceFilters.FaceFilterActivity;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.MainActivity;
@@ -67,7 +68,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected GPUCameraRecorder GPUCameraRecorder;
     private String filepath;
     private Button addSound;
-    private ImageView recordBtn,pauseBtn;
+    private ImageView recordBtn,pauseBtn,Face,Edit;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
@@ -87,6 +88,8 @@ public class BaseCameraActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.record);
         pauseBtn= findViewById(R.id.pause);
+        Face=findViewById(R.id.imageView2);
+        Edit=findViewById(R.id.imageView4);
         Close=findViewById(R.id.close);
         Gallery=findViewById(R.id.gallery);
         addSound=findViewById(R.id.button);
@@ -96,6 +99,17 @@ public class BaseCameraActivity extends AppCompatActivity {
         Time15=findViewById(R.id.time15s);
         Time30=findViewById(R.id.time30s);
         Time60=findViewById(R.id.time60s);
+        Face.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(BaseCameraActivity.this, FaceFilterActivity.class);
+
+                startActivity(intent);
+                Animatoo.animateSlideUp(BaseCameraActivity.this);
+                finish();
+            }
+        });
+
 
 
         final Boolean[] time15 = {false};
@@ -138,7 +152,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Time15.setBackgroundColor(R.color.black);
                 Time30.setBackgroundColor(R.color.black);
                 Time60.setBackgroundColor(R.color.red);
-            
+
                 time15[0] =false;
                 time30[0] =false;
                 time60[0] =true;
@@ -185,6 +199,8 @@ public class BaseCameraActivity extends AppCompatActivity {
                 filepath = getVideoFilePath();
                 GPUCameraRecorder.start(filepath);
                 recordBtn.setVisibility(View.GONE);
+                Face.setVisibility(View.VISIBLE);
+                //Edit.setVisibility(View.VISIBLE);
                 pauseBtn.setVisibility(View.VISIBLE);
                 Toast.makeText(this, "Recording Started", Toast.LENGTH_SHORT).show();
                 Glide.with(this).load(R.drawable.recording_video).into(pauseBtn);
@@ -281,6 +297,8 @@ public class BaseCameraActivity extends AppCompatActivity {
                             GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
+                            Face.setVisibility(View.VISIBLE);
+//                            Edit.setVisibility(View.VISIBLE);
                             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
 
 
@@ -318,6 +336,8 @@ public class BaseCameraActivity extends AppCompatActivity {
             GPUCameraRecorder.stop();
             recordBtn.setVisibility(View.VISIBLE);
             pauseBtn.setVisibility(View.GONE);
+            Face.setVisibility(View.VISIBLE);
+            Edit.setVisibility(View.GONE);
             Toast.makeText(this,"Recording Stopped",Toast.LENGTH_SHORT).show();
 
 
