@@ -73,7 +73,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected int cameraHeight = 720;
     protected int videoWidth = 720;
     protected int videoHeight = 720;
-    TextView Time15,Time30,Time60,Time3min;
+    TextView Time15,Time30,Time60;
     Button sound_button;
     private MediaPlayer mp;
 
@@ -96,12 +96,12 @@ public class BaseCameraActivity extends AppCompatActivity {
         Time15=findViewById(R.id.time15s);
         Time30=findViewById(R.id.time30s);
         Time60=findViewById(R.id.time60s);
-        Time3min=findViewById(R.id.time3min);
+
 
         final Boolean[] time15 = {false};
         final Boolean[] time30 = {false};
         final Boolean[] time60 = {false};
-        final Boolean[] time3 = {false};
+
 
         Time15.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -110,11 +110,11 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Time15.setBackgroundColor(R.color.red);
                 Time30.setBackgroundColor(R.color.black);
                 Time60.setBackgroundColor(R.color.black);
-                Time3min.setBackgroundColor(R.color.black);
+
                 time15[0] =true;
                 time30[0] =false;
                 time60[0] =false;
-                time3[0] =false;
+
             }
         });
         Time30.setOnClickListener(new View.OnClickListener() {
@@ -124,11 +124,11 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Time15.setBackgroundColor(R.color.black);
                 Time30.setBackgroundColor(R.color.red);
                 Time60.setBackgroundColor(R.color.black);
-                Time3min.setBackgroundColor(R.color.black);
+
                 time15[0] =false;
                 time30[0] =true;
                 time60[0] =false;
-                time3[0] =false;
+
             }
         });
         Time60.setOnClickListener(new View.OnClickListener() {
@@ -138,28 +138,14 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Time15.setBackgroundColor(R.color.black);
                 Time30.setBackgroundColor(R.color.black);
                 Time60.setBackgroundColor(R.color.red);
-                Time3min.setBackgroundColor(R.color.black);
+            
                 time15[0] =false;
                 time30[0] =false;
                 time60[0] =true;
-                time3[0] =false;
             }
         });
 
-        Time3min.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onClick(View view) {
-                Time15.setBackgroundColor(R.color.black);
-                Time30.setBackgroundColor(R.color.black);
-                Time60.setBackgroundColor(R.color.black);
-                Time3min.setBackgroundColor(R.color.red);
-                time15[0] =false;
-                time30[0] =false;
-                time60[0] =false;
-                time3[0] =true;
-            }
-        });
+
 
         if(sound_title !=null)
         {
@@ -193,7 +179,7 @@ public class BaseCameraActivity extends AppCompatActivity {
 
         recordBtn.setOnClickListener(v -> {
 
-            if(time15[0]||time30[0]| time60[0]|time3[0]) {
+            if(time15[0]||time30[0]| time60[0]) {
 
                lv.setVisibility(View.GONE);
                 filepath = getVideoFilePath();
@@ -316,36 +302,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                 }
 
 
-                if(time3[0])
-                {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
 
-
-
-                            GPUCameraRecorder.stop();
-                            recordBtn.setVisibility(View.VISIBLE);
-                            pauseBtn.setVisibility(View.GONE);
-                            Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
-
-
-                            ///stop sound file///
-                            if (sound_url != null) {
-                                try {
-
-
-                                    mp.stop();
-                                } catch (IllegalStateException e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                            sound_button.setText("Add Sound");
-                        }
-
-                    }, 180000);
-                }
 
             }
             else
