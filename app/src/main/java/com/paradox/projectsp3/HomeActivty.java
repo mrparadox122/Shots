@@ -37,7 +37,6 @@ import com.bumptech.glide.request.RequestOptions;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.Time;
 import java.util.ArrayList;
 
 
@@ -86,7 +85,7 @@ public class HomeActivty extends AppCompatActivity {
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
                 profile.setImageResource(R.drawable.ic_icon_awesome_user_1);
 
-                Intent intent=new Intent(HomeActivty.this,AccountActivity.class);
+                Intent intent=new Intent(HomeActivty.this, Profile_Activity.class);
                 startActivity(intent);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 Animatoo.animateSlideUp(HomeActivty.this);
@@ -302,7 +301,7 @@ public class HomeActivty extends AppCompatActivity {
             public void onClick(View view) {
 
 //                checkPermission();
-                Intent intent=new Intent(HomeActivty.this, MyVideoView_Activity.class);
+                Intent intent=new Intent(HomeActivty.this, PickImage_Activity.class);
                 startActivity(intent);
 //                intent.setType("video/mp4");
 //                intent.setAction(Intent.ACTION_GET_CONTENT);

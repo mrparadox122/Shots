@@ -26,18 +26,25 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ProfileSettings_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".PickVeideo_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".PickImage_Activity"
+            android:exported="false" />
+        <activity
             android:name=".SoundActivity"
             android:exported="false" />
-
         <activity
             android:name=".MyVideoView_Activity"
             android:exported="false" />
-
         <activity
             android:name=".GoLive_Activity"
             android:exported="false" />
         <activity
-            android:name=".AccountActivity"
+            android:name=".Profile_Activity"
             android:exported="false"
             android:screenOrientation="nosensor" />
         <activity

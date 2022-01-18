@@ -4,19 +4,13 @@ package com.paradox.projectsp3.MainRecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -24,17 +18,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.RequestManager;
-import com.paradox.projectsp3.AccountActivity;
 import com.paradox.projectsp3.Comment_fragment;
-import com.paradox.projectsp3.MainActivity;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
-
-import java.io.File;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 

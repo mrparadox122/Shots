@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PickVeideo_Activity">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_arrowback" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="start|center"
+            android:layout_marginStart="10dp"
+            android:text="Select Video"
+            android:textColor="@color/black"
+            android:textSize="21dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+    <VideoView
+        android:id="@+id/v_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_layout"
+        android:layout_below="@+id/toolbar"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:visibility="invisible" />
+
+
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_video"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_bg"
+            android:text="Pick Video"
+            android:foreground="?selectableItemBackground"
+            android:layout_margin="5dp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_image"
+            android:layout_margin="5dp"
+            android:textSize="10dp"
+            android:foreground="?selectableItemBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_bg"
+            android:layout_below="@+id/btn_video"
+            android:text="Done"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+</RelativeLayout>

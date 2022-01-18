@@ -35,7 +35,7 @@ public class SearchActivity extends AppCompatActivity {
             };
   //SliderAdapter sliderAdapter;
 
-    RecyclerView rv_post;
+    RecyclerView rv_post,rv_post1,rv_post2,rv_post3,rv_post4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private void getImages() {
 
-
         mImageUrls.add("https://www.imagesjunction.com/images/img/aesthetic_profile_pics.jpg");
         mImageUrls.add("https://www.imagesjunction.com/images/img/aesthetic_profile_pics.jpg");
         mImageUrls.add("https://www.imagesjunction.com/images/img/aesthetic_profile_pics.jpg");
@@ -76,6 +75,27 @@ public class SearchActivity extends AppCompatActivity {
         rv_post.setLayoutManager(layoutManager);
         PostAdapter adapter = new PostAdapter(this, mImageUrls);
         rv_post.setAdapter(adapter);
+
+        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        rv_post1 = findViewById(R.id.rv_post1);
+        rv_post1.setLayoutManager(layoutManager1);
+        PostAdapter adapter1 = new PostAdapter(this, mImageUrls);
+        rv_post1.setAdapter(adapter1);
+
+
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        rv_post2 = findViewById(R.id.rv_post2);
+        rv_post2.setLayoutManager(layoutManager2);
+        PostAdapter adapter2 = new PostAdapter(this, mImageUrls);
+        rv_post2.setAdapter(adapter2);
+
+
+        LinearLayoutManager layoutManager3 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        rv_post3 = findViewById(R.id.rv_post3);
+        rv_post3.setLayoutManager(layoutManager3);
+        PostAdapter adapter3 = new PostAdapter(this, mImageUrls);
+        rv_post3.setAdapter(adapter3);
+
     }
 
     @Override
