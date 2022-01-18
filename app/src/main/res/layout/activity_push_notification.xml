@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:orientation="vertical"
-    tools:context=".ProfileSettings_Activity">
+    tools:context=".PushNotification_Activity">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -23,7 +22,7 @@
             android:layout_gravity="start|center"
             android:padding="10dp"
             android:src="@drawable/ic_arrowback"
-            app:tint="@color/white" />
+            app:tint="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,10 +30,10 @@
             android:layout_alignStart="@+id/back"
             android:layout_marginStart="25dp"
             android:gravity="center"
-            android:text="Settings"
+            android:text="Push Notifications"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -55,9 +54,9 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
-                android:text="Account"
-                android:textColor="#453E3E"
-                android:textSize="18dp" />
+                android:text="INTRACTIONS"
+                android:textColor="#7E7C7C"
+                android:textSize="14dp" />
 
             <RelativeLayout
                 android:id="@+id/ll_manageACC"
@@ -76,15 +75,19 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:text="Manage Account"
+                    android:text="New Followers"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <Switch
+                    android:id="@+id/switch1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
+                    android:text="Switch1:"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -105,15 +108,19 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:text="Push Notifications"
+                    android:text="Likes"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <Switch
+                    android:id="@+id/switch2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
+                    android:text="Switch1:"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -135,28 +142,21 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:text="Privacy settings"
+                    android:text="Likes In Comments"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <Switch
+                    android:id="@+id/switch3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
-            </RelativeLayout>
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:text="Help"
-                android:textColor="#453E3E"
-                android:textSize="18dp" />
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+
+            </RelativeLayout>
 
 
             <RelativeLayout
@@ -177,15 +177,19 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:text="Accessibility"
+                    android:text="Comments"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <Switch
+                    android:id="@+id/switch4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
+
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -207,15 +211,18 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:text="Check For Updates"
+                    android:text="Replies on Comments"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <Switch
+                    android:id="@+id/switch5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -234,17 +241,32 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:text="Frequently Asked Questions (FAQ)"
+                    android:text="Mentions"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <Switch
+                    android:id="@+id/switch6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:text="Massages"
+                android:textColor="#7E7C7C"
+                android:textSize="14dp" />
 
             <RelativeLayout
                 android:id="@+id/ll_communityguidelines"
@@ -260,17 +282,33 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:text="Community Guidelines"
+                    android:text="Direct Messages"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <Switch
+                    android:id="@+id/switch7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
+
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:text="Vedio Updates"
+                android:textColor="#7E7C7C"
+                android:textSize="14dp" />
 
             <RelativeLayout
                 android:id="@+id/ll_Leagal"
@@ -285,16 +323,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:layout_marginStart="4dp"
                     android:padding="10dp"
-                    android:text="Leagal"
+                    android:text="Videos from Accounts You Follow"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <Switch
+                    android:id="@+id/switch8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
+                    android:textColor="@color/white"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -312,18 +355,34 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:text="About"
+                    android:text="Videos Suggestions"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <Switch
+                    android:id="@+id/switch9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
             </RelativeLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:text="Others"
+                android:textColor="#7E7C7C"
+                android:textSize="14dp" />
+
             <RelativeLayout
+                android:id="@+id/ll_update_more"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -335,18 +394,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:backgroundTint="@color/white"
-                    android:drawableLeft="@drawable/ic_logout"
                     android:padding="10dp"
-                    android:text="Logout"
+                    android:text="Customised Updates and More"
                     android:textColor="@color/white" />
+
+                <Switch
+                    android:id="@+id/switch10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="6dp"
+                    android:checked="true"
+                    android:switchMinWidth="56dp"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
             </RelativeLayout>
 
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-
 
 
 </RelativeLayout>

@@ -11,9 +11,9 @@ import android.widget.ImageView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
-public class Profile_Activity extends AppCompatActivity {
+public class PrivacySettings_Activity extends AppCompatActivity {
 
-ImageView settings , back;
+ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,28 +21,16 @@ ImageView settings , back;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_privacy_settings);
 
-
-        settings = findViewById(R.id.settings);
-        back = findViewById(R.id.back);
+        back= findViewById(R.id.back);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Profile_Activity.this,HomeActivty.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
-
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Profile_Activity.this,ProfileSettings_Activity.class);
-                startActivity(intent);
-            }
-        });
-
 
     }
 
@@ -50,11 +38,9 @@ ImageView settings , back;
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent=new Intent(Profile_Activity.this,HomeActivty.class);
+        Intent intent=new Intent(PrivacySettings_Activity.this,ProfileSettings_Activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        Animatoo.animateSlideDown(this);
         finish();
-
     }
 }

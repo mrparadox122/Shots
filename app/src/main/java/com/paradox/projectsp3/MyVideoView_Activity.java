@@ -47,7 +47,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_video_view);
 
-
         btn_video = findViewById(R.id.btn_video);
         v_video = findViewById(R.id.v_video);
 
@@ -61,8 +60,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("video/*");
                 startActivityForResult(intent,1);
-
-
             }
         });
     }
@@ -71,36 +68,36 @@ public class MyVideoView_Activity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1){
-
-            Uri videouri = data.getData();
-
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put("description", "shots");
-                jsonObject.put("user_id", "468");
-                jsonObject.put("category_id","2");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            OkHttpClient client = new OkHttpClient().newBuilder()
-                    .build();
-            MediaType mediaType = MediaType.parse("text/plain");
-            RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                    .addFormDataPart("video","VID-20220103-WA0020.mp4",
-                            RequestBody.create(MediaType.parse("application/octet-stream"),
-                                    new File(String.valueOf(videouri))))
-                    .addFormDataPart("thumbnail","",
-                            RequestBody.create(MediaType.parse("application/octet-stream"),
-                                    new File("")))
-                    .addFormDataPart("data", null,
-                            RequestBody.create(MediaType.parse("application/json"), jsonObject.toString().getBytes()))
-                .build();
-        Request request = new Request.Builder()
-                .url("http://13.127.217.99:8080/soosleApi/soosle/upload")
-                .method("POST", body)
-                .build();
+//        if (requestCode == 1){
+//
+//            Uri videouri = data.getData();
+//
+//            JSONObject jsonObject = new JSONObject();
+//            try {
+//                jsonObject.put("description", "shots");
+//                jsonObject.put("user_id", "468");
+//                jsonObject.put("category_id","2");
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            OkHttpClient client = new OkHttpClient().newBuilder()
+//                    .build();
+//            MediaType mediaType = MediaType.parse("text/plain");
+//            RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+//                    .addFormDataPart("video","VID-20220103-WA0020.mp4",
+//                            RequestBody.create(MediaType.parse("application/octet-stream"),
+//                                    new File(String.valueOf(videouri))))
+//                    .addFormDataPart("thumbnail","",
+//                            RequestBody.create(MediaType.parse("application/octet-stream"),
+//                                    new File("")))
+//                    .addFormDataPart("data", null,
+//                            RequestBody.create(MediaType.parse("application/json"), jsonObject.toString().getBytes()))
+//                .build();
+//        Request request = new Request.Builder()
+//                .url("http://13.127.217.99:8080/soosleApi/soosle/upload")
+//                .method("POST", body)
+//                .build();
 //            Call<ResponseBody> call = ApiClient.
 //            call.enqueue(new Callback<ResponseBody>() {
 //                @Override
@@ -113,13 +110,13 @@ public class MyVideoView_Activity extends AppCompatActivity {
 //                    Log.e(TAG, "onFailure: ////////////////////////////////////////////////" );
 //                }
 //            });
-
-
-
-            v_video.setVisibility(View.VISIBLE);
-            v_video.setVideoURI(videouri);
-            v_video.start();
-        }
+//
+//
+//
+//            v_video.setVisibility(View.VISIBLE);
+//            v_video.setVideoURI(videouri);
+//            v_video.start();
+//        }
 
     }
 }

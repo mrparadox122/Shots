@@ -26,6 +26,15 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".PrivacySettings_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".PushNotification_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ManageAccount_Activity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileSettings_Activity"
             android:exported="false" />
         <activity
