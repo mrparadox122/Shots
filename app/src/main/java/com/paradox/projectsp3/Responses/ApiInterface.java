@@ -1,12 +1,13 @@
 package com.paradox.projectsp3.Responses;
 
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
+import org.json.JSONArray;
+
+import java.util.List;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
 
 public interface ApiInterface {
 
@@ -19,11 +20,8 @@ public interface ApiInterface {
 //    Call<JSONArray> postUpload(@Body List<data> dataList);
 
     /// getting all sounds ////
-    @GET("sounds")
+    @GET("sounds.php")
     Call<Users> PerformAllSounds();
-    @Multipart
-    @POST("upload")
-    Call<ResponseBody> postUser(@Part("video")RequestBody video,@Part("data")String des);
 
 
 }
