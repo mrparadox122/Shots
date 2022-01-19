@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"/>
 
     <TextView
         android:id="@+id/textView"
@@ -32,7 +32,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:maxLength="40"
-        android:text="Altaf raja song..."
+        android:text="@string/altaf_raja_song"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

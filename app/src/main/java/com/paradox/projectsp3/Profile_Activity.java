@@ -14,9 +14,8 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
 public class Profile_Activity extends AppCompatActivity {
 
-ImageView settings , back;
-
-Button edit_profile;
+   ImageView settings , back;
+   Button edit_profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ Button edit_profile;
             public void onClick(View view) {
                 Intent intent = new Intent(Profile_Activity.this,HomeActivty.class);
                 startActivity(intent);
-            }
+              }
         });
 
         settings.setOnClickListener(new View.OnClickListener() {

@@ -32,7 +32,6 @@ public class SoundAdapter extends RecyclerView.Adapter<SoundAdapter.SoundViewHol
     @NonNull
     @Override
     public SoundViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View root= LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_sound,parent,false);
         return new SoundViewHolder(root);
     }
