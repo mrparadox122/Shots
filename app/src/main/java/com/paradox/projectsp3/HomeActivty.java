@@ -318,8 +318,6 @@ public class HomeActivty extends AppCompatActivity {
                     }
                 }, 500);
                 finish();
-
-
             }
 
         });
@@ -341,7 +339,6 @@ public class HomeActivty extends AppCompatActivity {
                     }
                 }, 1);
                 finish();
-
             }
         });
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);

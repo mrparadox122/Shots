@@ -20,4 +20,9 @@
         <item name="android:shadowDy">0</item>
         <item name="android:shadowRadius">10.0</item>
     </style>
+
+    <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="backgroundTint">@color/cyan</item>
+    </style>
+
 </resources>

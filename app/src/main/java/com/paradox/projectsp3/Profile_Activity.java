@@ -7,13 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
 public class Profile_Activity extends AppCompatActivity {
 
-ImageView settings;
+   ImageView settings , back;
+   Button edit_profile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,17 @@ ImageView settings;
 
 
         settings = findViewById(R.id.settings);
+        back = findViewById(R.id.back);
+        edit_profile = findViewById(R.id.edit_profile);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile_Activity.this,HomeActivty.class);
+                startActivity(intent);
+              }
+        });
+
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,15 +46,14 @@ ImageView settings;
             }
         });
 
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile_Activity.this,EditProfile_Activity.class);
+                startActivity(intent);
+            }
+        });
 
-    }
-
-    public void backBtn(View view) {
-        Intent intent=new Intent(Profile_Activity.this,MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        Animatoo.animateSlideDown(this);
-        finish();
     }
 
     @Override
