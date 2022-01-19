@@ -1,12 +1,14 @@
 package com.paradox.projectsp3.FaceFilters;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -14,15 +16,24 @@ import android.graphics.BitmapFactory;
 import android.graphics.Camera;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.hardware.display.DisplayManager;
+import android.hardware.display.VirtualDisplay;
+import android.media.MediaRecorder;
+import android.media.projection.MediaProjection;
+import android.media.projection.MediaProjectionManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -41,9 +52,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static android.view.View.GONE;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -75,6 +90,7 @@ public class FaceFilterActivity extends AppCompatActivity {
     private int typeFlash = 0;
     private boolean flashmode = false;
     private Camera camera;
+    ImageButton cameraRecord;
 
     private static final int MASK[] = {
             R.id.no_filter,
@@ -106,6 +122,23 @@ public class FaceFilterActivity extends AppCompatActivity {
     /**
      * Initializes the UI and initiates the creation of a face detector.
      */
+
+
+  // private static final String TAG="MainActivity";
+    private static final int PERMISSION_CODE=1;
+    private int mScreenDensity;
+    private MediaProjectionManager mProjectionManager;
+    private static final int DISPLAY_WIDTH=480;
+    private static final int DISPLAY_HEIGHT=640;
+    private MediaProjection mMediaProjection;
+    private VirtualDisplay mVirtualDisplay;
+    private MediaProjectionCallback mMediaProjectionCallback;
+
+    private MediaRecorder mMediaRecorder;
+    private Object Handler;
+
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -115,6 +148,31 @@ public class FaceFilterActivity extends AppCompatActivity {
         mGraphicOverlay = (GraphicOverlay) findViewById(R.id.faceOverlay);
         //mTextGraphic = new TextGraphic(mGraphicOverlay);
         //mGraphicOverlay.add(mTextGraphic);
+
+
+
+
+        ///////screen record////////////
+        DisplayMetrics metrics=new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        mScreenDensity =metrics.densityDpi;
+        //initRecoder();
+       // prepareRecorder();
+
+
+        mProjectionManager =(MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+
+
+
+        mMediaProjectionCallback=new MediaProjectionCallback();
+
+
+
+
+
+
+
+
 
         ImageButton face = (ImageButton) findViewById(R.id.face);
         face.setOnClickListener(new View.OnClickListener() {
@@ -248,8 +306,8 @@ public class FaceFilterActivity extends AppCompatActivity {
 
 
 
-        ImageButton camera = (ImageButton) findViewById(R.id.camera);
-        camera.setOnClickListener(new View.OnClickListener() {
+        cameraRecord = (ImageButton) findViewById(R.id.camera);
+        cameraRecord .setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 recordVideo();
             }
@@ -267,13 +325,166 @@ public class FaceFilterActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode !=PERMISSION_CODE)
+        {
+            Log.e(TAG,"Unknown request code "+requestCode);
+            return;
+        }
+        if(resultCode !=RESULT_OK)
+        {
+            Toast.makeText(this,"Screen Cast Permission Denied",Toast.LENGTH_SHORT).show();
+            cameraRecord.setVisibility(GONE);
+            return;
+        }
+
+        mMediaProjection =mProjectionManager.getMediaProjection(resultCode,data);
+        mMediaProjection.registerCallback(mMediaProjectionCallback,null);
+        mVirtualDisplay=createVirtualDisplay();
+        mMediaRecorder.start();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void recordVideo() {
+        cameraRecord.setVisibility(GONE);
+        shareScreen();
+        Toast.makeText(this,"Recording Started....",Toast.LENGTH_SHORT).show();
         findViewById(R.id.scrollView).setVisibility(View.GONE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
+
+        Handler =new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mMediaProjection=null;
+                stopScreenSharing();
+                cameraRecord.setVisibility(View.VISIBLE);
+                Toast.makeText(FaceFilterActivity.this,"Recording Stopped...",Toast.LENGTH_SHORT).show();
+
+
+            }
+        },30000);
+
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void shareScreen()
+    {
+        if(mMediaProjection==null)
+        {
+            startActivityForResult(mProjectionManager.createScreenCaptureIntent(),PERMISSION_CODE);
+            return;
+        }
+        mVirtualDisplay= createVirtualDisplay();
+        mMediaRecorder.start();
+    }
+    private void stopScreenSharing()
+    {
+        if(mVirtualDisplay==null)
+        {
+            return;
+        }
+        mVirtualDisplay.release();
+    }
+
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private VirtualDisplay createVirtualDisplay()
+    {
+        return mMediaProjection.createVirtualDisplay("FaceFilterActivity",DISPLAY_WIDTH,DISPLAY_HEIGHT,mScreenDensity, DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,mMediaRecorder.getSurface(),null,null);
+    }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private class MediaProjectionCallback extends MediaProjection.Callback
+    {
+        @Override
+        public void onStop() {
+            super.onStop();
+
+               mMediaProjection=null;
+               stopScreenSharing();
+            Log.i(TAG,"MediaProjection Stopped");
+
+        }
+    }
+
+
+
+    private void prepareRecorder()
+    {
+        try{
+            mMediaRecorder.prepare();
+        }
+        catch(IllegalStateException  | IOException e)
+        {
+            e.printStackTrace();
+            finish();
+        }
+    }
+    public String getFilePath()
+    {
+        final String directory=Environment.getExternalStorageDirectory() + File.separator +"DCIM";
+        if(!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()))
+        {
+            Toast.makeText(this,"Failed to get External Storage",Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        final File folder=new File(directory);
+        boolean success=true;
+        if(!folder.exists())
+        {
+            success=folder.mkdir();
+        }
+        String filePath;
+        if(success)
+        {
+            String videoName=("indian_"+ "soosle" + ".mp4");
+            filePath=directory+File.separator+ videoName;
+        }
+        else
+        {
+            Toast.makeText(this,"Failed to create Recording directory",Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        return filePath;
+    }
+
+
+    public String getCurSysDate()
+    {
+        return new SimpleDateFormat("yyyy-MM-dd_NH-mm-ss").format(new Date());
+    }
+    @SuppressLint("WrongConstant")
+    private void initRecorder()
+    {
+        if(mMediaRecorder==null)
+        {
+            mMediaRecorder =new MediaRecorder();
+            mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            mMediaRecorder.setAudioSource(MediaRecorder.VideoSource.SURFACE);
+            mMediaRecorder.setAudioSource(MediaRecorder.OutputFormat.MPEG_4);
+            mMediaRecorder.setAudioSource(MediaRecorder.VideoEncoder.H264);
+
+            mMediaRecorder.setAudioSource(MediaRecorder.AudioEncoder.AMR_NB);
+            mMediaRecorder.setVideoEncodingBitRate(512 * 1000);
+            mMediaRecorder.setVideoFrameRate(30);
+            mMediaRecorder.setVideoSize(DISPLAY_WIDTH,DISPLAY_HEIGHT);
+            mMediaRecorder.setOutputFile(getFilePath());
+
+        }
+    }
+
+
+
+
+
+
+
 
     private Bitmap resize(Bitmap image, int maxWidth, int maxHeight) {
         if (maxHeight > 0 && maxWidth > 0) {
@@ -396,11 +607,18 @@ public class FaceFilterActivity extends AppCompatActivity {
      * Releases the resources associated with the camera source, the associated detector, and the
      * rest of the processing pipeline.
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mCameraSource != null) {
             mCameraSource.release();
+        }
+        if(mMediaProjection !=null)
+        {
+            mMediaProjection.stop();
+            mMediaProjection=null;
+
         }
     }
 

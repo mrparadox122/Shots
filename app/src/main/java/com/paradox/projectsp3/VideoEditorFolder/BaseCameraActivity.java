@@ -25,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,15 +68,17 @@ public class BaseCameraActivity extends AppCompatActivity {
     private SampleCameraGLView sampleGLView;
     protected GPUCameraRecorder GPUCameraRecorder;
     private String filepath;
-    private Button addSound;
-    private ImageView recordBtn,pauseBtn,Face,Edit;
+    private TextView addSound;
+
+    private ImageView recordBtn,pauseBtn,Face,Edit,Timer;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
+    LinearLayout timerLayout;
     protected int videoWidth = 720;
     protected int videoHeight = 720;
     TextView Time15,Time30,Time60;
-    Button sound_button;
+    TextView sound_button;
     private MediaPlayer mp;
 
     private boolean toggleClick = false;
@@ -87,6 +90,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected void onCreateActivity() {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.record);
+        Timer=findViewById(R.id.timer);
         pauseBtn= findViewById(R.id.pause);
         Face=findViewById(R.id.imageView2);
         Edit=findViewById(R.id.imageView4);
@@ -99,6 +103,23 @@ public class BaseCameraActivity extends AppCompatActivity {
         Time15=findViewById(R.id.time15s);
         Time30=findViewById(R.id.time30s);
         Time60=findViewById(R.id.time60s);
+        timerLayout=findViewById(R.id.timerlayout);
+        final boolean[] timer = {false};
+        Timer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(timer[0] ==false) {
+                    timerLayout.setVisibility(View.VISIBLE);
+                    timer[0] =true;
+                }
+                else
+                {
+                    timerLayout.setVisibility(View.GONE);
+                    timer[0] =false;
+                }
+            }
+
+        });
         Face.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -19,24 +19,70 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0">
 
-
-
   </com.paradox.projectsp3.VideoEditorFolder.widget.PortraitFrameLayout>
 
-
-  <TextView
-      android:id="@+id/time30s"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="30 s"
-      android:textColor="@color/teal_700"
-      android:textSize="16sp"
-      android:textStyle="bold"
+  <LinearLayout
+      android:visibility="gone"
+      android:id="@+id/timerlayout"
+      android:layout_width="228dp"
+      android:layout_height="30dp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@+id/btn_flash"
-      app:layout_constraintStart_toStartOf="@+id/btn_flash"
-      app:layout_constraintTop_toTopOf="@+id/btn_flash"
-      app:layout_constraintVertical_bias="0.26999998" />
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.82"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.82">
+
+
+    <TextView
+        android:id="@+id/time15s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15s"
+
+        android:textColor="@color/teal_700"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_flash"
+        app:layout_constraintStart_toStartOf="@+id/btn_flash"
+        app:layout_constraintTop_toTopOf="@+id/btn_flash"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+    <TextView
+        android:id="@+id/time30s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="30s"
+        android:textColor="@color/teal_700"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_flash"
+        app:layout_constraintStart_toStartOf="@+id/btn_flash"
+        app:layout_constraintTop_toTopOf="@+id/btn_flash"
+        app:layout_constraintVertical_bias="0.26999998" />
+
+
+    <TextView
+        android:id="@+id/time60s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="60s"
+        android:textColor="@color/teal_700"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_flash"
+        app:layout_constraintStart_toStartOf="@+id/btn_flash"
+        app:layout_constraintTop_toTopOf="@+id/btn_flash"
+        app:layout_constraintVertical_bias="0.37" />
+
+
+  </LinearLayout>
+
 
   <ImageView
       android:id="@+id/imageView2"
@@ -78,51 +124,6 @@
 
   <!--     app:srcCompat="@drawable/ic_launcher_foreground"   -->
 
-
-
-  <TextView
-      android:id="@+id/time60s"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="60 s"
-      android:textColor="@color/teal_700"
-      android:textSize="16sp"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@+id/btn_flash"
-      app:layout_constraintStart_toStartOf="@+id/btn_flash"
-      app:layout_constraintTop_toTopOf="@+id/btn_flash"
-      app:layout_constraintVertical_bias="0.37" />
-
-<!--  <TextView-->
-<!--      android:id="@+id/time3min"-->
-<!--      android:layout_width="wrap_content"-->
-<!--      android:layout_height="wrap_content"-->
-<!--      android:text="3 min"-->
-<!--      android:textColor="@color/teal_700"-->
-<!--      android:textSize="16sp"-->
-<!--      android:textStyle="bold"-->
-<!--      app:layout_constraintBottom_toBottomOf="parent"-->
-<!--      app:layout_constraintEnd_toEndOf="@+id/btn_flash"-->
-<!--      app:layout_constraintStart_toStartOf="@+id/btn_flash"-->
-<!--      app:layout_constraintTop_toTopOf="@+id/btn_flash"-->
-<!--      app:layout_constraintVertical_bias="0.45" />-->
-
-  <TextView
-      android:id="@+id/time15s"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="15 s"
-      android:textColor="@color/teal_700"
-      android:textSize="16sp"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@+id/btn_flash"
-      app:layout_constraintStart_toStartOf="@+id/btn_flash"
-      app:layout_constraintTop_toTopOf="@+id/btn_flash"
-      app:layout_constraintVertical_bias="0.16000003" />
-
-
   <ImageView
       android:id="@+id/btn_flash"
       android:layout_width="44dp"
@@ -137,6 +138,19 @@
       app:layout_constraintVertical_bias="0.25" />
 
   <ImageView
+      android:id="@+id/timer"
+      android:layout_width="44dp"
+      android:layout_height="38dp"
+
+      android:src="@drawable/timer"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.9"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.35000002" />
+
+  <ImageView
       android:id="@+id/btn_switch_camera"
       android:layout_width="30dp"
       android:layout_height="34dp"
@@ -149,7 +163,7 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.17000002" />
 
-  <android.widget.Button
+  <TextView
       android:id="@+id/button"
       android:layout_width="153dp"
       android:layout_height="50dp"
@@ -157,6 +171,8 @@
       android:textAllCaps="false"
       android:drawableLeft="@drawable/music"
       android:text=" Add sound"
+      android:textColor="#fff"
+      android:gravity="center"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
