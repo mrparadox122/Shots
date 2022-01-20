@@ -110,7 +110,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
             Uri imageuri = data.getData();
             imageview.setImageURI(imageuri);
             btn_image.setText("Image Uploaded");
-
         }
         if (requestCode == 2){
             Uri vediouri = data.getData();
