@@ -16,4 +16,13 @@
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
     <string name="altaf_raja_song">Altaf raja song...</string>
+
+
+    <string name="login"><u>I already have an account , login</u></string>
+    <string name="register_text"><u>Register</u></string>
+    <string name="login_text"><u>Login</u></string>
+    <string name="forgot"><u>Forgot Password</u></string>
+    <string name="pin"><u>Pin Number</u></string>
+
+
 </resources>

@@ -19,11 +19,23 @@
         android:allowBackup="true"
         android:icon="@drawable/b"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".PinNumber_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Register_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ContentLanguages_Activity"
+            android:exported="false" />
         <activity
             android:name=".EditProfile_Activity"
             android:exported="false" />
@@ -87,7 +99,7 @@
             android:exported="false"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".SignUp"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivty"
@@ -96,7 +108,7 @@
             android:name=".VideoEditorFolder.PortraitCameraActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SignUp"
             android:exported="true"
             android:screenOrientation="nosensor">
             <intent-filter>

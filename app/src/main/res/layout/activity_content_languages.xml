@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121111"
-    android:orientation="vertical"
-    tools:context=".ProfileSettings_Activity">
+    tools:context=".ContentLanguages_Activity">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -31,7 +30,7 @@
             android:layout_alignStart="@+id/back"
             android:layout_marginStart="25dp"
             android:gravity="center"
-            android:text="Settings"
+            android:text="Choose Language"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -47,44 +46,31 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:text="Account"
-                android:textColor="#453E3E"
-                android:textSize="18dp" />
-
             <RelativeLayout
                 android:id="@+id/ll_manageACC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Manage Account"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Hindi"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <RadioButton
+                    android:id="@+id/radio1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="true" />
 
             </RelativeLayout>
 
@@ -94,26 +80,25 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Push Notifications"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:text="Panjabi"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <RadioButton
+                    android:id="@+id/radio2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="false"
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -123,70 +108,28 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Privacy settings"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:text="Tamil"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <RadioButton
+                    android:id="@+id/radio3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="false"
+                    android:textSize="20dp" />
+
             </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/ll_language"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:padding="5dp">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Content Languages"
-                    android:textColor="@color/white" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
-            </RelativeLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:text="Help"
-                android:textColor="#453E3E"
-                android:textSize="18dp" />
 
 
             <RelativeLayout
@@ -195,27 +138,25 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Accessibility"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:text="Telugu"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <RadioButton
+                    android:id="@+id/radio4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="false" />
 
             </RelativeLayout>
 
@@ -225,27 +166,25 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Check For Updates"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:text="Malayalam"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <RadioButton
+                    android:id="@+id/radio5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="false" />
 
             </RelativeLayout>
 
@@ -255,8 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
 
                 <TextView
@@ -264,17 +202,18 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:text="Frequently Asked Questions (FAQ)"
+                    android:text="Bengali"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <RadioButton
+                    android:id="@+id/radio6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
-
+                    android:checked="false"
+                    android:textSize="20dp" />
             </RelativeLayout>
+
 
             <RelativeLayout
                 android:id="@+id/ll_communityguidelines"
@@ -282,23 +221,24 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Community Guidelines"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:text="Gujarati"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <RadioButton
+                    android:id="@+id/radio7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="false"
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -308,23 +248,25 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Leagal"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:text="Marathi"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <RadioButton
+                    android:id="@+id/radio8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="false"
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -334,49 +276,54 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="About"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Kannada"
                     android:textColor="@color/white" />
 
-                <ImageView
+                <RadioButton
+                    android:id="@+id/radio9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
+                    android:checked="false"
+                    android:textSize="20dp" />
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/ll_update_more"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:backgroundTint="@color/white"
-                    android:drawableLeft="@drawable/ic_logout"
-                    android:padding="10dp"
-                    android:text="Logout"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="English"
                     android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/radio10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false"
+                    android:textSize="20dp" />
             </RelativeLayout>
 
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-
-
 
 </RelativeLayout>

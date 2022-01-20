@@ -25,7 +25,6 @@ public class SignUp extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_sign_up);
 
-
         initview();
     }
 
@@ -35,11 +34,27 @@ public class SignUp extends AppCompatActivity {
         google_btn = findViewById(R.id.google_btn);
         mobile_btn = findViewById(R.id.mobile_btn);
 
+        facebook_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(SignUp.this,Register_Activity.class);
+                startActivity(intent);
+            }
+        });
+        google_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(SignUp.this,Register_Activity.class);
+                startActivity(intent);
+            }
+        });
         mobile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(SignUp.this,Login.class);
+                Intent intent = new Intent(SignUp.this,Register_Activity.class);
                 startActivity(intent);
             }
         });

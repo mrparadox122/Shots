@@ -17,7 +17,7 @@ public class ProfileSettings_Activity extends AppCompatActivity {
 
     ImageView back;
 
-    RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings;
+    RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         ll_manageACC= findViewById(R.id.ll_manageACC);
         ll_pushnotification= findViewById(R.id.ll_pushnotification);
         ll_privacysettings= findViewById(R.id.ll_privacysettings);
+        ll_language= findViewById(R.id.ll_language);
         back= findViewById(R.id.back);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +64,15 @@ public class ProfileSettings_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProfileSettings_Activity.this, PrivacySettings_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        ll_language.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileSettings_Activity.this, ContentLanguages_Activity.class);
                 startActivity(intent);
                 finish();
             }
