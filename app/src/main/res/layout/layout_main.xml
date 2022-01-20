@@ -51,16 +51,16 @@
                 app:srcCompat="@drawable/ic_icon_ionic_ios_share_alt"
                 tools:ignore="VectorDrawableCompat" />
 
-            <ImageView
-                android:id="@+id/views"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                app:layout_constraintEnd_toStartOf="@+id/guideline8"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/view_list"
-                tools:ignore="VectorDrawableCompat"
-                tools:layout_editor_absoluteY="487dp" />
+<!--            <ImageView-->
+<!--                android:id="@+id/views"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/guideline8"-->
+<!--                app:layout_constraintHorizontal_bias="1.0"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:srcCompat="@drawable/view_list"-->
+<!--                tools:ignore="VectorDrawableCompat"-->
+<!--                tools:layout_editor_absoluteY="487dp" />-->
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline8"

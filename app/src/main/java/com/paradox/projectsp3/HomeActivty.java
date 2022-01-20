@@ -300,13 +300,10 @@ public class HomeActivty extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                checkPermission();
-                Intent intent=new Intent(HomeActivty.this, PickImage_Activity.class);
+                checkPermission();
+                Intent intent=new Intent(HomeActivty.this, MyVideoView_Activity.class);
                 startActivity(intent);
-//                intent.setType("video/mp4");
-//                intent.setAction(Intent.ACTION_GET_CONTENT);
-//                startActivityForResult(Intent.createChooser(intent,"Select Video"),100);
-////                //Animatoo.animateSlideUp(this);
+
 
                 Log.e(TAG, "onClick: //////////////////////////////////" );
 

@@ -35,17 +35,17 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
-        <ImageView
-            android:id="@+id/settings"
-            android:layout_weight="0.3"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_settings"
-            app:tint="@color/white" />
+<!--        <ImageView-->
+<!--            android:id="@+id/settings"-->
+<!--            android:layout_weight="0.3"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:src="@drawable/ic_settings"-->
+<!--            app:tint="@color/white" />-->
 
     </LinearLayout>
 
