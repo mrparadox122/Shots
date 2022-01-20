@@ -25,6 +25,15 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".comment_message"
+            android:exported="false" />
+        <activity
+            android:name=".Message"
+            android:exported="false" />
+        <activity
+            android:name=".Comment"
+            android:exported="false" />
+        <activity
             android:name=".PinNumber_Activity"
             android:exported="false" />
         <activity
