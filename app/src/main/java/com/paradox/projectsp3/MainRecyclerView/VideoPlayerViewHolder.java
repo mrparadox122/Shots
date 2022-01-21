@@ -2,61 +2,49 @@ package com.paradox.projectsp3.MainRecyclerView;
 
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
-import com.paradox.projectsp3.Comment_fragment;
+import com.paradox.projectsp3.Message;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
-
-
       Fragment fragment;
       FragmentManager fragmentManager;
       FragmentTransaction fragmentTransaction;
-
-
-    FrameLayout media_container;
-
-    ImageView like,Share,Comment;
-    TextView title;
-    ImageView thumbnail, volumeControl,soundDisk;
-    ProgressBar progressBar;
-    View parent;
-    RequestManager requestManager;
-    LinearLayout CommentView;
-    boolean checklike=true;
-
-
-    TextView likesn;
-
-
-
-
-    TextView commentn;
-
-
-    TextView share;
-    Context context;
-
-
-
-
+      FrameLayout media_container;
+      ImageView like,Share,Comment;
+      TextView title;
+      ImageView thumbnail, volumeControl,soundDisk;
+      ProgressBar progressBar;
+      View parent;
+      RequestManager requestManager;
+      LinearLayout CommentView;
+      boolean checklike=true;
+      TextView likesn;
+      TextView commentn;
+      TextView share;
+      Context context;
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
@@ -82,17 +70,45 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
        Comment.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               soundDisk.setVisibility(View.GONE);
-               //Toast.makeText(context.getApplicationContext(), "ggggg",Toast.LENGTH_SHORT).show();
-             CommentView.setVisibility(View.VISIBLE);
-               fragment=new Comment_fragment();
-               fragmentManager=((FragmentActivity)context).getSupportFragmentManager();
-               fragmentTransaction=fragmentManager.beginTransaction();
-               fragmentTransaction.replace(R.id.commentView,fragment);
-               fragmentTransaction.commit();
 
+              Context context1= itemView.getContext();
+              Dialog dialog=new Dialog(context1);
+              dialog.setContentView(R.layout.activity_comment_message);
+              TextView comment=dialog.findViewById(R.id.comment);
+              LinearLayout linearLayout2=dialog.findViewById(R.id.linearLayout2);
 
+              dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+              dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+              dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+               comment.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View view) {
+                       Toast.makeText(comment.getContext(),"layout1",Toast.LENGTH_SHORT).show();
+                       Dialog dialog1=new Dialog(comment.getContext());
+                       dialog1.setContentView(R.layout.activity_message);
+                       dialog1.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                       dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                       dialog1.getWindow().setGravity(Gravity.BOTTOM);
+                       dialog1.show();
+
+                   }
+
+               });
+               linearLayout2.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View view) {
+                       Intent intent=new Intent(linearLayout2.getContext(), Message.class);
+                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                       linearLayout2.getContext().startActivity(intent);
+
+                   }
+               });
+
+            dialog.show();
            }
+
+
        });
 
 

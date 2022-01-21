@@ -193,7 +193,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
 
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-                viewHolderParent.setOnClickListener(videoViewClickListener);
+                //viewHolderParent.setOnClickListener(videoViewClickListener);
                 OnClickListener videoViewClickListener = new OnClickListener() {
                     @Override
                     public void onClick(View v) {
