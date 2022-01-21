@@ -21,7 +21,7 @@ public class PinNumber_Activity extends AppCompatActivity {
     }
 
     public void done_btn(View view) {
-        Intent intent = new Intent(PinNumber_Activity.this, Login.class);
+        Intent intent = new Intent(PinNumber_Activity.this, HomeActivty.class);
         startActivity(intent);
     }
 }

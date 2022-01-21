@@ -25,6 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".comment_message"
+            android:exported="false" />
+        <activity
             android:name=".Message"
             android:exported="false" />
         <activity
@@ -108,13 +111,13 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
+            android:name=".HomeActivty"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".VideoEditorFolder.PortraitCameraActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".HomeActivty"
+            android:name=".SignUp"
             android:exported="true"
             android:screenOrientation="nosensor">
             <intent-filter>

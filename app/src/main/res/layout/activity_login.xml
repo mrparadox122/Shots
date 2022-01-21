@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#F8B50C"
     tools:context=".Login">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:gravity="center"
-        android:padding="10dp"
-        android:layout_marginTop="100dp"
+        android:padding="15dp"
         android:layout_height="wrap_content">
 
         <TextView
@@ -21,131 +19,58 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/gotham"
             android:gravity="center"
+            android:shadowColor="#57000000"
             android:text="@string/login_text"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:drawableLeftCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="170dp"
         android:orientation="vertical"
         android:padding="24dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/gotham"
-            android:paddingTop="8dp"
-            android:layout_gravity="center"
-            android:paddingBottom="8dp"
-            android:text="Enter PinNumber"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
 
-
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="16dp"-->
-        <!--            android:textColorHint="#000000">-->
-
-        <!--            <EditText-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:fontFamily="@font/calibri"-->
-        <!--                android:hint="Email Id or Mobile Number"-->
-        <!--                android:inputType="text"-->
-        <!--                android:textColor="#000000"-->
-        <!--                android:textSize="18sp" />-->
-
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-
-        <LinearLayout
-            android:id="@+id/root_otp_layout"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:weightSum="4">
+            android:layout_marginTop="16dp"
+            android:textColorHint="#000000">
 
             <EditText
-                android:id="@+id/otp_edit_box1"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="18dp"
-                android:layout_weight="1"
-                android:imeOptions="actionNext"
-                android:background="@drawable/et_otp_curve_bg"
-                android:gravity="center"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textSize="30sp" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri"
+                android:hint="Email Id or Mobile Number"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/otp_edit_box2"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="18dp"
-                android:layout_weight="1"
-                android:imeOptions="actionNext"
-                android:background="@drawable/et_otp_curve_bg"
-                android:gravity="center"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textSize="30sp" />
-
-            <EditText
-                android:id="@+id/otp_edit_box3"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="18dp"
-                android:layout_weight="1"
-                android:imeOptions="actionNext"
-                android:background="@drawable/et_otp_curve_bg"
-                android:gravity="center"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textSize="30sp" />
-
-            <EditText
-                android:id="@+id/otp_edit_box4"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/et_otp_curve_bg"
-                android:gravity="center"
-                android:imeOptions="actionDone"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textSize="30sp" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="55dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/buttonshape"
-            android:fontFamily="@font/gotham"
-            android:onClick="login_btn"
-            android:paddingStart="35dp"
-            android:paddingEnd="35dp"
-            android:text="Login"
-            android:textAllCaps="false"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="16dp"
+            android:textColorHint="#000000">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri"
+                android:hint="4 Digits Pin Number"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -164,7 +89,25 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/buttonshape"
+            android:fontFamily="@font/gotham"
+            android:onClick="login_btn"
+            android:paddingStart="35dp"
+            android:paddingEnd="35dp"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
     </LinearLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -19,7 +19,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.hardware.camera2.params.Face;
 
 import com.google.android.gms.vision.face.Face;
 import com.paradox.projectsp3.FaceFilters.camera.GraphicOverlay;
@@ -106,7 +105,7 @@ class FaceGraphic extends GraphicOverlay.Graphic {
      * Updates the face instance from the detection of the most recent frame.  Invalidates the
      * relevant portions of the overlay to trigger a redraw.
      */
-    void updateFace(Face face, int c) {
+    void updateFace(Face face,int c) {
         mFace = face;
         bitmap = BitmapFactory.decodeResource(getOverlay().getContext().getResources(), MASK[c]);
         op = bitmap;

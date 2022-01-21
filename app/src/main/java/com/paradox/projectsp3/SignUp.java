@@ -14,7 +14,7 @@ public class SignUp extends AppCompatActivity {
 
 
 
-    ImageView facebook_btn,google_btn,goBack_btn;
+    ImageView facebook_btn,google_btn;
     TextView mobile_btn;
 
     @Override
@@ -29,27 +29,10 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void initview() {
-        goBack_btn = findViewById(R.id.Goback);
-
 
         facebook_btn = findViewById(R.id.facebook_btn);
         google_btn = findViewById(R.id.google_btn);
         mobile_btn = findViewById(R.id.mobile_btn);
-
-
-        goBack_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SignUp.this,HomeActivty.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-
-
-
 
         facebook_btn.setOnClickListener(new View.OnClickListener() {
             @Override

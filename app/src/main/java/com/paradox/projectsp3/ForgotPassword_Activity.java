@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 public class ForgotPassword_Activity extends AppCompatActivity {
 
@@ -24,12 +23,8 @@ public class ForgotPassword_Activity extends AppCompatActivity {
     }
 
     public void bt_forget(View view) {
-        ///// Sent Link Email Verification Link
-        Toast.makeText(getApplicationContext(), "Verification code Successfully Send", Toast.LENGTH_SHORT).show();
-    }
 
-    public void bt_submit(View view) {
-         Intent intent = new Intent( ForgotPassword_Activity.this, PinNumber_Activity.class);
-         startActivity(intent);
+        Intent intent = new Intent(ForgotPassword_Activity.this, Login.class);
+        startActivity(intent);
     }
 }

@@ -29,22 +29,22 @@ import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
-      Fragment fragment;
-      FragmentManager fragmentManager;
-      FragmentTransaction fragmentTransaction;
-      FrameLayout media_container;
-      ImageView like,Share,Comment;
-      TextView title;
-      ImageView thumbnail, volumeControl,soundDisk;
-      ProgressBar progressBar;
-      View parent;
-      RequestManager requestManager;
-      LinearLayout CommentView;
-      boolean checklike=true;
-      TextView likesn;
-      TextView commentn;
-      TextView share;
-      Context context;
+    Fragment fragment;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+    FrameLayout media_container;
+    ImageView like,Share,Comment;
+    TextView title;
+    ImageView thumbnail, volumeControl,soundDisk;
+    ProgressBar progressBar;
+    View parent;
+    RequestManager requestManager;
+    LinearLayout CommentView;
+    boolean checklike=true;
+    TextView likesn;
+    TextView commentn;
+    TextView share;
+    Context context;
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
@@ -59,7 +59,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         commentn = itemView.findViewById(R.id.comments);
 
         Comment=itemView.findViewById(R.id.imageView8);
-       context= itemView.getContext();
+        context= itemView.getContext();
         Share=itemView.findViewById(R.id.imageView6);
         CommentView=itemView.findViewById(R.id.commentView);
         share = itemView.findViewById(R.id.share);
@@ -67,53 +67,53 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
 
 
-       Comment.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
+        Comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-              Context context1= itemView.getContext();
-              Dialog dialog=new Dialog(context1);
-              dialog.setContentView(R.layout.comment_message);
-              LinearLayout linearLayout1=dialog.findViewById(R.id.Layout_message);
-              LinearLayout linearLayout2=dialog.findViewById(R.id.Layout_comment);
+                Context context1= itemView.getContext();
+                Dialog dialog=new Dialog(context1);
+                dialog.setContentView(R.layout.comment_message);
+                LinearLayout linearLayout1=dialog.findViewById(R.id.Layout_message);
+                LinearLayout linearLayout2=dialog.findViewById(R.id.Layout_comment);
 
-              dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-              dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-              dialog.getWindow().setGravity(Gravity.BOTTOM);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().setGravity(Gravity.BOTTOM);
 
-               linearLayout1.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View view) {
+                linearLayout1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                       Dialog dialog1=new Dialog(context1);
-                       dialog1.setContentView(R.layout.activity_message);
-                       dialog1.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
-                       dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                       dialog1.getWindow().setGravity(Gravity.BOTTOM);
-                       dialog1.show();
+                        Dialog dialog1=new Dialog(context1);
+                        dialog1.setContentView(R.layout.activity_message);
+                        dialog1.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+                        dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog1.getWindow().setGravity(Gravity.BOTTOM);
+                        dialog1.show();
 
-                   }
+                    }
 
-               });
-               linearLayout2.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View view) {
+                });
+                linearLayout2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                       Dialog dialog2=new Dialog(context1);
-                       dialog2.setContentView(R.layout.activity_comment);
-                       dialog2.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
-                       dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                       dialog2.getWindow().setGravity(Gravity.BOTTOM);
-                       dialog2.show();
+                        Dialog dialog2=new Dialog(context1);
+                        dialog2.setContentView(R.layout.activity_comment);
+                        dialog2.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+                        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog2.getWindow().setGravity(Gravity.BOTTOM);
+                        dialog2.show();
 
-                   }
-               });
+                    }
+                });
 
-            dialog.show();
-           }
+                dialog.show();
+            }
 
 
-       });
+        });
 
 
 

@@ -9,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
@@ -17,7 +16,6 @@ public class ProfileSettings_Activity extends AppCompatActivity {
 
 
     ImageView back;
-    TextView logout_btn;
 
     RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_language;
 
@@ -35,7 +33,6 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         ll_privacysettings= findViewById(R.id.ll_privacysettings);
         ll_language= findViewById(R.id.ll_language);
         back= findViewById(R.id.back);
-        logout_btn= findViewById(R.id.logout_btn);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,16 +77,6 @@ public class ProfileSettings_Activity extends AppCompatActivity {
                 finish();
             }
         });
-
-        logout_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileSettings_Activity.this, Login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
     }
 
 
