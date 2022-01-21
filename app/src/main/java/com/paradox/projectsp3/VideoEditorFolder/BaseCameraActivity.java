@@ -94,7 +94,7 @@ public class BaseCameraActivity extends AppCompatActivity {
         pauseBtn= findViewById(R.id.pause);
         Face=findViewById(R.id.imageView2);
         Edit=findViewById(R.id.imageView4);
-        Close=findViewById(R.id.close);
+
         Gallery=findViewById(R.id.gallery);
         addSound=findViewById(R.id.button);
         sound_url=getIntent().getStringExtra("sound_url");
