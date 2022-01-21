@@ -20,7 +20,7 @@
         android:text="@string/pin"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="28sp"
+        android:textSize="21sp"
         android:textStyle="bold"
         app:drawableLeftCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
 
@@ -33,11 +33,29 @@
         android:textColorHint="#000000">
 
         <EditText
+            android:id="@+id/et_newpin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibri"
+            android:hint="Enter New PinNumber"
+            android:inputType="text"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:textColorHint="#000000">
+
+        <EditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/calibri"
-            android:hint="Enter 4 digits of Pin number"
+            android:hint="Enter New PinNumber"
             android:inputType="text"
             android:textColor="#000000"
             android:textSize="18sp" />

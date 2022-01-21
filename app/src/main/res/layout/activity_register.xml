@@ -22,7 +22,7 @@
                 android:id="@+id/back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="32dp"
                 android:fontFamily="@font/gotham"
                 android:gravity="center"
@@ -31,14 +31,13 @@
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="28sp"
-                android:textStyle="bold"
-                app:drawableLeftCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
-
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
+                android:hint="Name"
                 android:textColorHint="#000000">
 
                 <EditText
@@ -46,7 +45,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
-                    android:hint="Name"
                     android:inputType="text"
                     android:textColor="#000000"
                     android:textSize="18sp" />
@@ -56,7 +54,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:textColorHint="#000000">
 
                 <EditText
@@ -74,7 +72,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:textColorHint="#000000">
 
                 <EditText
@@ -83,33 +81,18 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
                     android:hint="Phone Number"
-                    android:inputType="textEmailAddress"
+                    android:inputType="phone"
+                    android:maxLength="10"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textColorHint="#000000">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/calibri"
-                    android:hint="Gender"
-                    android:inputType="textEmailAddress"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:textColorHint="#000000">
 
                 <EditText
@@ -117,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
-                    android:hint="Password"
+                    android:hint="Pin Number"
                     android:inputType="textPassword"
                     android:textColor="#000000"
                     android:textSize="18sp" />
@@ -127,7 +110,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:textColorHint="#000000">
 
                 <EditText
@@ -135,19 +118,70 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
-                    android:hint="Confirm Password"
+                    android:hint="Confirm Pin Number"
                     android:inputType="textPassword"
                     android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/gender_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/gotham"
+                android:paddingTop="10dp"
+
+                android:text="Select Gender"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Male" />
+
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radioGroup1"
+                    android:layout_alignLeft="@+id/radioGroup1"
+                    android:layout_weight="1"
+                    android:text="Female" />
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radioGroup1"
+                    android:layout_alignLeft="@+id/radioGroup1"
+                    android:layout_weight="1"
+                    android:text="Others" />
+
+            </RadioGroup>
+
 
             <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/buttonshape"
                 android:fontFamily="@font/gotham"

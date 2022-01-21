@@ -22,7 +22,7 @@
     <string name="register_text"><u>Register</u></string>
     <string name="login_text"><u>Login</u></string>
     <string name="forgot"><u>Forgot Password</u></string>
-    <string name="pin"><u>Pin Number</u></string>
+    <string name="pin"><u>Create New PinNumber</u></string>
 
 
 </resources>
