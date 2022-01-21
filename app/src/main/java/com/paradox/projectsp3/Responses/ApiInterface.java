@@ -20,7 +20,7 @@ public interface ApiInterface {
 //    Call<JSONArray> postUpload(@Body List<data> dataList);
 
     /// getting all sounds ////
-    @GET("sounds.php")
+    @GET("sounds")
     Call<Users> PerformAllSounds();
 
 
