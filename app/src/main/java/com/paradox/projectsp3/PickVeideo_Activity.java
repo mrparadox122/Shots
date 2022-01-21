@@ -2,19 +2,26 @@ package com.paradox.projectsp3;
 
 import static android.content.ContentValues.TAG;
 
+import static com.paradox.projectsp3.Responses.ApiClient.retrofit;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -84,6 +91,9 @@ public class PickVeideo_Activity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 2){
@@ -146,6 +156,45 @@ public class PickVeideo_Activity extends AppCompatActivity {
 //                    Log.e(TAG, "onFailure: ////////////////////////////////////////////////" );
 //                }
 //            });
+
+            ApiInterface service = retrofit.create(ApiInterface.class);
+            MediaType MEDIA_TYPE = MediaType.parse("video/mp4");
+            Log.e(TAG, "onActivityResult: "+MEDIA_TYPE.toString());
+            File file = new File(vediouri.getPath());
+            RequestBody requestBody = RequestBody.create(MEDIA_TYPE,file);
+            Call<ResponseBody> call = service.upload(requestBody);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // TODO Auto-generated method stub
+
+                    Log.i("mok","S");
+
+                    ResponseBody rb = response.body();
+
+
+
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Log.i("mok","F");
+                    t.printStackTrace();
+                    Log.i("mok",t.getCause()+"");
+                    Log.i("mok","T");
+                    finish();
+
+
+
+                }
+            });
+
+            Toast.makeText(this, getRealPathFromURI(this,vediouri), Toast.LENGTH_LONG).show();
+
+
+
+
             v_video.setVisibility(View.VISIBLE);
             v_video.setVideoURI(vediouri);
             v_video.start();
@@ -164,5 +213,18 @@ public class PickVeideo_Activity extends AppCompatActivity {
         }
 
     }
+    public String getRealPathFromURI(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
 
 }

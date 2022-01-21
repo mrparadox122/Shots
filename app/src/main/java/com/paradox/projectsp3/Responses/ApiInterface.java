@@ -32,7 +32,7 @@ public interface ApiInterface {
 
     @Multipart
     @POST("upload")
-    Call<Users> upload(@Part RequestBody body);
+    Call<ResponseBody> upload(@Part RequestBody body);
     // You can add other parameters too
 
 
