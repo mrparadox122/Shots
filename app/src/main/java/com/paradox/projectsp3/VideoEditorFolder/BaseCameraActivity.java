@@ -90,7 +90,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected void onCreateActivity() {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.record);
-    Timer=findViewById(R.id.timer);
+//        Timer=findViewById(R.id.timer);
         pauseBtn= findViewById(R.id.pause);
         Face=findViewById(R.id.imageView2);
         Edit=findViewById(R.id.imageView4);
