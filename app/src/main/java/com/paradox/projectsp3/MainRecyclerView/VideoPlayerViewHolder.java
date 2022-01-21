@@ -73,21 +73,21 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
               Context context1= itemView.getContext();
               Dialog dialog=new Dialog(context1);
-              dialog.setContentView(R.layout.activity_comment_message);
-              TextView comment=dialog.findViewById(R.id.comment);
-              LinearLayout linearLayout2=dialog.findViewById(R.id.linearLayout2);
+              dialog.setContentView(R.layout.comment_message);
+              LinearLayout linearLayout1=dialog.findViewById(R.id.Layout_message);
+              LinearLayout linearLayout2=dialog.findViewById(R.id.Layout_comment);
 
               dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
               dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               dialog.getWindow().setGravity(Gravity.BOTTOM);
 
-               comment.setOnClickListener(new View.OnClickListener() {
+               linearLayout1.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {
-                       Toast.makeText(comment.getContext(),"layout1",Toast.LENGTH_SHORT).show();
-                       Dialog dialog1=new Dialog(comment.getContext());
+
+                       Dialog dialog1=new Dialog(context1);
                        dialog1.setContentView(R.layout.activity_message);
-                       dialog1.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                       dialog1.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
                        dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                        dialog1.getWindow().setGravity(Gravity.BOTTOM);
                        dialog1.show();
@@ -98,9 +98,13 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                linearLayout2.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {
-                       Intent intent=new Intent(linearLayout2.getContext(), Message.class);
-                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                       linearLayout2.getContext().startActivity(intent);
+
+                       Dialog dialog2=new Dialog(context1);
+                       dialog2.setContentView(R.layout.activity_comment);
+                       dialog2.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+                       dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                       dialog2.getWindow().setGravity(Gravity.BOTTOM);
+                       dialog2.show();
 
                    }
                });
