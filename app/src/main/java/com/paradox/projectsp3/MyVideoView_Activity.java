@@ -123,7 +123,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
             MediaType mediaType = MediaType.parse("text/plain");
             RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
                     .addFormDataPart("video","VID-20220103-WA0020.mp4",
-                            RequestBody.create(MediaType.parse("application/octet-stream"),
+                            RequestBody.create(MediaType.parse("video/*"),
                                     new File(vediouri.getPath())))
                     .addFormDataPart("thumbnail","",
                             RequestBody.create(MediaType.parse("application/octet-stream"),
