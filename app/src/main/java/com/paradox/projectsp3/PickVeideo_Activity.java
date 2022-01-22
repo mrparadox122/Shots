@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,6 +16,8 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+
+import static com.google.android.gms.vision.L.TAG;
 
 public class PickVeideo_Activity extends AppCompatActivity {
 
@@ -65,12 +68,14 @@ public class PickVeideo_Activity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 2){
+            Log.e(TAG, "onActivityResult: ////////////////////////////as/fafefaws/////////////////" );
             Uri vediouri = data.getData();
             v_video.setVisibility(View.VISIBLE);
             v_video.setVideoURI(vediouri);
             v_video.start();
             btn_video.setText("Vedio Uploaded");
             btn_video.setBackgroundColor(R.color.teal_200);
+            Log.e(TAG, "onActivityResult: ////////////////////////////as/fafefaws/////////////////" );
         }
 //        if (requestCode == 1){
 //

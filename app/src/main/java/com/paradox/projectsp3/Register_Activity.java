@@ -34,10 +34,19 @@ public class Register_Activity extends AppCompatActivity {
         btn_signup = findViewById(R.id.btn_signup);
 
 
+
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Register_Activity.this , Login.class);
+                String name,password,email;
+                name = String.valueOf(et_name.getText());
+                password = String.valueOf(et_Rpassword.getText());
+                email = String.valueOf(et_name.getText());
+
+
+
+
+               Intent intent = new Intent(Register_Activity.this , Login.class);
                 startActivity(intent);
             }
         });
