@@ -4,12 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
+
+import static com.google.android.gms.vision.L.TAG;
 
 public class Register_Activity extends AppCompatActivity {
 
@@ -38,16 +45,52 @@ public class Register_Activity extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name,password,email;
-                name = String.valueOf(et_name.getText());
+                String fullname,password,email,username;
+                fullname = String.valueOf(et_name.getText());
                 password = String.valueOf(et_Rpassword.getText());
                 email = String.valueOf(et_name.getText());
+                username = String.valueOf(et_Rphonenumber);
+                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")){
+                    Handler handler = new Handler();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            String[] field = new String[4];
+                            field[0] = "fullname";
+                            field[1] = "username";
+                            field[2] = "email";
+                            field[3] = "password";
+                            String[] data = new  String[4];
+                            data[0] = fullname;
+                            data[1] = username;
+                            data[2] = email;
+                            data[3] = password;
+                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
+                            if (putData.startPut()){
+                                if (putData.onComplete()){
+                                    String result = putData.getResult();
+                                    Toast.makeText(Register_Activity.this, result, Toast.LENGTH_LONG).show();
+                                    Log.e(TAG, "run: "+result );
+                                    if (result.equals("Sign Up Success")){
+                                        Toast.makeText(Register_Activity.this, result, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(Register_Activity.this , Login.class);
+                                        startActivity(intent);
+
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                }
+                else {
+                    Toast.makeText(Register_Activity.this, "All Fields Are Required", Toast.LENGTH_SHORT).show();
+                }
 
 
 
 
-               Intent intent = new Intent(Register_Activity.this , Login.class);
-                startActivity(intent);
+
             }
         });
     }
