@@ -108,6 +108,34 @@ public class MyVideoView_Activity extends AppCompatActivity {
         }
         if (requestCode == 2){
             Uri vediouri = data.getData();
+
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("description", "shots");
+                jsonObject.put("user_id", "468");
+                jsonObject.put("category_id","2");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            OkHttpClient client = new OkHttpClient().newBuilder()
+                    .build();
+            MediaType mediaType = MediaType.parse("text/plain");
+            RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                    .addFormDataPart("video","VID-20220103-WA0020.mp4",
+                            RequestBody.create(MediaType.parse("application/octet-stream"),
+                                    new File(vediouri.getPath())))
+                    .addFormDataPart("thumbnail","",
+                            RequestBody.create(MediaType.parse("application/octet-stream"),
+                                    new File("")))
+                    .addFormDataPart("data", null,
+                            RequestBody.create(MediaType.parse("application/json"), jsonObject.toString().getBytes()))
+                    .build();
+            Request request = new Request.Builder()
+                    .url("http://13.127.217.99:8080/soosleApi/soosle/upload")
+                    .method("POST", body)
+                    .build();
+
             v_video.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(),"Video Uploaded",Toast.LENGTH_SHORT).show();
             v_video.setVideoURI(vediouri);
