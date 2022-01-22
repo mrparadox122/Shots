@@ -13,7 +13,6 @@ import android.widget.TextView;
 public class SignUp extends AppCompatActivity {
 
 
-
     ImageView facebook_btn,google_btn,goBAck_btn;
     TextView mobile_btn;
 
@@ -31,10 +30,6 @@ public class SignUp extends AppCompatActivity {
     private void initview() {
 
         goBAck_btn = findViewById(R.id.Goback);
-
-
-
-
 
         facebook_btn = findViewById(R.id.facebook_btn);
         google_btn = findViewById(R.id.google_btn);

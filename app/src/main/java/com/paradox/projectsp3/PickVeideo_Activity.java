@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -24,7 +25,6 @@ public class PickVeideo_Activity extends AppCompatActivity {
     Button btn_video;
     VideoView v_video;
     MediaController mc;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,6 @@ public class PickVeideo_Activity extends AppCompatActivity {
         btn_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("video/*");
                 startActivityForResult(intent,2);
