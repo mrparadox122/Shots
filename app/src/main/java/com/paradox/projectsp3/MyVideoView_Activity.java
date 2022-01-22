@@ -1,14 +1,17 @@
 package com.paradox.projectsp3;
 
 import static android.content.ContentValues.TAG;
+import static com.paradox.projectsp3.Responses.ApiClient.retrofit;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -20,14 +23,18 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.gowtham.library.utils.FileUtils;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
+import com.paradox.projectsp3.Responses.Users;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -49,6 +56,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
     ImageView imageview,back;
     int SELECT_IMAGE_CODE =1;
     Button btn_image;
+    Uri imageuri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +110,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==1){
-            Uri imageuri = data.getData();
+            imageuri = data.getData();
             imageview.setImageURI(imageuri);
             btn_image.setText("Image Uploaded");
         }
@@ -117,26 +125,94 @@ public class MyVideoView_Activity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            File file = new File(getPath(vediouri));
+            //File file11 = new File(getPath(imageuri));
 
-            OkHttpClient client = new OkHttpClient().newBuilder()
-                    .build();
-            MediaType mediaType = MediaType.parse("text/plain");
-            RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                    .addFormDataPart("video","VID-20220103-WA0020.mp4",
-                            RequestBody.create(MediaType.parse("video/*"),
-                                    new File(vediouri.getPath())))
-                    .addFormDataPart("thumbnail","",
-                            RequestBody.create(MediaType.parse("application/octet-stream"),
-                                    new File("")))
-                    .addFormDataPart("data", null,
-                            RequestBody.create(MediaType.parse("application/json"), jsonObject.toString().getBytes()))
-                    .build();
-            Request request = new Request.Builder()
-                    .url("http://13.127.217.99:8080/soosleApi/soosle/upload")
-                    .method("POST", body)
-                    .build();
 
-            v_video.setVisibility(View.VISIBLE);
+
+            RequestBody descriptionPart = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());
+
+            RequestBody filepart = RequestBody.create(MediaType.parse("video/mp4"),file);
+            RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),imageuri.getPath());
+
+             MultipartBody.Part file1= MultipartBody.Part.createFormData("video",file.getName(),filepart);
+             MultipartBody.Part file2= MultipartBody.Part.createFormData("thumbnail","afsd.jpg",filepart1);
+
+            ApiInterface service = retrofit.create(ApiInterface.class);
+
+            Call<Users> call = service.upload(descriptionPart,file1,file2);
+            call.enqueue(new Callback<Users>() {
+                @Override
+                public void onResponse(Call<Users> call, Response<Users> response) {
+                    Log.i("mok","S");
+
+
+                }
+
+                @Override
+                public void onFailure(Call<Users> call, Throwable t) {
+                    Log.i("mok","F");
+
+                                 Log.i("mok",t.getCause()+"");
+                                 Log.i("mok","T");
+                                 finish();
+
+                }
+            });
+
+
+
+
+//            OkHttpClient client = new OkHttpClient().newBuilder()
+//                    .build();
+//            MediaType mediaType = MediaType.parse("text/plain");
+//            RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+//                    .addFormDataPart("video","VID-20220103-WA0020.mp4",
+//                            RequestBody.create(MediaType.parse("video/*"),
+//                                    new File(vediouri.getPath())))
+//                    .addFormDataPart("thumbnail","",
+//                            RequestBody.create(MediaType.parse("application/octet-stream"),
+//                                    new File("")))
+//                    .addFormDataPart("data", null,
+//                            RequestBody.create(MediaType.parse("application/json"), jsonObject.toString().getBytes()))
+//                    .build();
+//            Request request = new Request.Builder()
+//                    .url("http://13.127.217.99:8080/soosleApi/soosle/upload")
+//                    .method("POST", body)
+//                    .build();
+//
+//
+//            ApiInterface service = retrofit.create(ApiInterface.class);
+//            MediaType MEDIA_TYPE = MediaType.parse("video/mp4");
+//            Log.e(TAG, "onActivityResult: "+MEDIA_TYPE.toString());
+//            File file = new File(vediouri.getPath());
+//            RequestBody requestBody = RequestBody.create(MEDIA_TYPE,file);
+//            Call<Users> call = service.upload(requestBody);
+//            call.enqueue(new Callback<Users>() {
+//                             @Override
+//                             public void onResponse(Call<Users> call, Response<Users> response) {
+//                                 Log.i("mok","S");
+//
+//
+//
+//
+//
+//
+//                             }
+//
+//                             @Override
+//                             public void onFailure(Call<Users> call, Throwable t) {
+//
+//                                 Log.i("mok","F");
+//                                 t.printStackTrace();
+//                                 Log.i("mok",t.getCause()+"");
+//                                 Log.i("mok","T");
+//                                 finish();
+//
+//                             }
+//            });
+
+                    v_video.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(),"Video Uploaded",Toast.LENGTH_SHORT).show();
             v_video.setVideoURI(vediouri);
             setTitle("Video Uploaded");
@@ -202,5 +278,17 @@ public class MyVideoView_Activity extends AppCompatActivity {
         Animatoo.animateSlideDown(this);
         finish();
 
+    }
+
+    public String getPath(Uri uri)
+    {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor == null) return null;
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String s=cursor.getString(column_index);
+        cursor.close();
+        return s;
     }
 }
