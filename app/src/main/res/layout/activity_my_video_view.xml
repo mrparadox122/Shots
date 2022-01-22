@@ -36,25 +36,24 @@
 
     </LinearLayout>
 
-    <VideoView
-        android:id="@+id/v_video"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@id/toolbar"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp"
-        android:visibility="invisible" />
-
     <ImageView
-
         android:id="@+id/imageview"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/v_video"
+        android:layout_height="150dp"
+        android:layout_below="@+id/toolbar"
         android:layout_gravity="center"
         android:layout_marginStart="15dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="15dp" />
+
+    <VideoView
+        android:id="@+id/v_video"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_below="@id/imageview"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible" />
 
 
     <LinearLayout
@@ -66,17 +65,6 @@
         android:layout_marginBottom="22dp"
         android:orientation="horizontal">
 
-
-        <Button
-            android:layout_weight="1"
-            android:id="@+id/btn_video"
-            android:layout_width="match_parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_height="wrap_content"
-            android:text="Pick Video"
-            android:textAllCaps="false" />
-
         <Button
             android:id="@+id/btn_image"
             android:layout_width="match_parent"
@@ -87,6 +75,15 @@
             android:layout_weight="1"
             android:textAllCaps="false"/>
 
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_video"
+            android:layout_width="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_height="wrap_content"
+            android:text="Pick Video"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 

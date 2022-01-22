@@ -13,8 +13,9 @@ import android.widget.TextView;
 public class SignUp extends AppCompatActivity {
 
 
-    ImageView facebook_btn,google_btn,goBAck_btn;
-    TextView mobile_btn;
+    TextView facebook_btn,google_btn,mobile_btn;
+    ImageView goBAck_btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +46,11 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
         facebook_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(SignUp.this,Register_Activity.class);
+                Intent intent = new Intent(SignUp.this,HomeActivty.class);
                 startActivity(intent);
             }
         });
@@ -63,14 +58,13 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(SignUp.this,Register_Activity.class);
+                Intent intent = new Intent(SignUp.this,HomeActivty.class);
                 startActivity(intent);
             }
         });
         mobile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(SignUp.this,Register_Activity.class);
                 startActivity(intent);
             }
