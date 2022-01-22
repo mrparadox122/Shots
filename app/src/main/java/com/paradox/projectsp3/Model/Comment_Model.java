@@ -1,6 +1,8 @@
 package com.paradox.projectsp3.Model;
 
 public class Comment_Model {
+
+
     int Image;
     String users_name;
     String users_comment;
