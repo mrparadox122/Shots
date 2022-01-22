@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -41,7 +42,6 @@ import retrofit2.Retrofit;
 
 public class MyVideoView_Activity extends AppCompatActivity {
 
-
     Button btn_video;
     VideoView v_video;
     MediaController mc;
@@ -49,7 +49,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
     ImageView imageview,back;
     int SELECT_IMAGE_CODE =1;
     Button btn_image;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +63,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
 
         mc = new MediaController(MyVideoView_Activity.this);
         v_video.setMediaController(mc);
-
         btn_image = findViewById(R.id.btn_image);
         imageview = findViewById(R.id.imageview);
         back = findViewById(R.id.back);
@@ -91,7 +89,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
         btn_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("video/*");
                 startActivityForResult(intent,2);
@@ -104,8 +101,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-
         if (requestCode==1){
             Uri imageuri = data.getData();
             imageview.setImageURI(imageuri);
@@ -114,14 +109,12 @@ public class MyVideoView_Activity extends AppCompatActivity {
         if (requestCode == 2){
             Uri vediouri = data.getData();
             v_video.setVisibility(View.VISIBLE);
+            Toast.makeText(getApplicationContext(),"Video Uploaded",Toast.LENGTH_SHORT).show();
             v_video.setVideoURI(vediouri);
+            setTitle("Video Uploaded");
             v_video.start();
             btn_video.setText("Vedio Uploaded");
-
         }
-
-
-
 
 //        if (requestCode == 1){
 //
@@ -165,9 +158,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
 //                    Log.e(TAG, "onFailure: ////////////////////////////////////////////////" );
 //                }
 //            });
-//
-//
-//
+
 //            v_video.setVisibility(View.VISIBLE);
 //            v_video.setVideoURI(videouri);
 //            v_video.start();

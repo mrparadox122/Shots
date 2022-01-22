@@ -75,7 +75,6 @@ public class Register_Activity extends AppCompatActivity {
                                         Toast.makeText(Register_Activity.this, result, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(Register_Activity.this , Login.class);
                                         startActivity(intent);
-
                                     }
                                 }
                             }
@@ -86,11 +85,6 @@ public class Register_Activity extends AppCompatActivity {
                 else {
                     Toast.makeText(Register_Activity.this, "All Fields Are Required", Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-
             }
         });
     }
