@@ -73,7 +73,7 @@ public class PickVeideo_Activity extends AppCompatActivity {
             v_video.setVisibility(View.VISIBLE);
             v_video.setVideoURI(vediouri);
             v_video.start();
-            btn_video.setText("Vedio Uploaded");
+            btn_video.setText("Vnjm n");
             btn_video.setBackgroundColor(R.color.teal_200);
             Log.e(TAG, "onActivityResult: ////////////////////////////as/fafefaws/////////////////" );
         }

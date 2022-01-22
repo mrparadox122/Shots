@@ -2,6 +2,7 @@ package com.paradox.projectsp3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -39,6 +40,7 @@ public class Register_Activity extends AppCompatActivity {
         et_RConfirmpassword = findViewById(R.id.et_RConfirmpassword);
         alreadylogin_txt = findViewById(R.id.alreadylogin_txt);
         btn_signup = findViewById(R.id.btn_signup);
+        //goBack_btn = findViewById(R.id.Goback);
 
 
 
@@ -71,6 +73,8 @@ public class Register_Activity extends AppCompatActivity {
                                     String result = putData.getResult();
                                     Toast.makeText(Register_Activity.this, result, Toast.LENGTH_LONG).show();
                                     Log.e(TAG, "run: "+result );
+                                    Log.e(TAG, "field: "+field );
+                                    Log.e(TAG, "data: "+data );
                                     if (result.equals("Sign Up Success")){
                                         Toast.makeText(Register_Activity.this, result, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(Register_Activity.this , Login.class);

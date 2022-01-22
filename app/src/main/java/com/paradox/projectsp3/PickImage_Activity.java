@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+
+import static com.google.android.gms.vision.L.TAG;
 
 public class PickImage_Activity extends AppCompatActivity {
 
@@ -73,6 +76,7 @@ public class PickImage_Activity extends AppCompatActivity {
             Uri imageuri = data.getData();
             imageview.setImageURI(imageuri);
             btn_image.setText("Image Uploaded");
+            Log.e(TAG, "onActivityResult: ////////////////////////////////////////" );
             btn_image.setBackgroundColor(R.color.teal_200);
         }
 

@@ -25,6 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".comment_message"
             android:exported="false" />
         <activity
@@ -107,9 +110,7 @@
             android:name=".Login"
             android:exported="false"
             android:screenOrientation="nosensor" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".HomeActivty"
             android:screenOrientation="nosensor" />
