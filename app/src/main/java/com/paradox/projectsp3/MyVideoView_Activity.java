@@ -136,29 +136,29 @@ public class MyVideoView_Activity extends AppCompatActivity {
 
 
 //Convert bitmap to byte array
-            try {
-                bitmap = retriveVideoFrameFromVideo(getPath(vediouri));
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 0 /*ignored for PNG*/, bos);
-            byte[] bitmapdata = bos.toByteArray();
-
-//write the bytes in file
-            FileOutputStream fos = null;
-            try {
-                fos = new FileOutputStream(f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            try {
-                fos.write(bitmapdata);
-                fos.flush();
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                bitmap = retriveVideoFrameFromVideo(getPath(vediouri));
+//            } catch (Throwable throwable) {
+//                throwable.printStackTrace();
+//            }
+//            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, 0 /*ignored for PNG*/, bos);
+//            byte[] bitmapdata = bos.toByteArray();
+//
+////write the bytes in file
+//            FileOutputStream fos = null;
+//            try {
+//                fos = new FileOutputStream(f);
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//            try {
+//                fos.write(bitmapdata);
+//                fos.flush();
+//                fos.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
 
 
             RequestBody descriptionPart = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());

@@ -311,7 +311,7 @@ public class HomeActivty extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        dialog.dismiss();
+                       // dialog.dismiss();
                     }
                 }, 500);
                 finish();
