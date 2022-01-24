@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -31,10 +33,13 @@ import com.paradox.projectsp3.Responses.Users;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -57,6 +62,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
     int SELECT_IMAGE_CODE =1;
     Button btn_image;
     Uri imageuri;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,17 +132,42 @@ public class MyVideoView_Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             File file = new File(getPath(vediouri));
-            //File file11 = new File(getPath(imageuri));
+            File f = new File(getPath(vediouri));
 
+
+//Convert bitmap to byte array
+            try {
+                bitmap = retriveVideoFrameFromVideo(getPath(vediouri));
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 0 /*ignored for PNG*/, bos);
+            byte[] bitmapdata = bos.toByteArray();
+
+//write the bytes in file
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(f);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            try {
+                fos.write(bitmapdata);
+                fos.flush();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
 
             RequestBody descriptionPart = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());
 
             RequestBody filepart = RequestBody.create(MediaType.parse("video/mp4"),file);
-            RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),imageuri.getPath());
+            RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),f);
 
              MultipartBody.Part file1= MultipartBody.Part.createFormData("video",file.getName(),filepart);
-             MultipartBody.Part file2= MultipartBody.Part.createFormData("thumbnail","afsd.jpg",filepart1);
+             MultipartBody.Part file2= MultipartBody.Part.createFormData("thumbnail",f.getName(),filepart1);
 
             ApiInterface service = retrofit.create(ApiInterface.class);
 
@@ -291,4 +322,26 @@ public class MyVideoView_Activity extends AppCompatActivity {
         cursor.close();
         return s;
     }
+
+    public static Bitmap retriveVideoFrameFromVideo(String videoPath) throws Throwable {
+        Bitmap bitmap = null;
+        MediaMetadataRetriever mediaMetadataRetriever = null;
+        try {
+            mediaMetadataRetriever = new MediaMetadataRetriever();
+            mediaMetadataRetriever.setDataSource(videoPath, new HashMap<String, String>());
+            //   mediaMetadataRetriever.setDataSource(videoPath);
+            bitmap = mediaMetadataRetriever.getFrameAtTime();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Throwable("Exception in retriveVideoFrameFromVideo(String videoPath)" + e.getMessage());
+
+        } finally {
+            if (mediaMetadataRetriever != null) {
+                mediaMetadataRetriever.release();
+            }
+        }
+        return bitmap;
+    }
+
+
 }
