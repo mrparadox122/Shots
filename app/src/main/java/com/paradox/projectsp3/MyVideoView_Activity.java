@@ -167,7 +167,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
             RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),f);
 
              MultipartBody.Part file1= MultipartBody.Part.createFormData("video",file.getName(),filepart);
-             MultipartBody.Part file2= MultipartBody.Part.createFormData("thumbnail",f.getName(),filepart1);
+             MultipartBody.Part file2= MultipartBody.Part.createFormData("thumbnail",f.getName()+".jpg",filepart1);
 
             ApiInterface service = retrofit.create(ApiInterface.class);
 
