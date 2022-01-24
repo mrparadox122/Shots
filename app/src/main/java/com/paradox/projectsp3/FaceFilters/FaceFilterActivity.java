@@ -30,11 +30,13 @@ import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.daasuu.gpuv.camerarecorder.LensFacing;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.vision.CameraSource;
@@ -63,6 +65,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 public class FaceFilterActivity extends AppCompatActivity {
+
+
     TextGraphic mTextGraphic;
 
     private final Thread observer = new Thread("observer") {
@@ -115,13 +119,7 @@ public class FaceFilterActivity extends AppCompatActivity {
     // permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
-    //==============================================================================================
-    // Activity Methods
-    //==============================================================================================
 
-    /**
-     * Initializes the UI and initiates the creation of a face detector.
-     */
 
 
   // private static final String TAG="MainActivity";
@@ -142,6 +140,10 @@ public class FaceFilterActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_face_filter);
 
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
@@ -156,8 +158,8 @@ public class FaceFilterActivity extends AppCompatActivity {
         DisplayMetrics metrics=new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         mScreenDensity =metrics.densityDpi;
-        //initRecoder();
-       // prepareRecorder();
+//        initRecoder();
+//        prepareRecorder();
 
 
         mProjectionManager =(MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
@@ -399,6 +401,10 @@ public class FaceFilterActivity extends AppCompatActivity {
     {
         return mMediaProjection.createVirtualDisplay("FaceFilterActivity",DISPLAY_WIDTH,DISPLAY_HEIGHT,mScreenDensity, DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,mMediaRecorder.getSurface(),null,null);
     }
+
+    public void recording(View view) {
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private class MediaProjectionCallback extends MediaProjection.Callback
     {
@@ -507,11 +513,7 @@ public class FaceFilterActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Handles the requesting of the camera permission.  This includes
-     * showing a "Snackbar" message of why the permission is needed then
-     * sending the request.
-     */
+
     private void requestCameraPermission() {
         Log.w(TAG, "Camera permission is not granted. Requesting permission");
 
@@ -539,11 +541,7 @@ public class FaceFilterActivity extends AppCompatActivity {
                 .show();
     }
 
-    /**
-     * Creates and starts the camera.  Note that this uses a higher resolution in comparison
-     * to other detection examples to enable the barcode detector to detect small barcodes
-     * at long distances.
-     */
+
     private void createCameraSource() {
 
         Context context = getApplicationContext();
@@ -603,10 +601,7 @@ public class FaceFilterActivity extends AppCompatActivity {
         mPreview.stop();
     }
 
-    /**
-     * Releases the resources associated with the camera source, the associated detector, and the
-     * rest of the processing pipeline.
-     */
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDestroy() {
@@ -622,22 +617,7 @@ public class FaceFilterActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Callback for the result from requesting permissions. This method
-     * is invoked for every call on {@link #requestPermissions(String[], int)}.
-     * <p>
-     * <strong>Note:</strong> It is possible that the permissions request interaction
-     * with the user is interrupted. In this case you will receive empty permissions
-     * and results arrays which should be treated as a cancellation.
-     * </p>
-     *
-     * @param requestCode  The request code passed in {@link #requestPermissions(String[], int)}.
-     * @param permissions  The requested permissions. Never null.
-     * @param grantResults The grant results for the corresponding permissions
-     *                     which is either {@link PackageManager#PERMISSION_GRANTED}
-     *                     or {@link PackageManager#PERMISSION_DENIED}. Never null.
-     * @see #requestPermissions(String[], int)
-     */
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode != RC_HANDLE_CAMERA_PERM) {
@@ -669,15 +649,7 @@ public class FaceFilterActivity extends AppCompatActivity {
                 .show();
     }
 
-    //==============================================================================================
-    // Camera Source Preview
-    //==============================================================================================
 
-    /**
-     * Starts or restarts the camera source, if it exists.  If the camera source doesn't exist yet
-     * (e.g., because onResume was called before the camera source was created), this will be called
-     * again when the camera source is created.
-     */
     private void startCameraSource() {
 
         // check that the device has play services available.
@@ -727,14 +699,7 @@ public class FaceFilterActivity extends AppCompatActivity {
         }
     }
 
-    //==============================================================================================
-    // Graphic Face Tracker
-    //==============================================================================================
 
-    /**
-     * Factory for creating a face tracker to be associated with a new face.  The multiprocessor
-     * uses this factory to create face trackers as needed -- one for each individual.
-     */
     private class GraphicFaceTrackerFactory implements MultiProcessor.Factory<Face> {
         @Override
         public Tracker<Face> create(Face face) {
@@ -742,10 +707,7 @@ public class FaceFilterActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Face tracker for each detected individual. This maintains a face graphic within the app's
-     * associated face overlay.
-     */
+
     private class GraphicFaceTracker extends Tracker<Face> {
         private GraphicOverlay mOverlay;
         private FaceGraphic mFaceGraphic;
@@ -755,37 +717,26 @@ public class FaceFilterActivity extends AppCompatActivity {
             mFaceGraphic = new FaceGraphic(overlay,typeFace);
         }
 
-        /**
-         * Start tracking the detected face instance within the face overlay.
-         */
+
         @Override
         public void onNewItem(int faceId, Face item) {
             mFaceGraphic.setId(faceId);
         }
 
-        /**
-         * Update the position/characteristics of the face within the overlay.
-         */
+
         @Override
         public void onUpdate(FaceDetector.Detections<Face> detectionResults, Face face) {
             mOverlay.add(mFaceGraphic);
             mFaceGraphic.updateFace(face,typeFace);
         }
 
-        /**
-         * Hide the graphic when the corresponding face was not detected.  This can happen for
-         * intermediate frames temporarily (e.g., if the face was momentarily blocked from
-         * view).
-         */
+
         @Override
         public void onMissing(FaceDetector.Detections<Face> detectionResults) {
             mOverlay.remove(mFaceGraphic);
         }
 
-        /**
-         * Called when the face is assumed to be gone for good. Remove the graphic annotation from
-         * the overlay.
-         */
+
         @Override
         public void onDone() {
             mOverlay.remove(mFaceGraphic);

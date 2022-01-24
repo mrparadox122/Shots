@@ -123,7 +123,7 @@ class FaceGraphic extends GraphicOverlay.Graphic {
         if(face == null) return;
         // Draws a circle at the position of the detected face, with the face's track id below.
         float x = translateX(face.getPosition().x + face.getWidth() / 2);
-        float y = translateY(face.getPosition().y + face.getHeight() / 2);
+        float y = translateY(face.getPosition().y + face.getHeight() / 4);
         /*
         canvas.drawCircle(x, y, FACE_POSITION_RADIUS, mFacePositionPaint);
         canvas.drawText("id: " + mFaceId, x + ID_X_OFFSET, y + ID_Y_OFFSET, mIdPaint);
