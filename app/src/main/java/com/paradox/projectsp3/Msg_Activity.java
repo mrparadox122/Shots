@@ -22,7 +22,7 @@ public class Msg_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_msg);
 
 
-        String [] type = new String[]{"Male","Female","Others"};
+        String [] type = new String[]{"M","F","O",};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.item_layout_dropdown,type);
 
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.textauto);
