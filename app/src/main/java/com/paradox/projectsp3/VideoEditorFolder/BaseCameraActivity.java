@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -84,7 +85,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     private boolean toggleClick = false;
 
     private ListView lv;
-    private ImageView Close,Gallery;
+
     private String sound_url=null, sound_title=null;
 
     protected void onCreateActivity() {
@@ -93,9 +94,9 @@ public class BaseCameraActivity extends AppCompatActivity {
      Timer=findViewById(R.id.timer);
         pauseBtn= findViewById(R.id.pause);
         Face=findViewById(R.id.imageView2);
-        Edit=findViewById(R.id.imageView4);
 
-        Gallery=findViewById(R.id.gallery);
+
+
         addSound=findViewById(R.id.button);
         sound_url=getIntent().getStringExtra("sound_url");
         sound_title=getIntent().getStringExtra("sound_title");
@@ -139,12 +140,13 @@ public class BaseCameraActivity extends AppCompatActivity {
 
 
         Time15.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                Time15.setBackgroundColor(R.color.red);
-                Time30.setBackgroundColor(R.color.black);
-                Time60.setBackgroundColor(R.color.black);
+                Time15.setBackgroundColor(getColor(R.color.colorwhite_50));
+                Time30.setBackgroundColor(getColor(R.color.app_color));
+                Time60.setBackgroundColor(getColor(R.color.app_color));
 
                 time15[0] =true;
                 time30[0] =false;
@@ -153,12 +155,13 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
         });
         Time30.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                Time15.setBackgroundColor(R.color.black);
-                Time30.setBackgroundColor(R.color.red);
-                Time60.setBackgroundColor(R.color.black);
+                Time15.setBackgroundColor(getColor(R.color.app_color));
+                Time30.setBackgroundColor(getColor(R.color.colorwhite_50));
+                Time60.setBackgroundColor(getColor(R.color.app_color));
 
                 time15[0] =false;
                 time30[0] =true;
@@ -167,12 +170,13 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
         });
         Time60.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                Time15.setBackgroundColor(R.color.black);
-                Time30.setBackgroundColor(R.color.black);
-                Time60.setBackgroundColor(R.color.red);
+                Time15.setBackgroundColor(getColor(R.color.app_color));
+                Time30.setBackgroundColor(getColor(R.color.app_color));
+                Time60.setBackgroundColor(getColor(R.color.colorwhite_50));
 
                 time15[0] =false;
                 time30[0] =false;
@@ -199,16 +203,7 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
         });
 
-        Gallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkPermission();
-                Intent intent=new Intent();
-                intent.setType("video/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent,"Select Video"),100);
-            }
-        });
+
 
 
 
@@ -270,10 +265,14 @@ public class BaseCameraActivity extends AppCompatActivity {
                                 }
 
                             }
+
+
                             sound_button.setText("Add Sound");
                         }
 
                     }, 15000);
+
+
                 }
 
                 if(time30[0])
@@ -314,7 +313,31 @@ public class BaseCameraActivity extends AppCompatActivity {
                         public void run() {
 
 
+                            pauseBtn.setOnClickListener(v -> {
 
+                                GPUCameraRecorder.stop();
+                                recordBtn.setVisibility(View.VISIBLE);
+                                pauseBtn.setVisibility(View.GONE);
+                                Face.setVisibility(View.VISIBLE);
+                                Edit.setVisibility(View.GONE);
+                                Toast.makeText(BaseCameraActivity.this,"Recording Stopped",Toast.LENGTH_SHORT).show();
+
+
+
+                                ///stop sound file///
+                                if(sound_url !=null)
+                                {
+                                    try {
+                                        mp.stop();
+                                    }
+                                    catch (IllegalStateException e)
+                                    {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                                sound_button.setText("Add Sound");
+                            });
                             GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);

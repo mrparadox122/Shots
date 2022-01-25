@@ -34,13 +34,13 @@
       app:layout_constraintVertical_bias="0.82">
 
 
-    <TextView
+    <android.widget.TextView
         android:id="@+id/time15s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="15s"
-
-        android:textColor="@color/teal_700"
+        android:background="#C31E1E"
+        android:textColor="@color/purple_500"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,13 +49,14 @@
         app:layout_constraintTop_toTopOf="@+id/btn_flash"
         app:layout_constraintVertical_bias="0.16000003" />
 
-    <TextView
+    <android.widget.TextView
         android:id="@+id/time30s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#C31E1E"
         android:layout_marginLeft="25dp"
         android:text="30s"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/purple_500"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,13 +66,14 @@
         app:layout_constraintVertical_bias="0.26999998" />
 
 
-    <TextView
+    <android.widget.TextView
         android:id="@+id/time60s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
+        android:background="#C31E1E"
         android:text="60s"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/purple_500"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,37 +99,14 @@
       app:srcCompat="@drawable/face"
       app:tint="#FFEB3B" />
 
-  <ImageView
-      android:id="@+id/gallery"
-      android:layout_width="37dp"
-      android:layout_height="30dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.88"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.110000014"
-      app:srcCompat="@drawable/magic"
-      tools:ignore="VectorDrawableCompat" />
 
-  <ImageView
-      android:id="@+id/imageView4"
-      android:layout_width="54dp"
-      android:layout_height="52dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.87"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
 
-      app:layout_constraintVertical_bias="1.0" />
 
-  <!--     app:srcCompat="@drawable/ic_launcher_foreground"   -->
 
   <ImageView
       android:id="@+id/btn_flash"
-      android:layout_width="44dp"
-      android:layout_height="38dp"
+      android:layout_width="30dp"
+      android:layout_height="34dp"
 
       android:src="@drawable/flash"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -139,15 +118,15 @@
 
   <ImageView
       android:id="@+id/timer"
-      android:layout_width="44dp"
-      android:layout_height="38dp"
+      android:layout_width="30dp"
+      android:layout_height="34dp"
       android:src="@drawable/timer"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.9"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.29000002" />
+      app:layout_constraintVertical_bias="0.32999998" />
 
   <ImageView
       android:id="@+id/btn_switch_camera"
@@ -157,7 +136,7 @@
       android:src="@drawable/cameraclip"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.88"
+      app:layout_constraintHorizontal_bias="0.9"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.17000002" />
