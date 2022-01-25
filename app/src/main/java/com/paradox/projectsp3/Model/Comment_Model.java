@@ -18,7 +18,6 @@ public class Comment_Model {
     }
 
 
-
     public int getImage() {
         return Image;
     }

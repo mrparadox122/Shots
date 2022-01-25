@@ -21,16 +21,9 @@ public class MediaObject {
         this.user_name = user_name;
         this.url = media_url;
         this.thumbnail = thumbnail;
-
         this.likes = likes;
-
-
         this.shares = shares;
-
-
         this.comments = comments;
-
-
 
     }
 

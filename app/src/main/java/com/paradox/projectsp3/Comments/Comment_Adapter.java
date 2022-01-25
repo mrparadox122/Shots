@@ -1,4 +1,4 @@
-package com.paradox.projectsp3.Adapter;
+package com.paradox.projectsp3.Comments;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.paradox.projectsp3.Model.Comment_Model;
 import com.paradox.projectsp3.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +21,22 @@ import java.util.List;
 public class Comment_Adapter extends RecyclerView.Adapter<Comment_Adapter.comments> {
 
 
+    public Context context;
+    private Comment_Adapter.OnItemClickListener listener;
+    private ArrayList<Comment_Model> dataList;
 
-    List<Comment_Model> comment_modelList=new ArrayList<>();
-    Context context;
-    public Comment_Adapter(Context context,List<Comment_Model> comment_modelList)
-    {
-        this.context=context;
-        this.comment_modelList=comment_modelList;
+    public Comment_Adapter(Context context, ArrayList<Comment_Model> dataList)  {
+        this.context = context;
+        this.dataList = dataList;
+        this.listener = listener;
     }
+
+
+
+    public interface OnItemClickListener {
+        void onItemClick(int positon, Comment_Model item, View view);
+    }
+
 
     @NonNull
     @Override
@@ -39,28 +48,30 @@ public class Comment_Adapter extends RecyclerView.Adapter<Comment_Adapter.commen
 
     @Override
     public void onBindViewHolder(@NonNull Comment_Adapter.comments holder, int position) {
-        holder.imageView.setImageResource(comment_modelList.get(position).getImage());
-        holder.name.setText(comment_modelList.get(position).getUsers_name());
-        holder.comment.setText(comment_modelList.get(position).getUsers_comment());
-        holder.data.setText(comment_modelList.get(position).getDate());
+        holder.username.setText( dataList.get(position).getUsers_name());
+        Picasso.get().
+                load(dataList.get(position).getImage())
+                .resize(50, 50)
+                .placeholder(context.getResources().getDrawable(R.drawable.find_user_male))
+                .into(holder.user_pic);
+
+
     }
 
     @Override
     public int getItemCount() {
-        return comment_modelList.size();
+        return dataList.size();
     }
 
     public class comments extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
-        TextView name;
-        EditText comment;
-        TextView data;
+        TextView username, message;
+        ImageView user_pic;
         public comments(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.user_dp);
-            name=itemView.findViewById(R.id.user_name);
-            comment=itemView.findViewById(R.id.user_comment);
-            data=itemView.findViewById(R.id.date);
+            username = itemView.findViewById(R.id.username);
+            user_pic = itemView.findViewById(R.id.user_pic);
+            message = itemView.findViewById(R.id.message);
+
         }
 }}

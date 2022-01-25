@@ -203,10 +203,6 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
         recordBtn.setOnClickListener(v -> {
 
             if(time15[0]||time30[0]| time60[0]) {

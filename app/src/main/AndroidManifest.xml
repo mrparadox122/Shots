@@ -28,7 +28,7 @@
             android:name=".Msg_Activity"
             android:exported="false" />
         <activity
-            android:name=".Comment"
+            android:name=".Comments.Comment"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

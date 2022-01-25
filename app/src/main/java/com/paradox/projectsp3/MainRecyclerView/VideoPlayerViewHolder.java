@@ -10,29 +10,18 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
-import com.paradox.projectsp3.Adapter.Comment_Adapter;
-import com.paradox.projectsp3.Model.Comment_Model;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
@@ -49,6 +38,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     TextView commentn;
     TextView share;
     Context context;
+
+    String mediaObjectUrl;
 
 
     public VideoPlayerViewHolder(@NonNull View itemView) {
@@ -81,16 +72,11 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                 Dialog dialog=new Dialog(context1);
                 dialog.setContentView(R.layout.activity_comment);
 
-
-
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
-
-
                 dialog.show();
             }
-
 
         });
 
@@ -103,7 +89,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View view) {
                 if(checklike==true)
                 {
-
                     like.setImageResource(R.drawable.ic_icon_material_favorite_red);
                     checklike=false;
                 }
@@ -115,37 +100,27 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         });
-
         Share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent myIntent = new Intent(Intent.ACTION_SEND);
                 myIntent.setType("video/mp4");
-                String body = "Your body here";
+                String body = String.valueOf(mediaObjectUrl);
                 String sub = "Your Subject";
                 myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
                 myIntent.putExtra(Intent.EXTRA_TEXT,body);
                 context.startActivity(Intent.createChooser(myIntent, "Share Using"));
-
-
-
             }
         });
-
-
-
-
-
     }
-
-
 
 
     @SuppressLint("SetTextI18n")
     public void onBind(MediaObject mediaObject, RequestManager requestManager) {
         this.requestManager = requestManager;
         parent.setTag(this);
+        mediaObjectUrl = mediaObject.getMedia_url();
         likesn.setText(mediaObject.getLikes());
         commentn.setText(mediaObject.getComments());
         commentn.setText(mediaObject.getShares());
