@@ -31,9 +31,9 @@ import java.util.Calendar;
  * Graphic instance for rendering face position, orientation, and landmarks within an associated
  * graphic overlay view.
  */
-class TextGraphic extends GraphicOverlay.Graphic {
+public class TextGraphic extends GraphicOverlay.Graphic {
 
-    TextGraphic(GraphicOverlay overlay) {
+    public TextGraphic(GraphicOverlay overlay) {
         super(overlay);
     }
 
@@ -41,7 +41,7 @@ class TextGraphic extends GraphicOverlay.Graphic {
      * Updates the face instance from the detection of the most recent frame.  Invalidates the
      * relevant portions of the overlay to trigger a redraw.
      */
-    void updateText(int c) {
+    public void updateText(int c) {
         postInvalidate();
     }
 

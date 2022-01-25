@@ -91,10 +91,6 @@
             android:name=".FollowingActivity"
             android:exported="false"
             android:screenOrientation="nosensor" />
-        <activity
-            android:name=".FaceFilters.FaceFilterActivity"
-            android:exported="false"
-            android:screenOrientation="nosensor" />
 
         <meta-data
             android:name="com.google.android.gms.version"
