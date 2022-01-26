@@ -29,7 +29,7 @@ import com.paradox.projectsp3.R;
  * Graphic instance for rendering face position, orientation, and landmarks within an associated
  * graphic overlay view.
  */
-public class FaceGraphic extends GraphicOverlay.Graphic {
+class FaceGraphic extends GraphicOverlay.Graphic {
     private static final float FACE_POSITION_RADIUS = 10.0f;
     private static final float ID_TEXT_SIZE = 40.0f;
     private static final float ID_Y_OFFSET = 50.0f;
@@ -75,7 +75,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private Bitmap bitmap;
     private Bitmap op;
 
-    public FaceGraphic(GraphicOverlay overlay, int c) {
+    FaceGraphic(GraphicOverlay overlay,int c) {
         super(overlay);
         /*
         mCurrentColorIndex = (mCurrentColorIndex + 1) % COLOR_CHOICES.length;
@@ -97,7 +97,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         op = bitmap;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         mFaceId = id;
     }
 
@@ -105,7 +105,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      * Updates the face instance from the detection of the most recent frame.  Invalidates the
      * relevant portions of the overlay to trigger a redraw.
      */
-    public void updateFace(Face face, int c) {
+    void updateFace(Face face,int c) {
         mFace = face;
         bitmap = BitmapFactory.decodeResource(getOverlay().getContext().getResources(), MASK[c]);
         op = bitmap;

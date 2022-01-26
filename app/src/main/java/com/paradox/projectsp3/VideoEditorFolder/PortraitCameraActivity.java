@@ -17,7 +17,7 @@ public class PortraitCameraActivity extends BaseCameraActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_portrate);
-
+        onCreateActivity();
         videoWidth = 720;
         videoHeight = 1280;
         cameraWidth = 1280;

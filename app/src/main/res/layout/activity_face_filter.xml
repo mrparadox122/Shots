@@ -27,19 +27,6 @@
 
         </com.paradox.projectsp3.FaceFilters.camera.CameraSourcePreview>
 
-        <TextView
-            android:id="@+id/button"
-            android:layout_width="153dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:layout_centerHorizontal="true"
-            android:textAllCaps="false"
-            android:drawableLeft="@drawable/music"
-            android:text=" Add sound"
-            android:textColor="#fff"
-            android:gravity="center"
-            />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,15 +51,13 @@
                     app:layout_constraintVertical_bias="0.82">
 
 
-                    <android.widget.TextView
+                    <TextView
                         android:id="@+id/time15s"
-                        android:layout_width="40dp"
-                        android:layout_height="30dp"
-
-                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="15s"
-                        android:background="@drawable/timer_background"
-                        android:textColor="@color/black75"
+
+                        android:textColor="@color/app_color"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -81,15 +66,13 @@
                         app:layout_constraintTop_toTopOf="@+id/btn_flash"
                         app:layout_constraintVertical_bias="0.16000003" />
 
-                    <android.widget.TextView
+                    <TextView
                         android:id="@+id/time30s"
-                        android:layout_width="40dp"
-                        android:layout_height="30dp"
-                        android:gravity="center"
-                        android:background="@drawable/timer_background"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
                         android:text="30s"
-                        android:textColor="@color/black"
+                        android:textColor="@color/app_color"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -99,15 +82,13 @@
                         app:layout_constraintVertical_bias="0.26999998" />
 
 
-                    <android.widget.TextView
+                    <TextView
                         android:id="@+id/time60s"
-                        android:layout_width="40dp"
-                        android:layout_height="30dp"
-                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
-                        android:background="@drawable/timer_background"
                         android:text="60s"
-                        android:textColor="@color/black75"
+                        android:textColor="@color/app_color"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,12 +102,12 @@
 
                 <ImageButton
                     android:id="@+id/camera"
+                    android:onClick="recording"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerHorizontal="true"
                     android:layout_weight="1"
                     android:background="#00000000"
-                    android:onClick="recording"
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/pause" />
 
@@ -154,12 +135,12 @@
 
                 <ImageView
 
-                    android:id="@+id/timerImageView"
+                    android:id="@+id/timer"
+                    android:layout_marginTop="10dp"
                     android:layout_width="30dp"
                     android:layout_height="34dp"
-                    android:layout_marginLeft="78dp"
 
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="78dp"
                     android:src="@drawable/timer" />
             </RelativeLayout>
 

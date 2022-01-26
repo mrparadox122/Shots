@@ -42,7 +42,7 @@ import com.daasuu.gpuv.camerarecorder.CameraRecordListener;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorder;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorderBuilder;
 import com.daasuu.gpuv.camerarecorder.LensFacing;
-
+import com.paradox.projectsp3.FaceFilters.FaceFilterActivity;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.MainActivity;
@@ -93,7 +93,7 @@ public class BaseCameraActivity extends AppCompatActivity {
         recordBtn = findViewById(R.id.record);
      Timer=findViewById(R.id.timer);
         pauseBtn= findViewById(R.id.pause);
-
+        Face=findViewById(R.id.imageView2);
 
 
 
@@ -124,8 +124,11 @@ public class BaseCameraActivity extends AppCompatActivity {
         Face.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent=new Intent(BaseCameraActivity.this, FaceFilterActivity.class);
 
-
+                startActivity(intent);
+                Animatoo.animateSlideUp(BaseCameraActivity.this);
+                finish();
             }
         });
 
@@ -199,10 +202,6 @@ public class BaseCameraActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
         recordBtn.setOnClickListener(v -> {
 
