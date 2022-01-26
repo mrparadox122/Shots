@@ -8,8 +8,6 @@
     android:background="#FFC0B4"
     >
 
-
-
     <FrameLayout
         android:id="@+id/media_container"
         android:layout_width="0dp"
@@ -25,7 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/purple_700">
-
 
             <ImageView
                 android:id="@+id/thumbnail"
@@ -62,6 +59,12 @@
                 app:layout_constraintVertical_bias="0.77"
                 app:srcCompat="@drawable/ic_baseline_add_circle_24"
                 tools:ignore="VectorDrawableCompat" />
+
+            <FrameLayout
+                android:id="@+id/commentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteY="398dp"></FrameLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -167,7 +170,6 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="45dp"
-
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="72dp"
@@ -279,16 +281,6 @@
         app:layout_constraintTop_toTopOf="parent"
 
         ></LinearLayout>
-
-    <FrameLayout
-        android:layout_marginTop="400dp"
-        android:id="@+id/commentLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="@+id/media_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -174,10 +174,6 @@ public class HomeActivty extends AppCompatActivity {
 
         LoadAllPosts();
 
-
-
-
-
     }
 
     private void LoadAllPosts() {

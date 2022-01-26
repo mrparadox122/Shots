@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.RequestManager;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.ShareBottomSheetActivity;
 
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
@@ -62,8 +63,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         share = itemView.findViewById(R.id.share);
 
 
-
-
         Comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,9 +78,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             }
 
         });
-
-
-
 
 
         like.setOnClickListener(new View.OnClickListener() {
@@ -104,13 +100,22 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
 
-                Intent myIntent = new Intent(Intent.ACTION_SEND);
-                myIntent.setType("video/mp4");
-                String body = String.valueOf(mediaObjectUrl);
-                String sub = "Your Subject";
-                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
-                myIntent.putExtra(Intent.EXTRA_TEXT,body);
-                context.startActivity(Intent.createChooser(myIntent, "Share Using"));
+
+                Context sharecontext= itemView.getContext();
+                Dialog dialog=new Dialog(sharecontext);
+                dialog.setContentView(R.layout.activity_share_bottom_sheet);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().setGravity(Gravity.BOTTOM);
+                dialog.show();
+//
+//                Intent myIntent = new Intent(Intent.ACTION_SEND);
+//                myIntent.setType("video/mp4");
+//                String body = String.valueOf(mediaObjectUrl);
+//                String sub = "Your Subject";
+//                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
+//                myIntent.putExtra(Intent.EXTRA_TEXT,body);
+//                context.startActivity(Intent.createChooser(myIntent, "Share Using"));
             }
         });
     }

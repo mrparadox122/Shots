@@ -25,13 +25,16 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ShareBottomSheetActivity"
+            android:exported="false" />
+        <activity
             android:name=".Msg_Activity"
             android:exported="false" />
         <activity
             android:name=".Comments.Comment"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".PinNumber_Activity"
@@ -110,7 +113,7 @@
             android:name=".VideoEditorFolder.PortraitCameraActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".SignUp"
+            android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="nosensor">
             <intent-filter>
