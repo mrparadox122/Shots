@@ -21,7 +21,8 @@ public class Msg_Activity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_msg);
 
-                String [] type = new String[]{"M","F","O",};
+
+        String [] type = new String[]{"M","F","O",};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.item_layout_dropdown,type);
 
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.textauto);
@@ -31,6 +32,7 @@ public class Msg_Activity extends AppCompatActivity {
            @Override
            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                Toast.makeText(Msg_Activity.this, autoCompleteTextView.getText().toString(), Toast.LENGTH_SHORT).show();
+
            }
        });
     }
