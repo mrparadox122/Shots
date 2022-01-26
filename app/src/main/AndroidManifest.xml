@@ -28,9 +28,6 @@
             android:name=".ShareBottomSheetActivity"
             android:exported="false" />
         <activity
-            android:name=".Msg_Activity"
-            android:exported="false" />
-        <activity
             android:name=".Comments.Comment"
             android:exported="false" />
         <activity
