@@ -231,7 +231,7 @@ public class GPUCameraRecorder {
     /**
      * Start data processing
      */
-    public void start(final String filePath) {
+    public  void start(final String filePath) {
         if (started) return;
 
 
@@ -279,7 +279,7 @@ public class GPUCameraRecorder {
     /**
      * Stops capturing.
      */
-    public void stop() {
+    public  void stop() {
         if (!started) return;
         try {
 

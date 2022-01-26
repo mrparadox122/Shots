@@ -1,4 +1,5 @@
 
+
 package com.paradox.projectsp3.VideoEditorFolder;
 
 import static com.paradox.projectsp3.R.color.red;
@@ -75,9 +76,10 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
-    LinearLayout timerLayout;
+
     protected int videoWidth = 720;
     protected int videoHeight = 720;
+    LinearLayout timerLayout;
     TextView Time15,Time30,Time60;
     TextView sound_button;
     private MediaPlayer mp;
@@ -91,7 +93,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected void onCreateActivity() {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.record);
-     Timer=findViewById(R.id.timer);
+        Timer=findViewById(R.id.timer);
         pauseBtn= findViewById(R.id.pause);
         Face=findViewById(R.id.imageView2);
 
@@ -207,7 +209,7 @@ public class BaseCameraActivity extends AppCompatActivity {
 
             if(time15[0]||time30[0]| time60[0]) {
 
-               lv.setVisibility(View.GONE);
+                lv.setVisibility(View.GONE);
                 filepath = getVideoFilePath();
                 GPUCameraRecorder.start(filepath);
                 recordBtn.setVisibility(View.GONE);
@@ -656,24 +658,24 @@ public class BaseCameraActivity extends AppCompatActivity {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
     }
 
-  public void  checkPermission()
-  {
+    public void  checkPermission()
+    {
 
 
-      if(Build.VERSION.SDK_INT <Build.VERSION_CODES.M)
-      {
-          return;
-      }
-      if(ActivityCompat.checkSelfPermission(BaseCameraActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
-      {
-        ActivityCompat.requestPermissions(BaseCameraActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},101);
+        if(Build.VERSION.SDK_INT <Build.VERSION_CODES.M)
+        {
+            return;
+        }
+        if(ActivityCompat.checkSelfPermission(BaseCameraActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(BaseCameraActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},101);
 
-      }
-      else
-      {
+        }
+        else
+        {
 
-      }
-  }
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

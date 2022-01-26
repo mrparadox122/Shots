@@ -31,7 +31,7 @@ import java.util.Calendar;
  * Graphic instance for rendering face position, orientation, and landmarks within an associated
  * graphic overlay view.
  */
-class TextGraphic extends GraphicOverlay.Graphic {
+public class TextGraphic extends GraphicOverlay.Graphic {
 
     TextGraphic(GraphicOverlay overlay) {
         super(overlay);
