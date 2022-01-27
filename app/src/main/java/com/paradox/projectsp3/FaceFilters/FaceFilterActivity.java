@@ -68,6 +68,7 @@ public class FaceFilterActivity extends AppCompatActivity {
 
 
     TextGraphic mTextGraphic;
+    private String filepath;
 
     private final Thread observer = new Thread("observer") {
 
@@ -131,7 +132,6 @@ public class FaceFilterActivity extends AppCompatActivity {
     private MediaProjection mMediaProjection;
     private VirtualDisplay mVirtualDisplay;
     private MediaProjectionCallback mMediaProjectionCallback;
-
     private MediaRecorder mMediaRecorder;
     private Object Handler;
 
@@ -146,6 +146,11 @@ public class FaceFilterActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_face_filter);
 
+        Intent intent=getIntent();
+        Boolean time15=intent.getBooleanExtra("time15",false);
+        Boolean time30=intent.getBooleanExtra("time30",false);
+        Boolean time60=intent.getBooleanExtra("time60",false);
+
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
         mGraphicOverlay = (GraphicOverlay) findViewById(R.id.faceOverlay);
         //mTextGraphic = new TextGraphic(mGraphicOverlay);
@@ -159,7 +164,7 @@ public class FaceFilterActivity extends AppCompatActivity {
         DisplayMetrics metrics=new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         mScreenDensity =metrics.densityDpi;
-//        initRecoder();
+//        initRecorder();
 //        prepareRecorder();
 
 
@@ -307,13 +312,51 @@ public class FaceFilterActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         cameraRecord .setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                pause.setVisibility(View.VISIBLE);
-                recordVideo();
+               recordVideo();
+
+                if(time15)
+                {
+                    Handler =new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mMediaProjection=null;
+                            stopScreenSharing();
+
+                            Toast.makeText(FaceFilterActivity.this,"Recording Stopped...",Toast.LENGTH_SHORT).show();
+
+
+                        }
+                    },15000);
+
+                }
+                else if(time30)
+                {
+                    Handler=new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mMediaProjection=null;
+                            stopScreenSharing();
+                            Toast.makeText(FaceFilterActivity.this,"Recording Stopped...",Toast.LENGTH_SHORT).show();
+
+                        }
+                    },30000);
+
+                }
+                else if(time60)
+                {
+                    Handler=new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mMediaProjection=null;
+                            stopScreenSharing();
+                            Toast.makeText(FaceFilterActivity.this,"Recording Stopped...",Toast.LENGTH_SHORT).show();
+
+                        }
+                    },60000);
+                }
+
             }
         });
         pause.setOnClickListener(new View.OnClickListener() {
@@ -321,6 +364,7 @@ public class FaceFilterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 pause.setVisibility(GONE);
                 cameraRecord.setVisibility(View.VISIBLE);
+                Toast.makeText(FaceFilterActivity.this,"Recording Stopped",Toast.LENGTH_SHORT).show();
                 stopScreenSharing();
             }
         });
@@ -336,7 +380,7 @@ public class FaceFilterActivity extends AppCompatActivity {
             requestCameraPermission();
         }
     }
-
+//
 //    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -349,7 +393,7 @@ public class FaceFilterActivity extends AppCompatActivity {
 //        if(resultCode !=RESULT_OK)
 //        {
 //            Toast.makeText(this,"Screen Cast Permission Denied",Toast.LENGTH_SHORT).show();
-//            cameraRecord.setVisibility(GONE);
+//
 //            return;
 //        }
 //
@@ -363,48 +407,36 @@ public class FaceFilterActivity extends AppCompatActivity {
     private void recordVideo() {
         shareScreen();
 
-
-        shareScreen();
-        Toast.makeText(this,"Recording Started....",Toast.LENGTH_SHORT).show();
         findViewById(R.id.scrollView).setVisibility(View.GONE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
 
-
-        Handler =new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mMediaProjection=null;
-                stopScreenSharing();
-
-                Toast.makeText(FaceFilterActivity.this,"Recording Stopped...",Toast.LENGTH_SHORT).show();
-
-
-            }
-        },30000);
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void shareScreen()
     {
+
+        cameraRecord.setVisibility(GONE);
+        pause.setVisibility(View.VISIBLE);
         if(mMediaProjection==null)
         {
             startActivityForResult(mProjectionManager.createScreenCaptureIntent(),PERMISSION_CODE);
             return;
         }
         mVirtualDisplay= createVirtualDisplay();
+
         mMediaRecorder.start();
     }
     private void stopScreenSharing()
     {
+        cameraRecord.setVisibility(View.VISIBLE);
+        pause.setVisibility(GONE);
         if(mVirtualDisplay==null)
         {
             return;
         }
-        Toast.makeText(FaceFilterActivity.this,"Recording Stopped",Toast.LENGTH_SHORT).show();
+
         mVirtualDisplay.release();
     }
 
@@ -465,6 +497,7 @@ public class FaceFilterActivity extends AppCompatActivity {
         {
             String videoName=("indian_"+ "soosle" + ".mp4");
             filePath=directory+File.separator+ videoName;
+            Toast.makeText(this,"Faile create ",Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -512,9 +545,8 @@ public class FaceFilterActivity extends AppCompatActivity {
 
             int finalWidth = maxWidth;
             int finalHeight = maxHeight;
-            if (ratioMax > 1) {
-                finalWidth = (int) ((float) maxHeight * ratioBitmap);
-            } else {
+            if (ratioMax > 1) finalWidth = (int) ((float) maxHeight * ratioBitmap);
+            else {
                 finalHeight = (int) ((float) maxWidth / ratioBitmap);
             }
             image = Bitmap.createScaledBitmap(image, finalWidth, finalHeight, true);
@@ -629,36 +661,36 @@ public class FaceFilterActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode != RC_HANDLE_CAMERA_PERM) {
-            Log.d(TAG, "Got unexpected permission result: " + requestCode);
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-            return;
-        }
-
-        if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "Camera permission granted - initialize the camera source");
-            // we have permission, so create the camerasource
-            createCameraSource();
-            return;
-        }
-
-        Log.e(TAG, "Permission not granted: results len = " + grantResults.length +
-                " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
-
-        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                finish();
-            }
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Face Tracker sample")
-                .setMessage(R.string.no_camera_permission)
-                .setPositiveButton(R.string.ok, listener)
-                .show();
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+//        if (requestCode != RC_HANDLE_CAMERA_PERM) {
+//            Log.d(TAG, "Got unexpected permission result: " + requestCode);
+//            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//            return;
+//        }
+//
+//        if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//            Log.d(TAG, "Camera permission granted - initialize the camera source");
+//            // we have permission, so create the camerasource
+//            createCameraSource();
+//            return;
+//        }
+//
+//        Log.e(TAG, "Permission not granted: results len = " + grantResults.length +
+//                " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
+//
+//        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int id) {
+//                finish();
+//            }
+//        };
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Face Tracker sample")
+//                .setMessage(R.string.no_camera_permission)
+//                .setPositiveButton(R.string.ok, listener)
+//                .show();
+//    }
 
 
     private void startCameraSource() {

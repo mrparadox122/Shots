@@ -11,8 +11,6 @@
     android:layout_gravity="bottom"
     android:orientation="vertical"
     tools:context=".Comments.Comment">
-
-
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
