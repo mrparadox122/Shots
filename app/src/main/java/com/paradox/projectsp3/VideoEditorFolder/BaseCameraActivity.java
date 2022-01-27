@@ -117,6 +117,8 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
 
         });
+
+
 //        Face.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

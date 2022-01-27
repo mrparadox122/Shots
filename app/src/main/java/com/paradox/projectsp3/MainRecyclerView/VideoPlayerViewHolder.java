@@ -20,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
+import com.paradox.projectsp3.HomeActivty;
+import com.paradox.projectsp3.MessageMainActivity;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.ShareBottomSheetActivity;
@@ -34,14 +36,12 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     View parent;
     RequestManager requestManager;
     LinearLayout CommentView;
-    boolean checklike=true;
     TextView likesn;
     TextView commentn;
     TextView share;
     Context context;
-
     String mediaObjectUrl;
-
+    boolean checklike=true;
 
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -70,7 +70,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                 Context context1= itemView.getContext();
                 Dialog dialog=new Dialog(context1);
                 dialog.setContentView(R.layout.activity_comment);
-
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
