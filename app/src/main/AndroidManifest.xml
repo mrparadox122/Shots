@@ -31,7 +31,7 @@
             android:name=".Comments.Comment"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".PinNumber_Activity"
@@ -114,7 +114,7 @@
             android:name=".VideoEditorFolder.PortraitCameraActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SignUp"
             android:exported="true"
             android:screenOrientation="nosensor">
             <intent-filter>

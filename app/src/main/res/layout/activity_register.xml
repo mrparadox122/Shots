@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
                     android:hint="Name"
-                    android:inputType="text"
+                    android:inputType="textPersonName"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -91,7 +91,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
                     android:hint="Phone Number"
-                    android:inputType="textEmailAddress"
+                    android:inputType="phone"
+                    android:maxLength="10"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -108,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
                     android:hint="Gender"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -126,7 +127,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
                     android:hint="Password"
-                    android:inputType="textPassword"
+                    android:inputType="number"
+                    android:maxLength="4"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -144,7 +146,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
                     android:hint="Confirm Password"
-                    android:inputType="textPassword"
+                    android:inputType="number"
+                    android:maxLength="4"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
