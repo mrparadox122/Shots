@@ -60,6 +60,8 @@ public class HomeActivty extends AppCompatActivity {
     public static ApiInterface apiInterface;
     private static final int CAMERA_PERMISSION_REQUEST=888;
 
+     public boolean user = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +82,16 @@ public class HomeActivty extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (user ==true){
+                    Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+                    startActivity(intent);
+                    user = false ;
+                }else {
+                    Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+                    startActivity(intent);
+                    user = true ;
+                }
+
                 Ghar.setImageResource(R.drawable.ic_icon_feather_home);
                 comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
@@ -96,6 +108,8 @@ public class HomeActivty extends AppCompatActivity {
         comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 comment.setImageResource(R.drawable.aaa);
                 Ghar.setImageResource(R.drawable.ic_icon_feather_home);
 
@@ -262,6 +276,18 @@ public class HomeActivty extends AppCompatActivity {
 
     public void showbottomsheet() {
 
+        if (user ==true){
+
+            Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+            startActivity(intent);
+            user = false ;
+
+        }else {
+            Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+            startActivity(intent);
+            user = true ;
+        }
+
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_bottom_sheet);
@@ -273,6 +299,18 @@ public class HomeActivty extends AppCompatActivity {
         ll_createshort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (user ==true){
+
+                    Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+                    startActivity(intent);
+                    user = false ;
+
+                }else {
+                    Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+                    startActivity(intent);
+                    user = true ;
+                }
+
                 Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -295,6 +333,18 @@ public class HomeActivty extends AppCompatActivity {
         ll_uploadvedio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (user ==true){
+
+                    Intent intent = new Intent(HomeActivty.this,MyVideoView_Activity.class);
+                    startActivity(intent);
+                    user = false ;
+
+                }else {
+                    Intent intent = new Intent(HomeActivty.this,MyVideoView_Activity.class);
+                    startActivity(intent);
+                    user = true ;
+                }
 
                 checkPermission();
                 Intent intent=new Intent(HomeActivty.this, MyVideoView_Activity.class);

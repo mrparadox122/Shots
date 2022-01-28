@@ -181,7 +181,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
                 public void onResponse(Call<Users> call, Response<Users> response) {
                     Log.i("mok","S");
 
-
                 }
 
                 @Override
@@ -194,8 +193,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
 
                 }
             });
-
-
 
 
 //            OkHttpClient client = new OkHttpClient().newBuilder()
