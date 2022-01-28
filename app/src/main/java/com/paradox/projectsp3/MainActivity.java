@@ -22,9 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
@@ -43,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, HomeActivty.class);
+                Intent intent = new Intent(MainActivity.this, NewSignUpActivity.class);
                 startActivity(intent);
                 finish();
             }

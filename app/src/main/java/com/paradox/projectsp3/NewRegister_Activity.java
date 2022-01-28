@@ -1,61 +1,60 @@
-package com.paradox.projectsp3.Fragments;
+package com.paradox.projectsp3;
 
 import static com.google.android.gms.vision.L.TAG;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.paradox.projectsp3.Login;
-import com.paradox.projectsp3.R;
-import com.paradox.projectsp3.Register_Activity;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
-
-public class Register_Fragment extends Fragment {
+public class NewRegister_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText et_name,et_Remail ,et_Rphonenumber,et_Rpassword, et_RConfirmpassword;
     Button btn_signup;
     TextView alreadylogin_txt;
 
-    public Register_Fragment() {
-        // Required empty public constructor
-    }
+    String[] Gender = { "Male", "Female", "Others"};
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_register_, container, false);
-
-        et_name =view. findViewById(R.id.et_name);
-        et_Remail = view.findViewById(R.id.et_Remail);
-        et_Rphonenumber = view.findViewById(R.id.et_Rphonenumber);
-        et_Rpassword = view.findViewById(R.id.et_Rpassword);
-        et_RConfirmpassword =view. findViewById(R.id.et_RConfirmpassword);
-        alreadylogin_txt = view.findViewById(R.id.alreadylogin_txt);
-        btn_signup = view.findViewById(R.id.btn_signup);
-        //goBack_btn = findViewById(R.id.Goback);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+        setContentView(R.layout.activity_new_register);
 
 
+        Spinner spinner = findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(this);
+
+
+        ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Gender);
+        ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(ad);
+
+
+        et_name = findViewById(R.id.et_name);
+        et_Remail = findViewById(R.id.et_Remail);
+        et_Rphonenumber = findViewById(R.id.et_Rphonenumber);
+        et_Rpassword = findViewById(R.id.et_Rpassword);
+        et_RConfirmpassword = findViewById(R.id.et_RConfirmpassword);
+        alreadylogin_txt = findViewById(R.id.alreadylogin_txt);
+        btn_signup = findViewById(R.id.btn_signup);
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,13 +83,13 @@ public class Register_Fragment extends Fragment {
                             if (putData.startPut()){
                                 if (putData.onComplete()){
                                     String result = putData.getResult();
-                                    Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_LONG).show();
                                     Log.e(TAG, "run: "+result );
                                     Log.e(TAG, "field: "+field );
                                     Log.e(TAG, "data: "+data );
                                     if (result.equals("Sign Up Success")){
-                                        Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getActivity(), Login.class);
+                                        Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(NewRegister_Activity.this, Login.class);
                                         startActivity(intent);
                                     }
                                 }
@@ -99,16 +98,20 @@ public class Register_Fragment extends Fragment {
                     });
                 }
                 else {
-                    Toast.makeText(getActivity(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
-
-        return view;
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+        Toast.makeText(getApplicationContext(), Gender[i], Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }

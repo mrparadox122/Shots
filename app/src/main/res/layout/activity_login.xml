@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8B50C"
+    android:background="@color/teal_700"
     tools:context=".Login">
 
     <LinearLayout
@@ -17,15 +17,14 @@
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/gotham"
             android:gravity="center"
             android:shadowColor="#57000000"
             android:text="@string/login_text"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:textSize="21sp"
             android:textStyle="bold"
-            app:drawableLeftCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+            app:drawableLeftCompat="@drawable/ic_arrow_back" />
 
     </LinearLayout>
 
