@@ -278,12 +278,12 @@ public class HomeActivty extends AppCompatActivity {
 
         if (user ==true){
 
-            Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+            Intent intent = new Intent(HomeActivty.this,NewSignUpActivity.class);
             startActivity(intent);
             user = false ;
 
         }else {
-            Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+            Intent intent = new Intent(HomeActivty.this,NewSignUpActivity.class);
             startActivity(intent);
             user = true ;
         }
@@ -301,12 +301,12 @@ public class HomeActivty extends AppCompatActivity {
             public void onClick(View view) {
                 if (user ==true){
 
-                    Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+                    Intent intent = new Intent(HomeActivty.this,NewSignUpActivity.class);
                     startActivity(intent);
                     user = false ;
 
                 }else {
-                    Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
+                    Intent intent = new Intent(HomeActivty.this,NewSignUpActivity.class);
                     startActivity(intent);
                     user = true ;
                 }

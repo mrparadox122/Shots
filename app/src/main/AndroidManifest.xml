@@ -25,6 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".NewSignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".ShareBottomSheetActivity"
             android:exported="false" />
         <activity
@@ -91,7 +94,6 @@
             android:name=".FollowingActivity"
             android:exported="false"
             android:screenOrientation="nosensor" />
-
 
         <meta-data
             android:name="com.google.android.gms.version"

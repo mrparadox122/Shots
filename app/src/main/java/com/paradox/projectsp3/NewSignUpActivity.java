@@ -12,11 +12,9 @@ import android.widget.TextView;
 
 import com.paradox.projectsp3.Fragments.Register_Fragment;
 
-public class SignUp extends AppCompatActivity {
+public class NewSignUpActivity extends AppCompatActivity {
 
-
-    TextView facebook_btn,google_btn,mobile_btn;
-    ImageView goBAck_btn;
+    TextView facebook_btn,google_btn,mobile_btn,btn_skip;
 
 
     @Override
@@ -25,25 +23,19 @@ public class SignUp extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_new_sign_up);
 
-        initview();
-    }
 
-    private void initview() {
-
-        goBAck_btn = findViewById(R.id.Goback);
-
+        btn_skip = findViewById(R.id.btn_skip);
         facebook_btn = findViewById(R.id.facebook_btn);
         google_btn = findViewById(R.id.google_btn);
         mobile_btn = findViewById(R.id.mobile_btn);
 
 
-
-        goBAck_btn.setOnClickListener(new View.OnClickListener() {
+        btn_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignUp.this,HomeActivty.class);
+                Intent intent = new Intent(NewSignUpActivity.this,HomeActivty.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +44,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(SignUp.this,HomeActivty.class);
+                Intent intent = new Intent(NewSignUpActivity.this,HomeActivty.class);
                 startActivity(intent);
             }
         });
@@ -60,14 +52,14 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(SignUp.this,HomeActivty.class);
+                Intent intent = new Intent(NewSignUpActivity.this,HomeActivty.class);
                 startActivity(intent);
             }
         });
         mobile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignUp.this, Register_Fragment.class);
+                Intent intent = new Intent(NewSignUpActivity.this, Register_Fragment.class);
                 startActivity(intent);
             }
         });
