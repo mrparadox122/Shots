@@ -299,17 +299,6 @@ public class HomeActivty extends AppCompatActivity {
         ll_createshort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (user ==true){
-
-                    Intent intent = new Intent(HomeActivty.this,NewSignUpActivity.class);
-                    startActivity(intent);
-                    user = false ;
-
-                }else {
-                    Intent intent = new Intent(HomeActivty.this,NewSignUpActivity.class);
-                    startActivity(intent);
-                    user = true ;
-                }
 
                 Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);

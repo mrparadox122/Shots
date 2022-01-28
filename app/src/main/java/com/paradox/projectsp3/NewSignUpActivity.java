@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.paradox.projectsp3.Fragments.Register_Fragment;
 
 public class NewSignUpActivity extends AppCompatActivity {
 
@@ -59,7 +56,7 @@ public class NewSignUpActivity extends AppCompatActivity {
         mobile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NewSignUpActivity.this, Register_Fragment.class);
+                Intent intent = new Intent(NewSignUpActivity.this, NewRegister_Activity.class);
                 startActivity(intent);
             }
         });

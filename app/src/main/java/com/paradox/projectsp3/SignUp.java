@@ -10,8 +10,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.paradox.projectsp3.Fragments.Register_Fragment;
-
 public class SignUp extends AppCompatActivity {
 
 
@@ -59,7 +57,6 @@ public class SignUp extends AppCompatActivity {
         google_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(SignUp.this,HomeActivty.class);
                 startActivity(intent);
             }
@@ -67,7 +64,7 @@ public class SignUp extends AppCompatActivity {
         mobile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignUp.this, Register_Fragment.class);
+                Intent intent = new Intent(SignUp.this, NewRegister_Activity.class);
                 startActivity(intent);
             }
         });
