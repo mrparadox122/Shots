@@ -47,6 +47,7 @@ import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
 import com.paradox.projectsp3.Responses.Users;
+import com.paradox.projectsp3.VideoEditorFolder.BaseCameraActivity;
 import com.paradox.projectsp3.VideoEditorFolder.PortraitCameraActivity;
 
 import retrofit2.Call;
@@ -278,12 +279,12 @@ public class HomeActivty extends AppCompatActivity {
 
         if (user ==true){
 
-            Intent intent = new Intent(HomeActivty.this,NewSignUpActivity.class);
+            Intent intent = new Intent(HomeActivty.this, PortraitCameraActivity.class);
             startActivity(intent);
             user = false ;
 
         }else {
-            Intent intent = new Intent(HomeActivty.this,NewSignUpActivity.class);
+            Intent intent = new Intent(HomeActivty.this, PortraitCameraActivity.class);
             startActivity(intent);
             user = true ;
         }

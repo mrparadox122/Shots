@@ -460,11 +460,11 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         if(volumeControl != null){
             volumeControl.bringToFront();
             if(volumeState == VolumeState.OFF){
-                requestManager.load(R.drawable.ic_volume_off_grey_24dp)
+                requestManager.load(R.drawable.pause_video)
                         .into(volumeControl);
             }
             else if(volumeState == VolumeState.ON){
-                requestManager.load(R.drawable.ic_volume_up_grey_24dp)
+                requestManager.load(R.drawable.video_play)
                         .into(volumeControl);
             }
             volumeControl.animate().cancel();

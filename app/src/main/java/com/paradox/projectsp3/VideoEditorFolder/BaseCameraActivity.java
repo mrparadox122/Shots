@@ -321,31 +321,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                         public void run() {
 
 
-                            pauseBtn.setOnClickListener(v -> {
 
-                                GPUCameraRecorder.stop();
-                                recordBtn.setVisibility(View.VISIBLE);
-                                pauseBtn.setVisibility(View.GONE);
-                                Face.setVisibility(View.VISIBLE);
-                                Edit.setVisibility(View.GONE);
-                                Toast.makeText(BaseCameraActivity.this,"Recording Stopped",Toast.LENGTH_SHORT).show();
-
-
-
-                                ///stop sound file///
-                                if(sound_url !=null)
-                                {
-                                    try {
-                                        mp.stop();
-                                    }
-                                    catch (IllegalStateException e)
-                                    {
-                                        e.printStackTrace();
-                                    }
-
-                                }
-                                sound_button.setText("Add Sound");
-                            });
                             GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
@@ -385,27 +361,15 @@ public class BaseCameraActivity extends AppCompatActivity {
         });
         pauseBtn.setOnClickListener(v -> {
 
+
+
             GPUCameraRecorder.stop();
             recordBtn.setVisibility(View.VISIBLE);
             pauseBtn.setVisibility(View.GONE);
             Face.setVisibility(View.VISIBLE);
-            Edit.setVisibility(View.GONE);
-            Toast.makeText(this,"Recording Stopped",Toast.LENGTH_SHORT).show();
+//                            Edit.setVisibility(View.VISIBLE);
+            Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
 
-
-
-            ///stop sound file///
-            if(sound_url !=null)
-            {
-                try {
-                    mp.stop();
-                }
-                catch (IllegalStateException e)
-                {
-                    e.printStackTrace();
-                }
-
-            }
             sound_button.setText("Add Sound");
         });
         findViewById(R.id.btn_flash).setOnClickListener(v -> {

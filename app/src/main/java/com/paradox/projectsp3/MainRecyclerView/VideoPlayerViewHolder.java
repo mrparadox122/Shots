@@ -56,6 +56,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         likesn = itemView.findViewById(R.id.likesn);
         commentn = itemView.findViewById(R.id.comments);
 
+
         Comment=itemView.findViewById(R.id.imageView8);
         context= itemView.getContext();
         Share=itemView.findViewById(R.id.imageView6);

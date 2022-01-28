@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="100"
-        android:textColor="@color/white"
+        android:textColor="#DCD1D1"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
         app:layout_constraintHorizontal_bias="0.46"
@@ -75,7 +75,7 @@
         android:layout_marginBottom="112dp"
         android:gravity="center"
         android:text="100"
-        android:textColor="@color/white"
+        android:textColor="#DCD1D1"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="100"
-        android:textColor="@color/white"
+        android:textColor="#DCD1D1"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
         app:layout_constraintHorizontal_bias="0.51"
@@ -98,16 +98,15 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
-        android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:src="@drawable/find_user_male"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.03"
+        android:id="@+id/profilepic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:src="@drawable/b"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.77" />
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
 
     <TextView
@@ -116,7 +115,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="100"
-        android:textColor="@color/white"
+        android:textColor="#DCD1D1"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
@@ -195,7 +194,7 @@
         android:drawablePadding="4dp"
         android:drawableTint="@color/white"
         android:text="Imran Khan (amplifyer...)"
-        android:textColor="@color/white"
+        android:textColor="#DCD1D1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
@@ -211,26 +210,30 @@
         android:layout_marginBottom="16dp"
         android:text="description description description description description description description description"
         android:textSize="12sp"
-        android:textColor="@color/white"
+        android:textColor="#DCD1D1"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2" />
 
 
-    <android.widget.TextView
-        android:background="@drawable/follow_btn_back"
-        android:id="@+id/button2"
+    <android.widget.Button
+        android:id="@+id/textButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="70dp"
-        android:layout_height="30dp"
-        android:text="follow"
-        android:textColor="#0B0707"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="10sp"
+        android:layout_height="25dp"
+        android:background="@drawable/follow_btn_back"
+        android:text="Follow"
+        android:textStyle="bold"
+
+
+        android:textColor="#DCD1D1"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.71000004" />
 
 
 
@@ -241,7 +244,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text=" @User@123456"
-        android:textColor="@color/white"
+        android:textColor="#DCD1D1"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
@@ -270,10 +273,11 @@
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_volume_up_grey_24dp"
+
         tools:ignore="VectorDrawableCompat" />
 
     <LinearLayout
