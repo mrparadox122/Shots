@@ -26,6 +26,14 @@ import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.ShareBottomSheetActivity;
 
+import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
     FrameLayout media_container;
@@ -122,7 +130,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
 
     @SuppressLint("SetTextI18n")
-    public void onBind(MediaObject mediaObject, RequestManager requestManager) {
+    public void onBind(MediaObject mediaObject, RequestManager requestManager) throws IOException {
         this.requestManager = requestManager;
         parent.setTag(this);
         mediaObjectUrl = mediaObject.getMedia_url();
@@ -133,6 +141,20 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         title.setText(mediaObject.getDescription()+"\n"+mediaObject.getPost_categories());
 
         this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
+        ////// set view to video
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "{\r\n    \"video_id\" : \"14\",\r\n    \"flag\" : \"3\"\r\n}");
+        Request request = new Request.Builder()
+                .url("http://13.127.217.99/dashboard/update.php")
+                .method("PUT", body)
+                .addHeader("Content-Type", "application/json")
+                .build();
+        Response response = client.newCall(request).execute();
+
+
+
     }
 
 }
