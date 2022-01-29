@@ -161,7 +161,6 @@
       android:layout_alignParentBottom="true"
       android:layout_centerInParent="true"
       android:src="@drawable/pause"
-
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintHorizontal_bias="0.55"
       app:layout_constraintLeft_toLeftOf="parent"
@@ -186,7 +185,6 @@
       android:id="@+id/filter_list"
       android:layout_width="123dp"
       android:layout_height="match_parent"
-
       android:layout_marginTop="64dp"
       android:layout_marginBottom="100dp"
       app:layout_constraintBottom_toBottomOf="parent"

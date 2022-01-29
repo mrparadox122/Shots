@@ -25,6 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewRegister_Activity"
             android:exported="false" />
         <activity
@@ -37,16 +40,10 @@
             android:name=".Comments.Comment"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
-            android:exported="false" />
-        <activity
             android:name=".PinNumber_Activity"
             android:exported="false" />
         <activity
             android:name=".ForgotPassword_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Register_Activity"
             android:exported="false" />
         <activity
             android:name=".ContentLanguages_Activity"
@@ -108,7 +105,8 @@
         <activity
             android:name=".Login"
             android:exported="false"
-            android:screenOrientation="nosensor" /><activity
+            android:screenOrientation="nosensor" />
+        <activity
             android:name=".FaceFilters.FaceFilterActivity"
             android:exported="false"
             android:screenOrientation="nosensor" />
@@ -119,7 +117,7 @@
             android:name=".VideoEditorFolder.PortraitCameraActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ChooseYoursIntrests_Activity"
             android:exported="true"
             android:screenOrientation="nosensor">
             <intent-filter>
