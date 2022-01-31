@@ -141,7 +141,6 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:textStyle="bold"
-
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
@@ -151,6 +150,5 @@
         app:layout_constraintEnd_toStartOf="@+id/divider"
         app:layout_constraintTop_toTopOf="@+id/divider"
         app:layout_constraintVertical_bias="1.0" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
