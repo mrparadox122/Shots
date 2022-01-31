@@ -298,6 +298,9 @@ public class BaseCameraActivity extends AppCompatActivity {
 //            }
 //        });
 
+
+
+//cameyghhhj
         recordBtn.setOnClickListener(v -> {
 
 
