@@ -72,7 +72,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     Dialog dialogSetting;
     CircleImageView showVideoPath;
 
-    private ImageView recordBtn,pauseBtn,Face,Edit,Timer,setting;
+    private ImageView recordBtn,pauseBtn,Face,Edit,Timer,setting,Pause_video,Play_video,Photo_filter;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
@@ -105,6 +105,8 @@ public class BaseCameraActivity extends AppCompatActivity {
         Time30=findViewById(R.id.time30s);
         Time60=findViewById(R.id.time60s);
         timerLayout=findViewById(R.id.timerlayout);
+        Pause_video=findViewById(R.id.pause_video);
+        Play_video=findViewById(R.id.play_video);
         final boolean[] timer = {false};
         Timer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +124,25 @@ public class BaseCameraActivity extends AppCompatActivity {
 
         });
         showVideoPath=findViewById(R.id.profilepic);
+        Photo_filter=findViewById(R.id.photo_filter);
+        lv=findViewById(R.id.filter_list);
+        final boolean[] photo_filter = {true};
+        Photo_filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(photo_filter[0])
+                {
+                    lv.setVisibility(View.VISIBLE);
+                    photo_filter[0] =false;
+                }
+                else
+                {
+                    lv.setVisibility(View.GONE);
+                    photo_filter[0] =true;
+                }
+
+            }
+        });
 
 
 
@@ -246,13 +267,39 @@ public class BaseCameraActivity extends AppCompatActivity {
         });
 
 
+
+
+
+        Pause_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Pause_video.setVisibility(View.GONE);
+                Play_video.setVisibility(View.VISIBLE);
+
+            }
+        });
+//        Play_video.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sampleGLView.onResume();
+//                Play_video.setVisibility(View.GONE);
+//                Pause_video.setVisibility(View.VISIBLE);
+//            }
+//        });
+
         recordBtn.setOnClickListener(v -> {
+
+
+
 
             if(time15[0]||time30[0]| time60[0]) {
 
-                lv.setVisibility(View.GONE);
+//                lv.setVisibility(View.GONE);
                 filepath = getVideoFilePath();
                 GPUCameraRecorder.start(filepath);
+                Pause_video.setVisibility(View.VISIBLE);
+
 
                 
                 recordBtn.setVisibility(View.GONE);
@@ -434,7 +481,6 @@ public class BaseCameraActivity extends AppCompatActivity {
 //        });
 
 
-        lv = findViewById(R.id.filter_list);
 
         final List<FilterType> filterTypes = FilterType.createFilterList();
         lv.setAdapter(new FilterAdapter(this, R.layout.row_white_text, filterTypes).whiteMode());
@@ -528,13 +574,13 @@ public class BaseCameraActivity extends AppCompatActivity {
                     @Override
                     public void onRecordComplete() {
                         exportMp4ToGallery(getApplicationContext(), filepath);
-                        lv.setVisibility(View.VISIBLE);
+//                        lv.setVisibility(View.VISIBLE);
                     }
 
                     @Override
                     public void onRecordStart() {
                         runOnUiThread(() -> {
-                            lv.setVisibility(View.GONE);
+//                            lv.setVisibility(View.GONE);
                         });
                     }
 
