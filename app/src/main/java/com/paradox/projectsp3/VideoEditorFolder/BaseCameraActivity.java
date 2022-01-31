@@ -72,7 +72,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     Dialog dialogSetting;
     CircleImageView showVideoPath;
 
-    private ImageView recordBtn,pauseBtn,Face,Edit,Timer,setting,Pause_video,Play_video,Photo_filter;
+    private ImageView recordBtn,pauseBtn,Face,Edit,Timer,setting,Pause_video,Play_video,Photo_filter,btn_switch_camera;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
@@ -127,6 +127,7 @@ public class BaseCameraActivity extends AppCompatActivity {
         Photo_filter=findViewById(R.id.photo_filter);
         lv=findViewById(R.id.filter_list);
         final boolean[] photo_filter = {true};
+        btn_switch_camera=findViewById(R.id.btn_switch_camera);
         Photo_filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -276,7 +277,16 @@ public class BaseCameraActivity extends AppCompatActivity {
 
                 Pause_video.setVisibility(View.GONE);
                 Play_video.setVisibility(View.VISIBLE);
+                Toast.makeText(BaseCameraActivity.this,"Paused",Toast.LENGTH_SHORT).show();
 
+            }
+        });
+        Play_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Play_video.setVisibility(View.GONE);
+                Pause_video.setVisibility(View.VISIBLE);
+                Toast.makeText(BaseCameraActivity.this,"Play",Toast.LENGTH_SHORT).show();
             }
         });
 //        Play_video.setOnClickListener(new View.OnClickListener() {
@@ -298,6 +308,7 @@ public class BaseCameraActivity extends AppCompatActivity {
 //                lv.setVisibility(View.GONE);
                 filepath = getVideoFilePath();
                 GPUCameraRecorder.start(filepath);
+                btn_switch_camera.setVisibility(View.GONE);
                 Pause_video.setVisibility(View.VISIBLE);
 
 
@@ -441,7 +452,10 @@ public class BaseCameraActivity extends AppCompatActivity {
 
         });
         pauseBtn.setOnClickListener(v -> {
+            btn_switch_camera.setVisibility(View.VISIBLE);
 
+            Pause_video.setVisibility(View.GONE);
+            Play_video.setVisibility(View.GONE);
 
 
             GPUCameraRecorder.stop();
