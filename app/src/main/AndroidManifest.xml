@@ -25,7 +25,7 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ChooseYoursIntrests_Activity"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".NewRegister_Activity"
@@ -103,7 +103,7 @@
             android:value="face" />
 
         <activity
-            android:name=".Login"
+            android:name="ChooseYoursIntrests_Activity"
             android:exported="false"
             android:screenOrientation="nosensor" />
         <activity
