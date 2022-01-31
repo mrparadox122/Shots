@@ -106,6 +106,8 @@ public class BaseCameraActivity extends AppCompatActivity {
         Time60=findViewById(R.id.time60s);
         timerLayout=findViewById(R.id.timerlayout);
         final boolean[] timer = {false};
+
+
         Timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,8 +124,6 @@ public class BaseCameraActivity extends AppCompatActivity {
 
         });
         showVideoPath=findViewById(R.id.profilepic);
-
-
 
         final Boolean[] time15 = {false};
         final Boolean[] time30 = {false};
@@ -175,8 +175,6 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
         });
 
-
-
         if(sound_title !=null)
         {
             sound_button.setText(sound_title);
@@ -199,8 +197,6 @@ public class BaseCameraActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 dialogSetting=new Dialog(BaseCameraActivity.this);
-
-
                 dialogSetting.setContentView(R.layout.camera_setting);
                 dialogSetting.setCancelable(false);
                 ImageView close=dialogSetting.findViewById(R.id.back);
@@ -208,7 +204,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         dialogSetting.dismiss();
-
                     }
                 });
                 dialogSetting.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -219,11 +214,9 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
         });
 
-
         Face.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if(time15[0]||time30[0]| time60[0]) {
                 Intent intent=new Intent(BaseCameraActivity.this, FaceFilterActivity.class);
                 intent.putExtra("time15",time15[0]);
@@ -253,8 +246,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                 lv.setVisibility(View.GONE);
                 filepath = getVideoFilePath();
                 GPUCameraRecorder.start(filepath);
-
-                
                 recordBtn.setVisibility(View.GONE);
                 Face.setVisibility(View.VISIBLE);
                 //Edit.setVisibility(View.VISIBLE);
@@ -268,12 +259,10 @@ public class BaseCameraActivity extends AppCompatActivity {
 
                 if (sound_url != null) {
                     try {
-
                         mp = new MediaPlayer();
                         mp.setDataSource(sound_url);
                         mp.prepare();
                         mp.start();
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -287,9 +276,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-
-
                             GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
@@ -299,8 +285,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                             ///stop sound file///
                             if (sound_url != null) {
                                 try {
-
-
                                     mp.stop();
                                 } catch (IllegalStateException e) {
                                     e.printStackTrace();
@@ -322,9 +306,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-
-
                             GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
@@ -353,9 +334,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-
-
                             GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);

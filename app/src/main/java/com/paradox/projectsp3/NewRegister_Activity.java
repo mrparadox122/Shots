@@ -64,8 +64,6 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 if (isSubmit == true){
 
 
-
-
                     ////set visivibilty
 
 

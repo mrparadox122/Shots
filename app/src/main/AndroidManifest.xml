@@ -25,6 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".PostVideo_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
@@ -103,7 +106,7 @@
             android:value="face" />
 
         <activity
-            android:name="ChooseYoursIntrests_Activity"
+            android:name=".ChooseYoursIntrests_Activity"
             android:exported="false"
             android:screenOrientation="nosensor" />
         <activity
