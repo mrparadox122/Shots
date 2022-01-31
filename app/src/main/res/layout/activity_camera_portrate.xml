@@ -178,7 +178,7 @@
       android:layout_height="33dp"
       android:layout_marginTop="16dp"
       android:drawableLeft="@drawable/music"
-      android:gravity="center"
+
       android:text=" Add sound"
       android:textAllCaps="false"
       android:textColor="#fff"
