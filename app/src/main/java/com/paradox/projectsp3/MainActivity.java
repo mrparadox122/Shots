@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, NewSignUpActivity.class);
+                Intent intent = new Intent(MainActivity.this, ChooseYoursIntrests_Activity.class);
                 startActivity(intent);
                 finish();
             }

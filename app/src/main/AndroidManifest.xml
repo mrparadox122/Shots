@@ -25,7 +25,7 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivity"
+            android:name=".ChooseYoursIntrests_Activity"
             android:exported="false" />
         <activity
             android:name=".NewRegister_Activity"
@@ -117,7 +117,7 @@
             android:name=".VideoEditorFolder.PortraitCameraActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".ChooseYoursIntrests_Activity"
+            android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="nosensor">
             <intent-filter>
