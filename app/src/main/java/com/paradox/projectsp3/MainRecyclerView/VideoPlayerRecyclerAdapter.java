@@ -10,6 +10,7 @@ import com.bumptech.glide.RequestManager;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -33,7 +34,11 @@ public class VideoPlayerRecyclerAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        ((com.paradox.projectsp3.MainRecyclerView.VideoPlayerViewHolder) viewHolder).onBind(mediaObjects.get(i), requestManager);
+        try {
+            ((VideoPlayerViewHolder) viewHolder).onBind(mediaObjects.get(i), requestManager);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

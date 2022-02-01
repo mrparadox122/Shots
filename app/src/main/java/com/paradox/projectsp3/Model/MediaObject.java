@@ -7,17 +7,18 @@ public class MediaObject {
         ////////////////////////
     }
 
-    private String title,description,date,user_id,post_categories,post_id,view,user_name,url,thumbnail,likes,comments,shares;
+    private String title,video_id,description,date,user_id,post_categories,post_id,views,user_name,url,thumbnail,likes,comments,shares;
 
-    public MediaObject(String title,String description,String date,String user_id,String post_categories,String post_id,String view,String user_name,String media_url,String thumbnail)
+    public MediaObject(String title,String video_id,String description,String date,String user_id,String post_categories,String post_id,String view,String user_name,String media_url,String thumbnail)
     {
+        this.video_id = video_id;
         this.title = title;
         this.description = description;
         this.date = date;
         this.user_id =user_id;
         this.post_categories = post_categories;
         this.post_id = post_id;
-        this.view = view;
+        this.views = views;
         this.user_name = user_name;
         this.url = media_url;
         this.thumbnail = thumbnail;
@@ -25,6 +26,9 @@ public class MediaObject {
         this.shares = shares;
         this.comments = comments;
 
+    }
+    public String getVideo_id(){
+        return video_id;
     }
 
     public String getComments() {
@@ -99,12 +103,12 @@ public class MediaObject {
         this.post_id = post_id;
     }
 
-    public String getView() {
-        return view;
+    public String getViews() {
+        return views;
     }
 
-    public void setView(String view) {
-        this.view = view;
+    public void setViews(String views) {
+        this.views = views;
     }
 
     public String getUser_name() {

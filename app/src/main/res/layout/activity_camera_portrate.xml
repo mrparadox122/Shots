@@ -172,12 +172,13 @@
       app:tint="@color/white" />
 
   <TextView
+      android:background="@drawable/follow_btn_back"
       android:id="@+id/button"
       android:layout_width="129dp"
       android:layout_height="33dp"
       android:layout_marginTop="16dp"
       android:drawableLeft="@drawable/music"
-      android:gravity="center"
+
       android:text=" Add sound"
       android:textAllCaps="false"
       android:textColor="#fff"

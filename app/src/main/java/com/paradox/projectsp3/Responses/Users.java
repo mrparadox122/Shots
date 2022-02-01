@@ -9,6 +9,7 @@ import java.util.List;
 
 
 public class Users {
+
     @SerializedName("soosle_details")
     private List<MediaObject> AllPosts;
     @SerializedName("soosle_AllSound")
