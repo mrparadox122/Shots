@@ -76,8 +76,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
-
-    protected int videoWidth = 720;
+    protected int videoWidth = 1280;
     protected int videoHeight = 720;
     LinearLayout timerLayout;
     TextView Time15,Time30,Time60;

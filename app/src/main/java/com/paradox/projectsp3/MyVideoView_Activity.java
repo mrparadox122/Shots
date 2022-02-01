@@ -1,19 +1,18 @@
 package com.paradox.projectsp3;
 
+import static android.content.ContentValues.TAG;
 import static com.paradox.projectsp3.Responses.ApiClient.retrofit;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +25,8 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.gowtham.library.utils.FileUtils;
+import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
 import com.paradox.projectsp3.Responses.Users;
 
@@ -34,15 +35,22 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MyVideoView_Activity extends AppCompatActivity {
 
@@ -123,20 +131,8 @@ public class MyVideoView_Activity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            try {
-                bitmap = retriveVideoFrameFromVideo(getPath(vediouri));
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
-
-
-
-
-
             File file = new File(getPath(vediouri));
-//            File f = new File((bitmapToFile(this,bitmap,String.valueOf(file.getName()))));
-
+            File f = new File(getPath(vediouri));
 
 
 //Convert bitmap to byte array
@@ -168,10 +164,10 @@ public class MyVideoView_Activity extends AppCompatActivity {
             RequestBody descriptionPart = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());
 
             RequestBody filepart = RequestBody.create(MediaType.parse("video/mp4"),file);
-            RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),bitmapToFile(this,bitmap,file.getName()));
+            RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),f);
 
-             MultipartBody.Part file1= MultipartBody.Part.createFormData("video",file.getName(),filepart);
-             MultipartBody.Part file2= MultipartBody.Part.createFormData("thumbnail",file.getName()+".jpg",filepart1);
+            MultipartBody.Part file1= MultipartBody.Part.createFormData("video",file.getName(),filepart);
+            MultipartBody.Part file2= MultipartBody.Part.createFormData("thumbnail",f.getName()+".jpg",filepart1);
 
             ApiInterface service = retrofit.create(ApiInterface.class);
 
@@ -187,9 +183,9 @@ public class MyVideoView_Activity extends AppCompatActivity {
                 public void onFailure(Call<Users> call, Throwable t) {
                     Log.i("mok","F");
 
-                                 Log.i("mok",t.getCause()+"");
-                                 Log.i("mok","T");
-                                 finish();
+                    Log.i("mok",t.getCause()+"");
+                    Log.i("mok","T");
+                    finish();
 
                 }
             });
@@ -244,7 +240,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
 //                             }
 //            });
 
-                    v_video.setVisibility(View.VISIBLE);
+            v_video.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(),"Video Uploaded",Toast.LENGTH_SHORT).show();
             v_video.setVideoURI(vediouri);
             setTitle("Video Uploaded");
@@ -343,33 +339,6 @@ public class MyVideoView_Activity extends AppCompatActivity {
         }
         return bitmap;
     }
-
-    public static File bitmapToFile(Context context, Bitmap bitmap, String fileNameToSave) { // File name like "image.png"
-        //create a file to write bitmap data
-        File file = null;
-        try {
-            file = new File(Environment.getExternalStorageDirectory() + File.separator + fileNameToSave);
-            file.createNewFile();
-
-//Convert bitmap to byte array
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100 , bos); // YOU can also save it in JPEG
-            byte[] bitmapdata = bos.toByteArray();
-
-//write the bytes in file
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(bitmapdata);
-            fos.flush();
-            fos.close();
-            return file;
-        }catch (Exception e){
-            e.printStackTrace();
-            return file; // it will return null
-        }
-    }
-
-
-
 
 
 }

@@ -1,12 +1,19 @@
 package com.paradox.projectsp3.MainRecyclerView;
 
 
+import static android.content.ContentValues.TAG;
+
+import static com.paradox.projectsp3.Responses.ApiClient.retrofit;
+import static com.paradox.projectsp3.Responses.ApiClient.retrofit1;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +22,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.MessageMainActivity;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.Responses.ApiInterface;
+import com.paradox.projectsp3.Responses.Users;
 import com.paradox.projectsp3.ShareBottomSheetActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -32,13 +50,20 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.http.Body;
 
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
     FrameLayout media_container;
     ImageView like,Share,Comment;
-    TextView title;
+    TextView title,views;
     ImageView thumbnail, volumeControl,soundDisk;
     ProgressBar progressBar;
     View parent;
@@ -54,6 +79,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
+        views = itemView.findViewById(R.id.noViews);
         media_container = itemView.findViewById(R.id.media_container);
         thumbnail = itemView.findViewById(R.id.thumbnail);
         title = itemView.findViewById(R.id.textView3);
@@ -142,19 +168,72 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
         this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
         ////// set view to video
-        OkHttpClient client = new OkHttpClient().newBuilder()
-                .build();
-        MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\r\n    \"video_id\" : \"14\",\r\n    \"flag\" : \"3\"\r\n}");
-        Request request = new Request.Builder()
-                .url("http://13.127.217.99/dashboard/update.php")
-                .method("PUT", body)
-                .addHeader("Content-Type", "application/json")
-                .build();
-        Response response = client.newCall(request).execute();
+        String video_id = mediaObject.getVideo_id().toString();
+//        String users = (video_id +
+//                "    \"flag\": \"6\"\n" +
+//                "}");
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("video_id", video_id);
+            jsonObject.put("flag", "6");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+//        Unirest.setTimeouts(0, 0);
+//            String response = Unirest.post("http://13.127.217.99/dashboard/update.php")
+//                    .header("Content-Type", "text/plain")
+//                    .body("{\r\n    \"video_id\": \"14\",\r\n    \"flag\": \"6\"\r\n}")
+//                    .toString();
+//            Log.e(TAG, "onBind://////////// "+response);
+
+        Retrofit.Builder retrofit = new Retrofit.Builder()
+                .baseUrl("http://13.127.217.99/dashboard/")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit2 = retrofit.build();
+
+
+        //get client
+        ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+        Call<ResponseBody> call = apiInterface.getStringScalar(jsonObject.toString());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Toast.makeText(context.getApplicationContext(), "//"+response+jsonObject.toString(), Toast.LENGTH_LONG).show();
+                views.setText(mediaObject.getViews());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_LONG).show();
+
+            }
+        });
 
 
 
+
+
+
+
+//        ApiInterface service = retrofit1.create(ApiInterface.class);
+//        Call<Users> call = service.update(users);
+//        Log.e(TAG, "onBind: /////////////////"+String.valueOf(users));
+//        call.enqueue(new Callback<Users>() {
+//            @Override
+//            public void onResponse(Call<Users> call, Response<Users> response) {
+//                Log.i("mok","S"+response);
+//                views.setText(mediaObject.getViews());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Users> call,Throwable t) {
+//
+//                Log.i("mok","F"+t);
+//                Log.i("mok",t.getCause()+"");
+//                Log.i("mok","T");
+//
+//            }
+//        });
     }
-
 }
