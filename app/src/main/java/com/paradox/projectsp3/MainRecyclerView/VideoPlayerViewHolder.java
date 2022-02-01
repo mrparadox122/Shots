@@ -56,7 +56,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+//import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.Body;
 
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
@@ -199,8 +199,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Toast.makeText(context.getApplicationContext(), "//"+response+jsonObject.toString(), Toast.LENGTH_LONG).show();
-                views.setText(mediaObject.getViews());
+                 views.setText(mediaObject.getViews());
             }
 
             @Override
@@ -210,7 +209,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             }
 
         });
-        if (checklike = true){
+        if (checklike = false){
             JSONObject like = new JSONObject();
             try {
                 like.put("video_id", video_id);
@@ -231,11 +230,10 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
 
-
                 }
             });
         }
-        else if (checklike = false){
+        else if (checklike = true){
             JSONObject dislike = new JSONObject();
             try {
                 dislike.put("video_id", video_id);

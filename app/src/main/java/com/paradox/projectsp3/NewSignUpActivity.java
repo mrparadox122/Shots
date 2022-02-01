@@ -2,6 +2,7 @@ package com.paradox.projectsp3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Person;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,11 +11,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +29,8 @@ public class NewSignUpActivity extends AppCompatActivity {
     private static int RC_SIGN_IN = 100;
 
     TextView facebook_btn,google_btn,mobile_btn,btn_skip;
+    Person meProfile = null;
+    // private PeopleService ps;
 //    SignInButton signInButton;
 
     @Override
@@ -34,8 +40,6 @@ public class NewSignUpActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_new_sign_up);
-
-
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -93,7 +97,6 @@ public class NewSignUpActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     private void signIn() {
@@ -111,12 +114,15 @@ public class NewSignUpActivity extends AppCompatActivity {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
+
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+//            handleSignInResult(result);
+            handleSignInResult(task,result);
         }
     }
 
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask, GoogleSignInResult result) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
@@ -128,6 +134,11 @@ public class NewSignUpActivity extends AppCompatActivity {
                 String personEmail = acct.getEmail();
                 String personId = acct.getId();
                 Uri personPhoto = acct.getPhotoUrl();
+//                meProfile = ps
+//                        .people()
+//                        .get("people/me")
+//                        .setPersonFields("names,genders,birthdays")
+//                        .execute();
             }
 
             // Signed in successfully, show authenticated UI.
@@ -136,6 +147,17 @@ public class NewSignUpActivity extends AppCompatActivity {
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.d("Message",e.toString());
         }
+        if(result.isSuccess()){
+            gotoProfile();
+        }else{
+            Toast.makeText(getApplicationContext(),"Sign in cancel",Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    private void gotoProfile() {
+        Intent intent=new Intent(NewSignUpActivity.this,HomeActivty.class);
+        startActivity(intent);
     }
 
 }
