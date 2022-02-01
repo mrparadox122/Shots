@@ -282,7 +282,6 @@ public class GPUCameraRecorder {
     public  void stop() {
         if (!started) return;
         try {
-
             new Handler().post(new Runnable() {
                 @Override
                 public void run() {
@@ -346,6 +345,10 @@ public class GPUCameraRecorder {
         if (cameraRecordListener == null) return;
         cameraRecordListener.onError(e);
     }
+
+
+
+
 
 
 }

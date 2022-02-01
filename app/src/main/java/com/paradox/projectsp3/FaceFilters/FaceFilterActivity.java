@@ -120,8 +120,6 @@ public class FaceFilterActivity extends AppCompatActivity {
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
 
-
-
     // private static final String TAG="MainActivity";
     private static final int PERMISSION_CODE=1;
     private int mScreenDensity;

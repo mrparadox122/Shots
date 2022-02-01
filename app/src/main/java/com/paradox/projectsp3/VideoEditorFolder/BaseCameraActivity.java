@@ -2,6 +2,7 @@ package com.paradox.projectsp3.VideoEditorFolder;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
@@ -53,9 +55,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.IntBuffer;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class BaseCameraActivity extends AppCompatActivity {
@@ -64,8 +69,10 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected GPUCameraRecorder GPUCameraRecorder;
     private String filepath;
     private TextView addSound;
+    Dialog dialogSetting;
+    CircleImageView showVideoPath;
 
-    private ImageView recordBtn,pauseBtn,Face,Edit,Timer;
+    private ImageView recordBtn,pauseBtn,Face,Edit,Timer,setting,Pause_video,Play_video,Photo_filter,btn_switch_camera;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
@@ -89,9 +96,7 @@ public class BaseCameraActivity extends AppCompatActivity {
         Timer=findViewById(R.id.timer);
         pauseBtn= findViewById(R.id.pause);
         Face=findViewById(R.id.imageView2);
-
-
-
+        setting=findViewById(R.id.settings);
         addSound=findViewById(R.id.button);
         sound_url=getIntent().getStringExtra("sound_url");
         sound_title=getIntent().getStringExtra("sound_title");
@@ -100,6 +105,8 @@ public class BaseCameraActivity extends AppCompatActivity {
         Time30=findViewById(R.id.time30s);
         Time60=findViewById(R.id.time60s);
         timerLayout=findViewById(R.id.timerlayout);
+        Pause_video=findViewById(R.id.pause_video);
+        Play_video=findViewById(R.id.play_video);
         final boolean[] timer = {false};
         Timer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +122,27 @@ public class BaseCameraActivity extends AppCompatActivity {
                 }
             }
 
+        });
+        showVideoPath=findViewById(R.id.profilepic);
+        Photo_filter=findViewById(R.id.photo_filter);
+        lv=findViewById(R.id.filter_list);
+        final boolean[] photo_filter = {true};
+        btn_switch_camera=findViewById(R.id.btn_switch_camera);
+        Photo_filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(photo_filter[0])
+                {
+                    lv.setVisibility(View.VISIBLE);
+                    photo_filter[0] =false;
+                }
+                else
+                {
+                    lv.setVisibility(View.GONE);
+                    photo_filter[0] =true;
+                }
+
+            }
         });
 
 
@@ -188,6 +216,31 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
         });
 
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialogSetting=new Dialog(BaseCameraActivity.this);
+
+
+                dialogSetting.setContentView(R.layout.camera_setting);
+                dialogSetting.setCancelable(false);
+                ImageView close=dialogSetting.findViewById(R.id.back);
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogSetting.dismiss();
+
+                    }
+                });
+                dialogSetting.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialogSetting.getWindow().setGravity(Gravity.TOP);
+                dialogSetting.show();
+
+
+            }
+        });
+
 
         Face.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -215,19 +268,61 @@ public class BaseCameraActivity extends AppCompatActivity {
         });
 
 
+
+
+
+        Pause_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Pause_video.setVisibility(View.GONE);
+                Play_video.setVisibility(View.VISIBLE);
+                Toast.makeText(BaseCameraActivity.this,"Paused",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        Play_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Play_video.setVisibility(View.GONE);
+                Pause_video.setVisibility(View.VISIBLE);
+                Toast.makeText(BaseCameraActivity.this,"Play",Toast.LENGTH_SHORT).show();
+            }
+        });
+//        Play_video.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sampleGLView.onResume();
+//                Play_video.setVisibility(View.GONE);
+//                Pause_video.setVisibility(View.VISIBLE);
+//            }
+//        });
+
+
+
+//cameyghhhj
         recordBtn.setOnClickListener(v -> {
+
+
+
 
             if(time15[0]||time30[0]| time60[0]) {
 
-                lv.setVisibility(View.GONE);
+//                lv.setVisibility(View.GONE);
                 filepath = getVideoFilePath();
                 GPUCameraRecorder.start(filepath);
+                btn_switch_camera.setVisibility(View.GONE);
+                Pause_video.setVisibility(View.VISIBLE);
+
+
+                
                 recordBtn.setVisibility(View.GONE);
                 Face.setVisibility(View.VISIBLE);
                 //Edit.setVisibility(View.VISIBLE);
                 pauseBtn.setVisibility(View.VISIBLE);
                 Toast.makeText(this, "Recording Started", Toast.LENGTH_SHORT).show();
                 Glide.with(this).load(R.drawable.recording_video).into(pauseBtn);
+
 
 
 ///// play sound ///////////////
@@ -360,7 +455,10 @@ public class BaseCameraActivity extends AppCompatActivity {
 
         });
         pauseBtn.setOnClickListener(v -> {
+            btn_switch_camera.setVisibility(View.VISIBLE);
 
+            Pause_video.setVisibility(View.GONE);
+            Play_video.setVisibility(View.GONE);
 
 
             GPUCameraRecorder.stop();
@@ -400,7 +498,6 @@ public class BaseCameraActivity extends AppCompatActivity {
 //        });
 
 
-        lv = findViewById(R.id.filter_list);
 
         final List<FilterType> filterTypes = FilterType.createFilterList();
         lv.setAdapter(new FilterAdapter(this, R.layout.row_white_text, filterTypes).whiteMode());
@@ -494,13 +591,13 @@ public class BaseCameraActivity extends AppCompatActivity {
                     @Override
                     public void onRecordComplete() {
                         exportMp4ToGallery(getApplicationContext(), filepath);
-                        lv.setVisibility(View.VISIBLE);
+//                        lv.setVisibility(View.VISIBLE);
                     }
 
                     @Override
                     public void onRecordStart() {
                         runOnUiThread(() -> {
-                            lv.setVisibility(View.GONE);
+//                            lv.setVisibility(View.GONE);
                         });
                     }
 

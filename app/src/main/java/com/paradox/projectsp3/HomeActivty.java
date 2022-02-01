@@ -277,17 +277,17 @@ public class HomeActivty extends AppCompatActivity {
 
     public void showbottomsheet() {
 
-        if (user ==true){
-
-            Intent intent = new Intent(HomeActivty.this, PortraitCameraActivity.class);
-            startActivity(intent);
-            user = false ;
-
-        }else {
-            Intent intent = new Intent(HomeActivty.this, PortraitCameraActivity.class);
-            startActivity(intent);
-            user = true ;
-        }
+//        if (user ==true){
+//
+//            Intent intent = new Intent(HomeActivty.this, PortraitCameraActivity.class);
+//            startActivity(intent);
+//            user = false ;
+//
+//        }else {
+//            Intent intent = new Intent(HomeActivty.this, PortraitCameraActivity.class);
+//            startActivity(intent);
+//            user = true ;
+//        }
 
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -368,9 +368,8 @@ public class HomeActivty extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        dialog.dismiss();
-                    }
-                }, 1);
+                        dialog.dismiss(); }
+                        }, 1);
                 finish();
             }
         });

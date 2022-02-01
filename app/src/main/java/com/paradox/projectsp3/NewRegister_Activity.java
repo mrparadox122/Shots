@@ -24,10 +24,11 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 public class NewRegister_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText et_name,et_Remail ,et_Rphonenumber,et_Rpassword, et_RConfirmpassword;
-    Button btn_signup;
-    TextView alreadylogin_txt;
+    Button btn_signup,btn_submit;
 
     String[] Gender = { "Male", "Female", "Others"};
+
+    boolean isSubmit = true;
 
 
     @Override
@@ -53,8 +54,28 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         et_Rphonenumber = findViewById(R.id.et_Rphonenumber);
         et_Rpassword = findViewById(R.id.et_Rpassword);
         et_RConfirmpassword = findViewById(R.id.et_RConfirmpassword);
-        alreadylogin_txt = findViewById(R.id.alreadylogin_txt);
         btn_signup = findViewById(R.id.btn_signup);
+        btn_submit = findViewById(R.id.btn_submit);
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (isSubmit == true){
+
+
+                    ////set visivibilty
+
+
+                }else {
+                    Toast.makeText(getApplicationContext(), "sing-up failed", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
+
+
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override

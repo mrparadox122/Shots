@@ -12,7 +12,6 @@ import java.nio.ByteBuffer;
 
 public class MediaMuxerCaptureWrapper {
     private static final String TAG = "MediaMuxerWrapper";
-
     private final MediaMuxer mediaMuxer;
     private int encoderCount, startedCount;
     private boolean isStarted;
@@ -51,6 +50,7 @@ public class MediaMuxerCaptureWrapper {
     public void stopRecording() {
         if (videoEncoder != null) {
             videoEncoder.stopRecording();
+
         }
         videoEncoder = null;
         if (audioEncoder != null) {

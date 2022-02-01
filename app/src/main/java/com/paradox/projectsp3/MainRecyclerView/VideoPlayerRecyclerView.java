@@ -1,34 +1,22 @@
 package com.paradox.projectsp3.MainRecyclerView;
 
 
-import android.Manifest;
-import android.app.Activity;
-import android.app.DownloadManager;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,18 +43,17 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
-import com.google.android.gms.cast.framework.SessionManager;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 public class VideoPlayerRecyclerView extends RecyclerView {
 
     private static final String TAG = "VideoPlayerRecyclerView";
 
+    //this is for video play and pause//
     private enum VolumeState {ON, OFF};
 
     // ui
@@ -101,6 +88,8 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         super(context, attrs);
         init(context);
     }
+
+
     private void init(Context context){
 
 
@@ -129,7 +118,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         // Bind the player to the view.
         videoSurfaceView.setUseController(false);
         videoSurfaceView.setPlayer(videoPlayer);
-        setVolumeControl(VolumeState.ON);
+        setVideoColtrol(VolumeState.ON);
 
         addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -259,6 +248,8 @@ public class VideoPlayerRecyclerView extends RecyclerView {
             public void onSeekProcessed() {
 
             }
+
+
         });
     }
     public void playVideo(boolean isEndOfList) {
@@ -434,24 +425,26 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         if (videoPlayer != null) {
             if (volumeState == VolumeState.OFF) {
                 Log.d(TAG, "togglePlaybackState: enabling volume.");
-                setVolumeControl(VolumeState.ON);
+                setVideoColtrol(VolumeState.ON);
 
             } else if(volumeState == VolumeState.ON) {
                 Log.d(TAG, "togglePlaybackState: disabling volume.");
-                setVolumeControl(VolumeState.OFF);
+                setVideoColtrol(VolumeState.OFF);
 
             }
         }
     }
 
-    private void setVolumeControl(VolumeState state){
+
+    //// code for tape ///
+    private void setVideoColtrol(VolumeState state){
         volumeState = state;
         if(state == VolumeState.OFF){
-            videoPlayer.setVolume(0f);
+            videoPlayer.pause();
             animateVolumeControl();
         }
         else if(state == VolumeState.ON){
-            videoPlayer.setVolume(1f);
+            videoPlayer.play();
             animateVolumeControl();
         }
     }
