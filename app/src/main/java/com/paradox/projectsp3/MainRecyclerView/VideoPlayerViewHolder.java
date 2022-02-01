@@ -208,7 +208,56 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                 Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_LONG).show();
 
             }
+
         });
+        if (checklike = true){
+            JSONObject like = new JSONObject();
+            try {
+                like.put("video_id", video_id);
+                like.put("flag", "1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            ApiInterface apiInterface_like = retrofit2.create(ApiInterface.class);
+            Call<ResponseBody> call_like = apiInterface_like.getStringScalar(like.toString());
+            call_like.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    Toast.makeText(context.getApplicationContext(), "//"+"liked", Toast.LENGTH_SHORT).show();
+                    likesn.setText(mediaObject.getLikes());
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+
+                }
+            });
+        }
+        else if (checklike = false){
+            JSONObject dislike = new JSONObject();
+            try {
+                dislike.put("video_id", video_id);
+                dislike.put("flag", "4");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Call<ResponseBody> call_like = apiInterface.getStringScalar(like.toString());
+            call_like.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    Toast.makeText(context.getApplicationContext(), "//"+"disliked", Toast.LENGTH_SHORT).show();
+                    likesn.setText(mediaObject.getLikes());
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
 
 
 
