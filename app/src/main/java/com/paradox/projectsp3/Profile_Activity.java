@@ -3,18 +3,27 @@ package com.paradox.projectsp3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile_Activity extends AppCompatActivity {
 
    ImageView settings , back;
+   CircleImageView pro_pic;
+   TextView pro_name,email;
    Button edit_profile;
 
     @Override
@@ -29,6 +38,9 @@ public class Profile_Activity extends AppCompatActivity {
         settings = findViewById(R.id.settings);
         back = findViewById(R.id.back);
         edit_profile = findViewById(R.id.edit_profile);
+        pro_pic = findViewById(R.id.pro_pic);
+        pro_name = findViewById(R.id.pro_name);
+        email = findViewById(R.id.email);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +66,24 @@ public class Profile_Activity extends AppCompatActivity {
             }
         });
 
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            String personName = acct.getDisplayName();
+            String personGivenName = acct.getGivenName();
+            String personFamilyName = acct.getFamilyName();
+            String personEmail = acct.getEmail();
+            String personId = acct.getId();
+            Uri personPhoto = acct.getPhotoUrl();
+            pro_name.setText(personName);
+            email.setText(personEmail);
+            Glide.with(this).load(String.valueOf(personPhoto)).into(pro_pic);
+            
+        }
+
+
+
     }
+
 
     @Override
     public void onBackPressed() {

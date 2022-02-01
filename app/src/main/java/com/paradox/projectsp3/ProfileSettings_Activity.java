@@ -1,5 +1,6 @@
 package com.paradox.projectsp3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,14 +10,21 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class ProfileSettings_Activity extends AppCompatActivity {
 
-
+    GoogleSignInClient mGoogleSignInClient;
     ImageView back;
-
+    TextView logout;
     RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_language;
 
     @Override
@@ -28,11 +36,25 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_settings);
 
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
         ll_manageACC= findViewById(R.id.ll_manageACC);
         ll_pushnotification= findViewById(R.id.ll_pushnotification);
         ll_privacysettings= findViewById(R.id.ll_privacysettings);
         ll_language= findViewById(R.id.ll_language);
         back= findViewById(R.id.back);
+        logout= findViewById(R.id.logout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +99,19 @@ public class ProfileSettings_Activity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Intent intent = new Intent(ProfileSettings_Activity.this,NewSignUpActivity.class);
+                        startActivity(intent);
+
+                        Toast.makeText(ProfileSettings_Activity.this, "SignOut", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 

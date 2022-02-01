@@ -86,11 +86,11 @@ public class HomeActivty extends AppCompatActivity {
                 if (user ==true){
                     Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
                     startActivity(intent);
-                    user = false ;
+                    user = false;
                 }else {
                     Intent intent = new Intent(HomeActivty.this,MessageMainActivity.class);
                     startActivity(intent);
-                    user = true ;
+                    user = true;
                 }
 
                 Ghar.setImageResource(R.drawable.ic_icon_feather_home);
