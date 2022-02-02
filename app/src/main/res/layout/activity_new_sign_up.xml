@@ -75,50 +75,36 @@
             android:layout_marginRight="35dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/google_btn"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@drawable/signuptext_bg"
-                android:gravity="center"
-                android:paddingStart="10dp"
-                android:text="Google"
-                android:textColor="@color/red"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
             <com.google.android.gms.common.SignInButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/signuptext_bg"
                 android:id="@+id/sign_in_button"
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:gravity="center" />
 
-            <TextView
-                android:id="@+id/facebook_btn"
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/btn_facebook"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/signuptext_bg"
+                android:text="SignIn"
+                android:layout_gravity="center"
+                android:textAlignment="center"
                 android:gravity="center"
-                android:paddingStart="10dp"
-                android:text="FaceBook"
-                android:textColor="#0D48F8"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+               android:background="@drawable/signuptext_bg"
+                android:layout_marginBottom="30dp" />
 
             <TextView
                 android:id="@+id/mobile_btn"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginBottom="40dp"
-                android:background="@drawable/signuptext_bg"
                 android:gravity="center"
                 android:paddingStart="10dp"
+                android:background="@drawable/signuptext_bg"
                 android:text="Phone"
                 android:textColor="#F4C433"
                 android:textSize="18dp"

@@ -57,6 +57,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 //import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.Body;
 
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
@@ -205,7 +206,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_LONG).show();
-
             }
 
         });
