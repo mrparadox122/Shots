@@ -75,7 +75,10 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     TextView share;
     Context context;
     String mediaObjectUrl;
-    boolean checklike=true;
+    Boolean checklike = true;
+    String video_id;
+    int likesno;
+    int likesnominus;
 
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -118,16 +121,86 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checklike==true)
+
+
+                if(checklike)
                 {
+                    JSONObject dislike = new JSONObject();
+                    try {
+                        dislike.put("video_id", video_id);
+                        dislike.put("flag", "1");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Retrofit.Builder retrofit = new Retrofit.Builder()
+                            .baseUrl("http://13.127.217.99/dashboard/")
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create());
+                    Retrofit retrofit2 = retrofit.build();
+
+
+                    //get client
+                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
+                    call_like.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                          //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                            likesn.setText(String.valueOf(likesno));
+                        }
+
+
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
                     like.setImageResource(R.drawable.ic_icon_material_favorite_red);
                     checklike=false;
                 }
-                else
+                else if (!checklike)
                 {
+                    JSONObject dislike = new JSONObject();
+                    try {
+                        dislike.put("video_id", video_id);
+                        dislike.put("flag", "4");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Retrofit.Builder retrofit = new Retrofit.Builder()
+                            .baseUrl("http://13.127.217.99/dashboard/")
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create());
+                    Retrofit retrofit2 = retrofit.build();
+
+
+                    //get client
+                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
+                    call_like.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                            Toast.makeText(context.getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
+                             likesn.setText(String.valueOf(likesnominus));
+
+                        }
+
+
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+
+
+
                     like.setImageResource(R.drawable.ic_icon_material_favorite);
                     checklike=true;
-
                 }
             }
         });
@@ -162,14 +235,22 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         parent.setTag(this);
         mediaObjectUrl = mediaObject.getMedia_url();
         likesn.setText(mediaObject.getLikes());
+        likesnominus = Integer.parseInt(mediaObject.getLikes());
+        likesno = 0b1 + Integer.parseInt(mediaObject.getLikes());
+
+
+
+
         commentn.setText(mediaObject.getComments());
         commentn.setText(mediaObject.getShares());
+
 
         title.setText(mediaObject.getDescription()+"\n"+mediaObject.getPost_categories());
 
         this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
         ////// set view to video
-        String video_id = mediaObject.getVideo_id().toString();
+        video_id = mediaObject.getVideo_id().toString();
+
 //        String users = (video_id +
 //                "    \"flag\": \"6\"\n" +
 //                "}");
@@ -209,53 +290,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             }
 
         });
-        if (checklike = false){
-            JSONObject like = new JSONObject();
-            try {
-                like.put("video_id", video_id);
-                like.put("flag", "1");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            ApiInterface apiInterface_like = retrofit2.create(ApiInterface.class);
-            Call<ResponseBody> call_like = apiInterface_like.getStringScalar(like.toString());
-            call_like.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    Toast.makeText(context.getApplicationContext(), "//"+"liked", Toast.LENGTH_SHORT).show();
-                    likesn.setText(mediaObject.getLikes());
-                }
 
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
 
-                }
-            });
-        }
-        else if (checklike = true){
-            JSONObject dislike = new JSONObject();
-            try {
-                dislike.put("video_id", video_id);
-                dislike.put("flag", "4");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            Call<ResponseBody> call_like = apiInterface.getStringScalar(like.toString());
-            call_like.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    Toast.makeText(context.getApplicationContext(), "//"+"disliked", Toast.LENGTH_SHORT).show();
-                    likesn.setText(mediaObject.getLikes());
-                }
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
-
-                }
-            });
-        }
 
 
 
@@ -283,4 +319,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //            }
 //        });
     }
+
+
 }
