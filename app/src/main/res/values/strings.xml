@@ -27,7 +27,7 @@
 
     //facebook
 
-    <string name="facebook_app_id">1234</string>
+    <string name="facebook_app_id">465458918616657</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">56789</string>
 

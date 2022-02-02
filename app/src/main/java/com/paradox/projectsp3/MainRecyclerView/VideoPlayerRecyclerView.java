@@ -447,11 +447,11 @@ public class VideoPlayerRecyclerView extends RecyclerView {
     private void setVolumeControl(VolumeState state){
         volumeState = state;
         if(state == VolumeState.OFF){
-            videoPlayer.setVolume(0f);
+            videoPlayer.pause();
             animateVolumeControl();
         }
         else if(state == VolumeState.ON){
-            videoPlayer.setVolume(1f);
+            videoPlayer.play();
             animateVolumeControl();
         }
     }
