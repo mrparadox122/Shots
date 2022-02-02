@@ -75,7 +75,10 @@ public class NewSignUpActivity extends AppCompatActivity {
         // Set the dimensions of the sign-in button.
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
-        btn_facebook = (LoginButton) findViewById(R.id.btn_facebook);
+
+
+        btn_facebook =  findViewById(R.id.btn_facebook);
+
         btn_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +86,9 @@ public class NewSignUpActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         FacebookSdk.sdkInitialize(NewSignUpActivity.this);
+
         callbackManager = CallbackManager.Factory.create();
         facebookLogin();
 

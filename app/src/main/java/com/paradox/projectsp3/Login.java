@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class Login extends AppCompatActivity {
+    public boolean bool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
