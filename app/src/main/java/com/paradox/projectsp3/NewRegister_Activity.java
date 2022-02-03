@@ -135,4 +135,9 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    public void openDatePicker(View view) {
+
+
+    }
 }
