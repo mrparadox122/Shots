@@ -26,7 +26,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     EditText et_name,et_Remail ,et_Rphonenumber,et_Rpassword, et_RConfirmpassword;
     Button btn_signup,btn_submit;
 
-    String[] Gender = { "Male", "Female", "Others"};
+    String[] Gender = {"Select Gender", "Male", "Female", "Others"};
 
     boolean isSubmit = true;
 

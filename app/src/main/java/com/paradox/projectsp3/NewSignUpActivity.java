@@ -1,5 +1,7 @@
 package com.paradox.projectsp3;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Person;
@@ -44,11 +46,10 @@ public class NewSignUpActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     private static int RC_SIGN_IN = 100;
     TextView mobile_btn,btn_skip;
-
     CallbackManager callbackManager;
     private LoginManager loginManager;
-    LoginButton btn_facebook;
-    private static final String EMAIL = "email,birthday";
+//    LoginButton btn_facebook;
+//    private static final String EMAIL = "email,birthday";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +77,7 @@ public class NewSignUpActivity extends AppCompatActivity {
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
 
-
-        btn_facebook =  findViewById(R.id.btn_facebook);
+//        btn_facebook =  findViewById(R.id.btn_facebook);
 
         btn_skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,18 +87,18 @@ public class NewSignUpActivity extends AppCompatActivity {
             }
         });
 
-        FacebookSdk.sdkInitialize(NewSignUpActivity.this);
+//        FacebookSdk.sdkInitialize(NewSignUpActivity.this);
 
-        callbackManager = CallbackManager.Factory.create();
-        facebookLogin();
+//        callbackManager = CallbackManager.Factory.create();
+//        facebookLogin();
 
-        btn_facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loginManager.logInWithReadPermissions(NewSignUpActivity.this,
-                        Arrays.asList("email", "public_profile", "user_birthday"));
-            }
-        });
+//        btn_facebook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                loginManager.logInWithReadPermissions(NewSignUpActivity.this,
+//                        Arrays.asList("email", "public_profile", "user_birthday"));
+//            }
+//        });
 
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -218,7 +218,6 @@ public class NewSignUpActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask, GoogleSignInResult result) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
             if (acct != null) {
                 String personName = acct.getDisplayName();
@@ -227,6 +226,10 @@ public class NewSignUpActivity extends AppCompatActivity {
                 String personEmail = acct.getEmail();
                 String personId = acct.getId();
                 Uri personPhoto = acct.getPhotoUrl();
+                Log.e(TAG, "handleSignInResult: "+"personName:"+personName+"\n"+"personGivenName:"+personGivenName+"\n"
+                        +"personFamilyName:"+personFamilyName+"\n"
+                        +"personsEmail:"+personEmail+"\n"
+                        +"personsId:"+personId+"\n");
 //                meProfile = ps
 //                        .people()
 //                        .get("people/me")
@@ -249,7 +252,7 @@ public class NewSignUpActivity extends AppCompatActivity {
     }
 
     private void gotoProfile() {
-        Intent intent=new Intent(NewSignUpActivity.this,HomeActivty.class);
+        Intent intent=new Intent(NewSignUpActivity.this,GmailFields_Activity.class);
         startActivity(intent);
     }
 
