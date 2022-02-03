@@ -150,7 +150,8 @@ public class NewSignUpActivity extends AppCompatActivity {
                                         });
 
                                 Bundle parameters = new Bundle();
-                                parameters.putString("fields", "id, name, email, gender, birthday");
+                                parameters.putString("fields", "name,birthday,age_range,about,gender,first_name,location,email,middle_name");
+                                ///////"id, name, email, gender, birthday",/////////
                                 request.setParameters(parameters);
                                 request.executeAsync();
                             }
@@ -169,6 +170,9 @@ public class NewSignUpActivity extends AppCompatActivity {
                             }
                         });
     }
+
+
+
 
 //    public void disconnectFromFacebook()
 //    {
