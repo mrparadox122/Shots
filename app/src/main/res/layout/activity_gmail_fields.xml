@@ -73,7 +73,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Date Of Birth:"
+                android:text="Select DOB:"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -83,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="JAN 01 1990"
+                android:onClick="openDatePicker"
                 android:textColor="@color/app_color"
                 android:textSize="18sp" />
 

@@ -56,18 +56,160 @@
                     android:textStyle="bold"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
+                    android:textColor="#FFFFFF"/>
                 <TextView
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:gravity="center"
                     android:foreground="?selectableItemBackground"
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="dance"
+                    android:text="Comedy"
                     android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#FACD06"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Motivetional"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#11F407"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="News"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#070707"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Medical"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#020EF3"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Songs"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#40E8BA"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Duet"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="@color/app_color"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Travel"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#700A0A"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Production"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#02431C"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jobs"
+                    android:padding="10dp"
                     android:textStyle="bold"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
@@ -87,15 +229,14 @@
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="dance"
+                    android:text="Entertainment"
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
                     android:textStyle="bold"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
+                    android:textColor="#978E5A"/>
                 <TextView
                     android:layout_weight="1"
                     android:layout_margin="5dp"
@@ -103,9 +244,80 @@
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="dance"
+                    android:text="Science"
                     android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#5DB837"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Educational"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#B50990"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Treditional"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#07E185"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Speech"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="#35047C"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Shoping"
+                    android:padding="10dp"
                     android:textStyle="bold"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
@@ -125,15 +337,15 @@
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="dance"
+                    android:text="Celebration"
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
                     android:textStyle="bold"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
                     android:textColor="@color/white"/>
+
                 <TextView
                     android:layout_weight="1"
                     android:layout_margin="5dp"
@@ -141,287 +353,13 @@
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="dance"
+                    android:text="Sports"
                     android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
                     android:textStyle="bold"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_weight="1"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_weight="1"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:foreground="?selectableItemBackground"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_weight="1"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_weight="1"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:foreground="?selectableItemBackground"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_weight="1"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:foreground="?selectableItemBackground"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_weight="1"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:foreground="?selectableItemBackground"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_weight="1"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:foreground="?selectableItemBackground"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="dance"
-                    android:padding="10dp"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-
+                    android:textColor="#AFF408"/>
+              </LinearLayout>
 
             <Button
                 android:id="@+id/btnSubmit"

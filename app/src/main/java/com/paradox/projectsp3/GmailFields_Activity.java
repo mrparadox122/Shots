@@ -54,16 +54,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
-
-
-
         et_mobilenumber = findViewById(R.id.et_mobilenumber);
-
-
-
-
-
-
         btn_submit = findViewById(R.id.btn_submit);
         NewSignUpActivity newSignUpActivity = new NewSignUpActivity();
 
@@ -71,7 +62,6 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String fullname,password,email,username,PhoneNumber,gndr,dob;
                 fullname = newSignUpActivity.perName;
                 password = newSignUpActivity.perPass;
@@ -101,8 +91,8 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                             data[4] = PhoneNumber;
                             data[5] = gndr;
                             data[6] = dob;
-                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
                             Toast.makeText(GmailFields_Activity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
+                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
                             if (putData.startPut()){
                                 if (putData.onComplete()){
                                     String result = putData.getResult();
