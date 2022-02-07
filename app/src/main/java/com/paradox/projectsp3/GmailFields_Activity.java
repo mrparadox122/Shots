@@ -23,6 +23,12 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
     private DatePickerDialog datePickerDialog;
     private Button dateButton,btn_submit;
     String[] Gender = { "Male", "Female", "Others"};
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
+    //////////////////////////////
+    //////////////////
+    /////////
+    /////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
