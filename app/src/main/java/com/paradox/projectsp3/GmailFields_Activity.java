@@ -102,6 +102,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                             data[5] = gndr;
                             data[6] = dob;
                             PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
+                            Toast.makeText(GmailFields_Activity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
                             if (putData.startPut()){
                                 if (putData.onComplete()){
                                     String result = putData.getResult();
