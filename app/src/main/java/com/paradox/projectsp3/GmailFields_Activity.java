@@ -78,7 +78,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                 email = newSignUpActivity.perEmail;
                 username = newSignUpActivity.perusrn;
                 PhoneNumber = String.valueOf(et_mobilenumber.getText());
-                gndr = gender;
+                gndr = "gender";
                 dob = Dob;
                 if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
                     Handler handler = new Handler();
@@ -210,7 +210,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        gender = Gender[i];
+
 
     }
 
