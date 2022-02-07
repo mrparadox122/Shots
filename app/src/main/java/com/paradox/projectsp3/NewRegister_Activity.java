@@ -101,6 +101,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 PhoneNumber = String.valueOf(et_Rphonenumber.getText());
                 gndr = gender;
                 dob = Dob;
+                Log.e(TAG, "onClick: "+"name:"+fullname+"pas:"+password+"email"+email+"usrname"+username+"phno"+PhoneNumber+"gndr"+gndr+"dob"+dob);
                 if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
                     Handler handler = new Handler();
                     handler.post(new Runnable() {
