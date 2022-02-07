@@ -1,5 +1,7 @@
 package com.paradox.projectsp3;
 
+import static com.google.android.gms.vision.L.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -7,6 +9,8 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,7 +18,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.util.Calendar;
 
@@ -22,8 +30,10 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
 
     private DatePickerDialog datePickerDialog;
     private Button dateButton,btn_submit;
+    EditText et_mobilenumber;
     String[] Gender = { "Male", "Female", "Others"};
     ///////////////////////////////////////////////////////////////////////////////////////////////
+    String Dob,gender;
    
 
     @Override
@@ -46,15 +56,76 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         dateButton.setText(getTodaysDate());
 
 
+
+        et_mobilenumber = findViewById(R.id.et_mobilenumber);
+
+
+
+
+
+
         btn_submit = findViewById(R.id.btn_submit);
+        NewSignUpActivity newSignUpActivity = new NewSignUpActivity();
+
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(GmailFields_Activity.this,HomeActivty.class);
-                startActivity(intent);
+                String fullname,password,email,username,PhoneNumber,gndr,dob;
+                fullname = newSignUpActivity.perName;
+                password = newSignUpActivity.perPass;
+                email = newSignUpActivity.perEmail;
+                username = newSignUpActivity.perusrn;
+                PhoneNumber = String.valueOf(et_mobilenumber.getText());
+                gndr = gender;
+                dob = Dob;
+                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
+                    Handler handler = new Handler();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            String[] field = new String[7];
+                            field[0] = "fullname";
+                            field[1] = "username";
+                            field[2] = "email";
+                            field[3] = "password";
+                            field[4] = "PhoneNumber";
+                            field[5] = "Dob";
+                            field[6] = "Gender";
+                            String[] data = new  String[7];
+                            data[0] = fullname;
+                            data[1] = username;
+                            data[2] = email;
+                            data[3] = password;
+                            data[4] = PhoneNumber;
+                            data[5] = gndr;
+                            data[6] = dob;
+                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
+                            if (putData.startPut()){
+                                if (putData.onComplete()){
+                                    String result = putData.getResult();
+                                    Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_LONG).show();
+                                    Log.e(TAG, "run: "+result );
+                                    Log.e(TAG, "field: "+field );
+                                    Log.e(TAG, "data: "+data );
+                                    if (result.equals("Sign Up Success")){
+                                        Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(GmailFields_Activity.this, Login.class);
+                                        startActivity(intent);
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
+                }
             }
+
+
+
         });
 
     }
@@ -79,6 +150,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                 month = month + 1;
                 String date = makeDateString(day, month, year);
                 dateButton.setText(date);
+                Dob = date;
             }
         };
 
@@ -137,6 +209,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        gender = Gender[i];
 
     }
 

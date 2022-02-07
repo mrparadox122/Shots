@@ -1,6 +1,7 @@
 package com.paradox.projectsp3;
 
 import static com.google.android.gms.vision.L.TAG;
+import static com.google.android.gms.vision.L.d;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +33,8 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
 
     EditText et_name,et_Remail ,et_Rphonenumber,et_Rpassword, et_RConfirmpassword;
     Button btn_signup,btn_submit;
+    String Dob,gender;
+
 
     String[] Gender = {"Select Gender", "Male", "Female", "Others"};
     String[] Options = {"","Email", "Phone"};
@@ -90,26 +93,35 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String fullname,password,email,username;
+                String fullname,password,email,username,PhoneNumber,gndr,dob;
                 fullname = String.valueOf(et_name.getText());
                 password = String.valueOf(et_Rpassword.getText());
-                email = String.valueOf(et_name.getText());
-                username = String.valueOf(et_Rphonenumber);
-                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")){
+                email = String.valueOf(et_Remail.getText());
+                username = String.valueOf(et_name.getText());
+                PhoneNumber = String.valueOf(et_Rphonenumber.getText());
+                gndr = gender;
+                dob = Dob;
+                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
                     Handler handler = new Handler();
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            String[] field = new String[4];
+                            String[] field = new String[7];
                             field[0] = "fullname";
                             field[1] = "username";
                             field[2] = "email";
                             field[3] = "password";
-                            String[] data = new  String[4];
+                            field[4] = "PhoneNumber";
+                            field[5] = "Dob";
+                            field[6] = "Gender";
+                            String[] data = new  String[7];
                             data[0] = fullname;
                             data[1] = username;
                             data[2] = email;
                             data[3] = password;
+                            data[4] = PhoneNumber;
+                            data[5] = gndr;
+                            data[6] = dob;
                             PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
                             if (putData.startPut()){
                                 if (putData.onComplete()){
@@ -161,6 +173,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 month = month + 1;
                 String date = makeDateString(day, month, year);
                 dateButton.setText(date);
+                Dob = date;
             }
         };
 
@@ -224,6 +237,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
        // Toast.makeText(getApplicationContext(), Gender[i], Toast.LENGTH_SHORT).show();
+        gender = Gender[i];
     }
 
     @Override

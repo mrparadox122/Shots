@@ -44,6 +44,7 @@ import java.util.Arrays;
 public class NewSignUpActivity extends AppCompatActivity {
 
     GoogleSignInClient mGoogleSignInClient;
+    String perEmail,perName,perusrn,perPass;
     private static int RC_SIGN_IN = 100;
     TextView mobile_btn,btn_skip;
     CallbackManager callbackManager;
@@ -226,6 +227,9 @@ public class NewSignUpActivity extends AppCompatActivity {
                 String personEmail = acct.getEmail();
                 String personId = acct.getId();
                 Uri personPhoto = acct.getPhotoUrl();
+                personEmail = perEmail;
+                personId = perusrn;
+                perPass = "G verify";
                 Log.e(TAG, "handleSignInResult: "+"personName:"+personName+"\n"+"personGivenName:"+personGivenName+"\n"
                         +"personFamilyName:"+personFamilyName+"\n"
                         +"personsEmail:"+personEmail+"\n"
