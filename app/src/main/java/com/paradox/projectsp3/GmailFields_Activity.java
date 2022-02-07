@@ -32,7 +32,6 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         getSupportActionBar().hide();
         setContentView(R.layout.activity_gmail_fields);
 
-
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
@@ -85,7 +84,6 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);

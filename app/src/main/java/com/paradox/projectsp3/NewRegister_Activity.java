@@ -135,8 +135,6 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         });
 
 
-
-
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
