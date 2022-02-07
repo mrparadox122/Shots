@@ -25,7 +25,7 @@
             android:layout_marginTop="15dp"
             android:textColor="@color/red"
             android:textStyle="bold"
-            android:gravity="end"
+            android:gravity="end|right"
             android:padding="10dp"/>
     </LinearLayout>
 
@@ -68,11 +68,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="35dp"
-            android:layout_marginLeft="35dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="45dp"
             android:layout_marginTop="55dp"
-            android:layout_marginEnd="35dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
             android:orientation="vertical">
 
             <com.google.android.gms.common.SignInButton
@@ -104,10 +104,10 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/signuptext_bg"
+                android:drawableLeft="@drawable/ic_phone"
                 android:gravity="center"
                 android:paddingStart="10dp"
                 android:text="Phone"
-                android:drawableLeft="@drawable/ic_phone"
                 android:textColor="#F4C433"
                 android:textSize="18dp"
                 android:textStyle="bold" />

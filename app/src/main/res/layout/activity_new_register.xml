@@ -36,11 +36,11 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -156,8 +156,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="14dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -173,7 +173,7 @@
                     style="?android:spinnerStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="openDatePicker"
+                  android:onClick="openDatePick"
                     android:text="JAN 01 1990"
                     android:textColor="@color/app_color"
                     android:textSize="18sp" />
@@ -185,9 +185,9 @@
                 android:layout_width="150dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="15dp"
                 android:text="Submit"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/buttonshape"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
@@ -197,8 +197,37 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:orientation="vertical">
+                android:id="@+id/verification"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/signuptext_bg"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select  :"
+                        android:padding="8dp"
+                        android:layout_gravity="center"
+                        android:paddingStart="10dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="14dp"/>
+
+                    <Spinner
+                        android:id="@+id/spinner01"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:padding="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"/>
+
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/et_verify"
@@ -208,9 +237,9 @@
                     android:background="@drawable/signuptext_bg"
                     android:fontFamily="@font/calibri"
                     android:hint="Verify code for Email or Mobile"
-                    android:paddingStart="20dp"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
+                    android:paddingStart="20dp"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -220,7 +249,7 @@
                     android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="25dp"
-                    android:layout_marginBottom="35dp"
+                    android:layout_marginBottom="30dp"
                     android:background="@drawable/buttonshape"
                     android:text="Sign up"
                     android:textAllCaps="true"
@@ -230,7 +259,6 @@
 
 
             </LinearLayout>
-
 
 
         </LinearLayout>
