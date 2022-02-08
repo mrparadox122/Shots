@@ -331,7 +331,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         viewHolderParent = holder.itemView;
         requestManager = holder.requestManager;
         frameLayout = holder.itemView.findViewById(R.id.media_container);
-        Glide.with(context).load(R.drawable.disc).into(soundDisk);
+        Glide.with(context).load(R.drawable.editorlogo).into(soundDisk);
 
 
 
