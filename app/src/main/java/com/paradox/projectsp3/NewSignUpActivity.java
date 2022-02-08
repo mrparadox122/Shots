@@ -216,7 +216,7 @@ public class NewSignUpActivity extends AppCompatActivity {
     }
 
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask, GoogleSignInResult result) {
+    public void handleSignInResult(Task<GoogleSignInAccount> completedTask, GoogleSignInResult result) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
@@ -227,14 +227,14 @@ public class NewSignUpActivity extends AppCompatActivity {
                 String personEmail = acct.getEmail();
                 String personId = acct.getId();
                 Uri personPhoto = acct.getPhotoUrl();
-                perEmail = personEmail;
-                perusrn = personId;
-                perName = personName;
-                perPass = "G verify";
-                Log.e(TAG, "handleSignInResult: "+"personName:"+personName+"\n"+"personGivenName:"+personGivenName+"\n"
+                this.perEmail = acct.getEmail();
+                this.perusrn = acct.getId();
+                this.perName = acct.getGivenName();
+                this.perPass = "G Verify";
+                Log.e(TAG, "handleSignInResult: "+"personName:"+perName+"\n"+"personGivenName:"+personGivenName+"\n"
                         +"personFamilyName:"+personFamilyName+"\n"
-                        +"personsEmail:"+personEmail+"\n"
-                        +"personsId:"+personId+"\n");
+                        +"personsEmail:"+perEmail+"\n"
+                        +"personsId:"+perusrn+"\n");
 //                meProfile = ps
 //                        .people()
 //                        .get("people/me")
@@ -260,6 +260,19 @@ public class NewSignUpActivity extends AppCompatActivity {
     private void gotoProfile() {
         Intent intent=new Intent(NewSignUpActivity.this,GmailFields_Activity.class);
         startActivity(intent);
+    }
+    public String getPerEmail(){
+        return perEmail;
+
+    }
+    public String getPerusrn(){
+        return perusrn;
+    }
+    public String getPerPass(){
+        return perPass;
+    }
+    public String getPerName(){
+        return perName;
     }
 
 }

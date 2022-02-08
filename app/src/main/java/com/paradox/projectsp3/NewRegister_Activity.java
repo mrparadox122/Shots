@@ -121,8 +121,8 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                             data[2] = email;
                             data[3] = password;
                             data[4] = PhoneNumber;
-                            data[5] = gndr;
-                            data[6] = dob;
+                            data[5] = dob;
+                            data[6] = gndr;
                             PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
                             if (putData.startPut()){
                                 if (putData.onComplete()){

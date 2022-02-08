@@ -22,6 +22,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.util.Calendar;
@@ -62,11 +64,12 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
                 String fullname,password,email,username,PhoneNumber,gndr,dob;
-                fullname = String.valueOf(newSignUpActivity.perName);
-                password = String.valueOf(newSignUpActivity.perPass);
-                email = String.valueOf(newSignUpActivity.perEmail);
-                username = String.valueOf(newSignUpActivity.perusrn);
+                fullname = String.valueOf(acct.getDisplayName());
+                password = "G veryfied";
+                email = String.valueOf(acct.getEmail());
+                username = String.valueOf(acct.getId());
                 PhoneNumber = String.valueOf(et_mobilenumber.getText());
                 gndr = gender;
                 dob = Dob;
@@ -74,49 +77,49 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                 Intent intent = new Intent(GmailFields_Activity.this,HomeActivty.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), String.valueOf(PhoneNumber+username+email+fullname+gndr+dob), Toast.LENGTH_SHORT).show();
-//                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
-//                    Handler handler = new Handler();
-//                    handler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            String[] field = new String[7];
-//                            field[0] = "fullname";
-//                            field[1] = "username";
-//                            field[2] = "email";
-//                            field[3] = "password";
-//                            field[4] = "PhoneNumber";
-//                            field[5] = "Dob";
-//                            field[6] = "Gender";
-//                            String[] data = new  String[7];
-//                            data[0] = fullname;
-//                            data[1] = username;
-//                            data[2] = email;
-//                            data[3] = password;
-//                            data[4] = PhoneNumber;
-//                            data[5] = gndr;
-//                            data[6] = dob;
-//                            Toast.makeText(GmailFields_Activity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
-//                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
-//                            if (putData.startPut()){
-//                                if (putData.onComplete()){
-//                                    String result = putData.getResult();
-//                                    Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_LONG).show();
-//                                    Log.e(TAG, "run: "+result );
-//                                    Log.e(TAG, "field: "+field );
-//                                    Log.e(TAG, "data: "+data );
-//                                    if (result.equals("Sign Up Success")){
-//                                        Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_SHORT).show();
-//                                        Intent intent = new Intent(GmailFields_Activity.this, Login.class);
-//                                        startActivity(intent);
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    });
-//                }
-//                else {
-//                    Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
-//                }
+                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
+                    Handler handler = new Handler();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            String[] field = new String[7];
+                            field[0] = "fullname";
+                            field[1] = "username";
+                            field[2] = "email";
+                            field[3] = "password";
+                            field[4] = "PhoneNumber";
+                            field[5] = "Dob";
+                            field[6] = "Gender";
+                            String[] data = new  String[7];
+                            data[0] = fullname;
+                            data[1] = username;
+                            data[2] = email;
+                            data[3] = password;
+                            data[4] = PhoneNumber;
+                            data[5] = dob;
+                            data[6] = gndr;
+                            Toast.makeText(GmailFields_Activity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
+                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
+                            if (putData.startPut()){
+                                if (putData.onComplete()){
+                                    String result = putData.getResult();
+                                    Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_LONG).show();
+                                    Log.e(TAG, "run: "+result );
+                                    Log.e(TAG, "field: "+field );
+                                    Log.e(TAG, "data: "+data );
+                                    if (result.equals("Sign Up Success")){
+                                        Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(GmailFields_Activity.this, Login.class);
+                                        startActivity(intent);
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
+                }
             }
 
 
