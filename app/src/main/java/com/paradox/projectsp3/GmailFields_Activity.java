@@ -68,51 +68,55 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                 email = String.valueOf(newSignUpActivity.perEmail);
                 username = String.valueOf(newSignUpActivity.perusrn);
                 PhoneNumber = String.valueOf(et_mobilenumber.getText());
-                gndr = "gender";
+                gndr = gender;
                 dob = Dob;
-                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
-                    Handler handler = new Handler();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            String[] field = new String[7];
-                            field[0] = "fullname";
-                            field[1] = "username";
-                            field[2] = "email";
-                            field[3] = "password";
-                            field[4] = "PhoneNumber";
-                            field[5] = "Dob";
-                            field[6] = "Gender";
-                            String[] data = new  String[7];
-                            data[0] = fullname;
-                            data[1] = username;
-                            data[2] = email;
-                            data[3] = password;
-                            data[4] = PhoneNumber;
-                            data[5] = gndr;
-                            data[6] = dob;
-                            Toast.makeText(GmailFields_Activity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
-                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
-                            if (putData.startPut()){
-                                if (putData.onComplete()){
-                                    String result = putData.getResult();
-                                    Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_LONG).show();
-                                    Log.e(TAG, "run: "+result );
-                                    Log.e(TAG, "field: "+field );
-                                    Log.e(TAG, "data: "+data );
-                                    if (result.equals("Sign Up Success")){
-                                        Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(GmailFields_Activity.this, Login.class);
-                                        startActivity(intent);
-                                    }
-                                }
-                            }
-                        }
-                    });
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
-                }
+                Log.e(TAG, "onClick: "+fullname+password+email+username+PhoneNumber+gndr+dob);
+                Intent intent = new Intent(GmailFields_Activity.this,HomeActivty.class);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), String.valueOf(PhoneNumber+username+email+fullname+gndr+dob), Toast.LENGTH_SHORT).show();
+//                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
+//                    Handler handler = new Handler();
+//                    handler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            String[] field = new String[7];
+//                            field[0] = "fullname";
+//                            field[1] = "username";
+//                            field[2] = "email";
+//                            field[3] = "password";
+//                            field[4] = "PhoneNumber";
+//                            field[5] = "Dob";
+//                            field[6] = "Gender";
+//                            String[] data = new  String[7];
+//                            data[0] = fullname;
+//                            data[1] = username;
+//                            data[2] = email;
+//                            data[3] = password;
+//                            data[4] = PhoneNumber;
+//                            data[5] = gndr;
+//                            data[6] = dob;
+//                            Toast.makeText(GmailFields_Activity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
+//                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
+//                            if (putData.startPut()){
+//                                if (putData.onComplete()){
+//                                    String result = putData.getResult();
+//                                    Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_LONG).show();
+//                                    Log.e(TAG, "run: "+result );
+//                                    Log.e(TAG, "field: "+field );
+//                                    Log.e(TAG, "data: "+data );
+//                                    if (result.equals("Sign Up Success")){
+//                                        Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_SHORT).show();
+//                                        Intent intent = new Intent(GmailFields_Activity.this, Login.class);
+//                                        startActivity(intent);
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    });
+//                }
+//                else {
+//                    Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
+//                }
             }
 
 
@@ -200,6 +204,9 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+        Toast.makeText(getApplicationContext(), Gender[i], Toast.LENGTH_SHORT).show();
+        gender = Gender[i];
 
 
     }

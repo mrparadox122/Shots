@@ -227,9 +227,9 @@ public class NewSignUpActivity extends AppCompatActivity {
                 String personEmail = acct.getEmail();
                 String personId = acct.getId();
                 Uri personPhoto = acct.getPhotoUrl();
-                perEmail = acct.getEmail();
-                perusrn = acct.getId();
-                perName = acct.getDisplayName();
+                perEmail = personEmail;
+                perusrn = personId;
+                perName = personName;
                 perPass = "G verify";
                 Log.e(TAG, "handleSignInResult: "+"personName:"+personName+"\n"+"personGivenName:"+personGivenName+"\n"
                         +"personFamilyName:"+personFamilyName+"\n"
@@ -249,6 +249,7 @@ public class NewSignUpActivity extends AppCompatActivity {
             Log.d("Message",e.toString());
         }
         if(result.isSuccess()){
+
             gotoProfile();
         }else{
             Toast.makeText(getApplicationContext(),"Sign in cancel",Toast.LENGTH_LONG).show();
