@@ -123,6 +123,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                             data[4] = PhoneNumber;
                             data[5] = dob;
                             data[6] = gndr;
+                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
                             PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
                             if (putData.startPut()){
                                 if (putData.onComplete()){
@@ -174,7 +175,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 month = month + 1;
                 String date = makeDateString(day, month, year);
                 dateButton.setText(date);
-                Dob = date;
+                Dob = makeDateitgkm(year,month,day);
             }
         };
 
@@ -194,6 +195,10 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     private String makeDateString(int day, int month, int year)
     {
         return getMonthFormat(month) + " " + day + " " + year;
+    }
+    private String makeDateitgkm(int year, int month , int day)
+    {
+        return year + "-" + month + "-" + day;
     }
 
     private String getMonthFormat(int month)

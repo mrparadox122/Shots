@@ -76,7 +76,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                 Log.e(TAG, "onClick: "+fullname+password+email+username+PhoneNumber+gndr+dob);
                 Intent intent = new Intent(GmailFields_Activity.this,HomeActivty.class);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), String.valueOf(PhoneNumber+username+email+fullname+gndr+dob), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), String.valueOf(PhoneNumber+username+email+fullname+gndr+dob), Toast.LENGTH_SHORT).show();
                 if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
                     Handler handler = new Handler();
                     handler.post(new Runnable() {
@@ -98,7 +98,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                             data[4] = PhoneNumber;
                             data[5] = dob;
                             data[6] = gndr;
-                            Toast.makeText(GmailFields_Activity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(GmailFields_Activity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
                             PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
                             if (putData.startPut()){
                                 if (putData.onComplete()){
@@ -108,10 +108,11 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                                     Log.e(TAG, "field: "+field );
                                     Log.e(TAG, "data: "+data );
                                     if (result.equals("Sign Up Success")){
-                                        Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(GmailFields_Activity.this, result, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(GmailFields_Activity.this, Login.class);
                                         startActivity(intent);
                                     }
+
                                 }
                             }
                         }
@@ -148,7 +149,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                 month = month + 1;
                 String date = makeDateString(day, month, year);
                 dateButton.setText(date);
-                Dob = date;
+                Dob = makeDateitgkm(year,month,day);
             }
         };
 
@@ -166,6 +167,11 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
     private String makeDateString(int day, int month, int year)
     {
         return getMonthFormat(month) + " " + day + " " + year;
+    }
+
+    private String makeDateitgkm(int year, int month , int day)
+    {
+        return year + "-" + month + "-" + day;
     }
 
     private String getMonthFormat(int month)
