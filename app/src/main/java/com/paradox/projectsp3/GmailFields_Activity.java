@@ -63,10 +63,10 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
             @Override
             public void onClick(View view) {
                 String fullname,password,email,username,PhoneNumber,gndr,dob;
-                fullname = newSignUpActivity.perName;
-                password = newSignUpActivity.perPass;
-                email = newSignUpActivity.perEmail;
-                username = newSignUpActivity.perusrn;
+                fullname = String.valueOf(newSignUpActivity.perName);
+                password = String.valueOf(newSignUpActivity.perPass);
+                email = String.valueOf(newSignUpActivity.perEmail);
+                username = String.valueOf(newSignUpActivity.perusrn);
                 PhoneNumber = String.valueOf(et_mobilenumber.getText());
                 gndr = "gender";
                 dob = Dob;

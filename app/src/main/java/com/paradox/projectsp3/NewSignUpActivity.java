@@ -227,8 +227,9 @@ public class NewSignUpActivity extends AppCompatActivity {
                 String personEmail = acct.getEmail();
                 String personId = acct.getId();
                 Uri personPhoto = acct.getPhotoUrl();
-                personEmail = perEmail;
-                personId = perusrn;
+                perEmail = acct.getEmail();
+                perusrn = acct.getId();
+                perName = acct.getDisplayName();
                 perPass = "G verify";
                 Log.e(TAG, "handleSignInResult: "+"personName:"+personName+"\n"+"personGivenName:"+personGivenName+"\n"
                         +"personFamilyName:"+personFamilyName+"\n"
