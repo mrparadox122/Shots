@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -93,16 +94,20 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String fullname,password,email,username,PhoneNumber,gndr,dob;
+                String fullname,password,email,username,cpass,PhoneNumber,gndr,dob;
                 fullname = String.valueOf(et_name.getText());
                 password = String.valueOf(et_Rpassword.getText());
+                cpass = String.valueOf(et_RConfirmpassword.getText());
                 email = String.valueOf(et_Remail.getText());
                 username = String.valueOf(et_name.getText());
                 PhoneNumber = String.valueOf(et_Rphonenumber.getText());
                 gndr = gender;
                 dob = Dob;
-                Log.e(TAG, "onClick: "+"name:"+fullname+"pas:"+password+"email"+email+"usrname"+username+"phno"+PhoneNumber+"gndr"+gndr+"dob"+dob);
-                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
+
+
+                Log.e(TAG, "onClick: " + "name:" + fullname + "pas:" + password + "email" + email + "usrname" + username + "phno" + PhoneNumber + "gndr" + gndr + "dob" + dob);
+                if (!fullname.equals("") && !password.equals("") && !email.equals("") && !username.equals("") && !PhoneNumber.equals("") && !gndr.equals("") && !dob.equals("") && password.equals(cpass)) {
+                    et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50), PorterDuff.Mode.SRC_ATOP);
                     Handler handler = new Handler();
                     handler.post(new Runnable() {
                         @Override
@@ -115,7 +120,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                             field[4] = "PhoneNumber";
                             field[5] = "Dob";
                             field[6] = "Gender";
-                            String[] data = new  String[7];
+                            String[] data = new String[7];
                             data[0] = fullname;
                             data[1] = username;
                             data[2] = email;
@@ -124,26 +129,28 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                             data[5] = dob;
                             data[6] = gndr;
                             Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
-                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php","POST",field,data);
-                            if (putData.startPut()){
-                                if (putData.onComplete()){
+                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php", "POST", field, data);
+                            if (putData.startPut()) {
+                                if (putData.onComplete()) {
                                     String result = putData.getResult();
                                     Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_LONG).show();
-                                    Log.e(TAG, "run: "+result );
-                                    Log.e(TAG, "field: "+field );
-                                    Log.e(TAG, "data: "+data );
-                                    if (result.equals("Sign Up Success")){
+                                    Log.e(TAG, "run: " + result);
+                                    Log.e(TAG, "field: " + field);
+                                    Log.e(TAG, "data: " + data);
+                                    if (result.equals("Sign Up Success")) {
                                         Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(NewRegister_Activity.this, Login.class);
                                         startActivity(intent);
-                                    }
+                                       }
                                 }
                             }
                         }
                     });
                 }
-                else {
-                    Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
+                else
+                {
+                    et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP);
+                        Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
                 }
             }
         });
