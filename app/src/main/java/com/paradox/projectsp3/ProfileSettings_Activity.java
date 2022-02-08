@@ -101,12 +101,13 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         });
     }
 
+
     private void signOut() {
         mGoogleSignInClient.signOut()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Intent intent = new Intent(ProfileSettings_Activity.this,NewSignUpActivity.class);
+                        Intent intent = new Intent(ProfileSettings_Activity.this,GmailLogin_Activity.class);
                         startActivity(intent);
 
                         Toast.makeText(ProfileSettings_Activity.this, "SignOut", Toast.LENGTH_SHORT).show();

@@ -31,6 +31,39 @@
             android:paddingStart="20dp"
             android:textColor="#000000"
             android:textSize="18sp" />
+        <EditText
+            android:id="@+id/et_Rpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/signuptext_bg"
+            android:fontFamily="@font/calibri"
+            android:hint="4-Digit Pin"
+            android:maxLength="4"
+            android:maxLines="1"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_RConfirmpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/signuptext_bg"
+            android:fontFamily="@font/calibri"
+            android:hint="Confirm 4-Digit Pin"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:padding="10dp"
+            android:maxLength="4"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -20,9 +20,11 @@
 
     <string name="login"><u>Sign in</u></string>
     <string name="register_text"><u>Create Account</u></string>
-    <string name="login_text"><u>Login</u></string>
-    <string name="forgot"><u>Forgot Password</u></string>
-    <string name="pin"><u>Pin Number</u></string>
+    <string name="login_text"><u>Mobile Login</u></string>
+    <string name="gmaillogin_text"><u>Gmail Login</u></string>
+
+    <string name="forgot"><u>Forgot Pin</u></string>
+    <string name="pin"><u>Mobile Login</u></string>
 
 
     //facebook

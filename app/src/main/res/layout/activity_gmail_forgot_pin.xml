@@ -4,20 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
     android:orientation="vertical"
-    tools:context=".ForgotPassword_Activity">
+    android:background="@color/teal_700"
+    tools:context=".Gmail_ForgotPin_Activity">
+
 
     <TextView
         android:id="@+id/tv_heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Mobile Forget Pin"
-        android:layout_marginTop="45dp"
-        android:textColor="@color/white"
+        android:text="Gmail Forget Pin"
+        android:textStyle="bold"
         android:textSize="21sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:textColor="@color/white" />
+
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,6 +40,7 @@
             android:layout_gravity="center"
             android:focusableInTouchMode="true">
 
+
             <EditText
                 android:id="@+id/et_mobile"
                 android:layout_width="match_parent"
@@ -44,7 +48,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/signuptext_bg"
                 android:fontFamily="@font/calibri"
-                android:hint="Enter Mobile Number"
+                android:hint="Enter Gmail"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:paddingStart="20dp"
@@ -57,7 +61,6 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/design_default_color_primary"
                 android:elevation="2dp"
-                android:onClick="bt_forget"
                 android:text="Continue"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
@@ -81,7 +84,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/signuptext_bg"
                     android:fontFamily="@font/calibri"
-                    android:hint="Verify code for Mobile"
+                    android:hint="Verify code for Gmail"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
                     android:paddingStart="20dp"
@@ -95,6 +98,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="25dp"
                     android:layout_marginBottom="30dp"
+                    android:onClick="gmailVerify"
                     android:background="@drawable/buttonshape"
                     android:text="Verify"
                     android:textAllCaps="false"
@@ -108,5 +112,6 @@
         </LinearLayout>
 
     </ScrollView>
+
 
 </LinearLayout>
