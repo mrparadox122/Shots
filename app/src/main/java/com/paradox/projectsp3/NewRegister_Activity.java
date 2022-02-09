@@ -28,7 +28,12 @@ import android.widget.Toast;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NewRegister_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -40,10 +45,17 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     String[] Gender = {"Select Gender", "Male", "Female", "Others"};
     String[] Options = {"","Email", "Phone"};
 
+    @SuppressLint("SimpleDateFormat")
+    SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");
+    Date dt_1 = objSDF.parse("2009-1-1");
+
     private Button dateButton;
     LinearLayout verification;
     boolean iscode = true;
     private DatePickerDialog datePickerDialog;
+
+    public NewRegister_Activity() throws ParseException {
+    }
 
 
     @Override
@@ -95,19 +107,51 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
             @Override
             public void onClick(View view) {
                 String fullname,password,email,username,cpass,PhoneNumber,gndr,dob;
+                Integer Pc;
                 fullname = String.valueOf(et_name.getText());
                 password = String.valueOf(et_Rpassword.getText());
                 cpass = String.valueOf(et_RConfirmpassword.getText());
                 email = String.valueOf(et_Remail.getText());
                 username = String.valueOf(et_name.getText());
                 PhoneNumber = String.valueOf(et_Rphonenumber.getText());
+                Pc = PhoneNumber.length();
                 gndr = gender;
                 dob = Dob;
 
 
                 Log.e(TAG, "onClick: " + "name:" + fullname + "pas:" + password + "email" + email + "usrname" + username + "phno" + PhoneNumber + "gndr" + gndr + "dob" + dob);
-                if (!fullname.equals("") && !password.equals("") && !email.equals("") && !username.equals("") && !PhoneNumber.equals("") && !gndr.equals("") && !dob.equals("") && password.equals(cpass)) {
+                if (!password.equals(cpass)){
+                    if (isEmailValid(email)){
+                        et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                    }
+                    else if (!isEmailValid(email)){
+                        et_Remail.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                        et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                    }
+
+                }
+//                else if (password.equals(cpass)){
+//                    et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50), PorterDuff.Mode.SRC_ATOP);
+//                }
+                else if (!isEmailValid(email)){
+                    if (password.equals(cpass)){
+                        et_Remail.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                        Toast.makeText(NewRegister_Activity.this, "Email is not valid", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (!password.equals(cpass)){
+                        et_Remail.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                        et_Rpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                    }
+
+
+
+                }
+                else if (!(Pc > 9)){
+                    et_Rphonenumber.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                }
+                else if (!fullname.equals("") && !password.equals("") && !email.equals("") && !username.equals("") && !PhoneNumber.equals("") && !gndr.equals("") && !dob.equals("") && password.equals(cpass) && isEmailValid(email)) {
                     et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50), PorterDuff.Mode.SRC_ATOP);
+                    et_Remail.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50), PorterDuff.Mode.SRC_ATOP);
                     Handler handler = new Handler();
                     handler.post(new Runnable() {
                         @Override
@@ -128,12 +172,12 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                             data[4] = PhoneNumber;
                             data[5] = dob;
                             data[6] = gndr;
-                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
+//                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
                             PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
-                                    Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
                                     Log.e(TAG, "run: " + result);
                                     Log.e(TAG, "field: " + field);
                                     Log.e(TAG, "data: " + data);
@@ -141,15 +185,29 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                                         Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(NewRegister_Activity.this, Login.class);
                                         startActivity(intent);
-                                       }
+                                    }
+                                    if (result.equals("Sign up Failed")){
+                                        Toast.makeText(NewRegister_Activity.this, "User already exist!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(NewRegister_Activity.this, "Plz Login instead!!!", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(NewRegister_Activity.this, Login.class);
+                                        startActivity(intent);
+                                    }
                                 }
                             }
                         }
                     });
+
                 }
-                else
+
+
+
+//
+//
+//
+
+               else
                 {
-                    et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP);
+//                    et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP);
                         Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -256,6 +314,12 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+    public static boolean isEmailValid(String email) {
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
 }

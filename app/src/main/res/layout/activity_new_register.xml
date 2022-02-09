@@ -84,6 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="16dp"
+                android:maxLength="10"
                 android:background="@drawable/signuptext_bg"
                 android:fontFamily="@font/calibri"
                 android:hint="Phone Number"
