@@ -42,8 +42,8 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     String Dob,gender;
 
 
-    String[] Gender = {"Select Gender", "Male", "Female", "Others"};
-    String[] Options = {"","Email", "Phone"};
+    String[] Gender = {"Male", "Female", "Others"};
+    String[] Options = {"Phone"};
 
     @SuppressLint("SimpleDateFormat")
     SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");

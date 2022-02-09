@@ -26,16 +26,21 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import java.time.Year;
 import java.util.Calendar;
+import java.util.TimeZone;
 
 public class GmailFields_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private DatePickerDialog datePickerDialog;
-    private Button dateButton,btn_submit;
+
+    Button datePickerButton,btn_submit;
     EditText et_mobilenumber;
     String[] Gender = { "Male", "Female", "Others"};
     ///////////////////////////////////////////////////////////////////////////////////////////////
     String Dob,gender;
+
+    int mDay,mMonth,mYear;
+    boolean isDob;
    
 
     @Override
@@ -53,13 +58,64 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(ad);
 
-        initDatePicker();
-        dateButton = findViewById(R.id.datePickerButton);
-        dateButton.setText(getTodaysDate());
+
+        datePickerButton = findViewById(R.id.datePickerButton);
         et_mobilenumber = findViewById(R.id.et_mobilenumber);
         btn_submit = findViewById(R.id.btn_submit);
         NewSignUpActivity newSignUpActivity = new NewSignUpActivity();
 
+        datePickerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar calendar = Calendar.getInstance();
+                //set time zone
+                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+                int selectedYear = calendar.get(Calendar.YEAR);
+                int selectedMonth = calendar.get(Calendar.MONTH);
+                int selectedDay = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(GmailFields_Activity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            public void onDateSet(DatePicker view, int selectedYear,
+                                                  int selectedMonth, int selectedDay) {
+                                mDay = selectedDay;
+                                mMonth = selectedMonth;
+                                mYear = selectedYear;
+                                StringBuilder Date = new StringBuilder("");
+                                String conver = Integer.toString(selectedYear);
+                                Date.append(conver);
+                                Date.append("-");
+                                selectedMonth++;
+                                conver = Integer.toString(selectedMonth);
+                                Date.append(conver);
+                                Date.append("-");
+                                conver = Integer.toString(selectedDay);
+                                Date.append(conver);
+                                isDob = true;
+                            }
+                        }, mDay, mMonth, mYear);
+
+                datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+
+
+                //Set Today date to calendar
+                final Calendar calendar2 = Calendar.getInstance();
+                //Set Minimum date of calendar
+                calendar2.set(2009, 1, 1);
+                datePickerDialog.getDatePicker().setMaxDate(calendar2.getTimeInMillis());
+                datePickerDialog.setTitle("Select Date");
+                datePickerDialog.show();
+
+                final Calendar calendar3 = Calendar.getInstance();
+                //Set Maximum date of calendar
+                calendar3.set(1900, 1, 1);
+                //Set One Month date from today date to calendar
+                //calendar3.add(Calendar.MONTH, 1);
+                datePickerDialog.getDatePicker().setMinDate(calendar3.getTimeInMillis());
+                datePickerDialog.setTitle("Select Date");
+                datePickerDialog.show();
+            }
+        });
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,102 +178,15 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                     Toast.makeText(getApplicationContext(), "All Fields Are Required", Toast.LENGTH_SHORT).show();
                 }
             }
-
-
-
         });
 
     }
-
-    private String getTodaysDate()
-    {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        month = month + 1;
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        return makeDateString(day, month, year);
-    }
-
-    private void initDatePicker()
-    {
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
-        {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day)
-            {
-                month = month + 1;
-                String date = makeDateString(day, month, year);
-                dateButton.setText(date);
-                Dob = makeDateitgkm(year,month,day);
-            }
-        };
-
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        int style = AlertDialog.THEME_HOLO_LIGHT;
-
-        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-
-    }
-
-    private String makeDateString(int day, int month, int year)
-    {
-        return getMonthFormat(month) + " " + day + " " + year;
-    }
-
-    private String makeDateitgkm(int year, int month , int day)
-    {
-        return year + "-" + month + "-" + day;
-    }
-
-    private String getMonthFormat(int month)
-    {
-        if(month == 1)
-            return "JAN";
-        if(month == 2)
-            return "FEB";
-        if(month == 3)
-            return "MAR";
-        if(month == 4)
-            return "APR";
-        if(month == 5)
-            return "MAY";
-        if(month == 6)
-            return "JUN";
-        if(month == 7)
-            return "JUL";
-        if(month == 8)
-            return "AUG";
-        if(month == 9)
-            return "SEP";
-        if(month == 10)
-            return "OCT";
-        if(month == 11)
-            return "NOV";
-        if(month == 12)
-            return "DEC";
-
-        //default should never happen
-        return "JAN";
-    }
-
-    public void openDatePicker(View view)
-    {
-        datePickerDialog.show();
-    }
-
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
         Toast.makeText(getApplicationContext(), Gender[i], Toast.LENGTH_SHORT).show();
         gender = Gender[i];
-
-
     }
 
     @Override

@@ -37,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/signuptext_bg"
-            android:fontFamily="@font/calibri"
             android:hint="4-Digit Pin"
             android:maxLength="4"
             android:maxLines="1"
@@ -115,8 +114,7 @@
                 style="?android:spinnerStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="JAN 01 1990"
-                android:onClick="openDatePicker"
+                android:text="Feb/02/1990"
                 android:textColor="@color/app_color"
                 android:textSize="18sp" />
 
