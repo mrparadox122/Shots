@@ -33,7 +33,7 @@ public class Login extends AppCompatActivity {
 
     public void login_btn(View view) {
 
-        Intent intent = new Intent(Login.this, PinNumber_Activity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(Login.this, PinNumber_Activity.class);
+//        startActivity(intent);
     }
 }

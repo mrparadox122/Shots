@@ -26,6 +26,18 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".GmailNewPin_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Gmail_ForgotPin_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".GmailLogin_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".PhoneNewPinActivity"
+            android:exported="false" />
+        <activity
             android:name=".GmailFields_Activity"
             android:exported="false" />
         <activity
@@ -45,9 +57,6 @@
             android:exported="false" />
         <activity
             android:name=".Comments.Comment"
-            android:exported="false" />
-        <activity
-            android:name=".PinNumber_Activity"
             android:exported="false" />
         <activity
             android:name=".ForgotPassword_Activity"
