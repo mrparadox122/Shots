@@ -3,14 +3,11 @@ plugins {
 }
 
 android {
-    aaptOptions.cruncherEnabled = false
-    aaptOptions.useNewCruncher = false
     signingConfigs {
         realese {
         }
     }
     compileSdkVersion 32
-    buildToolsVersion "30.0.3"
 
     defaultConfig {
         multiDexEnabled true
