@@ -93,10 +93,58 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (iscode == true){
+
+//                if (iscode == true){
+
+//                }
+                String fullname,password,email,username,cpass,PhoneNumber,gndr,dob;
+                Integer Pc;
+                fullname = String.valueOf(et_name.getText());
+                password = String.valueOf(et_Rpassword.getText());
+                cpass = String.valueOf(et_RConfirmpassword.getText());
+                email = String.valueOf(et_Remail.getText());
+                username = String.valueOf(et_name.getText());
+                PhoneNumber = String.valueOf(et_Rphonenumber.getText());
+                Pc = PhoneNumber.length();
+                gndr = gender;
+                dob = Dob;
+
+
+                Log.e(TAG, "onClick: " + "name:" + fullname + "pas:" + password + "email" + email + "usrname" + username + "phno" + PhoneNumber + "gndr" + gndr + "dob" + dob);
+                if (!password.equals(cpass)){
+                    if (isEmailValid(email)){
+                        et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                    }
+                    else if (!isEmailValid(email)){
+                        et_Remail.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                        et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                    }
+
+                }
+//                else if (password.equals(cpass)){
+//                    et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50), PorterDuff.Mode.SRC_ATOP);
+//                }
+                else if (!isEmailValid(email)){
+                    if (password.equals(cpass)){
+                        et_Remail.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                        Toast.makeText(NewRegister_Activity.this, "Email is not valid", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (!password.equals(cpass)){
+                        et_Remail.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                        et_Rpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                    }
+
+
+
+                }
+                else if (!(Pc > 9)){
+                    et_Rphonenumber.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                }
+                else if (!fullname.equals("") && !password.equals("") && !email.equals("") && !username.equals("") && !PhoneNumber.equals("") && !gndr.equals("") && !dob.equals("") && password.equals(cpass) && isEmailValid(email)){
                     verification.setVisibility(View.VISIBLE);
                     Toast.makeText(getApplicationContext(), "Enter Verification Code", Toast.LENGTH_SHORT).show();
-                }else {
+                }
+                else {
                     verification.setVisibility(View.GONE);
                 }
 
