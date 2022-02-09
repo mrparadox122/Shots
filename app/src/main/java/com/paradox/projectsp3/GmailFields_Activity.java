@@ -159,8 +159,12 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         int day = cal.get(Calendar.DAY_OF_MONTH);
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
+        //Set Minimum date of calendar
+        cal.set(2009, 1, 1);
+        datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis());
+//        datePickerDialog.show();
+
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
 
     }
 
