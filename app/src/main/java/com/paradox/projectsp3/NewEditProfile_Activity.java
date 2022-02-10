@@ -3,8 +3,15 @@ package com.paradox.projectsp3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class NewEditProfile_Activity extends AppCompatActivity {
+
+    EditText mypic;
+
+    TextView myname;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
