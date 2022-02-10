@@ -26,24 +26,49 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskExecutors;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.regex.Pattern;
+
+
+
+
+
 
 public class NewRegister_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    EditText et_name,et_Remail ,et_Rphonenumber,et_Rpassword, et_RConfirmpassword;
+    EditText et_name,et_Remail ,et_Rphonenumber,et_Rpassword, et_RConfirmpassword,et_veryfi;
     Button btn_signup,btn_submit;
     String Dob,gender;
 
 
     String[] Gender = {"Male", "Female", "Others"};
     String[] Options = {"Phone"};
+
+    private FirebaseAuth mAuth;
+
+
+
+    private String verificationId;
+
 
     @SuppressLint("SimpleDateFormat")
     SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");
@@ -69,6 +94,8 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
+
+
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Gender);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(ad);
@@ -81,13 +108,17 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         add.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner01.setAdapter(add);
 
+        mAuth = FirebaseAuth.getInstance();
+
         et_name = findViewById(R.id.et_name);
         et_Remail = findViewById(R.id.et_Remail);
         et_Rphonenumber = findViewById(R.id.et_Rphonenumber);
         et_Rpassword = findViewById(R.id.et_Rpassword);
         et_RConfirmpassword = findViewById(R.id.et_RConfirmpassword);
+        et_veryfi = findViewById(R.id.et_verify);
         btn_signup = findViewById(R.id.btn_signup);
         btn_submit = findViewById(R.id.btn_submit);
+
         verification = findViewById(R.id.verification);
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +172,15 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                     et_Rphonenumber.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
                 }
                 else if (!fullname.equals("") && !password.equals("") && !email.equals("") && !username.equals("") && !PhoneNumber.equals("") && !gndr.equals("") && !dob.equals("") && password.equals(cpass) && isEmailValid(email)){
+
+
+                    String phone = "+91" + et_Rphonenumber.getText().toString();
+                    sendVerificationCode(phone);
+
+
                     verification.setVisibility(View.VISIBLE);
+
+
                     Toast.makeText(getApplicationContext(), "Enter Verification Code", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -165,6 +204,8 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 Pc = PhoneNumber.length();
                 gndr = gender;
                 dob = Dob;
+
+                verifyCode(et_veryfi.getText().toString());
 
 
                 Log.e(TAG, "onClick: " + "name:" + fullname + "pas:" + password + "email" + email + "usrname" + username + "phno" + PhoneNumber + "gndr" + gndr + "dob" + dob);
@@ -200,50 +241,50 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 else if (!fullname.equals("") && !password.equals("") && !email.equals("") && !username.equals("") && !PhoneNumber.equals("") && !gndr.equals("") && !dob.equals("") && password.equals(cpass) && isEmailValid(email)) {
                     et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50), PorterDuff.Mode.SRC_ATOP);
                     et_Remail.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50), PorterDuff.Mode.SRC_ATOP);
-                    Handler handler = new Handler();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            String[] field = new String[7];
-                            field[0] = "fullname";
-                            field[1] = "username";
-                            field[2] = "email";
-                            field[3] = "password";
-                            field[4] = "PhoneNumber";
-                            field[5] = "Dob";
-                            field[6] = "Gender";
-                            String[] data = new String[7];
-                            data[0] = fullname;
-                            data[1] = username;
-                            data[2] = email;
-                            data[3] = password;
-                            data[4] = PhoneNumber;
-                            data[5] = dob;
-                            data[6] = gndr;
-//                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
-                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php", "POST", field, data);
-                            if (putData.startPut()) {
-                                if (putData.onComplete()) {
-                                    String result = putData.getResult();
-                                    Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
-                                    Log.e(TAG, "run: " + result);
-                                    Log.e(TAG, "field: " + field);
-                                    Log.e(TAG, "data: " + data);
-                                    if (result.equals("Sign Up Success")) {
-                                        Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(NewRegister_Activity.this, Login.class);
-                                        startActivity(intent);
-                                    }
-                                    if (result.equals("Sign up Failed")){
-                                        Toast.makeText(NewRegister_Activity.this, "User already exist!", Toast.LENGTH_SHORT).show();
-                                        Toast.makeText(NewRegister_Activity.this, "Plz Login instead!!!", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(NewRegister_Activity.this, Login.class);
-                                        startActivity(intent);
-                                    }
-                                }
-                            }
-                        }
-                    });
+//                    Handler handler = new Handler();
+//                    handler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            String[] field = new String[7];
+//                            field[0] = "fullname";
+//                            field[1] = "username";
+//                            field[2] = "email";
+//                            field[3] = "password";
+//                            field[4] = "PhoneNumber";
+//                            field[5] = "Dob";
+//                            field[6] = "Gender";
+//                            String[] data = new String[7];
+//                            data[0] = fullname;
+//                            data[1] = username;
+//                            data[2] = email;
+//                            data[3] = password;
+//                            data[4] = PhoneNumber;
+//                            data[5] = dob;
+//                            data[6] = gndr;
+////                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
+//                            PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php", "POST", field, data);
+//                            if (putData.startPut()) {
+//                                if (putData.onComplete()) {
+//                                    String result = putData.getResult();
+//                                    Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
+//                                    Log.e(TAG, "run: " + result);
+//                                    Log.e(TAG, "field: " + field);
+//                                    Log.e(TAG, "data: " + data);
+//                                    if (result.equals("Sign Up Success")) {
+//                                        Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
+//                                        Intent intent = new Intent(NewRegister_Activity.this, Login.class);
+//                                        startActivity(intent);
+//                                    }
+//                                    if (result.equals("Sign up Failed")){
+//                                        Toast.makeText(NewRegister_Activity.this, "User already exist!", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(NewRegister_Activity.this, "Plz Login instead!!!", Toast.LENGTH_SHORT).show();
+//                                        Intent intent = new Intent(NewRegister_Activity.this, Login.class);
+//                                        startActivity(intent);
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    });
 
                 }
 
@@ -368,6 +409,163 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+
+    private void signInWithCredential(PhoneAuthCredential credential) {
+        // inside this method we are checking if
+        // the code entered is correct or not.
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            String fullname,password,email,username,cpass,PhoneNumber,gndr,dob;
+                            Integer Pc;
+                            fullname = String.valueOf(et_name.getText());
+                            password = String.valueOf(et_Rpassword.getText());
+                            cpass = String.valueOf(et_RConfirmpassword.getText());
+                            email = String.valueOf(et_Remail.getText());
+                            username = String.valueOf(et_name.getText());
+                            PhoneNumber = String.valueOf(et_Rphonenumber.getText());
+                            Pc = PhoneNumber.length();
+                            gndr = gender;
+                            dob = Dob;
+
+                            Handler handler = new Handler();
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    String[] field = new String[7];
+                                    field[0] = "fullname";
+                                    field[1] = "username";
+                                    field[2] = "email";
+                                    field[3] = "password";
+                                    field[4] = "PhoneNumber";
+                                    field[5] = "Dob";
+                                    field[6] = "Gender";
+                                    String[] data = new String[7];
+                                    data[0] = fullname;
+                                    data[1] = username;
+                                    data[2] = email;
+                                    data[3] = password;
+                                    data[4] = PhoneNumber;
+                                    data[5] = dob;
+                                    data[6] = gndr;
+//                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
+                                    PutData putData = new PutData("http://13.127.217.99/dashboard/signup.php", "POST", field, data);
+                                    if (putData.startPut()) {
+                                        if (putData.onComplete()) {
+                                            String result = putData.getResult();
+                                            Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
+                                            Log.e(TAG, "run: " + result);
+                                            Log.e(TAG, "field: " + field);
+                                            Log.e(TAG, "data: " + data);
+                                            if (result.equals("Sign Up Success")) {
+                                                Toast.makeText(NewRegister_Activity.this, result, Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(NewRegister_Activity.this, HomeActivty.class);
+                                                startActivity(intent);
+                                            }
+                                            if (result.equals("Sign up Failed")){
+                                                Toast.makeText(NewRegister_Activity.this, "User already exist!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(NewRegister_Activity.this, "Plz Login instead!!!", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(NewRegister_Activity.this, Login.class);
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            // if the code is correct and the task is successful
+                            // we are sending our user to new activity.
+//                            Intent i = new Intent(MainActivity.this, HomeActivity.class);
+//                            startActivity(i);
+//                            Intent intent = new Intent(NewRegister_Activity.this,HomeActivty.class);
+//                            startActivity(intent);
+                            finish();
+                        } else {
+                            // if the code is not correct then we are
+                            // displaying an error message to the user.
+                            Toast.makeText(NewRegister_Activity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
+
+
+    private void sendVerificationCode(String number) {
+        // this method is used for getting
+        // OTP on user phone number.
+        PhoneAuthOptions options =
+                PhoneAuthOptions.newBuilder(mAuth)
+                        .setPhoneNumber(number)            // Phone number to verify
+                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                        .setActivity(this)                 // Activity (for callback binding)
+                        .setCallbacks(mCallBack)           // OnVerificationStateChangedCallbacks
+                        .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
+    }
+
+    // callback method is called on Phone auth provider.
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks
+
+            // initializing our callbacks for on
+            // verification callback method.
+            mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+        // below method is used when
+        // OTP is sent from Firebase
+        @Override
+        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(s, forceResendingToken);
+            // when we receive the OTP it
+            // contains a unique id which
+            // we are storing in our string
+            // which we have already created.
+            verificationId = s;
+        }
+
+        // this method is called when user
+        // receive OTP from Firebase.
+        @Override
+        public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+            // below line is used for getting OTP code
+            // which is sent in phone auth credentials.
+            final String code = phoneAuthCredential.getSmsCode();
+
+            // checking if the code
+            // is null or not.
+            if (code != null) {
+                // if the code is not null then
+                // we are setting that code to
+                // our OTP edittext field.
+                et_veryfi.setText(code);
+
+                // after setting this code
+                // to OTP edittext field we
+                // are calling our verifycode method.
+                verifyCode(code);
+            }
+        }
+
+        // this method is called when firebase doesn't
+        // sends our OTP code due to any error or issue.
+        @Override
+        public void onVerificationFailed(FirebaseException e) {
+            // displaying error message with firebase exception.
+//            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    };
+
+    // below method is use to verify code from Firebase.
+    private void verifyCode(String code) {
+        // below line is used for getting getting
+        // credentials from our verification id and code.
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
+
+        // after getting credential we are
+        // calling sign in method.
+        signInWithCredential(credential);
     }
 
 }
