@@ -17,7 +17,6 @@ import com.github.drjacky.imagepicker.ImagePicker;
 
 public class EditProfile_Activity extends AppCompatActivity {
 
-
 TextView pic_change;
 ImageView profilepic;
 
@@ -29,14 +28,12 @@ ImageView profilepic;
         getSupportActionBar().hide();
         setContentView(R.layout.activity_edit_profile);
 
-
         pic_change = findViewById(R.id.pic_change);
         profilepic = findViewById(R.id.profilepic);
 
         pic_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 ImagePicker.Companion.with(EditProfile_Activity.this)
                         .crop()
                         .maxResultSize(1080,1080)
@@ -49,7 +46,6 @@ ImageView profilepic;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 10){
             Uri uri = data.getData();
             profilepic.setImageURI(uri);
