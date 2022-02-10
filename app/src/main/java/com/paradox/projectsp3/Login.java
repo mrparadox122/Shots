@@ -51,10 +51,10 @@ public class Login extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        String[] field = new String[2];
+                        String[] field = new String[3];
                         field[1] = "username";
                         field[2] = "password";
-                        String[] data = new String[2];
+                        String[] data = new String[3];
                         data[1] = PhoneNumber;
                         data[2] = password;
 
