@@ -244,7 +244,7 @@
                     android:hint="Verify code for  Phone number"
                     android:inputType="number"
                     android:padding="10dp"
-                    android:maxLength="4"
+                    android:maxLength="7"
                     android:paddingStart="20dp"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
