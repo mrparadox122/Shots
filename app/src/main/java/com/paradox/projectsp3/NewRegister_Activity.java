@@ -137,6 +137,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                                 mDay = selectedDay;
                                 mMonth = selectedMonth;
                                 mYear = selectedYear;
+                                Dob = makeDateitgkm(selectedYear,selectedMonth,selectedDay);
                                 StringBuilder Date = new StringBuilder("");
                                 String conver = Integer.toString(selectedYear);
                                 Date.append(conver);
@@ -164,7 +165,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
 
                 final Calendar calendar3 = Calendar.getInstance();
                 //Set Maximum date of calendar
-                calendar3.set(1900, 1, 1);
+                calendar3.set(1990, 1, 1);
                 //Set One Month date from today date to calendar
                 //calendar3.add(Calendar.MONTH, 1);
                 datePickerDialog.getDatePicker().setMinDate(calendar3.getTimeInMillis());
@@ -377,7 +378,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 month = month + 1;
                 String date = makeDateString(day, month, year);
                 dateButton.setText(date);
-                Dob = makeDateitgkm(year,month,day);
+
             }
         };
 

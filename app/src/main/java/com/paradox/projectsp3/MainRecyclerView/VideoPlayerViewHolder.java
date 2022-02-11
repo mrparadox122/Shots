@@ -153,7 +153,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -182,7 +182,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                     call_like.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                            Toast.makeText(context.getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context.getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
                              likesn.setText(String.valueOf(likesnominus));
 
                         }

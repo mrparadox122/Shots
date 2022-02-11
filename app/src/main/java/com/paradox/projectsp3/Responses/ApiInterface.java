@@ -35,9 +35,9 @@ public interface ApiInterface {
     @POST("upload")
     Call<Users> upload(@Part("data") RequestBody description, @Part MultipartBody.Part thumbnail,  @Part MultipartBody.Part video);
 
-    @PUT("/paradoxApi/update.php")
+    @PUT("update.php")
     Call<Users> update(@Body String data);
-    @POST("/paradoxApi/update.php")
+    @POST("update.php")
     Call<ResponseBody> getStringScalar(@Body String body);
 
 }
