@@ -35,11 +35,8 @@ public class ForgotPassword_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (send == true){
-
                     verification.setVisibility(View.VISIBLE);
-
                 }else {
-
                     verification.setVisibility(View.GONE);
                 }
             }
@@ -52,7 +49,6 @@ public class ForgotPassword_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
 }
