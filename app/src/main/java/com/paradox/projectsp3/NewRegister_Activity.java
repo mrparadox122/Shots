@@ -33,6 +33,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import androidx.annotation.NonNull;
@@ -56,7 +57,7 @@ import java.util.regex.Pattern;
 public class NewRegister_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText et_name,et_Remail ,et_Rphonenumber,et_Rpassword, et_RConfirmpassword,et_veryfi;
-    Button btn_signup,btn_submit;
+    Button btn_signup,btn_submit,datePickerButton;
     String Dob,gender;
 
 
@@ -78,6 +79,9 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     LinearLayout verification;
     boolean iscode = true;
     private DatePickerDialog datePickerDialog;
+
+    int mDay,mMonth,mYear;
+    boolean isDob;
 
     public NewRegister_Activity() throws ParseException {
     }
@@ -118,6 +122,60 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         et_veryfi = findViewById(R.id.et_verify);
         btn_signup = findViewById(R.id.btn_signup);
         btn_submit = findViewById(R.id.btn_submit);
+        datePickerButton = findViewById(R.id.datePickerButton);
+
+        datePickerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar calendar = Calendar.getInstance();
+                //set time zone
+                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+                int selectedYear = calendar.get(Calendar.YEAR);
+                int selectedMonth = calendar.get(Calendar.MONTH);
+                int selectedDay = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(NewRegister_Activity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            public void onDateSet(DatePicker view, int selectedYear,
+                                                  int selectedMonth, int selectedDay) {
+                                mDay = selectedDay;
+                                mMonth = selectedMonth;
+                                mYear = selectedYear;
+                                StringBuilder Date = new StringBuilder("");
+                                String conver = Integer.toString(selectedYear);
+                                Date.append(conver);
+                                Date.append("-");
+                                selectedMonth++;
+                                conver = Integer.toString(selectedMonth);
+                                Date.append(conver);
+                                Date.append("-");
+                                conver = Integer.toString(selectedDay);
+                                Date.append(conver);
+                                isDob = true;
+                            }
+                        }, mDay, mMonth, mYear);
+
+                datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+
+
+                //Set Today date to calendar
+                final Calendar calendar2 = Calendar.getInstance();
+                //Set Minimum date of calendar
+                calendar2.set(2009, 1, 1);
+                datePickerDialog.getDatePicker().setMaxDate(calendar2.getTimeInMillis());
+                datePickerDialog.setTitle("Select Date");
+                datePickerDialog.show();
+
+                final Calendar calendar3 = Calendar.getInstance();
+                //Set Maximum date of calendar
+                calendar3.set(1900, 1, 1);
+                //Set One Month date from today date to calendar
+                //calendar3.add(Calendar.MONTH, 1);
+                datePickerDialog.getDatePicker().setMinDate(calendar3.getTimeInMillis());
+                datePickerDialog.setTitle("Select Date");
+                datePickerDialog.show();
+            }
+        });
 
         verification = findViewById(R.id.verification);
 

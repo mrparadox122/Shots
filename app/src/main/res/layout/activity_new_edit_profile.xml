@@ -110,8 +110,7 @@
                     android:textColor="@color/black"
                     android:textColorHint="#808080"
                     android:background="#00000000"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
