@@ -50,10 +50,6 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.regex.Pattern;
 
 
-
-
-
-
 public class NewRegister_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText et_name,et_Remail ,et_Rphonenumber,et_Rpassword, et_RConfirmpassword,et_veryfi;
