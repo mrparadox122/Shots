@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -34,7 +35,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
 
 
     Button datePickerButton,btn_submit;
-    EditText et_mobilenumber;
+    EditText et_mobilenumber,pin,cpass;
     String[] Gender = { "Male", "Female", "Others"};
     ///////////////////////////////////////////////////////////////////////////////////////////////
     String Dob,gender;
@@ -59,6 +60,8 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         spinner.setAdapter(ad);
 
 
+        pin = findViewById(R.id.et_Rpassword);
+        cpass = findViewById(R.id.et_RConfirmpassword);
         datePickerButton = findViewById(R.id.datePickerButton);
         et_mobilenumber = findViewById(R.id.et_mobilenumber);
         btn_submit = findViewById(R.id.btn_submit);
@@ -121,19 +124,32 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
             @Override
             public void onClick(View view) {
                 GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                String fullname,password,email,username,PhoneNumber,gndr,dob;
+                String fullname,password,email,username,PhoneNumber,gndr,dob,cp;
+                Integer Pc;
                 fullname = String.valueOf(acct.getDisplayName());
-                password = "G veryfied";
+                password = String.valueOf(pin.getText());
+                cp = String.valueOf(cpass.getText());
                 email = String.valueOf(acct.getEmail());
                 username = String.valueOf(acct.getId());
                 PhoneNumber = String.valueOf(et_mobilenumber.getText());
+                Pc = PhoneNumber.length();
                 gndr = gender;
                 dob = Dob;
                 Log.e(TAG, "onClick: "+fullname+password+email+username+PhoneNumber+gndr+dob);
                 Intent intent = new Intent(GmailFields_Activity.this,HomeActivty.class);
                 startActivity(intent);
 //                Toast.makeText(getApplicationContext(), String.valueOf(PhoneNumber+username+email+fullname+gndr+dob), Toast.LENGTH_SHORT).show();
-                if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")){
+                if (password != cp){
+                    pin.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                    cpass.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
+                }
+                else if (PhoneNumber.equals("")&&!(Pc > 9)){
+                    et_mobilenumber.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color),PorterDuff.Mode.SRC_ATOP);
+                }
+                else if (!fullname.equals("")&&!password.equals("")&&!email.equals("")&&!username.equals("")&&!PhoneNumber.equals("")&&!gndr.equals("")&&!dob.equals("")&& password.equals(cp)){
+                    pin.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50), PorterDuff.Mode.SRC_ATOP);
+                    cpass.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50), PorterDuff.Mode.SRC_ATOP);
+                    et_mobilenumber.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorwhite_50),PorterDuff.Mode.SRC_ATOP);
                     Handler handler = new Handler();
                     handler.post(new Runnable() {
                         @Override

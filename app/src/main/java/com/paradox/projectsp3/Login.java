@@ -52,11 +52,11 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void run() {
                         String[] field = new String[3];
-                        field[1] = "username";
-                        field[2] = "password";
+                        field[0] = "username";
+                        field[1] = "password";
                         String[] data = new String[3];
-                        data[1] = PhoneNumber;
-                        data[2] = password;
+                        data[0] = PhoneNumber;
+                        data[1] = password;
 
 //                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
                         PutData putData = new PutData("http://13.127.217.99/dashboard/login.php", "POST", field, data);
