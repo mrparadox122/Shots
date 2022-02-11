@@ -133,7 +133,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                         e.printStackTrace();
                     }
                     Retrofit.Builder retrofit = new Retrofit.Builder()
-                            .baseUrl("http://13.127.217.99/dashboard/")
+                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
                             .addConverterFactory(ScalarsConverterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create());
                     Retrofit retrofit2 = retrofit.build();
@@ -170,7 +170,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                         e.printStackTrace();
                     }
                     Retrofit.Builder retrofit = new Retrofit.Builder()
-                            .baseUrl("http://13.127.217.99/dashboard/")
+                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
                             .addConverterFactory(ScalarsConverterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create());
                     Retrofit retrofit2 = retrofit.build();
@@ -269,7 +269,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //            Log.e(TAG, "onBind://////////// "+response);
 
         Retrofit.Builder retrofit = new Retrofit.Builder()
-                .baseUrl("http://13.127.217.99/dashboard/")
+                .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit2 = retrofit.build();

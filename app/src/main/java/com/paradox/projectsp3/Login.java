@@ -59,7 +59,7 @@ public class Login extends AppCompatActivity {
                         data[1] = password;
 
 //                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
-                        PutData putData = new PutData("http://13.127.217.99/dashboard/login.php", "POST", field, data);
+                        PutData putData = new PutData("http://13.127.217.99/dashboard/paradoxApi/login.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
