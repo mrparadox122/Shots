@@ -2,10 +2,7 @@ package com.paradox.projectsp3.Model;
 
 public class MediaObject {
 
-    public MediaObject()
-    {
-        ////////////////////////
-    }
+
 
     private String title,video_id,description,date,user_id,post_categories,post_id,views,user_name,url,thumbnail,likes,comments,shares;
 

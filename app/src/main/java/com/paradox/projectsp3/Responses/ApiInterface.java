@@ -23,6 +23,11 @@ public interface ApiInterface {
     @GET("get_details")
     Call<Users> performAllPosts();
 
+
+    ////getting UserDetails///
+    @GET("read.php")
+    Call<Users> PeformAllDetails();
+
 //
 //    @POST("upload")
 //    Call<JSONArray> postUpload(@Body List<data> dataList);
