@@ -3,6 +3,7 @@ package com.paradox.projectsp3.Responses;
 import com.google.gson.annotations.SerializedName;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Model.SoundModel;
+import com.paradox.projectsp3.Model.UserDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,11 @@ public class Users {
 
 
 
+    @SerializedName("read.php")
+    private List<UserDetails> AllDetails;
+
+
+
     public List<MediaObject> getAllPosts()
     {
         return AllPosts;
@@ -24,6 +30,10 @@ public class Users {
     public List<SoundModel> getAllSounds()
     {
         return AllSounds;
+    }
+
+    public List<UserDetails> getAllDetails() {
+        return AllDetails;
     }
 
 
