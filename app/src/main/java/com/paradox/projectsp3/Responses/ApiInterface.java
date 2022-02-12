@@ -1,5 +1,7 @@
 package com.paradox.projectsp3.Responses;
 
+import com.paradox.projectsp3.Model.UserDetails;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,14 +21,17 @@ import retrofit2.http.Part;
 
 public interface ApiInterface {
 
+    String userdetailurl = "http://13.127.217.99/dashboard/paradoxApi/read.php/";
+    @GET("read.php")
+    Call<String> getUserdetails();
+
     ////getting posts///
     @GET("get_details")
     Call<Users> performAllPosts();
 
 
     ////getting UserDetails///
-    @GET("read.php")
-    Call<Users> PeformAllDetails();
+
 
 //
 //    @POST("upload")
