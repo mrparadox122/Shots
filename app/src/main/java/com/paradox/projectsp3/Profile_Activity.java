@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -25,6 +26,7 @@ public class Profile_Activity extends AppCompatActivity {
    CircleImageView pro_pic;
    TextView pro_name,email;
    Button edit_profile;
+   LinearLayout btn_Share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,22 @@ public class Profile_Activity extends AppCompatActivity {
         pro_pic = findViewById(R.id.pro_pic);
         pro_name = findViewById(R.id.pro_name);
         email = findViewById(R.id.email);
+        btn_Share = findViewById(R.id.btn_Share);
+
+        btn_Share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String body = "Your body here";
+                String sub = "Your Subject";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,body);
+                startActivity(Intent.createChooser(myIntent, "Share Using"));
+
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
