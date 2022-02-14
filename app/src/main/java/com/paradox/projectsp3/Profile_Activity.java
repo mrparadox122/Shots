@@ -152,12 +152,12 @@ public class Profile_Activity extends AppCompatActivity {
 
         ApiInterface api = retrofit.create(ApiInterface.class);
 
-        Call<String> call = api.getUserdetails();
+        Call<String> call = api.getUserdetails("{\r\n    \"username\" : \"7095966526\"\r\n}");
 
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Log.i("Responsestring", response.body().toString());
+                Log.i("Responsestring", String.valueOf(response.body()));
                 //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
@@ -204,7 +204,7 @@ public class Profile_Activity extends AppCompatActivity {
 
                 for (int j = 0; j < UserDetailsArrayList.size(); j++){
 
-                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
+//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
                 }
 
             }else {

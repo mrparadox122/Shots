@@ -22,8 +22,8 @@ import retrofit2.http.Part;
 public interface ApiInterface {
 
     String userdetailurl = "http://13.127.217.99/dashboard/paradoxApi/read.php/";
-    @GET("read.php")
-    Call<String> getUserdetails();
+    @POST("read.php")
+    Call<String> getUserdetails(@Body String body);
 
     ////getting posts///
     @GET("get_details")
@@ -49,5 +49,7 @@ public interface ApiInterface {
     Call<Users> update(@Body String data);
     @POST("update.php")
     Call<ResponseBody> getStringScalar(@Body String body);
+    @POST("read.php")
+    Call<ResponseBody> getStringuser(@Body String body);
 
 }
