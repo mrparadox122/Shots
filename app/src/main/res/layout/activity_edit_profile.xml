@@ -9,7 +9,6 @@
     android:orientation="vertical"
     tools:context=".EditProfile_Activity">
 
-
     <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

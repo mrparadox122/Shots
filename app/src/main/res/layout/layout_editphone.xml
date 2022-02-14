@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Edit Name"
+            android:text="Edit Phone"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="normal"/>
