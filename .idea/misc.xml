@@ -73,7 +73,7 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/drawable/search_bg.xml" value="0.20925925925925926" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/drawable/signuptext_bg.xml" value="0.2203125" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/drawable/view.xml" value="0.2203125" />
-        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_account.xml" value="0.33" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_account.xml" value="0.25" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_bottom_sheet.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_camera_portrate.xml" value="0.18" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_choose_yours_intrests.xml" value="0.25" />
@@ -89,6 +89,7 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_main.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_manage_account.xml" value="0.25" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_menu.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_message_main.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_msg.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_my_video_view.xml" value="0.22" />

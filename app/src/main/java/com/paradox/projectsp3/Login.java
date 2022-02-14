@@ -22,7 +22,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class Login extends AppCompatActivity {
     public boolean bool;
-    Button btn_login;
+    Button login_bt;
     EditText mobileNumbr,pin;
 
     @Override
@@ -34,13 +34,13 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mobileNumbr = findViewById(R.id.et_mobile);
 
-        btn_login = findViewById(R.id.login_bt);
+        login_bt = findViewById(R.id.login_bt);
 
 
-        pin = findViewById(R.id.et_gmail);
+        pin = findViewById(R.id.et_pin);
 
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        login_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String PhoneNumber,password;

@@ -58,7 +58,7 @@ public class Profile_Activity extends AppCompatActivity {
 
    TextView following_text,followers_text,likes_text,suggested_text;
 
-   String following,follwer,like,suggest;
+   String following,follower,like,suggest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,6 @@ public class Profile_Activity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_account);
-
 
         settings = findViewById(R.id.settings);
         back = findViewById(R.id.back);
@@ -81,7 +80,7 @@ public class Profile_Activity extends AppCompatActivity {
         suggested_text = findViewById(R.id.suggested_text);
 
 
-        followers_text.setText(follwer);
+        followers_text.setText(follower);
         following_text.setText(following);
         likes_text.setText(like);
         suggested_text.setText(suggest);
@@ -90,7 +89,6 @@ public class Profile_Activity extends AppCompatActivity {
         userDetails = new ArrayList<>();
 
         LoadAllDetails();
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +101,7 @@ public class Profile_Activity extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Profile_Activity.this,ProfileSettings_Activity.class);
+                Intent intent = new Intent(Profile_Activity.this,Menu_Activity.class);
                 startActivity(intent);
             }
         });
