@@ -216,7 +216,6 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
             Uri uri = data.getData();
             profilepic.setImageURI(uri);
         }
-
     }
 
     @Override
