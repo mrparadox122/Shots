@@ -56,6 +56,10 @@ public class Profile_Activity extends AppCompatActivity {
    public static ApiInterface apiInterface;
    List<UserDetails> userDetails;
 
+   TextView following_text,followers_text,likes_text,suggested_text;
+
+   String following,follwer,like,suggest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,13 +75,21 @@ public class Profile_Activity extends AppCompatActivity {
         pro_pic = findViewById(R.id.pro_pic);
         pro_name = findViewById(R.id.pro_name);
         email = findViewById(R.id.email);
+        following_text = findViewById(R.id.following_text);
+        followers_text = findViewById(R.id.followers_text);
+        likes_text = findViewById(R.id.likes_text);
+        suggested_text = findViewById(R.id.suggested_text);
+
+
+        followers_text.setText(follwer);
+        following_text.setText(following);
+        likes_text.setText(like);
+        suggested_text.setText(suggest);
+
         apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
         userDetails = new ArrayList<>();
 
-
-
         LoadAllDetails();
-
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +105,6 @@ public class Profile_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Profile_Activity.this,ProfileSettings_Activity.class);
                 startActivity(intent);
-
             }
         });
 
