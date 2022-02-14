@@ -58,7 +58,7 @@ public class NewEditProfile_Activity extends AppCompatActivity {
         dobedit_btn = findViewById(R.id.dobedit_btn);
         genderedit_btn = findViewById(R.id.genderedit_btn);
         bioedit_btn = findViewById(R.id.bioedit_btn);
-        txt_name = findViewById(R.id.txt_name);
+        //xt_name = findViewById(R.id.txt_name);
 
         nameedit_btn.setOnClickListener(new View.OnClickListener() {
             @Override

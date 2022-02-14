@@ -67,9 +67,6 @@
             android:name=".ContentLanguages_Activity"
             android:exported="false" />
         <activity
-            android:name=".EditProfile_Activity"
-            android:exported="false" />
-        <activity
             android:name=".PrivacySettings_Activity"
             android:exported="false" />
         <activity
