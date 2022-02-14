@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".VideoEditor">
 
-
     <VideoView
         android:id="@+id/video"
         android:layout_width="match_parent"

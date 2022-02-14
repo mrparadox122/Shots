@@ -21,6 +21,7 @@ public class EditProfile_Activity extends AppCompatActivity {
 
 TextView pic_change;
 ImageView profilepic;
+TextView txt_name;
 
 LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_editBio;
 
@@ -40,6 +41,7 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
         ll_editDoB = findViewById(R.id.ll_editDoB);
         ll_editgender = findViewById(R.id.ll_editgender);
         ll_editBio = findViewById(R.id.ll_editBio);
+        txt_name = findViewById(R.id.txt_name);
 
         ll_editname.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,11 +98,13 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
         namedialog.setContentView(R.layout.layout_editname);
         namedialog.setCancelable(true);
 
+// set texts here
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(namedialog.getWindow().getAttributes());
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
 
 
         namedialog.show();
@@ -112,6 +116,8 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
         biodialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         biodialog.setContentView(R.layout.layout_editbio);
         biodialog.setCancelable(true);
+
+// set texts here
 
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -131,6 +137,8 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
         genderdialog.setContentView(R.layout.layout_editgender);
         genderdialog.setCancelable(true);
 
+// set texts here
+
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(genderdialog.getWindow().getAttributes());
@@ -147,6 +155,8 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
         doBdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         doBdialog.setContentView(R.layout.layout_editdob);
         doBdialog.setCancelable(true);
+
+        // set texts here
 
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -165,6 +175,8 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
         phonedialog.setContentView(R.layout.layout_editphone);
         phonedialog.setCancelable(true);
 
+        // set texts here
+
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(phonedialog.getWindow().getAttributes());
@@ -182,6 +194,8 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
         editdialog.setContentView(R.layout.layout_editemail);
         editdialog.setCancelable(true);
 
+        // set texts here
+
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(editdialog.getWindow().getAttributes());
@@ -195,9 +209,6 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
 
 
 
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -205,7 +216,6 @@ LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_e
             Uri uri = data.getData();
             profilepic.setImageURI(uri);
         }
-
     }
 
     @Override
