@@ -42,6 +42,8 @@ public class NewEditProfile_Activity extends AppCompatActivity {
         back_btn= findViewById(R.id.back_btn);
 
 
+
+
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +60,13 @@ public class NewEditProfile_Activity extends AppCompatActivity {
         dobedit_btn = findViewById(R.id.dobedit_btn);
         genderedit_btn = findViewById(R.id.genderedit_btn);
         bioedit_btn = findViewById(R.id.bioedit_btn);
+
+        nameedit_btn.setText(String.valueOf(GlobalVariables.getFullname()));
+        emailedit_btn.setText(String.valueOf(GlobalVariables.getEmail()));
+        phoneedit_btn.setText(String.valueOf(GlobalVariables.getPhonenumber()));
+        genderedit_btn.setText(String.valueOf(GlobalVariables.getGender()));
+        dobedit_btn.setText(String.valueOf(GlobalVariables.getDob()));
+        bioedit_btn.setText(String.valueOf(GlobalVariables.getBio()));
         //xt_name = findViewById(R.id.txt_name);
 
         nameedit_btn.setOnClickListener(new View.OnClickListener() {

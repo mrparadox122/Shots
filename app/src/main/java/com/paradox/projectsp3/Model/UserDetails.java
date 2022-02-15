@@ -3,7 +3,23 @@ package com.paradox.projectsp3.Model;
 public class UserDetails {
 
 
-    private String id, fulllname, email, Gender, PhoneNumber, ProfilePic, Dob;
+    private String id;
+    private String fulllname;
+    private String email;
+    private String Gender;
+    private String PhoneNumber;
+    private String ProfilePic;
+    private String Dob;
+
+
+
+    private String following;
+    private String followers;
+    private String total_likes;
+
+
+
+    private String bio;
 
 
 
@@ -64,6 +80,36 @@ public class UserDetails {
     }
 
 
+    public String getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(String following) {
+        this.following = following;
+    }
+
+    public String getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(String followers) {
+        this.followers = followers;
+    }
+
+    public String getTotal_likes() {
+        return total_likes;
+    }
+
+    public void setTotal_likes(String total_likes) {
+        this.total_likes = total_likes;
+    }
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
 
 
 

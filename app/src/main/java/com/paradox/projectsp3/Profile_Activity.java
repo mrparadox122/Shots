@@ -50,7 +50,7 @@ public class Profile_Activity extends AppCompatActivity {
 
    ImageView settings , back;
    CircleImageView pro_pic;
-   TextView pro_name,email;
+   TextView pro_name,email,bio;
    Button edit_profile;
    private ArrayList<UserDetails> userDetailsArrayList = new ArrayList<>();
    public static ApiInterface apiInterface;
@@ -58,7 +58,40 @@ public class Profile_Activity extends AppCompatActivity {
 
    TextView following_text,followers_text,likes_text,suggested_text;
 
-   String following,follower,like,suggest;
+    public String getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(String following) {
+        this.following = following;
+    }
+
+    public String getFollwer() {
+        return follwer;
+    }
+
+    public void setFollwer(String follwer) {
+        this.follwer = follwer;
+    }
+
+    public String getLike() {
+        return like;
+    }
+
+    public void setLike(String like) {
+        this.like = like;
+    }
+
+    String following;
+    String follwer;
+    String like;
+    String suggest;
+
+    UserDetails UserDetails = new UserDetails();
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,27 +101,28 @@ public class Profile_Activity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_account);
 
+
         settings = findViewById(R.id.settings);
         back = findViewById(R.id.back);
         edit_profile = findViewById(R.id.edit_profile);
         pro_pic = findViewById(R.id.pro_pic);
         pro_name = findViewById(R.id.pro_name);
         email = findViewById(R.id.email);
+        bio = findViewById(R.id.bio);
         following_text = findViewById(R.id.following_text);
         followers_text = findViewById(R.id.followers_text);
         likes_text = findViewById(R.id.likes_text);
         suggested_text = findViewById(R.id.suggested_text);
 
 
-        followers_text.setText(follower);
-        following_text.setText(following);
-        likes_text.setText(like);
-        suggested_text.setText(suggest);
+
 
         apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
         userDetails = new ArrayList<>();
 
+
         LoadAllDetails();
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +135,7 @@ public class Profile_Activity extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Profile_Activity.this,Menu_Activity.class);
+                Intent intent = new Intent(Profile_Activity.this,ProfileSettings_Activity.class);
                 startActivity(intent);
             }
         });
@@ -116,6 +150,7 @@ public class Profile_Activity extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
+            GlobalVariables.setUsername(acct.getEmail());
             String personName = acct.getDisplayName();
             String personGivenName = acct.getGivenName();
             String personFamilyName = acct.getFamilyName();
@@ -146,6 +181,14 @@ public class Profile_Activity extends AppCompatActivity {
 
 
     private void getResponse(){
+        JSONObject data = new JSONObject();
+        try {
+            GlobalVariables globalVariables = new GlobalVariables();
+            data.put("username", globalVariables.username);
+            Log.e(TAG, "getResponse:json data put for api "+globalVariables.getUsername());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiInterface.userdetailurl)
@@ -154,7 +197,7 @@ public class Profile_Activity extends AppCompatActivity {
 
         ApiInterface api = retrofit.create(ApiInterface.class);
 
-        Call<String> call = api.getUserdetails("{\r\n    \"username\" : \"7095966526\"\r\n}");
+        Call<String> call = api.getUserdetails(data.toString());
 
         call.enqueue(new Callback<String>() {
             @Override
@@ -199,8 +242,26 @@ public class Profile_Activity extends AppCompatActivity {
                     UserDetails.setFulllname(dataobj.getString("fullname"));
                     UserDetails.setEmail(dataobj.getString("email"));
                     UserDetails.setDob(dataobj.getString("Dob"));
+                    UserDetails.setGender(dataobj.getString("Gender"));
+                    UserDetails.setPhoneNumber(dataobj.getString("PhoneNumber"));
+                    UserDetails.setBio(dataobj.getString("bio"));
+                    UserDetails.setFollowers(dataobj.getString("followers"));
+                    UserDetails.setFollowing(dataobj.getString("following"));
+                    UserDetails.setTotal_likes(dataobj.getString("total_likes"));
                     UserDetailsArrayList.add(UserDetails);
-                    Log.e(TAG, "writeTv: "+UserDetails.getId()+UserDetails.getEmail() );
+                    GlobalVariables.setBio(UserDetails.getBio());
+                    GlobalVariables.setFullname(UserDetails.getFulllname());
+                    GlobalVariables.setGender(UserDetails.getGender());
+                    GlobalVariables.setPhonenumber(UserDetails.getPhoneNumber());
+                    GlobalVariables.setProfile_pic(UserDetails.getProfilePic());
+                    GlobalVariables.setId(UserDetails.getId());
+                    GlobalVariables.setEmail(UserDetails.getEmail());
+                    GlobalVariables.setDob(UserDetails.getDob());
+                    setFollowing(UserDetails.getFollowing());
+                    setFollwer(UserDetails.getFollowers());
+                    setLike(UserDetails.getTotal_likes());
+                    add_details();
+                    Log.e(TAG, "writeTv: "+GlobalVariables.getFullname()+GlobalVariables.getUsername() );
 
                 }
 
@@ -217,5 +278,14 @@ public class Profile_Activity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+    private void add_details(){
+        bio.setText(GlobalVariables.getBio());
+        email.setText(GlobalVariables.getEmail());
+        followers_text.setText(getFollwer());
+        following_text.setText(getFollowing());
+        likes_text.setText(getLike());
+        Log.e(TAG, "add_details: "+followers_text.getText()+following_text.getText()+likes_text.getText() );
+        suggested_text.setText(suggest);
     }
 }
