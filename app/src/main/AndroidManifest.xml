@@ -25,6 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Followers_Following_Likes.BaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".Menu_Activity"
             android:exported="false" />
         <activity
