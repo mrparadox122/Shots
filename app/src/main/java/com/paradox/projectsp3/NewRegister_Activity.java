@@ -232,10 +232,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                     String phone = "+91" + et_Rphonenumber.getText().toString();
                     sendVerificationCode(phone);
 
-
                     verification.setVisibility(View.VISIBLE);
-
-
                     Toast.makeText(getApplicationContext(), "Enter Verification Code", Toast.LENGTH_SHORT).show();
                 }
                 else {
