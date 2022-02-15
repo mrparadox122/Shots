@@ -112,7 +112,6 @@ public class Profile_Activity extends AppCompatActivity {
         following_text = findViewById(R.id.following_text);
         followers_text = findViewById(R.id.followers_text);
         likes_text = findViewById(R.id.likes_text);
-        suggested_text = findViewById(R.id.suggested_text);
 
 
 
@@ -286,6 +285,6 @@ public class Profile_Activity extends AppCompatActivity {
         following_text.setText(getFollowing());
         likes_text.setText(getLike());
         Log.e(TAG, "add_details: "+followers_text.getText()+following_text.getText()+likes_text.getText() );
-        suggested_text.setText(suggest);
+
     }
 }
