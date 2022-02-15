@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
+import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Model.UserDetails;
 import com.paradox.projectsp3.Responses.ApiClient;
@@ -55,6 +57,8 @@ public class Profile_Activity extends AppCompatActivity {
    private ArrayList<UserDetails> userDetailsArrayList = new ArrayList<>();
    public static ApiInterface apiInterface;
    List<UserDetails> userDetails;
+
+   LinearLayout following_ll;
 
    TextView following_text,followers_text,likes_text,suggested_text;
 
@@ -89,10 +93,6 @@ public class Profile_Activity extends AppCompatActivity {
 
     UserDetails UserDetails = new UserDetails();
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +112,7 @@ public class Profile_Activity extends AppCompatActivity {
         following_text = findViewById(R.id.following_text);
         followers_text = findViewById(R.id.followers_text);
         likes_text = findViewById(R.id.likes_text);
+        following_ll = findViewById(R.id.following_ll);
 
 
 
@@ -122,6 +123,13 @@ public class Profile_Activity extends AppCompatActivity {
 
         LoadAllDetails();
 
+        following_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile_Activity.this, BaseActivity.class);
+                startActivity(intent);
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -261,14 +269,12 @@ public class Profile_Activity extends AppCompatActivity {
                     setLike(UserDetails.getTotal_likes());
                     add_details();
                     Log.e(TAG, "writeTv: "+GlobalVariables.getFullname()+GlobalVariables.getUsername() );
-
                 }
 
                 for (int j = 0; j < UserDetailsArrayList.size(); j++){
 
 //                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
                 }
-
             }else {
                 Toast.makeText(Profile_Activity.this, obj.optString("message")+"", Toast.LENGTH_SHORT).show();
             }

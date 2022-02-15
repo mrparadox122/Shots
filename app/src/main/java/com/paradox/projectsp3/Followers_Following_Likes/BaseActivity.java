@@ -38,7 +38,7 @@ public class BaseActivity extends AppCompatActivity implements TabLayout.OnTabSe
         //Adding the tabs using addTab() method
         tabLayout.addTab(tabLayout.newTab().setText("Followers"));
         tabLayout.addTab(tabLayout.newTab().setText("Following"));
-        tabLayout.addTab(tabLayout.newTab().setText("Likes"));
+        tabLayout.addTab(tabLayout.newTab().setText("Suggested"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         //Initializing viewPager
