@@ -15,10 +15,9 @@
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_following.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_gmail_login.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_new_edit_profile.xml" value="0.3937908496732026" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_new_edit_profile.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_new_register.xml" value="0.26871794871794874" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/comment_recyclerview_details.xml" value="0.5" />
-        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/layout_editname.xml" value="0.25" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.6.1/app/src/main/res/layout/activity_camera_portrate.xml" value="0.25" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.6.1/app/src/main/res/layout/activity_login.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.6.1/app/src/main/res/layout/activity_main.xml" value="0.2759295499021526" />
@@ -78,6 +77,7 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/drawable/signuptext_bg.xml" value="0.2203125" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/drawable/view.xml" value="0.2203125" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_account.xml" value="0.25" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_base.xml" value="0.2" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_bottom_sheet.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_camera_portrate.xml" value="0.18" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_choose_yours_intrests.xml" value="0.25" />
@@ -96,7 +96,7 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_message_main.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_msg.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_my_video_view.xml" value="0.22" />
-        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_new_edit_profile.xml" value="0.25" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_new_edit_profile.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_new_register.xml" value="0.2" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_new_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_phone_new_pin.xml" value="0.22" />
@@ -114,11 +114,23 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_video_editor.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/comment_recyclerview_details.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/comments_recyclerview.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/fragment_followers_.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/fragment_following_.xml" value="0.25" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/fragment_likes_.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/fragment_register_.xml" value="0.25" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/fragment_suggested_.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/home_activty.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/item_layout_dropdown.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_editbio.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_editdob.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_editemail.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_editgender.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_editname.xml" value="0.28960155490767736" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_editphone.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_main.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_sound.xml" value="0.33" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/listitem_followers.xml" value="0.33" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/listitem_following.xml" value="0.25" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/listitem_posts.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/slider_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />

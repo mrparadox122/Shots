@@ -202,7 +202,7 @@
                     android:textSize="14dp" />
 
                 <TextView
-                    android:id="@+id/dobedit_btn"
+                    android:id="@+id/datePickerButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="edit"
@@ -233,8 +233,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:textSize="14dp" />
 
-                <TextView
-                    android:id="@+id/genderedit_btn"
+                <Spinner
+                    android:id="@+id/spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
