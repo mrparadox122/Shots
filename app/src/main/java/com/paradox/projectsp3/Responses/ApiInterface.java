@@ -51,5 +51,7 @@ public interface ApiInterface {
     Call<ResponseBody> getStringScalar(@Body String body);
     @POST("read.php")
     Call<ResponseBody> getStringuser(@Body String body);
+    @POST("update_user.php")
+    Call<ResponseBody> getStringuser_update(@Body String body);
 
 }

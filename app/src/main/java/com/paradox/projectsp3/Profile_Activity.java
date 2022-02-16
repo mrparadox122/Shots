@@ -285,6 +285,7 @@ public class Profile_Activity extends AppCompatActivity {
 
     }
     private void add_details(){
+        pro_name.setText(GlobalVariables.getFullname());
         bio.setText(GlobalVariables.getBio());
         email.setText(GlobalVariables.getEmail());
         followers_text.setText(getFollwer());
