@@ -59,7 +59,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
 
     ImageView back_btn;
 
-    TextView nameedit_btn,emailedit_btn,phoneedit_btn,datePickerButton,genderedit_btn,bioedit_btn,editname_txt;
+    TextView nameedit_btn,emailedit_btn,phoneedit_btn,datePickerButton,genderedit_btn,bioedit_btn,editname_txt,editemail_txt,phonenumber_txt,dobtext_txt,gendertext_txt,bio_txt;
 
     EditText editname_et,editphone_et,editgender_et,editeamil_et,editdob_et,editbio_et;
     Button btn_savephone,btn_savename,btn_savegender,btn_saveemail,btn_savedob,btn_savebio;
@@ -100,6 +100,12 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         datePickerButton = findViewById(R.id.datePickerButton);
         genderedit_btnS = findViewById(R.id.spinner);
         bioedit_btn = findViewById(R.id.bioedit_btn);
+
+        editemail_txt = findViewById(R.id.editemail_txt);
+        phonenumber_txt = findViewById(R.id.phonenumber_txt);
+        dobtext_txt = findViewById(R.id.dobtext_txt);
+        gendertext_txt = findViewById(R.id.gendertext_txt);
+        bio_txt = findViewById(R.id.bio_txt);
 
 
 
@@ -159,11 +165,11 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
 //        editname_et = findViewById(R.id.editname_et);
 
 
-        nameedit_btn.setText(String.valueOf(GlobalVariables.getFullname()));
-        emailedit_btn.setText(String.valueOf(GlobalVariables.getEmail()));
-        phoneedit_btn.setText(String.valueOf(GlobalVariables.getPhonenumber()));
-//        genderedit_btn.setText(String.valueOf(GlobalVariables.getGender()));
-//        dobedit_btn.setText(String.valueOf(GlobalVariables.getDob()));
+        editname_txt.setText(String.valueOf(GlobalVariables.getFullname()));
+        editemail_txt.setText(String.valueOf(GlobalVariables.getEmail()));
+        phonenumber_txt.setText(String.valueOf(GlobalVariables.getPhonenumber()));
+        gendertext_txt.setText(String.valueOf(GlobalVariables.getGender()));
+        dobtext_txt.setText(String.valueOf(GlobalVariables.getDob()));
         bioedit_btn.setText(String.valueOf(GlobalVariables.getBio()));
         //xt_name = findViewById(R.id.txt_name);
 
