@@ -7,15 +7,7 @@
     android:orientation="vertical"
     tools:context=".Followers_Following_Likes.BaseActivity">
 
-    <!-- our toolbar -->
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="?attr/colorPrimary"-->
-<!--        android:minHeight="?attr/actionBarSize"-->
-<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>-->
+
 
     <!-- our tablayout to display tabs  -->
     <com.google.android.material.tabs.TabLayout
@@ -35,7 +27,7 @@
     <!-- View pager to swipe views -->
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"/>
 

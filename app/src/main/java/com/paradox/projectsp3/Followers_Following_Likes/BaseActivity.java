@@ -1,7 +1,6 @@
 package com.paradox.projectsp3.Followers_Following_Likes;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
@@ -28,21 +27,16 @@ public class BaseActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setContentView(R.layout.activity_base);
 
 
-        //Adding toolbar to the activity
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
         //Initializing the tablayout
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
 
         //Adding the tabs using addTab() method
         tabLayout.addTab(tabLayout.newTab().setText("Followers"));
         tabLayout.addTab(tabLayout.newTab().setText("Following"));
-        tabLayout.addTab(tabLayout.newTab().setText("Suggested"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         //Initializing viewPager
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         //Creating our pager adapter
         Pager_Adapter adapter = new Pager_Adapter(getSupportFragmentManager(), tabLayout.getTabCount());

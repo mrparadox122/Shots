@@ -7,9 +7,11 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,12 +25,13 @@ public class NewEditProfile_Activity extends AppCompatActivity {
 
     TextView pic_change;
     ImageView profilepic;
-    TextView txt_name;
 
-    //LinearLayout ll_editname,ll_editemail,ll_editphone,ll_editDoB,ll_editgender,ll_editBio;
     ImageView back_btn;
 
     TextView nameedit_btn,emailedit_btn,phoneedit_btn,dobedit_btn,genderedit_btn,bioedit_btn;
+
+    EditText editname_et,editphone_et,editgender_et,editeamil_et,editdob_et,editbio_et;
+    Button btn_savephone,btn_savename,btn_savegender,btn_saveemail,btn_savedob,btn_savebio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +43,6 @@ public class NewEditProfile_Activity extends AppCompatActivity {
 
 
         back_btn= findViewById(R.id.back_btn);
-
-
-
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +60,10 @@ public class NewEditProfile_Activity extends AppCompatActivity {
         dobedit_btn = findViewById(R.id.dobedit_btn);
         genderedit_btn = findViewById(R.id.genderedit_btn);
         bioedit_btn = findViewById(R.id.bioedit_btn);
+
+
+//        editname_et = findViewById(R.id.editname_et);
+
 
         nameedit_btn.setText(String.valueOf(GlobalVariables.getFullname()));
         emailedit_btn.setText(String.valueOf(GlobalVariables.getEmail()));
@@ -127,12 +131,23 @@ public class NewEditProfile_Activity extends AppCompatActivity {
 
 // set texts here
 
+
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(namedialog.getWindow().getAttributes());
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
+        editname_et = namedialog.findViewById(R.id.editname_et);
+        btn_savename = namedialog.findViewById(R.id.btn_savename);
 
+        btn_savename.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                
+
+            }
+        });
 
         namedialog.show();
         namedialog.getWindow().setAttributes(lp);
@@ -152,6 +167,15 @@ public class NewEditProfile_Activity extends AppCompatActivity {
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
+        editbio_et = biodialog.findViewById(R.id.editbio_et);
+        btn_savebio = biodialog.findViewById(R.id.btn_savebio);
+
+        btn_savebio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         biodialog.show();
         biodialog.getWindow().setAttributes(lp);
@@ -172,6 +196,15 @@ public class NewEditProfile_Activity extends AppCompatActivity {
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
+        editgender_et = genderdialog.findViewById(R.id.editgender_et);
+        btn_savegender = genderdialog.findViewById(R.id.btn_savegender);
+
+        btn_savegender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         genderdialog.show();
         genderdialog.getWindow().setAttributes(lp);
@@ -185,12 +218,20 @@ public class NewEditProfile_Activity extends AppCompatActivity {
 
         // set texts here
 
-
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(doBdialog.getWindow().getAttributes());
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
+        editdob_et = doBdialog.findViewById(R.id.editdob_et);
+        btn_savedob = doBdialog.findViewById(R.id.btn_savedob);
+
+        btn_savedob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         doBdialog.show();
         doBdialog.getWindow().setAttributes(lp);
@@ -204,12 +245,21 @@ public class NewEditProfile_Activity extends AppCompatActivity {
 
         // set texts here
 
-
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(phonedialog.getWindow().getAttributes());
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
+        editphone_et = phonedialog.findViewById(R.id.editphone_et);
+        btn_savephone = phonedialog.findViewById(R.id.btn_savephone);
+
+        btn_savephone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
 
         phonedialog.show();
         phonedialog.getWindow().setAttributes(lp);
@@ -228,6 +278,16 @@ public class NewEditProfile_Activity extends AppCompatActivity {
         lp.copyFrom(editdialog.getWindow().getAttributes());
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        editeamil_et = editdialog.findViewById(R.id.editeamil_et);
+        btn_saveemail = editdialog.findViewById(R.id.btn_saveemail);
+
+        btn_saveemail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         editdialog.show();
         editdialog.getWindow().setAttributes(lp);
