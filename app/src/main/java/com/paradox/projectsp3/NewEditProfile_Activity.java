@@ -169,7 +169,7 @@ public class NewEditProfile_Activity extends AppCompatActivity {
 
         editname_et = namedialog.findViewById(R.id.editname_et);
         btn_savename = namedialog.findViewById(R.id.btn_savename);
-        if (!editname_et.getText().equals("")) {
+        if (!editname_et.getText().equals("")&&String.valueOf(editname_et.getText())!= null) {
             btn_savename.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -217,6 +217,9 @@ public class NewEditProfile_Activity extends AppCompatActivity {
                 }
             });
         }
+        else {
+            Toast.makeText(this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
+        }
 
         namedialog.show();
         namedialog.getWindow().setAttributes(lp);
@@ -242,7 +245,57 @@ public class NewEditProfile_Activity extends AppCompatActivity {
         btn_savebio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!String.valueOf(editbio_et.getText()).equals("") &&String.valueOf(editbio_et.getText())!= null) {
+                    btn_savebio.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            JSONObject dislike = new JSONObject();
+                            try {
+                                dislike.put("id", String.valueOf(GlobalVariables.getId()));
+                                dislike.put("flag", "6");
+                                dislike.put("value", "'"+String.valueOf(editbio_et.getText())+"'");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            Retrofit.Builder retrofit = new Retrofit.Builder()
+                                    .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                                    .addConverterFactory(ScalarsConverterFactory.create())
+                                    .addConverterFactory(GsonConverterFactory.create());
+                            Retrofit retrofit2 = retrofit.build();
 
+
+                            //get client
+                            ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                            Call<ResponseBody> call_like = apiInterface.getStringuser_update(dislike.toString());
+                            call_like.enqueue(new Callback<ResponseBody>() {
+                                @Override
+                                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                    //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                                    if (response.isSuccessful()){
+                                        Log.e(TAG, "onResponse: "+response.body() );
+                                        Log.e(TAG, "onResponse: "+response );
+                                        GlobalVariables.setBio(String.valueOf(editbio_et.getText()));
+                                        editbio_et.setText(String.valueOf(editbio_et.getText()));
+                                        Toast.makeText(NewEditProfile_Activity.this, "Successfully changed the name to: "+GlobalVariables.getFullname(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+
+
+                                @Override
+                                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+
+
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "bio cannot be empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
