@@ -1,12 +1,16 @@
 package com.paradox.projectsp3;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -16,9 +20,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.github.drjacky.imagepicker.ImagePicker;
+import com.paradox.projectsp3.Responses.ApiInterface;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class NewEditProfile_Activity extends AppCompatActivity {
 
@@ -28,11 +45,14 @@ public class NewEditProfile_Activity extends AppCompatActivity {
 
     ImageView back_btn;
 
+    TextView editname_txt,editemail_txt,editphone_txt,editdob_txt,editgender_txt,editboio_txt,userid;
+
     TextView nameedit_btn,emailedit_btn,phoneedit_btn,dobedit_btn,genderedit_btn,bioedit_btn;
 
     EditText editname_et,editphone_et,editgender_et,editeamil_et,editdob_et,editbio_et;
     Button btn_savephone,btn_savename,btn_savegender,btn_saveemail,btn_savedob,btn_savebio;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +71,15 @@ public class NewEditProfile_Activity extends AppCompatActivity {
             }
         });
 
+        editname_txt = findViewById(R.id.editname_txt);
+        editemail_txt = findViewById(R.id.editemail_txt);
+        editphone_txt = findViewById(R.id.editphone_txt);
+        editdob_txt = findViewById(R.id.editdob_txt);
+        editgender_txt = findViewById(R.id.editgender_txt);
+        editboio_txt = findViewById(R.id.editboio_txt);
+        userid = findViewById(R.id.userid);
+
+
 
         pic_change = findViewById(R.id.pic_change);
         profilepic = findViewById(R.id.profilepic);
@@ -65,12 +94,13 @@ public class NewEditProfile_Activity extends AppCompatActivity {
 //        editname_et = findViewById(R.id.editname_et);
 
 
-        nameedit_btn.setText(String.valueOf(GlobalVariables.getFullname()));
-        emailedit_btn.setText(String.valueOf(GlobalVariables.getEmail()));
-        phoneedit_btn.setText(String.valueOf(GlobalVariables.getPhonenumber()));
-        genderedit_btn.setText(String.valueOf(GlobalVariables.getGender()));
-        dobedit_btn.setText(String.valueOf(GlobalVariables.getDob()));
-        bioedit_btn.setText(String.valueOf(GlobalVariables.getBio()));
+        editname_txt.setText(String.valueOf(GlobalVariables.getFullname()));
+        editemail_txt.setText(String.valueOf(GlobalVariables.getEmail()));
+        editphone_txt.setText(String.valueOf(GlobalVariables.getPhonenumber()));
+        editgender_txt.setText(String.valueOf(GlobalVariables.getGender()));
+        editdob_txt.setText(String.valueOf(GlobalVariables.getDob()));
+        editboio_txt.setText(String.valueOf(GlobalVariables.getBio()));
+        userid.setText("UserID: "+String.valueOf(GlobalVariables.getId()));
         //xt_name = findViewById(R.id.txt_name);
 
         nameedit_btn.setOnClickListener(new View.OnClickListener() {
@@ -139,15 +169,54 @@ public class NewEditProfile_Activity extends AppCompatActivity {
 
         editname_et = namedialog.findViewById(R.id.editname_et);
         btn_savename = namedialog.findViewById(R.id.btn_savename);
+        if (!editname_et.getText().equals("")) {
+            btn_savename.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    JSONObject dislike = new JSONObject();
+                    try {
+                        dislike.put("id", String.valueOf(GlobalVariables.getId()));
+                        dislike.put("flag", "1");
+                        dislike.put("value", "'"+String.valueOf(editname_et.getText())+"'");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Retrofit.Builder retrofit = new Retrofit.Builder()
+                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create());
+                    Retrofit retrofit2 = retrofit.build();
 
-        btn_savename.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                
+                    //get client
+                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                    Call<ResponseBody> call_like = apiInterface.getStringuser_update(dislike.toString());
+                    call_like.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                           if (response.isSuccessful()){
+                               Log.e(TAG, "onResponse: "+response.body() );
+                               Log.e(TAG, "onResponse: "+response );
+                               GlobalVariables.setFullname(String.valueOf(editname_et.getText()));
+                               editname_txt.setText(String.valueOf(editname_et.getText()));
+                               Toast.makeText(NewEditProfile_Activity.this, "Successfully changed the name to: "+GlobalVariables.getFullname(), Toast.LENGTH_SHORT).show();
+                           }
+                        }
 
-            }
-        });
+
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+
+                }
+            });
+        }
 
         namedialog.show();
         namedialog.getWindow().setAttributes(lp);
