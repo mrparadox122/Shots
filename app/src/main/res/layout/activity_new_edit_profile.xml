@@ -202,7 +202,7 @@
                     android:textSize="14dp" />
 
                 <TextView
-                    android:id="@+id/dobedit_btn"
+                    android:id="@+id/datePickerButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="edit"
@@ -212,40 +212,33 @@
                     android:layout_margin="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_margin="5dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/user_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Select Gender :"
+                    android:padding="8dp"
                     android:layout_gravity="center"
-                    android:text="Gender"
-                    android:textColor="#979191"
-                    android:layout_marginStart="5dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:id="@+id/genderedit_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="5dp"
-                    android:text="edit"
-                    android:textColor="@color/maincolor"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:textSize="14dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"/>
+            </LinearLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
