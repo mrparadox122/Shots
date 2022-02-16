@@ -1,5 +1,7 @@
 package com.paradox.projectsp3;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +10,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -21,12 +24,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.github.drjacky.imagepicker.ImagePicker;
+import com.paradox.projectsp3.Responses.ApiInterface;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.TimeZone;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class NewEditProfile_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -43,7 +59,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
 
     ImageView back_btn;
 
-    TextView nameedit_btn,emailedit_btn,phoneedit_btn,datePickerButton,genderedit_btn,bioedit_btn;
+    TextView nameedit_btn,emailedit_btn,phoneedit_btn,datePickerButton,genderedit_btn,bioedit_btn,editname_txt;
 
     EditText editname_et,editphone_et,editgender_et,editeamil_et,editdob_et,editbio_et;
     Button btn_savephone,btn_savename,btn_savegender,btn_saveemail,btn_savedob,btn_savebio;
@@ -76,6 +92,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         });
 
         pic_change = findViewById(R.id.pic_change);
+        editname_txt = findViewById(R.id.editname_txt);
         profilepic = findViewById(R.id.profilepic);
         nameedit_btn = findViewById(R.id.nameedit_btn);
         emailedit_btn = findViewById(R.id.emailedit_btn);
@@ -216,7 +233,57 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
             @Override
             public void onClick(View view) {
 
-                
+                if (!editname_et.getText().equals("")&&String.valueOf(editname_et.getText())!= null) {
+                    btn_savename.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            JSONObject dislike = new JSONObject();
+                            try {
+                                dislike.put("id", String.valueOf(GlobalVariables.getId()));
+                                dislike.put("flag", "1");
+                                dislike.put("value", "'"+String.valueOf(editname_et.getText())+"'");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            Retrofit.Builder retrofit = new Retrofit.Builder()
+                                    .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                                    .addConverterFactory(ScalarsConverterFactory.create())
+                                    .addConverterFactory(GsonConverterFactory.create());
+                            Retrofit retrofit2 = retrofit.build();
+
+
+                            //get client
+                            ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                            Call<ResponseBody> call_like = apiInterface.getStringuser_update(dislike.toString());
+                            call_like.enqueue(new Callback<ResponseBody>() {
+                                @Override
+                                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                    //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                                    if (response.isSuccessful()){
+                                        Log.e(TAG, "onResponse: "+response.body() );
+                                        Log.e(TAG, "onResponse: "+response );
+                                        GlobalVariables.setFullname(String.valueOf(editname_et.getText()));
+                                        editname_txt.setText(String.valueOf(editname_et.getText()));
+                                        Toast.makeText(NewEditProfile_Activity.this, "Successfully changed the name to: "+GlobalVariables.getFullname(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+
+
+                                @Override
+                                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+
+
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Name cannot be empty", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -245,7 +312,57 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         btn_savebio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!String.valueOf(editbio_et.getText()).equals("") &&String.valueOf(editbio_et.getText())!= null) {
+                    btn_savebio.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            JSONObject dislike = new JSONObject();
+                            try {
+                                dislike.put("id", String.valueOf(GlobalVariables.getId()));
+                                dislike.put("flag", "6");
+                                dislike.put("value", "'"+String.valueOf(editbio_et.getText())+"'");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            Retrofit.Builder retrofit = new Retrofit.Builder()
+                                    .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                                    .addConverterFactory(ScalarsConverterFactory.create())
+                                    .addConverterFactory(GsonConverterFactory.create());
+                            Retrofit retrofit2 = retrofit.build();
 
+
+                            //get client
+                            ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                            Call<ResponseBody> call_like = apiInterface.getStringuser_update(dislike.toString());
+                            call_like.enqueue(new Callback<ResponseBody>() {
+                                @Override
+                                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                    //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                                    if (response.isSuccessful()){
+                                        Log.e(TAG, "onResponse: "+response.body() );
+                                        Log.e(TAG, "onResponse: "+response );
+                                        GlobalVariables.setBio(String.valueOf(editbio_et.getText()));
+                                        editbio_et.setText(String.valueOf(editbio_et.getText()));
+                                        Toast.makeText(NewEditProfile_Activity.this, "Successfully changed the name to: "+GlobalVariables.getFullname(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+
+
+                                @Override
+                                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+
+
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "bio cannot be empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
