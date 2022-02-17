@@ -484,18 +484,15 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
             public void onClick(View view) {
                 if (!editeamil_et.getText().equals("")&&!editeamil_et.equals(null)) {
 
-
                     Toast.makeText(NewEditProfile_Activity.this, "Verification code has been sent to: " + GlobalVariables.getPhonenumber(), Toast.LENGTH_LONG).show();
                     String phone = "+91" + GlobalVariables.getPhonenumber().toString();
                     sendVerificationCode(phone);
 
-
-                    //  ll_verify.setVisibility(View.VISIBLE);
+                      ll_verify.setVisibility(View.VISIBLE);
                 }
                 else {
                     Toast.makeText(NewEditProfile_Activity.this, "Email cannot be empty", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

@@ -8,13 +8,12 @@
     tools:context=".Followers_Following_Likes.Followers_Fragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="5dp"
         android:id="@+id/rv_followers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
-        tools:listitem="@layout/listitem_followers"/>
-
+        tools:listitem="@layout/listitem_followers" />
 
 
 </FrameLayout>
