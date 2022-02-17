@@ -32,11 +32,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txt_username"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Username" />
 
             <TextView
+                android:id="@+id/txt_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name" />
@@ -44,6 +47,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

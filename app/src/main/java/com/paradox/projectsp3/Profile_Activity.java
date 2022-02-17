@@ -53,7 +53,7 @@ public class Profile_Activity extends AppCompatActivity {
    ImageView settings , back;
    CircleImageView pro_pic;
    TextView pro_name,email,bio;
-   Button edit_profile;
+   private Button edit_profile;
    private ArrayList<UserDetails> userDetailsArrayList = new ArrayList<>();
    public static ApiInterface apiInterface;
    List<UserDetails> userDetails;
@@ -113,10 +113,7 @@ public class Profile_Activity extends AppCompatActivity {
         followers_text = findViewById(R.id.followers_text);
         likes_text = findViewById(R.id.likes_text);
         following_ll = findViewById(R.id.following_ll);
-
-
-
-
+        //
         apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
         userDetails = new ArrayList<>();
 
@@ -157,6 +154,7 @@ public class Profile_Activity extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
+
             GlobalVariables.setUsername(acct.getEmail());
             String personName = acct.getDisplayName();
             String personGivenName = acct.getGivenName();
@@ -167,6 +165,7 @@ public class Profile_Activity extends AppCompatActivity {
             pro_name.setText(personName);
             email.setText(personEmail);
             Glide.with(this).load(String.valueOf(personPhoto)).into(pro_pic);
+            LoadAllDetails();
         }
 
     }

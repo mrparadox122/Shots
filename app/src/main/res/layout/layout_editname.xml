@@ -28,9 +28,11 @@
             android:layout_height="wrap_content"
             android:hint="enter name"
             android:maxLines="1"
+            android:maxLength="15"
             android:inputType="textPersonName"
             android:textColorHint="@color/gray"
             android:layout_marginTop="20dp"/>
+
 
         <Button
             android:id="@+id/btn_savename"
