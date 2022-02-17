@@ -74,7 +74,6 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         getSupportActionBar().hide();
         setContentView(R.layout.activity_new_edit_profile);
 
-
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
@@ -106,7 +105,6 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         dobtext_txt = findViewById(R.id.dobtext_txt);
         gendertext_txt = findViewById(R.id.gendertext_txt);
         bio_txt = findViewById(R.id.bio_txt);
-
 
 
         datePickerButton.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +168,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         phonenumber_txt.setText(String.valueOf(GlobalVariables.getPhonenumber()));
         gendertext_txt.setText(String.valueOf(GlobalVariables.getGender()));
         dobtext_txt.setText(String.valueOf(GlobalVariables.getDob()));
-        bioedit_btn.setText(String.valueOf(GlobalVariables.getBio()));
+        bio_txt.setText(String.valueOf(GlobalVariables.getBio()));
         //xt_name = findViewById(R.id.txt_name);
 
         nameedit_btn.setOnClickListener(new View.OnClickListener() {
@@ -348,17 +346,15 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                                         Log.e(TAG, "onResponse: "+response.body() );
                                         Log.e(TAG, "onResponse: "+response );
                                         GlobalVariables.setBio(String.valueOf(editbio_et.getText()));
-                                        editbio_et.setText(String.valueOf(editbio_et.getText()));
+                                        bio_txt.setText(String.valueOf(editbio_et.getText()));
+                                        biodialog.dismiss();
                                         Toast.makeText(NewEditProfile_Activity.this, "Successfully changed the name to: "+GlobalVariables.getFullname(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
 
-
-
                                 @Override
                                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                                     Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
-
                                 }
                             });
 
