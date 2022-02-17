@@ -76,8 +76,8 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
 
     TextView nameedit_btn,emailedit_btn,phoneedit_btn,datePickerButton,bioedit_btn,editname_txt,
             editemail_txt,phonenumber_txt,dobtext_txt,gendertext_txt,bio_txt,user_id;
-    EditText editname_et,editphone_et,editgender_et,editeamil_et,editdob_et,editbio_et,verificationphone_et;
-    Button btn_savephone,btn_savename,btn_savegender,btn_saveemail,btn_savedob,btn_savebio,btn_verification;
+    EditText editname_et,editphone_et,editgender_et,editeamil_et,editdob_et,editbio_et,verificationphone_et,verifycode_et;
+    Button btn_savephone,btn_savename,btn_savegender,btn_saveemail,btn_savedob,btn_savebio,btn_verification,btn_verifyemail;
     Spinner genderedit_btnS;
 
     @Override
@@ -475,13 +475,37 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
 
         ll_verify = editdialog.findViewById(R.id.ll_verify);
         editeamil_et = editdialog.findViewById(R.id.editeamil_et);
+        verifycode_et = editdialog.findViewById(R.id.verifycode_et);
         btn_saveemail = editdialog.findViewById(R.id.btn_saveemail);
+        btn_verifyemail = editdialog.findViewById(R.id.btn_verifyemail);
 
         btn_saveemail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  ll_verify.setVisibility(View.VISIBLE);
+                if (!editeamil_et.getText().equals("")&&!editeamil_et.equals(null)) {
 
+
+                    Toast.makeText(NewEditProfile_Activity.this, "Verification code has been sent to: " + GlobalVariables.getPhonenumber(), Toast.LENGTH_LONG).show();
+                    String phone = "+91" + GlobalVariables.getPhonenumber().toString();
+                    sendVerificationCode(phone);
+
+
+                    //  ll_verify.setVisibility(View.VISIBLE);
+                }
+                else {
+                    Toast.makeText(NewEditProfile_Activity.this, "Email cannot be empty", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
+        btn_verifyemail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                verifyCodeEmail(verifycode_et.getText().toString());
+                editdialog.dismiss();
             }
         });
 
@@ -646,6 +670,72 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
 //                            startActivity(i);
 //                            Intent intent = new Intent(NewRegister_Activity.this,HomeActivty.class);
 //                            startActivity(intent);
+                            finish();
+                        } else {
+                            // if the code is not correct then we are
+                            // displaying an error message to the user.
+                            Toast.makeText(NewEditProfile_Activity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
+    private void verifyCodeEmail(String code) {
+        // below line is used for getting getting
+        // credentials from our verification id and code.
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
+
+        // after getting credential we are
+        // calling sign in method.
+        signInWithCredentialE(credential);
+    }
+    private void signInWithCredentialE(PhoneAuthCredential credential) {
+        // inside this method we are checking if
+        // the code entered is correct or not.
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+
+                            JSONObject dislike = new JSONObject();
+                            try {
+                                dislike.put("id", String.valueOf(GlobalVariables.getId()));
+                                dislike.put("flag", "3");
+                                dislike.put("value", "'"+String.valueOf(editeamil_et.getText())+"'");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            Retrofit.Builder retrofit = new Retrofit.Builder()
+                                    .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                                    .addConverterFactory(ScalarsConverterFactory.create())
+                                    .addConverterFactory(GsonConverterFactory.create());
+                            Retrofit retrofit2 = retrofit.build();
+
+
+                            //get client
+                            ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                            Call<ResponseBody> call_like = apiInterface.getStringuser_update(dislike.toString());
+                            call_like.enqueue(new Callback<ResponseBody>() {
+                                @Override
+                                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                    //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                                    if (response.isSuccessful()){
+                                        Log.e(TAG, "onResponse: "+response.body() );
+                                        Log.e(TAG, "onResponse: "+response );
+                                        GlobalVariables.setEmail(String.valueOf(editeamil_et.getText()));
+                                        editemail_txt.setText(String.valueOf(editeamil_et.getText()));
+                                        Toast.makeText(NewEditProfile_Activity.this, "Successfully changed the email to: "+GlobalVariables.getEmail(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
+
                             finish();
                         } else {
                             // if the code is not correct then we are
