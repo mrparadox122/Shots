@@ -59,9 +59,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class NewEditProfile_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String Dob,gender;
-
-
     String[] Gender = {"Male", "Female", "Others"};
     String[] Options = {"Phone"};
 
@@ -75,11 +72,12 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
     private String verificationId;
     ImageView back_btn;
 
-    TextView nameedit_btn,emailedit_btn,phoneedit_btn,datePickerButton,genderedit_btn,bioedit_btn,editname_txt,editemail_txt,phonenumber_txt,dobtext_txt,gendertext_txt,bio_txt,user_id;
+    LinearLayout ll_verify,ll_phoneverify;
 
+    TextView nameedit_btn,emailedit_btn,phoneedit_btn,datePickerButton,bioedit_btn,editname_txt,
+            editemail_txt,phonenumber_txt,dobtext_txt,gendertext_txt,bio_txt,user_id;
     EditText editname_et,editphone_et,editgender_et,editeamil_et,editdob_et,editbio_et,verificationphone_et;
     Button btn_savephone,btn_savename,btn_savegender,btn_saveemail,btn_savedob,btn_savebio,btn_verification;
-
     Spinner genderedit_btnS;
 
     @Override
@@ -431,6 +429,8 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         verificationphone_et = phonedialog.findViewById(R.id.verificationphone_et);
         btn_savephone = phonedialog.findViewById(R.id.btn_savephone);
         btn_verification = phonedialog.findViewById(R.id.btn_verification);
+        ll_phoneverify = phonedialog.findViewById(R.id.ll_phoneverify);
+
 
         btn_savephone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -439,10 +439,11 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                     Toast.makeText(NewEditProfile_Activity.this, "Verification code has been sent to: " + GlobalVariables.getPhonenumber(), Toast.LENGTH_LONG).show();
                     String phone = "+91" + GlobalVariables.getPhonenumber().toString();
                     sendVerificationCode(phone);
-
+                    ll_phoneverify.setVisibility(View.VISIBLE);
 
                 }else {
                     Toast.makeText(NewEditProfile_Activity.this, "number Cannot be empty", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -472,12 +473,14 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
+        ll_verify = editdialog.findViewById(R.id.ll_verify);
         editeamil_et = editdialog.findViewById(R.id.editeamil_et);
         btn_saveemail = editdialog.findViewById(R.id.btn_saveemail);
 
         btn_saveemail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+              //  ll_verify.setVisibility(View.VISIBLE);
 
             }
         });
@@ -598,10 +601,6 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-
-
-
-
                             JSONObject dislike = new JSONObject();
                             try {
                                 dislike.put("id", String.valueOf(GlobalVariables.getId()));
@@ -629,7 +628,6 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                                         Log.e(TAG, "onResponse: "+response );
                                         GlobalVariables.setBio(String.valueOf(editphone_et.getText()));
                                         phonenumber_txt.setText(String.valueOf(editphone_et.getText()));
-
                                         Toast.makeText(NewEditProfile_Activity.this, "Successfully changed the number to: "+GlobalVariables.getPhonenumber(), Toast.LENGTH_SHORT).show();
                                     }
                                 }

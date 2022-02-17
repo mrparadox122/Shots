@@ -40,23 +40,36 @@
             android:textAllCaps="false"
             android:text="Submit" />
 
-        <EditText
-            android:id="@+id/verificationphone_et"
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_phoneverify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="enter 6 digits code"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textColorHint="@color/gray"
-            android:layout_marginTop="20dp"/>
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_verification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textAllCaps="false"
-            android:text="Verify" />
+            <EditText
+                android:id="@+id/verificationphone_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="enter 6 digits code"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColorHint="@color/gray"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:id="@+id/btn_verification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAllCaps="false"
+                android:text="Verify" />
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
