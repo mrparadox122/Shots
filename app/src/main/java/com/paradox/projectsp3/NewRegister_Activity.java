@@ -56,13 +56,12 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     Button btn_signup,btn_submit,datePickerButton;
     String Dob,gender;
 
+    TextView date_et;
 
     String[] Gender = {"Male", "Female", "Others"};
     String[] Options = {"Phone"};
 
     private FirebaseAuth mAuth;
-
-
 
     private String verificationId;
 
@@ -74,7 +73,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     private Button dateButton;
     LinearLayout verification;
     boolean iscode = true;
-    private DatePickerDialog datePickerDialog;
+    private DatePickerDialog picker;
 
     int mDay,mMonth,mYear;
     boolean isDob;
@@ -118,71 +117,53 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         et_veryfi = findViewById(R.id.et_verify);
         btn_signup = findViewById(R.id.btn_signup);
         btn_submit = findViewById(R.id.btn_submit);
-        datePickerButton = findViewById(R.id.datePickerButton);
-
-        datePickerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar calendar = Calendar.getInstance();
-                //set time zone
-                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-                int selectedYear = calendar.get(Calendar.YEAR);
-                int selectedMonth = calendar.get(Calendar.MONTH);
-                int selectedDay = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(NewRegister_Activity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            public void onDateSet(DatePicker view, int selectedYear,
-                                                  int selectedMonth, int selectedDay) {
-                                mDay = selectedDay;
-                                mMonth = selectedMonth;
-                                mYear = selectedYear;
-                                Dob = makeDateitgkm(selectedYear,selectedMonth,selectedDay);
-                                StringBuilder Date = new StringBuilder("");
-                                String conver = Integer.toString(selectedYear);
-                                Date.append(conver);
-                                Date.append("-");
-                                selectedMonth++;
-                                conver = Integer.toString(selectedMonth);
-                                Date.append(conver);
-                                Date.append("-");
-                                conver = Integer.toString(selectedDay);
-                                Date.append(conver);
-                                isDob = true;
-                            }
-                        }, mDay, mMonth, mYear);
-
-                datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
-
-
-                //Set Today date to calendar
-                final Calendar calendar2 = Calendar.getInstance();
-                //Set Minimum date of calendar
-                calendar2.set(2009, 1, 1);
-                datePickerDialog.getDatePicker().setMaxDate(calendar2.getTimeInMillis());
-                datePickerDialog.setTitle("Select Date");
-                datePickerDialog.show();
-
-                final Calendar calendar3 = Calendar.getInstance();
-                //Set Maximum date of calendar
-                calendar3.set(1990, 1, 1);
-                //Set One Month date from today date to calendar
-                //calendar3.add(Calendar.MONTH, 1);
-                datePickerDialog.getDatePicker().setMinDate(calendar3.getTimeInMillis());
-                datePickerDialog.setTitle("Select Date");
-                datePickerDialog.show();
-            }
-        });
+        date_et = findViewById(R.id.date_et);
 
         verification = findViewById(R.id.verification);
+
+
+        date_et.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        final Calendar cldr = Calendar.getInstance();
+                        int day = cldr.get(Calendar.DAY_OF_MONTH);
+                        int month = cldr.get(Calendar.MONTH);
+                        int year = cldr.get(Calendar.YEAR);
+                        // date picker dialog
+                    DatePickerDialog picker = new DatePickerDialog(NewRegister_Activity.this,
+                                new DatePickerDialog.OnDateSetListener() {
+                                    @Override
+                                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                        date_et.setText("Date of Birth: "+dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                    }
+                                }, year, month, day);
+                        picker.getDatePicker().setMaxDate(cldr.getTimeInMillis());
+                        picker.show();
+                    }
+                });
+
+//               // Set Today date to calendar
+//                final Calendar calendar2 = Calendar.getInstance();
+//                //Set Minimum date of calendar
+//                calendar2.set(2009, 1, 1);
+//                picker.getDatePicker().setMaxDate(calendar2.getTimeInMillis());
+//                picker.setTitle("Select Date");
+//                picker.show();
+//
+//                final Calendar calendar3 = Calendar.getInstance();
+//                //Set Maximum date of calendar
+//                calendar3.set(1900, 1, 1);
+//                //Set One Month date from today date to calendar
+//                //calendar3.add(Calendar.MONTH, 1);
+//                picker.getDatePicker().setMinDate(calendar3.getTimeInMillis());
+//                picker.setTitle("Select Date");
+//                picker.show();
+
+                initDatePicker();
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                if (iscode == true){
-
-//                }
                 String fullname,password,email,username,cpass,PhoneNumber,gndr,dob;
                 Integer Pc;
                 fullname = String.valueOf(et_name.getText());
@@ -238,10 +219,8 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 else {
                     verification.setVisibility(View.GONE);
                 }
-
             }
         });
-
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -258,7 +237,6 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 dob = Dob;
 
                 verifyCode(et_veryfi.getText().toString());
-
 
                 Log.e(TAG, "onClick: " + "name:" + fullname + "pas:" + password + "email" + email + "usrname" + username + "phno" + PhoneNumber + "gndr" + gndr + "dob" + dob);
                 if (!password.equals(cpass)){
@@ -283,9 +261,6 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                         et_Remail.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
                         et_Rpassword.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
                     }
-
-
-
                 }
                 else if (!(Pc > 9)){
                     et_Rphonenumber.getBackground().mutate().setColorFilter(getResources().getColor(R.color.app_color), PorterDuff.Mode.SRC_ATOP);
@@ -348,23 +323,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
             }
         });
 
-        initDatePicker();
-        dateButton = findViewById(R.id.datePickerButton);
-        dateButton.setText(getTodaysDate());
     }
-
-
-
-    private String getTodaysDate()
-    {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        month = month + 1;
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        return makeDateString(day, month, year);
-    }
-
 
     private void initDatePicker() {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
@@ -374,8 +333,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
             {
                 month = month + 1;
                 String date = makeDateString(day, month, year);
-                dateButton.setText(date);
-
+                date_et.setText(date);
             }
         };
 
@@ -386,10 +344,8 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
 
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
-        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-
-
+        picker = new DatePickerDialog(this, style, dateSetListener, year, month, day);
+        picker.getDatePicker().setMaxDate(System.currentTimeMillis());
     }
 
     private String makeDateString(int day, int month, int year)
@@ -430,12 +386,6 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
 
         //default should never happen
         return "JAN";
-    }
-
-
-    public void openDatePick(View view)
-    {
-        datePickerDialog.show();
     }
 
 

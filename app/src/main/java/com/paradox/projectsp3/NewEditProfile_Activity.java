@@ -125,57 +125,24 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         mAuth = FirebaseAuth.getInstance();
 
 
+
         datePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar calendar = Calendar.getInstance();
-                //set time zone
-                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-                int selectedYear = calendar.get(Calendar.YEAR);
-                int selectedMonth = calendar.get(Calendar.MONTH);
-                int selectedDay = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(NewEditProfile_Activity.this,
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                DatePickerDialog picker = new DatePickerDialog(NewEditProfile_Activity.this,
                         new DatePickerDialog.OnDateSetListener() {
-                            public void onDateSet(DatePicker view, int selectedYear,
-                                                  int selectedMonth, int selectedDay) {
-                                mDay = selectedDay;
-                                mMonth = selectedMonth;
-                                mYear = selectedYear;
-//                                Dob = makeDateitgkm(selectedYear,selectedMonth,selectedDay);
-                                StringBuilder Date = new StringBuilder("");
-                                String conver = Integer.toString(selectedYear);
-                                Date.append(conver);
-                                Date.append("-");
-                                selectedMonth++;
-                                conver = Integer.toString(selectedMonth);
-                                Date.append(conver);
-                                Date.append("-");
-                                conver = Integer.toString(selectedDay);
-                                Date.append(conver);
-                                isDob = true;
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                datePickerButton.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
-                        }, mDay, mMonth, mYear);
-
-                datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
-
-
-                //Set Today date to calendar
-                final Calendar calendar2 = Calendar.getInstance();
-                //Set Minimum date of calendar
-                calendar2.set(2009, 1, 1);
-                datePickerDialog.getDatePicker().setMaxDate(calendar2.getTimeInMillis());
-                datePickerDialog.setTitle("Select Date");
-                datePickerDialog.show();
-
-                final Calendar calendar3 = Calendar.getInstance();
-                //Set Maximum date of calendar
-                calendar3.set(1990, 1, 1);
-                //Set One Month date from today date to calendar
-                //calendar3.add(Calendar.MONTH, 1);
-                datePickerDialog.getDatePicker().setMinDate(calendar3.getTimeInMillis());
-                datePickerDialog.setTitle("Select Date");
-                datePickerDialog.show();
+                        }, year, month, day);
+                picker.getDatePicker().setMaxDate(cldr.getTimeInMillis());
+                picker.show();
             }
         });
 //        editname_et = findViewById(R.id.editname_et);
