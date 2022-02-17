@@ -154,6 +154,7 @@ public class Profile_Activity extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
+
             GlobalVariables.setUsername(acct.getEmail());
             String personName = acct.getDisplayName();
             String personGivenName = acct.getGivenName();
@@ -164,6 +165,7 @@ public class Profile_Activity extends AppCompatActivity {
             pro_name.setText(personName);
             email.setText(personEmail);
             Glide.with(this).load(String.valueOf(personPhoto)).into(pro_pic);
+            LoadAllDetails();
         }
 
     }
