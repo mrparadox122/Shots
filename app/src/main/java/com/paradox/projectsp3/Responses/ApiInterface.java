@@ -25,6 +25,11 @@ public interface ApiInterface {
     @POST("read.php")
     Call<String> getUserdetails(@Body String body);
 
+
+    String userdetail_following_url = "http://13.127.217.99/dashboard/paradoxApi/";
+    @POST("get_following.php")
+    Call<String> getUserdetails_following(@Body String body);
+
     ////getting posts///
     @GET("get_details")
     Call<Users> performAllPosts();

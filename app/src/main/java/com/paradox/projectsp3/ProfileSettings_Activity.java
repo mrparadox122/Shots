@@ -109,7 +109,6 @@ public class ProfileSettings_Activity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         Intent intent = new Intent(ProfileSettings_Activity.this,Login.class);
                         startActivity(intent);
-
                         Toast.makeText(ProfileSettings_Activity.this, "SignOut", Toast.LENGTH_SHORT).show();
                     }
                 });

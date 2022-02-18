@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
 import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
+import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Model.UserDetails;
 import com.paradox.projectsp3.Responses.ApiClient;
@@ -50,6 +52,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Profile_Activity extends AppCompatActivity {
 
+    public String id;
    ImageView settings , back;
    CircleImageView pro_pic;
    TextView pro_name,email,bio;
@@ -93,12 +96,14 @@ public class Profile_Activity extends AppCompatActivity {
 
     UserDetails UserDetails = new UserDetails();
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+        getWindow().getDecorView().setBackgroundColor(R.color.app_color);
         setContentView(R.layout.activity_account);
 
 
@@ -120,9 +125,13 @@ public class Profile_Activity extends AppCompatActivity {
 
         LoadAllDetails();
 
+
         following_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 Intent intent = new Intent(Profile_Activity.this, BaseActivity.class);
                 startActivity(intent);
             }
@@ -164,11 +173,15 @@ public class Profile_Activity extends AppCompatActivity {
             Uri personPhoto = acct.getPhotoUrl();
             pro_name.setText(personName);
             email.setText(personEmail);
+            UserDetails.setProfilePic(String.valueOf(personPhoto));
+            GlobalVariables.setProfile_pic(String.valueOf(personPhoto));
             Glide.with(this).load(String.valueOf(personPhoto)).into(pro_pic);
             LoadAllDetails();
         }
 
     }
+
+
 
 
     @Override
@@ -191,7 +204,7 @@ public class Profile_Activity extends AppCompatActivity {
         try {
             GlobalVariables globalVariables = new GlobalVariables();
             data.put("username", globalVariables.username);
-            Log.e(TAG, "getResponse:json data put for api "+globalVariables.getUsername());
+            Log.e(TAG, "getResponse:json data put for api"+globalVariables.getUsername());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -254,6 +267,7 @@ public class Profile_Activity extends AppCompatActivity {
                     UserDetails.setFollowers(dataobj.getString("followers"));
                     UserDetails.setFollowing(dataobj.getString("following"));
                     UserDetails.setTotal_likes(dataobj.getString("total_likes"));
+                    UserDetails.setProfilePic(dataobj.getString("profile_pic"));
                     UserDetailsArrayList.add(UserDetails);
                     GlobalVariables.setBio(UserDetails.getBio());
                     GlobalVariables.setFullname(UserDetails.getFulllname());
@@ -263,7 +277,10 @@ public class Profile_Activity extends AppCompatActivity {
                     GlobalVariables.setId(UserDetails.getId());
                     GlobalVariables.setEmail(UserDetails.getEmail());
                     GlobalVariables.setDob(UserDetails.getDob());
+                    GlobalVariables.setProfile_pic(UserDetails.getProfilePic());
+                    GlobalVariables.setId(UserDetails.getId());
                     setFollowing(UserDetails.getFollowing());
+                    id = dataobj.getString("id");
                     setFollwer(UserDetails.getFollowers());
                     setLike(UserDetails.getTotal_likes());
                     add_details();
@@ -283,14 +300,117 @@ public class Profile_Activity extends AppCompatActivity {
         }
 
     }
+
+
+
+
+
+    ///////////////////////
+
+
+
+    private void writeTv_following(String response){
+
+        try {
+            //getting the whole json object from the response
+            JSONObject obj = new JSONObject(response);
+            if(true){
+
+                ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
+                JSONArray dataArray  = obj.getJSONArray("body");
+
+                for (int i = 0; i < dataArray.length(); i++) {
+
+                    Following_Model following_model = new Following_Model();
+                    JSONObject dataobj = dataArray.getJSONObject(i);
+                    following_model.setName(dataobj.getString("fullname"));
+                    following_model.setProfilepic(dataobj.getString("profile_pic"));
+                    Log.e(TAG, "writeTv_following: "+following_model.getName());
+                    Log.e(TAG, "writeTv_following: "+following_model.getProfilepic());
+                    Log.e(TAG, "writeTv: "+GlobalVariables.getFullname()+GlobalVariables.getUsername() );
+                }
+
+                for (int j = 0; j < UserDetailsArrayList.size(); j++){
+
+//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
+                }
+            }else {
+                Toast.makeText(Profile_Activity.this, obj.optString("message")+"", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
     private void add_details(){
+        Log.e(TAG, "add_details: "+GlobalVariables.getProfile_pic() );
+        Glide.with(this).load(String.valueOf(GlobalVariables.getProfile_pic())).into(pro_pic);
         pro_name.setText(GlobalVariables.getFullname());
         bio.setText(GlobalVariables.getBio());
         email.setText(GlobalVariables.getEmail());
         followers_text.setText(getFollwer());
         following_text.setText(getFollowing());
         likes_text.setText(getLike());
-        Log.e(TAG, "add_details: "+followers_text.getText()+following_text.getText()+likes_text.getText() );
+        Log.e(TAG, "add_details: "+followers_text.getText()+following_text.getText()+likes_text.getText());
+        FollowingDetails();
+
+    }
+
+
+
+
+    private void FollowingDetails() {
+        Log.e(TAG, "FollowingDetails:////////////////////////////////////////////////////////////////////////////////// " );
+
+        JSONObject data = new JSONObject();
+        try {
+
+            data.put("username", id);
+            Log.e(TAG, "getResponse:json data put for api ///////////////"+id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ApiInterface.userdetail_following_url)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build();
+
+        ApiInterface api = retrofit.create(ApiInterface.class);
+
+        Call<String> call = api.getUserdetails_following(data.toString());
+
+        call.enqueue(new Callback<String>() {
+
+            @Override
+
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e(TAG,"Responsestring//////////////////////"+ String.valueOf(response.body()));
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+
+                        String jsonresponse = response.body().toString();
+                        writeTv_following(jsonresponse);
+
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e(TAG, "onFailure: //////////////////"+t );
+
+            }
+        });
 
     }
 }

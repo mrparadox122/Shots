@@ -117,7 +117,6 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:weightSum="3"
-
             android:gravity="center">
 
             <LinearLayout

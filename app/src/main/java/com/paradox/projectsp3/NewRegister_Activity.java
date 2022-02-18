@@ -135,6 +135,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                                     @Override
                                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                         date_et.setText("Date of Birth: "+dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                        Dob = (year+"-"+monthOfYear+"-"+dayOfMonth);
                                     }
                                 }, year, month, day);
                         picker.getDatePicker().setMaxDate(cldr.getTimeInMillis());

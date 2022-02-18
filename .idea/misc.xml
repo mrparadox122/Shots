@@ -76,7 +76,7 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/drawable/search_bg.xml" value="0.20925925925925926" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/drawable/signuptext_bg.xml" value="0.2203125" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/drawable/view.xml" value="0.2203125" />
-        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_account.xml" value="0.22" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_account.xml" value="0.18" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_base.xml" value="0.2" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_bottom_sheet.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_camera_portrate.xml" value="0.18" />
@@ -86,7 +86,7 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_edit_profile.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_following.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
-        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_gmail_fields.xml" value="0.21" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_gmail_fields.xml" value="0.25" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_gmail_forgot_pin.xml" value="0.22" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_gmail_login.xml" value="0.22" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/activity_gmail_new_pin.xml" value="0.22" />
@@ -130,7 +130,7 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_main.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/layout_sound.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/listitem_followers.xml" value="0.33" />
-        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/listitem_following.xml" value="0.25" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/listitem_following.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/listitem_posts.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/layout/slider_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.7.3/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />

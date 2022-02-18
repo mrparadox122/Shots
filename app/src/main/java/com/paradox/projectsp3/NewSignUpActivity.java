@@ -249,7 +249,6 @@ public class NewSignUpActivity extends AppCompatActivity {
             Log.d("Message",e.toString());
         }
         if(result.isSuccess()){
-
             gotoProfile();
         }else{
             Toast.makeText(getApplicationContext(),"Sign in cancel",Toast.LENGTH_LONG).show();

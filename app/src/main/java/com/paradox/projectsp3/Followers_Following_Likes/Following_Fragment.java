@@ -12,21 +12,23 @@ import android.view.ViewGroup;
 
 import com.paradox.projectsp3.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Following_Fragment extends Fragment {
 
     RecyclerView rv_following;
+    List<Following_Model> followingdata = new ArrayList<>();
+    FollowingAdapter followingAdapter;
 
     public Following_Fragment() {
         // Required empty public constructor
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
     }
 
@@ -42,10 +44,13 @@ public class Following_Fragment extends Fragment {
 
     private void initviews(View view) {
 
-        rv_following = view.findViewById(R.id.rv_followers);
-        LinearLayoutManager layoutManager3 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        rv_following.setLayoutManager(layoutManager3);
-        FollowingAdapter adapter = new FollowingAdapter();
-        rv_following.setAdapter(adapter);
+        rv_following = view.findViewById(R.id.rv_following);
+      followingAdapter = new FollowingAdapter(getContext(),followingdata,this);
+       rv_following.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+       rv_following.setAdapter(followingAdapter);
+
+
+
+
     }
 }
