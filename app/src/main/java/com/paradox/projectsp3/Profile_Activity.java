@@ -22,11 +22,13 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
 import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
+import com.paradox.projectsp3.Followers_Following_Likes.Following_Fragment;
 import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Model.UserDetails;
@@ -281,6 +283,9 @@ public class Profile_Activity extends AppCompatActivity {
                     GlobalVariables.setId(UserDetails.getId());
                     setFollowing(UserDetails.getFollowing());
                     id = dataobj.getString("id");
+                    Following_Fragment following_fragment = new Following_Fragment();
+                    following_fragment.id = dataobj.getString("id");
+
                     setFollwer(UserDetails.getFollowers());
                     setLike(UserDetails.getTotal_likes());
                     add_details();
@@ -301,48 +306,46 @@ public class Profile_Activity extends AppCompatActivity {
 
     }
 
-
-
-
-
     ///////////////////////
 
 
-
-    private void writeTv_following(String response){
-
-        try {
-            //getting the whole json object from the response
-            JSONObject obj = new JSONObject(response);
-            if(true){
-
-                ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
-                JSONArray dataArray  = obj.getJSONArray("body");
-
-                for (int i = 0; i < dataArray.length(); i++) {
-
-                    Following_Model following_model = new Following_Model();
-                    JSONObject dataobj = dataArray.getJSONObject(i);
-                    following_model.setName(dataobj.getString("fullname"));
-                    following_model.setProfilepic(dataobj.getString("profile_pic"));
-                    Log.e(TAG, "writeTv_following: "+following_model.getName());
-                    Log.e(TAG, "writeTv_following: "+following_model.getProfilepic());
-                    Log.e(TAG, "writeTv: "+GlobalVariables.getFullname()+GlobalVariables.getUsername() );
-                }
-
-                for (int j = 0; j < UserDetailsArrayList.size(); j++){
-
-//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
-                }
-            }else {
-                Toast.makeText(Profile_Activity.this, obj.optString("message")+"", Toast.LENGTH_SHORT).show();
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
+//    private void writeTv_following(String response){
+//
+//        try {
+//            //getting the whole json object from the response
+//            JSONObject obj = new JSONObject(response);
+//            if(true){
+//
+//                ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
+//                JSONArray dataArray  = obj.getJSONArray("body");
+//
+//                for (int i = 0; i < dataArray.length(); i++) {
+//
+//                    Following_Model following_model = new Following_Model();
+//                    JSONObject dataobj = dataArray.getJSONObject(i);
+//                    following_model.setFullname(dataobj.getString("fullname"));
+//                    following_model.setProfilePic(dataobj.getString("profile_pic"));
+//                    Log.e(TAG, "writeTv_following: "+following_model.getFullname());
+//                    Log.e(TAG, "writeTv_following: "+following_model.getProfilePic());
+//
+//                    Following_Fragment following_fragment = new Following_Fragment();
+//
+//                    Log.e(TAG, "writeTv: "+GlobalVariables.getFullname()+GlobalVariables.getUsername() );
+//                }
+//
+//                for (int j = 0; j < UserDetailsArrayList.size(); j++){
+//
+////                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
+//                }
+//            }else {
+//                Toast.makeText(Profile_Activity.this, obj.optString("message")+"", Toast.LENGTH_SHORT).show();
+//            }
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
 
 
@@ -359,19 +362,20 @@ public class Profile_Activity extends AppCompatActivity {
         Log.e(TAG, "add_details: "+followers_text.getText()+following_text.getText()+likes_text.getText());
         FollowingDetails();
 
+
     }
 
 
 
 
     private void FollowingDetails() {
-        Log.e(TAG, "FollowingDetails:////////////////////////////////////////////////////////////////////////////////// " );
+        Log.e(TAG, "FollowingDetails:////////////////////////////////////////////////////////////////////////////////// ");
 
         JSONObject data = new JSONObject();
         try {
 
             data.put("username", id);
-            Log.e(TAG, "getResponse:json data put for api ///////////////"+id);
+            Log.e(TAG, "getResponse:json data put for api ///////////////" + id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -390,14 +394,18 @@ public class Profile_Activity extends AppCompatActivity {
             @Override
 
             public void onResponse(Call<String> call, Response<String> response) {
-                Log.e(TAG,"Responsestring//////////////////////"+ String.valueOf(response.body()));
+                Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
                 //Toast.makeText()
                 if (response.isSuccessful()) {
+                    String splash = response.body();
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
 
                         String jsonresponse = response.body().toString();
-                        writeTv_following(jsonresponse);
+
+
+                        Following_Fragment following_fragment = new Following_Fragment();
+                        following_fragment.writeTv_following(jsonresponse);
 
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
@@ -407,10 +415,11 @@ public class Profile_Activity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.e(TAG, "onFailure: //////////////////"+t );
+                Log.e(TAG, "onFailure: //////////////////" + t);
 
             }
         });
-
     }
+
+
 }

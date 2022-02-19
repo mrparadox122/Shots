@@ -42,19 +42,19 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
     @Override
     public void onBindViewHolder(@NonNull myviewHolder holder, int position) {
         Following_Model following_model = new Following_Model();
-        Log.e(TAG, "onBindViewHolder: "+following_model.getName()+following_model.getProfilepic() );
+        Log.e(TAG, "onBindViewHolder: "+following_model.getFullname()+following_model.getProfilePic() );
         Log.e(TAG, "onBindViewHolder: "+Entries.toString() );
-        holder.txt_name.setText(Entries.get(position).getName());
+        holder.txt_name.setText(Entries.get(position).getFullname());
 
 
-        Glide.with(this.context).load(String.valueOf(following_model.getProfilepic())).into(holder.pic_img);
+        Glide.with(this.context).load(String.valueOf(following_model.getProfilePic())).into(holder.pic_img);
 
     }
 
     @Override
     public int getItemCount() {
         Following_Model following_model = new Following_Model();
-        Log.e(TAG, "onBindViewHolder: "+following_model.getName()+following_model.getProfilepic() );
+        Log.e(TAG, "onBindViewHolder: "+following_model.getFullname()+following_model.getProfilePic() );
         Log.e(TAG, "onBindViewHolder: "+Entries.toString() );
         return Entries.size();
     }
