@@ -1,4 +1,4 @@
-package com.paradox.projectsp3.Practice_Following;
+package com.paradox.projectsp3.Followers_Following_Likes;
 
 import android.os.Bundle;
 
@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import com.paradox.projectsp3.R;
 
 
-public class FollowingFragment extends Fragment {
 
-   ;
+public class Suggested_Fragment extends Fragment {
 
-    public FollowingFragment() {
+
+    public Suggested_Fragment() {
         // Required empty public constructor
     }
 
@@ -30,6 +30,6 @@ public class FollowingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_following, container, false);
+        return inflater.inflate(R.layout.fragment_suggested_, container, false);
     }
 }

@@ -235,7 +235,7 @@ public class HomeActivty extends AppCompatActivity {
         RequestOptions options=new RequestOptions()
                 .placeholder(R.color.black)
            .error(R.color.black);
-        return Glide.with(this).setDefaultRequestOptions(options);
+        return Glide.with(getApplicationContext()).setDefaultRequestOptions(options);
     }
     @Override
     protected void onDestroy() {

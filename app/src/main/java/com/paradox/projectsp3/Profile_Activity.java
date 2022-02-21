@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.gson.JsonObject;
+import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
 import com.paradox.projectsp3.Model.UserDetails;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
@@ -131,6 +132,8 @@ public class Profile_Activity extends AppCompatActivity {
         following_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Profile_Activity.this, BaseActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -6,11 +6,6 @@
     android:orientation="vertical"
     tools:context=".Practice_Following.My_Following">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Following"
-        android:textSize="21dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_myfollowing"
