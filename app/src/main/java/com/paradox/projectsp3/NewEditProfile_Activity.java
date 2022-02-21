@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +47,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.Calendar;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
@@ -515,6 +518,52 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         if (requestCode == 10){
             Uri uri = data.getData();
             profilepic.setImageURI(uri);
+
+            JSONObject data1 = new JSONObject();
+            try {
+                data1.put("subject", GlobalVariables.getId());
+                Log.e(TAG, "getResponse:json data put for api"+GlobalVariables.getId());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            File file = new File(getPath(uri));
+
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(ApiInterface.userfoto)
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .build();
+
+            ApiInterface api = retrofit.create(ApiInterface.class);
+
+            Call<String> call = api.upload_pic(data.toString(),file);
+
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    Log.i("Responsestring", String.valueOf(response.body()));
+                    //Toast.makeText()
+                    if (response.isSuccessful()) {
+                        Toast.makeText(NewEditProfile_Activity.this, "New pic added", Toast.LENGTH_SHORT).show();
+                        if (response.body() != null) {
+                            Log.i("onSuccess", response.body().toString());
+
+                            String jsonresponse = response.body().toString();
+                            //writeTv(jsonresponse);
+
+                        } else {
+                            Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+                }
+            });
+
+
+
         }
     }
 
@@ -741,4 +790,19 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                     }
                 });
     }
+
+
+
+    public String getPath(Uri uri)
+    {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor == null) return null;
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String s=cursor.getString(column_index);
+        cursor.close();
+        return s;
+    }
+
 }

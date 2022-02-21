@@ -6,6 +6,7 @@ import com.paradox.projectsp3.Model.UserDetails;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -23,8 +24,11 @@ import retrofit2.http.Part;
 public interface ApiInterface {
 
     String userdetailurl = "http://13.127.217.99/dashboard/paradoxApi/read.php/";
+    String userfoto = "http://13.127.217.99/dashboard/paradoxApi/profile_pic/";
     @POST("read.php")
     Call<String> getUserdetails(@Body String body);
+    @POST("upload.php")
+    Call<String> upload_pic(@Body String data,@Body File file);
 
 
     String userdetail_following_url = "http://13.127.217.99/dashboard/paradoxApi/";
