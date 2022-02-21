@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Practice_Following.My_Following">
+    tools:context=".Practice_Following.FollowingFragment">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Following"
-        android:textSize="21dp"/>
+        android:textSize="21dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/black"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_myfollowing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical" />
 
 </LinearLayout>
