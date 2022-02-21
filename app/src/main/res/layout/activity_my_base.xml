@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Practice_Following.MyBase_Activity">
+
+    <!-- our tablayout to display tabs  -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/mytabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/graycolor"
+        android:minHeight="35dp"
+        app:tabIndicatorHeight="2dp"
+        app:tabIndicator="@color/black"
+        app:tabRippleColor="@color/black"
+        android:scrollbars="horizontal"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="@color/black"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <!-- View pager to swipe views -->
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/myviewPager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"/>
+
+
+
+</LinearLayout>

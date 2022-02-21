@@ -39,7 +39,7 @@ public class Following_Fragment extends Fragment {
 
     public String id;
     RecyclerView rv_following;
-    List<Following_Model> followingdata;
+    ArrayList<Following_Model> followingdata = new ArrayList<Following_Model>();
     FollowingAdapter followingAdapter;
 
     public Following_Fragment() {
@@ -57,26 +57,18 @@ public class Following_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_following_, container, false);
-
         initviews(view);
-
         return view;
     }
 
     private void initviews(View view) {
 
         rv_following = view.findViewById(R.id.rv_following);
-      followingAdapter = new FollowingAdapter(getContext(),followingdata,this);
-       rv_following.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
-       rv_following.setAdapter(followingAdapter);
-
-
-
+        followingAdapter = new FollowingAdapter(getContext(),followingdata,this);
+        rv_following.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+        rv_following.setAdapter(followingAdapter);
 
     }
-
-
-
 
 
     public void writeTv_following(String response){
@@ -91,9 +83,9 @@ public class Following_Fragment extends Fragment {
 
 
                 for (int i = 0; i < dataArray.length(); i++) {
-
                     Following_Model following_model = new Following_Model();
                     JSONObject dataobj = dataArray.getJSONObject(i);
+//                    followingdata.add(dataArray.get(i));
                     following_model.setFullname(dataobj.getString("fullname"));
                     following_model.setProfilePic(dataobj.getString("profile_pic"));
 

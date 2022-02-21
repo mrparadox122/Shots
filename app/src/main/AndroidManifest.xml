@@ -25,6 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Practice_Following.MyBase_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Followers_Following_Likes.BaseActivity"
             android:exported="false" />
         <activity

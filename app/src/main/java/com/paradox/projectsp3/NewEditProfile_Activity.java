@@ -497,7 +497,6 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         });
 
 
-
         btn_verifyemail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

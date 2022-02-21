@@ -22,27 +22,20 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.gson.Gson;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mashape.unirest.request.GetRequest;
+import com.google.gson.JsonObject;
 import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
 import com.paradox.projectsp3.Followers_Following_Likes.Following_Fragment;
 import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
-import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Model.UserDetails;
+import com.paradox.projectsp3.Practice_Following.MyInterface;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
-import com.paradox.projectsp3.Responses.Users;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -55,7 +48,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class Profile_Activity extends AppCompatActivity {
 
     public String id;
-   ImageView settings , back;
+   ImageView settings , back,share_img;
    CircleImageView pro_pic;
    TextView pro_name,email,bio;
    private Button edit_profile;
@@ -120,10 +113,19 @@ public class Profile_Activity extends AppCompatActivity {
         followers_text = findViewById(R.id.followers_text);
         likes_text = findViewById(R.id.likes_text);
         following_ll = findViewById(R.id.following_ll);
+        share_img = findViewById(R.id.share_img);
         //
         apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
         userDetails = new ArrayList<>();
 
+        share_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(Profile_Activity.this, MyBase_Activity.class);
+//                startActivity(intent);
+
+            }
+        });
 
         LoadAllDetails();
 
@@ -131,9 +133,6 @@ public class Profile_Activity extends AppCompatActivity {
         following_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 Intent intent = new Intent(Profile_Activity.this, BaseActivity.class);
                 startActivity(intent);
             }
@@ -183,7 +182,38 @@ public class Profile_Activity extends AppCompatActivity {
 
     }
 
-
+//    private void followinglist() {
+//        JsonObject jsonObject = new JsonObject();
+//        jsonObject.addProperty("username", GlobalVariables.getId());
+//
+//        MyInterface myInterface = MyRetrofit.getClient().create(MyInterface.class);
+//        Call<JsonObject>apiResponce = myInterface.get_following(jsonObject);
+//        try {
+//            apiResponce.enqueue(new Callback<JsonObject>() {
+//                @Override
+//                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//                    if (response.isSuccessful()){
+//                        Log.e(TAG, "onResponse: "+response.body() );
+//
+//
+//
+//                    }else {
+//                        Toast.makeText(getApplicationContext(), "Something went Wrong", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<JsonObject> call, Throwable t) {
+//                    Log.e(TAG, "onFailure: "+t );
+//                }
+//            });
+//        }catch (Exception e){
+//            Log.e(TAG, "followinglist: "+e );
+//        }
+//
+//
+//    }
 
 
     @Override
@@ -217,9 +247,7 @@ public class Profile_Activity extends AppCompatActivity {
                 .build();
 
         ApiInterface api = retrofit.create(ApiInterface.class);
-
         Call<String> call = api.getUserdetails(data.toString());
-
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -228,16 +256,13 @@ public class Profile_Activity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
-
                         String jsonresponse = response.body().toString();
                         writeTv(jsonresponse);
-
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<String> call, Throwable t) {
 
@@ -347,9 +372,6 @@ public class Profile_Activity extends AppCompatActivity {
 //
 //    }
 
-
-
-
     private void add_details(){
         Log.e(TAG, "add_details: "+GlobalVariables.getProfile_pic() );
         Glide.with(this).load(String.valueOf(GlobalVariables.getProfile_pic())).into(pro_pic);
@@ -387,13 +409,13 @@ public class Profile_Activity extends AppCompatActivity {
 
         ApiInterface api = retrofit.create(ApiInterface.class);
 
-        Call<String> call = api.getUserdetails_following(data.toString());
+        Call<Following_Model> call = api.getUserdetails_following(data.toString());
 
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<Following_Model>() {
 
             @Override
 
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Following_Model> call, Response<Following_Model> response) {
                 Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
                 //Toast.makeText()
                 if (response.isSuccessful()) {
@@ -414,7 +436,7 @@ public class Profile_Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Following_Model> call, Throwable t) {
                 Log.e(TAG, "onFailure: //////////////////" + t);
 
             }

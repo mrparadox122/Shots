@@ -1,5 +1,6 @@
 package com.paradox.projectsp3.Responses;
 
+import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.Model.UserDetails;
 
 import org.json.JSONArray;
@@ -28,7 +29,7 @@ public interface ApiInterface {
 
     String userdetail_following_url = "http://13.127.217.99/dashboard/paradoxApi/";
     @POST("get_following.php")
-    Call<String> getUserdetails_following(@Body String body);
+    Call<Following_Model> getUserdetails_following(@Body String body);
 
     ////getting posts///
     @GET("get_details")

@@ -20,10 +20,14 @@ public class FollowersAdapter  extends RecyclerView.Adapter<FollowersAdapter.myv
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_followers, parent, false);
         return new myviewHolder(view);
 
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull FollowersAdapter.myviewHolder holder, int position) {
+
+
+
 
     }
 
@@ -35,6 +39,7 @@ public class FollowersAdapter  extends RecyclerView.Adapter<FollowersAdapter.myv
     public class myviewHolder extends RecyclerView.ViewHolder {
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
+
 
 
         }

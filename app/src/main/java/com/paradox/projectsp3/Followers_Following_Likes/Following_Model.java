@@ -35,7 +35,6 @@ public class Following_Model implements Serializable {
     }
 
 
-
     @SerializedName("body")
     @Expose
     private List<Body> body = null;
