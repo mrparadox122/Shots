@@ -23,13 +23,10 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.gson.JsonObject;
-import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
-import com.paradox.projectsp3.Followers_Following_Likes.Following_Fragment;
-import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.Model.UserDetails;
-import com.paradox.projectsp3.Practice_Following.MyInterface;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
+import com.paradox.projectsp3.Responses.Users;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,6 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Profile_Activity extends AppCompatActivity {
@@ -133,8 +131,6 @@ public class Profile_Activity extends AppCompatActivity {
         following_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Profile_Activity.this, BaseActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -308,9 +304,6 @@ public class Profile_Activity extends AppCompatActivity {
                     GlobalVariables.setId(UserDetails.getId());
                     setFollowing(UserDetails.getFollowing());
                     id = dataobj.getString("id");
-                    Following_Fragment following_fragment = new Following_Fragment();
-                    following_fragment.id = dataobj.getString("id");
-
                     setFollwer(UserDetails.getFollowers());
                     setLike(UserDetails.getTotal_likes());
                     add_details();
@@ -382,7 +375,7 @@ public class Profile_Activity extends AppCompatActivity {
         following_text.setText(getFollowing());
         likes_text.setText(getLike());
         Log.e(TAG, "add_details: "+followers_text.getText()+following_text.getText()+likes_text.getText());
-        FollowingDetails();
+
 
 
     }
@@ -390,58 +383,7 @@ public class Profile_Activity extends AppCompatActivity {
 
 
 
-    private void FollowingDetails() {
-        Log.e(TAG, "FollowingDetails:////////////////////////////////////////////////////////////////////////////////// ");
 
-        JSONObject data = new JSONObject();
-        try {
-
-            data.put("username", id);
-            Log.e(TAG, "getResponse:json data put for api ///////////////" + id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ApiInterface.userdetail_following_url)
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .build();
-
-        ApiInterface api = retrofit.create(ApiInterface.class);
-
-        Call<Following_Model> call = api.getUserdetails_following(data.toString());
-
-        call.enqueue(new Callback<Following_Model>() {
-
-            @Override
-
-            public void onResponse(Call<Following_Model> call, Response<Following_Model> response) {
-                Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
-                //Toast.makeText()
-                if (response.isSuccessful()) {
-                    String splash = response.body();
-                    if (response.body() != null) {
-                        Log.i("onSuccess", response.body().toString());
-
-                        String jsonresponse = response.body().toString();
-
-
-                        Following_Fragment following_fragment = new Following_Fragment();
-                        following_fragment.writeTv_following(jsonresponse);
-
-                    } else {
-                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Following_Model> call, Throwable t) {
-                Log.e(TAG, "onFailure: //////////////////" + t);
-
-            }
-        });
-    }
 
 
 }

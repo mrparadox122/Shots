@@ -1,6 +1,7 @@
 package com.paradox.projectsp3.Responses;
 
 import com.google.gson.annotations.SerializedName;
+import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Model.SoundModel;
 import com.paradox.projectsp3.Model.UserDetails;
@@ -23,10 +24,16 @@ public class Users {
 
 
 
+
+    private List<Following_Model> Allfollowing;
+
+
+
     public List<MediaObject> getAllPosts()
     {
         return AllPosts;
     }
+
     public List<SoundModel> getAllSounds()
     {
         return AllSounds;
@@ -34,6 +41,11 @@ public class Users {
 
     public List<UserDetails> getAllDetails() {
         return AllDetails;
+    }
+
+    public List<Following_Model> getAllFollowing()
+    {
+        return Allfollowing;
     }
 
 

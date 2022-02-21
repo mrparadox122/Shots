@@ -15,17 +15,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
+
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -47,8 +37,8 @@ public class NewSignUpActivity extends AppCompatActivity {
     String perEmail,perName,perusrn,perPass;
     private static int RC_SIGN_IN = 100;
     TextView mobile_btn,btn_skip;
-    CallbackManager callbackManager;
-    private LoginManager loginManager;
+//    CallbackManager callbackManager;
+//    private LoginManager loginManager;
 //    LoginButton btn_facebook;
 //    private static final String EMAIL = "email,birthday";
 
@@ -71,7 +61,7 @@ public class NewSignUpActivity extends AppCompatActivity {
         if(account == null){
         }
 
-        callbackManager = CallbackManager.Factory.create();
+//        callbackManager = CallbackManager.Factory.create();
         btn_skip = findViewById(R.id.btn_skip);
         mobile_btn = findViewById(R.id.mobile_btn);
         // Set the dimensions of the sign-in button.
@@ -117,61 +107,61 @@ public class NewSignUpActivity extends AppCompatActivity {
         });
     }
 
-    public void facebookLogin()
-    {
-
-        loginManager = LoginManager.getInstance();
-        callbackManager = CallbackManager.Factory.create();
-
-        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                            @Override
-                            public void onSuccess(LoginResult loginResult)
-                            {
-                                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
-                                        new GraphRequest.GraphJSONObjectCallback() {
-                                            @Override
-                                            public void onCompleted(JSONObject object, GraphResponse response)
-                                            {
-                                                if (object != null) {
-                                                    try {
-                                                        String name = object.getString("name");
-                                                        String email = object.getString("email");
-                                                        String fbUserID = object.getString("id");
-
-//                                                        disconnectFromFacebook();
-
-                                                        // do action after Facebook login success
-                                                        // or call your API
-                                                    }
-                                                    catch (JSONException | NullPointerException e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                }
-                                            }
-                                        });
-
-                                Bundle parameters = new Bundle();
-                                parameters.putString("fields", "name,birthday,age_range,about,gender,first_name,location,email,middle_name");
-                                ///////"id, name, email, gender, birthday",/////////
-                                request.setParameters(parameters);
-                                request.executeAsync();
-                            }
-
-                            @Override
-                            public void onCancel()
-                            {
-                                Log.v("LoginScreen", "---onCancel");
-                            }
-
-                            @Override
-                            public void onError(FacebookException error)
-                            {
-                                // here write code when get error
-                                Log.v("LoginScreen", "----onError: " + error.getMessage());
-                            }
-                        });
-    }
-
+//    public void facebookLogin()
+//    {
+//
+//        loginManager = LoginManager.getInstance();
+//        callbackManager = CallbackManager.Factory.create();
+//
+//        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//                            @Override
+//                            public void onSuccess(LoginResult loginResult)
+//                            {
+//                                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
+//                                        new GraphRequest.GraphJSONObjectCallback() {
+//                                            @Override
+//                                            public void onCompleted(JSONObject object, GraphResponse response)
+//                                            {
+//                                                if (object != null) {
+//                                                    try {
+//                                                        String name = object.getString("name");
+//                                                        String email = object.getString("email");
+//                                                        String fbUserID = object.getString("id");
+//
+////                                                        disconnectFromFacebook();
+//
+//                                                        // do action after Facebook login success
+//                                                        // or call your API
+//                                                    }
+//                                                    catch (JSONException | NullPointerException e) {
+//                                                        e.printStackTrace();
+//                                                    }
+//                                                }
+//                                            }
+//                                        });
+//
+//                                Bundle parameters = new Bundle();
+//                                parameters.putString("fields", "name,birthday,age_range,about,gender,first_name,location,email,middle_name");
+//                                ///////"id, name, email, gender, birthday",/////////
+//                                request.setParameters(parameters);
+//                                request.executeAsync();
+//                            }
+//
+//                            @Override
+//                            public void onCancel()
+//                            {
+//                                Log.v("LoginScreen", "---onCancel");
+//                            }
+//
+//                            @Override
+//                            public void onError(FacebookException error)
+//                            {
+//                                // here write code when get error
+//                                Log.v("LoginScreen", "----onError: " + error.getMessage());
+//                            }
+//                        });
+//    }
+//
 
 
 

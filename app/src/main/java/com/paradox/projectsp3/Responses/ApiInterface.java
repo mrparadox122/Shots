@@ -33,7 +33,7 @@ public interface ApiInterface {
 
     String userdetail_following_url = "http://13.127.217.99/dashboard/paradoxApi/";
     @POST("get_following.php")
-    Call<Following_Model> getUserdetails_following(@Body String body);
+    Call<String> getUserdetails_following(@Body String body);
 
     ////getting posts///
     @GET("get_details")

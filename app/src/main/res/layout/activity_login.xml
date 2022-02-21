@@ -61,7 +61,7 @@
             android:fontFamily="@font/calibri"
             android:hint="Enter 4 - digits Pin"
             android:inputType="numberPassword"
-            android:maxLength="4"
+            android:maxLength="10"
             android:maxLines="1"
             android:padding="10dp"
             android:paddingStart="20dp"
