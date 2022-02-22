@@ -10,16 +10,42 @@ import retrofit2.http.Body;
 
 public class Following_Model  {
 
+
     private String Username;
+    private String profile_pic;
+
+
 //    private String img;
 
-    public Following_Model(String username) {
-        Username = username;
+    public Following_Model(){
+
+    }
+    public Following_Model(String Username,String profile_pic) {
+        this.Username = Username;
+        this.profile_pic = profile_pic;
 //        this.img = img;
+    }
+
+
+
+
+    public void setUsername(String username) {
+        Username = username;
     }
 
     public String getUsername() {
         return Username;
+    }
+
+
+
+
+    public String getProfile_pic() {
+        return profile_pic;
+    }
+
+    public void setProfile_pic(String profile_pic) {
+        this.profile_pic = profile_pic;
     }
 
 

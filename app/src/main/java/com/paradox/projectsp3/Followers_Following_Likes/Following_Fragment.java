@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,8 +42,8 @@ public class Following_Fragment extends Fragment {
     public String id;
     int i;
     RecyclerView rv_following;
-    Following_Model following_model;
-    //ArrayList<Following_Model> followingdata = new ArrayList<Following_Model>();
+    //Following_Model following_model;
+    List<Following_Model> following_model;
     FollowingAdapter followingAdapter;
 
     public Following_Fragment() {
@@ -52,6 +53,7 @@ public class Following_Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        following_model = new ArrayList<>();
 
 
     }
@@ -126,17 +128,20 @@ public class Following_Fragment extends Fragment {
                                     for (i = 0; i < dataArray.length(); i++) {
 
                                         JSONObject dataobj = dataArray.getJSONObject(i);
-                                        following_model = new Following_Model(dataobj.getString("fullname"));
-                                        Log.e(TAG, "onResponse: "+following_model.getUsername() );
-                                        Log.e(TAG, "onResponse: "+following_model.getUsername() );
-                                        Log.e(TAG, "onResponse: "+following_model.getUsername() );
-                                        Log.e(TAG, "onResponse: "+following_model.getUsername() );
-                                        Log.e(TAG, "onResponse: "+following_model.getUsername() );
+                                        Following_Model following_model1 = new Following_Model();
+                                        following_model1.setUsername(dataobj.getString("fullname").toString());
+                                        following_model1.setProfile_pic(dataobj.getString("profile_pic").toString());
+                                        following_model.add(following_model1);
+                                        rv_following = view.findViewById(R.id.rv_following);
+                                        followingAdapter = new FollowingAdapter(getContext(), following_model);
+                                        rv_following.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+                                        rv_following.setAdapter(followingAdapter);
 
 
 
 
-                                        Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername() );
+
+                                        Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
                                     }
 
                                     for (int j = 0; j < UserDetailsArrayList.size(); j++){
@@ -165,10 +170,7 @@ public class Following_Fragment extends Fragment {
             }
         });
 
-        rv_following = view.findViewById(R.id.rv_following);
-        followingAdapter = new FollowingAdapter(getContext(), Collections.singletonList(following_model),this);
-        rv_following.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
-        rv_following.setAdapter(followingAdapter);
+
 
     }
 

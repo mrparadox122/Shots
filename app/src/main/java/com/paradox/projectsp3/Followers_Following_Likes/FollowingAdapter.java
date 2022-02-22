@@ -13,24 +13,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.paradox.projectsp3.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myviewHolder> {
 
 
     Context context;
-    List<Following_Model> Entries;
+    List<Following_Model> followingModels = new ArrayList<>();
     ImageView pic_img;
     TextView txt_name;
 
 
 
 
-    public FollowingAdapter(Context context, List<Following_Model> entries, Following_Fragment following_fragment) {
+    public FollowingAdapter(Context context, List<Following_Model> followingModels) {
         this.context = context;
-        this.Entries = entries;
+        this.followingModels = followingModels;
+        Log.e(TAG, "FollowingAdapter: "+followingModels.get(0) );
+//        Log.e(TAG, "FollowingAdapter: "+followingModels.get(1) );
 
     }
 
@@ -47,14 +51,15 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
 
 
         //Log.e(TAG, "onBindViewHolder: "+Entries.get(0).getUsername() );
-        Log.e(TAG, "onBindViewHolder: "+Entries.size() );
-        holder.txt_name.setText(String.valueOf(Entries.get(Entries.size()-1).getUsername()));
+        Log.e(TAG, "onBindViewHolder: "+followingModels.size() );
+        holder.txt_name.setText(String.valueOf(followingModels.get(position).getUsername()));
+        Glide.with(context).load(followingModels.get(position).getProfile_pic()).into(holder.pic_img);
     }
 
     @Override
     public int getItemCount() {
 
-        return Entries.size();
+        return followingModels.size();
     }
 
     public class myviewHolder extends RecyclerView.ViewHolder {
