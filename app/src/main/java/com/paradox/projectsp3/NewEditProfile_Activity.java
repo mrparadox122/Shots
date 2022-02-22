@@ -48,10 +48,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -518,6 +523,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         if (requestCode == 10){
             Uri uri = data.getData();
             profilepic.setImageURI(uri);
+            //Toast.makeText(this, uri.toString(), Toast.LENGTH_SHORT).show();
 
             JSONObject data1 = new JSONObject();
             try {
@@ -526,7 +532,13 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            File file = new File(getPath(uri));
+            String p = uri.getPath();
+            File file = null;
+            file = new File(p);
+            RequestBody descriptionPart = RequestBody.create(MediaType.parse("application/json"), data1.toString());
+            RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),file);
+            MultipartBody.Part file2= MultipartBody.Part.createFormData("avatar",file.getName(),filepart1);
+
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(ApiInterface.userfoto)
@@ -535,7 +547,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
 
             ApiInterface api = retrofit.create(ApiInterface.class);
 
-            Call<String> call = api.upload_pic(data.toString(),file);
+            Call<String> call = api.upload_pic(GlobalVariables.getId(),file2);
 
             call.enqueue(new Callback<String>() {
                 @Override

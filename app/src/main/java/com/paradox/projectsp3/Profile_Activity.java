@@ -33,10 +33,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -175,6 +179,54 @@ public class Profile_Activity extends AppCompatActivity {
             email.setText(personEmail);
             UserDetails.setProfilePic(String.valueOf(personPhoto));
             GlobalVariables.setProfile_pic(String.valueOf(personPhoto));
+            JSONObject data1 = new JSONObject();
+            try {
+                data1.put("subject", GlobalVariables.getId());
+                Log.e(TAG, "getResponse:json data put for api"+GlobalVariables.getId());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            String p = personPhoto.getPath();
+            File file = null;
+            file = new File(p);
+            RequestBody descriptionPart = RequestBody.create(MediaType.parse("application/json"), data1.toString());
+            RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),file);
+            MultipartBody.Part file2= MultipartBody.Part.createFormData("avatar",file.getName(),filepart1);
+
+
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(ApiInterface.userfoto)
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .build();
+
+            ApiInterface api = retrofit.create(ApiInterface.class);
+
+            Call<String> call = api.upload_pic(GlobalVariables.getId(),file2);
+
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    Log.i("Responsestring", String.valueOf(response.body()));
+                    //Toast.makeText()
+                    if (response.isSuccessful()) {
+                        Toast.makeText(Profile_Activity.this, "New pic added", Toast.LENGTH_SHORT).show();
+                        if (response.body() != null) {
+                            Log.i("onSuccess", response.body().toString());
+
+                            String jsonresponse = response.body().toString();
+                            //writeTv(jsonresponse);
+
+                        } else {
+                            Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+                }
+            });
             Glide.with(this).load(String.valueOf(personPhoto)).into(pro_pic);
             LoadAllDetails();
         }
