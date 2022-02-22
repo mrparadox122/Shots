@@ -74,7 +74,7 @@ public class Following_Fragment extends Fragment {
         JSONObject data = new JSONObject();
         try {
 
-            data.put("username", "307");
+            data.put("username", GlobalVariables.getId());
             Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getId());
         } catch (JSONException e) {
             e.printStackTrace();

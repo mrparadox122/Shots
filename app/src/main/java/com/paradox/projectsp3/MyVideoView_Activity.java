@@ -122,7 +122,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
         }
         if (requestCode == 2){
             Uri vediouri = data.getData();
-
+//
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("description", "shots");
