@@ -59,7 +59,7 @@ public class Profile_Activity extends AppCompatActivity {
    public static ApiInterface apiInterface;
    List<UserDetails> userDetails;
 
-   LinearLayout following_ll;
+   LinearLayout following_ll,follower_ll;
 
    TextView following_text,followers_text,likes_text,suggested_text;
 
@@ -117,6 +117,7 @@ public class Profile_Activity extends AppCompatActivity {
         likes_text = findViewById(R.id.likes_text);
         following_ll = findViewById(R.id.following_ll);
         share_img = findViewById(R.id.share_img);
+        follower_ll = findViewById(R.id.follower_ll);
         //
         apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
         userDetails = new ArrayList<>();
@@ -131,6 +132,14 @@ public class Profile_Activity extends AppCompatActivity {
         });
 
         LoadAllDetails();
+
+        follower_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile_Activity.this, BaseActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         following_ll.setOnClickListener(new View.OnClickListener() {

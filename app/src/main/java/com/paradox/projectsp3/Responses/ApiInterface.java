@@ -36,6 +36,9 @@ public interface ApiInterface {
     @POST("get_following.php")
     Call<String> getUserdetails_following(@Body String body);
 
+    @POST("get_followers.php")
+    Call<String> getUserdetails_followers(@Body String body);
+
     ////getting posts///
     @GET("get_details")
     Call<Users> performAllPosts();
