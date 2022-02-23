@@ -9,8 +9,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class Pager_Adapter extends FragmentPagerAdapter {
 
+    int tabcount;
+
     public Pager_Adapter(@NonNull FragmentManager fm) {
         super(fm);
+
     }
 
 
@@ -29,17 +32,8 @@ public class Pager_Adapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return tabcount;
     }
 
-    @Override
-    public CharSequence getPageTitle(int position)
-    {
-        String title = null;
-        if (position == 0)
-            title = "Following";
-        else if (position == 1)
-            title = "Followers";
-        return title;
-    }
+
 }

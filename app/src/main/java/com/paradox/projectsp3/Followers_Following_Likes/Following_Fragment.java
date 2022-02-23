@@ -69,8 +69,6 @@ public class Following_Fragment extends Fragment {
     private void initviews(View view) {
 
 
-
-
         JSONObject data = new JSONObject();
         try {
 
@@ -90,32 +88,17 @@ public class Following_Fragment extends Fragment {
         Call<String> call = api.getUserdetails_following(data.toString());
 
         call.enqueue(new Callback<String>() {
-
             @Override
-
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
                 //Toast.makeText()
                 if (response.isSuccessful()) {
-
                     Gson gson = new Gson();
-
-
-
-
-
-
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
 
                         String jsonresponse = response.body().toString();
-
-
                         Following_Fragment following_fragment = new Following_Fragment();
-
-
-
-
                             try {
                                 //getting the whole json object from the response
                                 JSONObject obj = new JSONObject(jsonresponse);

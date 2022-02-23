@@ -37,6 +37,7 @@ public class NewSignUpActivity extends AppCompatActivity {
     String perEmail,perName,perusrn,perPass;
     private static int RC_SIGN_IN = 100;
     TextView mobile_btn,btn_skip,login;
+
 //    CallbackManager callbackManager;
 //    private LoginManager loginManager;
 //    LoginButton btn_facebook;

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,8 +31,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
     ImageView pic_img;
     TextView txt_name;
 
-
-
+    boolean followclick;
 
     public FollowingAdapter(Context context, List<Following_Model> followingModels) {
         this.context = context;
@@ -50,9 +50,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
 
     @Override
     public void onBindViewHolder(@NonNull myviewHolder holder, @SuppressLint("RecyclerView") int position) {
-
-
-
+        
         //Log.e(TAG, "onBindViewHolder: "+Entries.get(0).getUsername() );
         Log.e(TAG, "onBindViewHolder: "+followingModels.size() );
         holder.txt_name.setText(String.valueOf(followingModels.get(position).getUsername()));
@@ -62,7 +60,8 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, followingModels.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
-                
+
+                //holder.ll_relative.setVisibility(View.GONE);
             }
         });
 
@@ -81,16 +80,16 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
         TextView txt_name;
         Button btn_following;
 
+        LinearLayout ll_relative;
+
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
 
             pic_img = itemView.findViewById(R.id.pic_img);
             txt_name = itemView.findViewById(R.id.txt_name);
             btn_following = itemView.findViewById(R.id.btn_following);
-
+            ll_relative = itemView.findViewById(R.id.ll_relative);
 
         }
-
-
     }
 }
