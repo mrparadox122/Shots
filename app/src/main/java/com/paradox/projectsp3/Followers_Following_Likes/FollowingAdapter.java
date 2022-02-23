@@ -85,7 +85,6 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
                 MultipartBody.Part idpr= MultipartBody.Part.createFormData("idpr",followingModels.get(position).getId().toString());
                 MultipartBody.Part flag= MultipartBody.Part.createFormData("flag","2");
 
-
                 //get client
                 ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
                 Call<String> call_like = apiInterface.unfollo_follo(idmy,idpr,flag);

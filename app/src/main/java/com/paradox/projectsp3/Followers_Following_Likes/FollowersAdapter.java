@@ -25,8 +25,6 @@ public class FollowersAdapter  extends RecyclerView.Adapter<FollowersAdapter.myv
     Context context;
 
 
-
-
     public FollowersAdapter(Context context, List<Follower_model> follower_model){
         this.context = context;
         this.follower_model = follower_model;

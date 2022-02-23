@@ -11,23 +11,40 @@
     <!-- our tablayout to display tabs  -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/graycolor"
-        android:minHeight="35dp"
-        app:tabIndicatorHeight="2dp"
+       android:backgroundTint="@color/white"
+        app:tabIndicatorHeight="3.0dp"
         app:tabIndicator="@color/black"
-        app:tabMode="scrollable"
-        app:tabRippleColor="@color/black"
-        android:scrollbars="horizontal"
-        app:tabSelectedTextColor="@color/black"
+        app:tabSelectedTextColor="#E80955"
         app:tabTextColor="@color/black"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/following"
+            android:text="Following"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/follower"
+            android:text="Follower"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/suggest"
+            android:text="Suggest"/>
+
+
+    </com.google.android.material.tabs.TabLayout>
 
     <!-- View pager to swipe views -->
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"/>
 

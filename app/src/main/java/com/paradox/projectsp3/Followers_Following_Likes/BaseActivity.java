@@ -10,13 +10,15 @@ import android.view.WindowManager;
 import com.google.android.material.tabs.TabLayout;
 import com.paradox.projectsp3.R;
 
-public class BaseActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
+public class BaseActivity extends AppCompatActivity {
 
 
     private TabLayout tabLayout;
 
+    Pager_Adapter pager_adapter;
+
     //This is our viewPager
-    private ViewPager viewPager;
+    private ViewPager viewpager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,41 +33,39 @@ public class BaseActivity extends AppCompatActivity implements TabLayout.OnTabSe
         //Initializing the tablayout
         tabLayout =  findViewById(R.id.tabLayout);
 
-
-        tabLayout.addTab(tabLayout.newTab().setText("Following"));
-        tabLayout.addTab(tabLayout.newTab().setText("Followers"));
-        tabLayout.addTab(tabLayout.newTab().setText("Suggest"));
-
-        
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        //Initializing viewPager
-        viewPager = findViewById(R.id.viewPager);
+        viewpager = findViewById(R.id.viewpager);
 
-        //Creating our pager adapter
-        Pager_Adapter adapter = new Pager_Adapter(getSupportFragmentManager(),3);
 
-        //Adding adapter to pager
-        viewPager.setAdapter(adapter);
+        pager_adapter = new Pager_Adapter(getSupportFragmentManager(),3);
+        viewpager.setAdapter(pager_adapter);
 
-        //Adding onTabSelectedListener to swipe views
-        tabLayout.setOnTabSelectedListener(this);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewpager.setCurrentItem(tab.getPosition());
+                if (tab.getPosition()==0||tab.getPosition()==1||tab.getPosition()==2)
+                {
+                    pager_adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
     }
 
-    @Override
-    public void onTabSelected(TabLayout.Tab tab) {
-        viewPager.setCurrentItem(tab.getPosition());
-        
-    }
 
-    @Override
-    public void onTabUnselected(TabLayout.Tab tab) {
 
-    }
 
-    @Override
-    public void onTabReselected(TabLayout.Tab tab) {
-
-    }
 }

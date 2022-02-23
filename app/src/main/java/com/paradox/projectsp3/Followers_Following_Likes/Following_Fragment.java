@@ -55,7 +55,6 @@ public class Following_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
         following_model = new ArrayList<>();
 
-
     }
 
     @Override
@@ -67,9 +66,6 @@ public class Following_Fragment extends Fragment {
     }
 
     private void initviews(View view) {
-
-
-
 
         JSONObject data = new JSONObject();
         try {
@@ -86,47 +82,25 @@ public class Following_Fragment extends Fragment {
                 .build();
 
         ApiInterface api = retrofit.create(ApiInterface.class);
-
         Call<String> call = api.getUserdetails_following(data.toString());
-
         call.enqueue(new Callback<String>() {
-
             @Override
-
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
                 //Toast.makeText()
                 if (response.isSuccessful()) {
-
                     Gson gson = new Gson();
-
-
-
-
-
-
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
-
                         String jsonresponse = response.body().toString();
-
-
                         Following_Fragment following_fragment = new Following_Fragment();
-
-
-
-
                             try {
                                 //getting the whole json object from the response
                                 JSONObject obj = new JSONObject(jsonresponse);
                                 if(true){
-
                                     ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
                                     JSONArray dataArray  = obj.getJSONArray("body");
-
-
                                     for (i = 0; i < dataArray.length(); i++) {
-
                                         JSONObject dataobj = dataArray.getJSONObject(i);
                                         Following_Model following_model1 = new Following_Model();
                                         following_model1.setUsername(dataobj.getString("fullname").toString());
@@ -138,15 +112,9 @@ public class Following_Fragment extends Fragment {
                                         rv_following.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
                                         rv_following.setAdapter(followingAdapter);
 
-
-
-
-
                                         Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
                                     }
-
                                     for (int j = 0; j < UserDetailsArrayList.size(); j++){
-
 //                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
                                     }
                                 }else {
@@ -156,7 +124,6 @@ public class Following_Fragment extends Fragment {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-
 
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();

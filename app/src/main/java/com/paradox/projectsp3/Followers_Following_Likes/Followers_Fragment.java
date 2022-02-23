@@ -133,15 +133,6 @@ public class Followers_Fragment extends Fragment {
                                     FollowersAdapter adapter = new FollowersAdapter(getContext(), follower_model);
                                     rv_followers.setAdapter(adapter);
 
-//                                    """followingAdapter = new FollowingAdapter(getContext(), following_model);
-//                                    rv_following.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
-//                                    rv_following.setAdapter(followingAdapter);"""
-
-
-
-
-
-                                    //Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
                                 }
 
                                 for (int j = 0; j < UserDetailsArrayList.size(); j++){
