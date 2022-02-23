@@ -38,7 +38,7 @@ public class Suggest_Adapter extends RecyclerView.Adapter<Suggest_Adapter.myview
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 1;
     }
 
     public class myviewHolder extends RecyclerView.ViewHolder {

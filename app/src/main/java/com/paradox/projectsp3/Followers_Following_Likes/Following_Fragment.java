@@ -93,7 +93,7 @@ public class Following_Fragment extends Fragment {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
                         String jsonresponse = response.body().toString();
-                        Following_Fragment following_fragment = new Following_Fragment();
+                        //Following_Fragment following_fragment = new Following_Fragment();
                             try {
                                 //getting the whole json object from the response
                                 JSONObject obj = new JSONObject(jsonresponse);
