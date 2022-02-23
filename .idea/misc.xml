@@ -12,7 +12,7 @@
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3.7.7/app/src/main/res/layout/activity_new_sign_up.xml" value="0.1140625" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3.7.7/app/src/main/res/layout/layout_main.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_account.xml" value="0.33" />
-        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_base.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_base.xml" value="0.22" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_following.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_gmail_login.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_login.xml" value="0.1" />
@@ -23,7 +23,8 @@
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/fragment_followers_.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/fragment_following_.xml" value="0.33" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/fragment_my_.xml" value="0.1859375" />
-        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/fragment_suggested_.xml" value="0.1" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/fragment_suggest_.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/fragment_suggested_.xml" value="0.12" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/list_suggested.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/listitem_followers.xml" value="0.33" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/listitem_following.xml" value="0.33" />

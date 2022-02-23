@@ -17,7 +17,7 @@
         android:minHeight="35dp"
         app:tabIndicatorHeight="2dp"
         app:tabIndicator="@color/black"
-
+        app:tabMode="scrollable"
         app:tabRippleColor="@color/black"
         android:scrollbars="horizontal"
         app:tabSelectedTextColor="@color/black"

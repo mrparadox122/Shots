@@ -119,7 +119,7 @@ public class Profile_Activity extends AppCompatActivity {
         share_img = findViewById(R.id.share_img);
         follower_ll = findViewById(R.id.follower_ll);
         //
-        apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
+//        apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
         userDetails = new ArrayList<>();
 
         share_img.setOnClickListener(new View.OnClickListener() {

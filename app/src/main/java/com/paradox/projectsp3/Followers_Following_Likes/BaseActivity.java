@@ -31,23 +31,19 @@ public class BaseActivity extends AppCompatActivity implements TabLayout.OnTabSe
         //Initializing the tablayout
         tabLayout =  findViewById(R.id.tabLayout);
 
-        //Adding the tabs using addTab() method
+
         tabLayout.addTab(tabLayout.newTab().setText("Following"));
         tabLayout.addTab(tabLayout.newTab().setText("Followers"));
-//        tabLayout.addTab(tabLayout.newTab().setText("News"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Sports"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Entertainment"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Fashion"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Sales"));
+        tabLayout.addTab(tabLayout.newTab().setText("Suggest"));
 
-
+        
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         //Initializing viewPager
         viewPager = findViewById(R.id.viewPager);
 
         //Creating our pager adapter
-        Pager_Adapter adapter = new Pager_Adapter(getSupportFragmentManager());
+        Pager_Adapter adapter = new Pager_Adapter(getSupportFragmentManager(),3);
 
         //Adding adapter to pager
         viewPager.setAdapter(adapter);

@@ -64,10 +64,6 @@ public class Followers_Fragment extends Fragment {
 
     private void initviews(View view) {
 
-
-
-
-
         JSONObject data = new JSONObject();
         try {
 
@@ -134,7 +130,7 @@ public class Followers_Fragment extends Fragment {
 
                                     LinearLayoutManager layoutManager3 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                                     rv_followers.setLayoutManager(layoutManager3);
-                                    FollowersAdapter adapter = new FollowersAdapter(getContext(),follower_model);
+                                    FollowersAdapter adapter = new FollowersAdapter(getContext(), follower_model);
                                     rv_followers.setAdapter(adapter);
 
 //                                    """followingAdapter = new FollowingAdapter(getContext(), following_model);

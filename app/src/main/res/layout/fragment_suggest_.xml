@@ -3,14 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Followers_Following_Likes.Suggested_Fragment">
+    android:orientation="vertical"
+    android:background="#99A87A"
+    tools:context=".Followers_Following_Likes.Suggest_Fragment">
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_followers"
+        android:layout_marginTop="5dp"
+        android:id="@+id/rv_suggest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:orientation="vertical"
-        tools:listitem="@layout/listitem_followers" />
+        />
 
 </FrameLayout>

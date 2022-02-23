@@ -9,37 +9,32 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class Pager_Adapter extends FragmentPagerAdapter {
 
-    public Pager_Adapter(@NonNull FragmentManager fm) {
-        super(fm);
-    }
+    int tabcount;
 
+    public Pager_Adapter(@NonNull FragmentManager fm, int tabcount) {
+        super(fm);
+        this.tabcount = tabcount;
+    }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = null;
-        if (position == 0)
-            fragment = new Following_Fragment();
-        else if (position == 1)
-            fragment = new Followers_Fragment();
+        switch (position) {
+            case 0:
+                return new Following_Fragment();
+            case 1:
+                return new Followers_Fragment();
+            case 2:
+                return new Suggest_Fragment();
 
-        return fragment;
+            default:
+                return null;
+        }
 
     }
 
     @Override
     public int getCount() {
-        return 2;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position)
-    {
-        String title = null;
-        if (position == 0)
-            title = "Following";
-        else if (position == 1)
-            title = "Followers";
-        return title;
+        return tabcount;
     }
 }
