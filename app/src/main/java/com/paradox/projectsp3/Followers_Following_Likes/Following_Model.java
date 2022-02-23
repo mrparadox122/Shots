@@ -15,14 +15,18 @@ public class Following_Model  {
     private String profile_pic;
 
 
+    private String id;
+
+
 //    private String img;
 
     public Following_Model(){
 
     }
-    public Following_Model(String Username,String profile_pic) {
+    public Following_Model(String Username,String profile_pic,String id) {
         this.Username = Username;
         this.profile_pic = profile_pic;
+        this.id = id;
 //        this.img = img;
     }
 
@@ -47,6 +51,22 @@ public class Following_Model  {
     public void setProfile_pic(String profile_pic) {
         this.profile_pic = profile_pic;
     }
+
+
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
+
+
+
 
 
 }

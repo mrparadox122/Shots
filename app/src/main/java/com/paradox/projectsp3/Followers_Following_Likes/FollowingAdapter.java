@@ -2,13 +2,16 @@ package com.paradox.projectsp3.Followers_Following_Likes;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,7 +49,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull myviewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull myviewHolder holder, @SuppressLint("RecyclerView") int position) {
 
 
 
@@ -54,6 +57,15 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
         Log.e(TAG, "onBindViewHolder: "+followingModels.size() );
         holder.txt_name.setText(String.valueOf(followingModels.get(position).getUsername()));
         Glide.with(context).load(followingModels.get(position).getProfile_pic()).into(holder.pic_img);
+
+        holder.btn_following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, followingModels.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     @Override
@@ -66,12 +78,14 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
 
         ImageView pic_img;
         TextView txt_name;
+        Button btn_following;
 
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
 
             pic_img = itemView.findViewById(R.id.pic_img);
             txt_name = itemView.findViewById(R.id.txt_name);
+            btn_following = itemView.findViewById(R.id.btn_following);
 
 
         }

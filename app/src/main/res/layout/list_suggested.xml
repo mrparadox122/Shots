@@ -8,6 +8,7 @@
 
     <RelativeLayout
         android:layout_margin="5dp"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -24,37 +25,54 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_toRightOf="@+id/pic_img"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
 
             <TextView
-                android:id="@+id/txt_name"
+                android:id="@+id/usenname_txt"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name" />
+                android:text="Username" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_following"
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
-            android:text="Unfollow"
-            android:textAllCaps="false"
-            app:cornerRadius="5dp" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/follow_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:text="Follow"
+                android:textAllCaps="false"
+                app:cornerRadius="5dp" />
+
+            <Button
+                android:id="@+id/remove_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:text="Remove"
+                android:textAllCaps="false"
+                app:cornerRadius="5dp" />
+
+
+        </LinearLayout>
+
+
 
 
     </RelativeLayout>
-
-
 
 </LinearLayout>

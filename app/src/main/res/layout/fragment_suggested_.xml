@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".Followers_Following_Likes.Suggested_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_followers"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        tools:listitem="@layout/listitem_followers" />
 
 </FrameLayout>
