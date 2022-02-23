@@ -62,6 +62,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, followingModels.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
+                
             }
         });
 
