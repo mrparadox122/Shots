@@ -67,5 +67,8 @@ public interface ApiInterface {
     Call<ResponseBody> getStringuser(@Body String body);
     @POST("update_user.php")
     Call<ResponseBody> getStringuser_update(@Body String body);
+    @Multipart
+    @POST("follow_unfollo.php")
+    Call<String> unfollo_follo(@Part MultipartBody.Part idmy, @Part MultipartBody.Part idpr, @Part MultipartBody.Part flag);
 
 }

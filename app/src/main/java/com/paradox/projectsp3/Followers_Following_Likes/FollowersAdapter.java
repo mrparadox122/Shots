@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.paradox.projectsp3.Adapter.PostAdapter;
 import com.paradox.projectsp3.R;
 
 import java.util.ArrayList;
@@ -26,9 +25,7 @@ public class FollowersAdapter  extends RecyclerView.Adapter<FollowersAdapter.myv
     Context context;
 
 
-
-
-    public FollowersAdapter(Context context,List<Follower_model> follower_model){
+    public FollowersAdapter(Context context, List<Follower_model> follower_model){
         this.context = context;
         this.follower_model = follower_model;
         Log.e(TAG, "FollowersAdapter: "+follower_model.get(0) );

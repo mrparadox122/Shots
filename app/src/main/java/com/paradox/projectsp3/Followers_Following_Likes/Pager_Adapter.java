@@ -11,22 +11,25 @@ public class Pager_Adapter extends FragmentPagerAdapter {
 
     int tabcount;
 
-    public Pager_Adapter(@NonNull FragmentManager fm) {
+    public Pager_Adapter(@NonNull FragmentManager fm, int tabcount) {
         super(fm);
-
+        this.tabcount = tabcount;
     }
-
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = null;
-        if (position == 0)
-            fragment = new Following_Fragment();
-        else if (position == 1)
-            fragment = new Followers_Fragment();
+        switch (position) {
+            case 0:
+                return new Following_Fragment();
+            case 1:
+                return new Followers_Fragment();
+            case 2:
+                return new Suggest_Fragment();
 
-        return fragment;
+            default:
+                return null;
+        }
 
     }
 
@@ -34,6 +37,4 @@ public class Pager_Adapter extends FragmentPagerAdapter {
     public int getCount() {
         return tabcount;
     }
-
-
 }

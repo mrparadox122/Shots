@@ -64,10 +64,6 @@ public class Followers_Fragment extends Fragment {
 
     private void initviews(View view) {
 
-
-
-
-
         JSONObject data = new JSONObject();
         try {
 
@@ -134,18 +130,9 @@ public class Followers_Fragment extends Fragment {
 
                                     LinearLayoutManager layoutManager3 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                                     rv_followers.setLayoutManager(layoutManager3);
-                                    FollowersAdapter adapter = new FollowersAdapter(getContext(),follower_model);
+                                    FollowersAdapter adapter = new FollowersAdapter(getContext(), follower_model);
                                     rv_followers.setAdapter(adapter);
 
-//                                    """followingAdapter = new FollowingAdapter(getContext(), following_model);
-//                                    rv_following.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
-//                                    rv_following.setAdapter(followingAdapter);"""
-
-
-
-
-
-                                    //Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
                                 }
 
                                 for (int j = 0; j < UserDetailsArrayList.size(); j++){

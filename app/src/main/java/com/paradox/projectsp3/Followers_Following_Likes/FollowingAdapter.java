@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +18,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.paradox.projectsp3.GlobalVariables;
+import com.paradox.projectsp3.NewEditProfile_Activity;
 import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.Responses.ApiInterface;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myviewHolder> {
 
@@ -31,7 +43,8 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
     ImageView pic_img;
     TextView txt_name;
 
-    boolean followclick;
+
+
 
     public FollowingAdapter(Context context, List<Following_Model> followingModels) {
         this.context = context;
@@ -50,7 +63,9 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
 
     @Override
     public void onBindViewHolder(@NonNull myviewHolder holder, @SuppressLint("RecyclerView") int position) {
-        
+
+
+
         //Log.e(TAG, "onBindViewHolder: "+Entries.get(0).getUsername() );
         Log.e(TAG, "onBindViewHolder: "+followingModels.size() );
         holder.txt_name.setText(String.valueOf(followingModels.get(position).getUsername()));
@@ -60,8 +75,41 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, followingModels.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
+                holder.ll_relative.setVisibility(View.GONE);
+                Retrofit.Builder retrofit = new Retrofit.Builder()
+                        .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                        .addConverterFactory(ScalarsConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create());
+                Retrofit retrofit2 = retrofit.build();
+                MultipartBody.Part idmy= MultipartBody.Part.createFormData("idmy",GlobalVariables.getId().toString());
+                MultipartBody.Part idpr= MultipartBody.Part.createFormData("idpr",followingModels.get(position).getId().toString());
+                MultipartBody.Part flag= MultipartBody.Part.createFormData("flag","2");
 
-                //holder.ll_relative.setVisibility(View.GONE);
+                //get client
+                ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                Call<String> call_like = apiInterface.unfollo_follo(idmy,idpr,flag);
+                call_like.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful()){
+                            Log.e(TAG, "onResponse: "+response.body() );
+                            Log.e(TAG, "onResponse: "+response );
+                            if (response.body().equals("s")){
+                                Toast.makeText(context, "unfollo", Toast.LENGTH_SHORT).show();
+                            }
+//                            GlobalVariables.setBio(String.valueOf(editphone_et.getText()));
+//                            phonenumber_txt.setText(String.valueOf(editphone_et.getText()));
+//                            Toast.makeText(NewEditProfile_Activity.this, "Successfully changed the number to: "+GlobalVariables.getPhonenumber(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(context, "/"+t, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
 
@@ -79,8 +127,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
         ImageView pic_img;
         TextView txt_name;
         Button btn_following;
-
-        LinearLayout ll_relative;
+        RelativeLayout ll_relative;
 
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +137,9 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
             btn_following = itemView.findViewById(R.id.btn_following);
             ll_relative = itemView.findViewById(R.id.ll_relative);
 
+
         }
+
+
     }
 }
