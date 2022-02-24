@@ -34,14 +34,14 @@ public class BaseActivity extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         viewpager = findViewById(R.id.viewpager);
 
-        pager_adapter = new Pager_Adapter(getSupportFragmentManager(),3);
+        pager_adapter = new Pager_Adapter(getSupportFragmentManager(),2);
         viewpager.setAdapter(pager_adapter);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewpager.setCurrentItem(tab.getPosition());
-                if (tab.getPosition()==0||tab.getPosition()==1||tab.getPosition()==2)
+                if (tab.getPosition()==0||tab.getPosition()==1)
                 {
                     pager_adapter.notifyDataSetChanged();
                 }
