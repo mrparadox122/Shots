@@ -24,8 +24,6 @@ public class Pager_Adapter extends FragmentPagerAdapter {
                 return new Following_Fragment();
             case 1:
                 return new Followers_Fragment();
-            case 2:
-                return new Suggest_Fragment();
 
             default:
                 return null;

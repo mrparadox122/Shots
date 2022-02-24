@@ -29,18 +29,13 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
 
-
         //Initializing the tablayout
         tabLayout =  findViewById(R.id.tabLayout);
-
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
         viewpager = findViewById(R.id.viewpager);
-
 
         pager_adapter = new Pager_Adapter(getSupportFragmentManager(),3);
         viewpager.setAdapter(pager_adapter);
-
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

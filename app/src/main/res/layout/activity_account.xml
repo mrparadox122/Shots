@@ -52,13 +52,14 @@
 
         </LinearLayout>
 
+
         <ImageView
             android:id="@+id/settings"
-            android:layout_weight="0.3"
-            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_weight="0.3"
+            android:padding="10dp"
             android:src="@drawable/menu"
             app:tint="@color/white" />
     </LinearLayout>
@@ -211,28 +212,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_margin="10dp">
 
-        <Button
+        <TextView
             android:id="@+id/edit_profile"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:text="Edit Profile"
-            android:textSize="12dp"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            android:textColor="@color/white"
             android:textStyle="bold"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"/>
+            android:padding="10dp"
+            android:elevation="2dp"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/gray"/>
 
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:paddingStart="15dp"
+        android:text="Suggested Profiles"
+        android:textColor="@color/white"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/suggest_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/listitem_suggest" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

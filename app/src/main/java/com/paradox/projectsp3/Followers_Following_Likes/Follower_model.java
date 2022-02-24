@@ -18,8 +18,6 @@ public class Follower_model {
     }
 
 
-
-
     public void setUsername(String username) {
         Username = username;
     }

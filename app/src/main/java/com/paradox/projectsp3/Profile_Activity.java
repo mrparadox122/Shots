@@ -3,6 +3,8 @@ package com.paradox.projectsp3;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -24,6 +26,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.gson.JsonObject;
 import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
+import com.paradox.projectsp3.Followers_Following_Likes.Follower_model;
+import com.paradox.projectsp3.Followers_Following_Likes.FollowersAdapter;
+import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Adapter;
+import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Model;
 import com.paradox.projectsp3.Model.UserDetails;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
@@ -53,8 +59,8 @@ public class Profile_Activity extends AppCompatActivity {
     public String id;
    ImageView settings , back,share_img;
    CircleImageView pro_pic;
-   TextView pro_name,email,bio;
-   private Button edit_profile;
+   TextView pro_name,email,bio,edit_profile;
+//   private Button edit_profile;
    private ArrayList<UserDetails> userDetailsArrayList = new ArrayList<>();
    public static ApiInterface apiInterface;
    List<UserDetails> userDetails;
@@ -62,6 +68,9 @@ public class Profile_Activity extends AppCompatActivity {
    LinearLayout following_ll,follower_ll;
 
    TextView following_text,followers_text,likes_text,suggested_text;
+
+   RecyclerView suggest_rv;
+    List<Suggest_Model> suggestmodel;
 
     public String getFollowing() {
         return following;
@@ -118,15 +127,20 @@ public class Profile_Activity extends AppCompatActivity {
         following_ll = findViewById(R.id.following_ll);
         share_img = findViewById(R.id.share_img);
         follower_ll = findViewById(R.id.follower_ll);
-        //
+        suggest_rv = findViewById(R.id.suggest_rv);
+
+
+        LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        suggest_rv.setLayoutManager(layoutManager3);
+        Suggest_Adapter adapter = new Suggest_Adapter(getApplicationContext(),suggestmodel);
+        suggest_rv.setAdapter(adapter);
+
 //        apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
         userDetails = new ArrayList<>();
 
         share_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(Profile_Activity.this, MyBase_Activity.class);
-//                startActivity(intent);
 
             }
         });
