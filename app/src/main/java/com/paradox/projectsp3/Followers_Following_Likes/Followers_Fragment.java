@@ -104,7 +104,7 @@ public class Followers_Fragment extends Fragment {
                         String jsonresponse = response.body().toString();
 
 
-                        Following_Fragment following_fragment = new Following_Fragment();
+                        //Following_Fragment following_fragment = new Following_Fragment();
 
 
 

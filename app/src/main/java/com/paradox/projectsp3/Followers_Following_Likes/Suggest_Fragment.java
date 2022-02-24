@@ -19,7 +19,6 @@ public class Suggest_Fragment extends Fragment {
 
 
     RecyclerView rv_suggest;
-    //Following_Model following_model;
     List<Suggest_Model> suggest_models;
     Suggest_Adapter suggest_adapter;
 
