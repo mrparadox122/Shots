@@ -142,6 +142,9 @@ public class Profile_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(Profile_Activity.this, ProfileMenu_Activity.class);
+                startActivity(intent);
+
             }
         });
 

@@ -11,5 +11,7 @@ public class ProfileMenu_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_menu);
 
+        getSupportActionBar().hide();
+
     }
 }
