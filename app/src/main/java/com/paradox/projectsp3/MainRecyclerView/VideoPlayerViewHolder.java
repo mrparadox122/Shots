@@ -46,10 +46,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -121,8 +118,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(checklike)
                 {
                     JSONObject dislike = new JSONObject();
@@ -149,8 +144,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                             likesn.setText(String.valueOf(likesno));
                         }
 
-
-
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
 //                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
@@ -175,7 +168,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                             .addConverterFactory(GsonConverterFactory.create());
                     Retrofit retrofit2 = retrofit.build();
 
-
                     //get client
                     ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
                     Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
@@ -184,10 +176,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             Toast.makeText(context.getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
                              likesn.setText(String.valueOf(likesnominus));
-
                         }
-
-
 
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
@@ -195,8 +184,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                         }
                     });
-
-
 
 
                     like.setImageResource(R.drawable.ic_icon_material_favorite);
@@ -207,23 +194,21 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         Share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                Context sharecontext= itemView.getContext();
+//                Dialog dialog=new Dialog(sharecontext);
+//                dialog.setContentView(R.layout.activity_share_bottom_sheet);
+//                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                dialog.getWindow().setGravity(Gravity.BOTTOM);
+//                dialog.show();
 
-
-                Context sharecontext= itemView.getContext();
-                Dialog dialog=new Dialog(sharecontext);
-                dialog.setContentView(R.layout.activity_share_bottom_sheet);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.getWindow().setGravity(Gravity.BOTTOM);
-                dialog.show();
-//
-//                Intent myIntent = new Intent(Intent.ACTION_SEND);
-//                myIntent.setType("video/mp4");
-//                String body = String.valueOf(mediaObjectUrl);
-//                String sub = "Your Subject";
-//                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
-//                myIntent.putExtra(Intent.EXTRA_TEXT,body);
-//                context.startActivity(Intent.createChooser(myIntent, "Share Using"));
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("video/mp4");
+                String body = String.valueOf(mediaObjectUrl);
+                String sub = "Shots";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,body);
+                context.startActivity(Intent.createChooser(myIntent, "Share Using"));
             }
         });
     }
@@ -237,10 +222,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         likesn.setText(mediaObject.getLikes());
         likesnominus = Integer.parseInt(mediaObject.getLikes());
         likesno = 0b1 + Integer.parseInt(mediaObject.getLikes());
-
-
-
-
         commentn.setText(mediaObject.getComments());
         commentn.setText(mediaObject.getShares());
 

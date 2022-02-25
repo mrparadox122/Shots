@@ -197,8 +197,16 @@ public class Profile_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(Profile_Activity.this, ProfileMenu_Activity.class);
-                startActivity(intent);
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("video/mp4");
+                String body = "Shots Commming Soon";
+                String sub = "Shots is identifying ypur creativity";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,body);
+                startActivity(Intent.createChooser(myIntent, "Share Using"));
+
+//                Intent intent = new Intent(Profile_Activity.this, ProfileMenu_Activity.class);
+//                startActivity(intent);
 
             }
         });

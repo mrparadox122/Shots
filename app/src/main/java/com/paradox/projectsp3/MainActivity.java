@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+
+
         videoView = findViewById(R.id.video_view);
         String path = "android.resource://com.paradox.projectsp3/"+R.raw.splash_video;
         Uri uri = Uri.parse(path);

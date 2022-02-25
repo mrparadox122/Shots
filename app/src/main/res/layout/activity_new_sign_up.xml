@@ -116,10 +116,11 @@
 
         <TextView
             android:id="@+id/login"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
             android:textSize="18dp"
+            android:padding="10dp"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:gravity="center"/>

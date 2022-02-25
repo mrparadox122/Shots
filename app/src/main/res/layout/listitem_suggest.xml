@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="5dp"
     android:layout_height="wrap_content">
 
 
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
@@ -28,8 +28,8 @@
                 android:id="@+id/close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:padding="5dp"
+                android:layout_marginStart="25dp"
+                android:padding="3dp"
                 android:drawableEnd="@drawable/close"
                 android:gravity="end" />
 
@@ -45,19 +45,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/img_pic"
-                android:padding="5dp"
+                android:padding="2dp"
+                android:textStyle="bold"
                 android:text="Prashanth"
                 android:textColor="@color/white" />
 
 
-            <Button
+            <TextView
+                android:elevation="2dp"
+                android:padding="2dp"
                 android:id="@+id/btn_sug_fol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="     Follow     "
                 android:textAllCaps="false"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"/>
+                android:textStyle="bold"
+                android:textSize="10dp"
+                android:background="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
 
         </LinearLayout>
 
