@@ -10,6 +10,35 @@ public class GlobalVariables {
     static String profile_pic;
     static String bio;
     static String id;
+    static int following;
+    static int follwer;
+    static int like;
+
+    public static int getFollowing() {
+        return following;
+    }
+
+    public static void setFollowing(int following) {
+        GlobalVariables.following = following;
+    }
+
+    public static int getFollwer() {
+        return follwer;
+    }
+
+    public static void setFollwer(int follwer) {
+        GlobalVariables.follwer = follwer;
+    }
+
+    public static int getLike() {
+        return like;
+    }
+
+    public static void setLike(int like) {
+        GlobalVariables.like = like;
+    }
+
+
 
     public static String getFullname() {
         return fullname;

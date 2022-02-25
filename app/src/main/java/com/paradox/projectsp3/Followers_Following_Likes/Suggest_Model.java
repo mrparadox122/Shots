@@ -6,6 +6,9 @@ public class Suggest_Model {
     private String Usernamee;
     private String profile_picc;
 
+
+    private String Idd;
+
     public String getUsernamee() {
         return Usernamee;
     }
@@ -21,4 +24,12 @@ public class Suggest_Model {
     public void setProfile_picc(String profile_picc) {
         this.profile_picc = profile_picc;
     }
+
+    public void setIdd(String idd) {
+        this.Idd = idd;
+    }
+    public String getIdd() {
+        return Idd;
+    }
+
 }

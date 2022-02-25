@@ -74,7 +74,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
         holder.btn_following.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, followingModels.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, followingModels.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
                 holder.ll_relative.setVisibility(View.GONE);
                 Retrofit.Builder retrofit = new Retrofit.Builder()
                         .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
@@ -96,7 +96,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
                             Log.e(TAG, "onResponse: "+response.body() );
                             Log.e(TAG, "onResponse: "+response );
                             if (response.body().equals("s")){
-                                Toast.makeText(context, "unfollo", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "unfollow", Toast.LENGTH_SHORT).show();
                             }
 //                            GlobalVariables.setBio(String.valueOf(editphone_et.getText()));
 //                            phonenumber_txt.setText(String.valueOf(editphone_et.getText()));

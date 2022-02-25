@@ -24,10 +24,13 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
 import com.paradox.projectsp3.Followers_Following_Likes.Follower_model;
 import com.paradox.projectsp3.Followers_Following_Likes.FollowersAdapter;
+import com.paradox.projectsp3.Followers_Following_Likes.FollowingAdapter;
+import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Adapter;
 import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Model;
 import com.paradox.projectsp3.Model.UserDetails;
@@ -67,38 +70,13 @@ public class Profile_Activity extends AppCompatActivity {
 
    LinearLayout following_ll,follower_ll;
 
-   TextView following_text,followers_text,likes_text,suggested_text;
+   public TextView following_text,followers_text,likes_text,suggested_text;
 
    RecyclerView suggest_rv;
+    int i;
     List<Suggest_Model> suggestmodel;
 
-    public String getFollowing() {
-        return following;
-    }
 
-    public void setFollowing(String following) {
-        this.following = following;
-    }
-
-    public String getFollwer() {
-        return follwer;
-    }
-
-    public void setFollwer(String follwer) {
-        this.follwer = follwer;
-    }
-
-    public String getLike() {
-        return like;
-    }
-
-    public void setLike(String like) {
-        this.like = like;
-    }
-
-    String following;
-    String follwer;
-    String like;
     String suggest;
 
     UserDetails UserDetails = new UserDetails();
@@ -128,12 +106,89 @@ public class Profile_Activity extends AppCompatActivity {
         share_img = findViewById(R.id.share_img);
         follower_ll = findViewById(R.id.follower_ll);
         suggest_rv = findViewById(R.id.suggest_rv);
+        suggestmodel = new ArrayList<>();
 
 
-        LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        suggest_rv.setLayoutManager(layoutManager3);
-        Suggest_Adapter adapter = new Suggest_Adapter(getApplicationContext(),suggestmodel);
-        suggest_rv.setAdapter(adapter);
+
+        JSONObject data = new JSONObject();
+        try {
+
+            data.put("username", GlobalVariables.getId());
+            Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Retrofit retrofitt = new Retrofit.Builder()
+                .baseUrl(ApiInterface.userdetail_following_url)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build();
+
+        ApiInterface apii = retrofitt.create(ApiInterface.class);
+        Call<String> calll = apii.getUserdetails_suggestion(data.toString());
+        calll.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+                        String jsonresponse = response.body().toString();
+                        //Following_Fragment following_fragment = new Following_Fragment();
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(jsonresponse);
+                            if(true){
+                                ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
+                                JSONArray dataArray  = obj.getJSONArray("body");
+
+                                for (i = 0; i < dataArray.length(); i++) {
+                                    JSONObject dataobj = dataArray.getJSONObject(i);
+                                    Suggest_Model suggest_model = new Suggest_Model();
+                                    suggest_model.setUsernamee(dataobj.getString("fullname").toString());
+                                    suggest_model.setProfile_picc(dataobj.getString("profile_pic").toString());
+                                    suggest_model.setIdd(dataobj.getString("id").toString());
+                                    suggestmodel.add(suggest_model);
+                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                                    suggest_rv.setLayoutManager(layoutManager3);
+                                    Suggest_Adapter adapter = new Suggest_Adapter(getApplicationContext(),suggestmodel);
+                                    suggest_rv.setAdapter(adapter);
+                                    //following_model.add(following_model1);
+
+
+                                    //Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
+                                }
+                                for (int j = 0; j < UserDetailsArrayList.size(); j++){
+//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
+                                }
+                            }else {
+                                Toast.makeText(getApplicationContext(), obj.optString("message")+"", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e(TAG, "onFailure: //////////////////" + t);
+
+            }
+        });
+
+
+
+
+
+
 
 //        apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
         userDetails = new ArrayList<>();
@@ -380,10 +435,11 @@ public class Profile_Activity extends AppCompatActivity {
                     GlobalVariables.setDob(UserDetails.getDob());
                     GlobalVariables.setProfile_pic(UserDetails.getProfilePic());
                     GlobalVariables.setId(UserDetails.getId());
-                    setFollowing(UserDetails.getFollowing());
+                    GlobalVariables.setFollwer(Integer.parseInt(UserDetails.getFollowers()));
+                    GlobalVariables.setFollowing(Integer.parseInt(UserDetails.getFollowing()));
+                    GlobalVariables.setLike(Integer.parseInt(UserDetails.getTotal_likes()));
+
                     id = dataobj.getString("id");
-                    setFollwer(UserDetails.getFollowers());
-                    setLike(UserDetails.getTotal_likes());
                     add_details();
                     Log.e(TAG, "writeTv: "+GlobalVariables.getFullname()+GlobalVariables.getUsername() );
                 }
@@ -449,9 +505,9 @@ public class Profile_Activity extends AppCompatActivity {
         pro_name.setText(GlobalVariables.getFullname());
         bio.setText(GlobalVariables.getBio());
         email.setText(GlobalVariables.getEmail());
-        followers_text.setText(getFollwer());
-        following_text.setText(getFollowing());
-        likes_text.setText(getLike());
+        followers_text.setText(String.valueOf(GlobalVariables.getFollwer()));
+        following_text.setText(String.valueOf(GlobalVariables.getFollowing()));
+        likes_text.setText(String.valueOf(GlobalVariables.getLike()));
         Log.e(TAG, "add_details: "+followers_text.getText()+following_text.getText()+likes_text.getText());
 
 

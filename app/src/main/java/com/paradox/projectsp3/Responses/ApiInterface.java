@@ -71,4 +71,7 @@ public interface ApiInterface {
     @POST("follow_unfollo.php")
     Call<String> unfollo_follo(@Part MultipartBody.Part idmy, @Part MultipartBody.Part idpr, @Part MultipartBody.Part flag);
 
+    @POST("get_suggested.php")
+    Call<String> getUserdetails_suggestion(@Body String body);
+
 }
