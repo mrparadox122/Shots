@@ -45,14 +45,12 @@ public class Login extends AppCompatActivity {
         remember_check = findViewById(R.id.remember_check);
         skip_txt = findViewById(R.id.skip_txt);
 
-
         remember_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
-
 
         skip_txt.setOnClickListener(new View.OnClickListener() {
             @Override

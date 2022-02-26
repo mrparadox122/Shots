@@ -36,7 +36,7 @@ public class NewSignUpActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     String perEmail,perName,perusrn,perPass;
     private static int RC_SIGN_IN = 100;
-    TextView mobile_btn,btn_skip,login;
+    TextView mobile_btn,btn_skip;
 
 //    CallbackManager callbackManager;
 //    private LoginManager loginManager;
@@ -65,7 +65,6 @@ public class NewSignUpActivity extends AppCompatActivity {
 //        callbackManager = CallbackManager.Factory.create();
         btn_skip = findViewById(R.id.btn_skip);
         mobile_btn = findViewById(R.id.mobile_btn);
-        login = findViewById(R.id.login);
         // Set the dimensions of the sign-in button.
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -77,14 +76,6 @@ public class NewSignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(NewSignUpActivity.this,HomeActivty.class);
                 startActivity(intent);
-            }
-        });
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               Intent intent = new Intent(NewSignUpActivity.this,Login.class);
-               startActivity(intent);
             }
         });
 

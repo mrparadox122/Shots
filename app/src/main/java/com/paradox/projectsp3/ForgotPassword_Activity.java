@@ -17,7 +17,6 @@ public class ForgotPassword_Activity extends AppCompatActivity {
     Button send_btn,btn_verify;
     LinearLayout verification;
 
-    boolean send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +29,13 @@ public class ForgotPassword_Activity extends AppCompatActivity {
         send_btn = findViewById(R.id.send_btn);
         et_mobile = findViewById(R.id.et_mobile);
         btn_verify = findViewById(R.id.btn_verify);
+        verification = findViewById(R.id.verification);
 
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (send == true){
+
                     verification.setVisibility(View.VISIBLE);
-                }else {
-                    verification.setVisibility(View.GONE);
-                }
             }
         });
 
