@@ -25,7 +25,7 @@ public class ChooseYoursIntrests_Activity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChooseYoursIntrests_Activity.this,NewSignUpActivity.class);
+                Intent intent = new Intent(ChooseYoursIntrests_Activity.this,Login.class);
                 startActivity(intent);
             }
         });

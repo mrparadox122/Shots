@@ -15,7 +15,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
@@ -25,6 +27,8 @@ public class Login extends AppCompatActivity {
     Button btn_login;
     EditText mobileNumbr,pin;
     String PhoneNumber,password;
+    TextView createnewACC,skip_txt;
+    CheckBox remember_check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +40,35 @@ public class Login extends AppCompatActivity {
         mobileNumbr = findViewById(R.id.et_mobile);
 
         btn_login = findViewById(R.id.login_bt);
-
-
         pin = findViewById(R.id.et_pin);
+        createnewACC = findViewById(R.id.createnewACC);
+        remember_check = findViewById(R.id.remember_check);
+        skip_txt = findViewById(R.id.skip_txt);
 
+
+        remember_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+        skip_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this,HomeActivty.class);
+                startActivity(intent);
+            }
+        });
+
+        createnewACC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this,NewSignUpActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
