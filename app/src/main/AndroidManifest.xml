@@ -25,11 +25,14 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".RefferandEarn_Activity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileMenu_Activity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".Practice_Following.MyBase_Activity"
             android:exported="false" />

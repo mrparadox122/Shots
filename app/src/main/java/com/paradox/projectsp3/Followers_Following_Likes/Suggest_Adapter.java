@@ -99,8 +99,6 @@ public class Suggest_Adapter extends RecyclerView.Adapter<Suggest_Adapter.myview
             }
         });
 
-
-
     }
 
     @Override
@@ -112,7 +110,7 @@ public class Suggest_Adapter extends RecyclerView.Adapter<Suggest_Adapter.myview
 
         ImageView img_pic;
         TextView name_txt;
-        Button btn_sug_fol;
+        TextView btn_sug_fol;
         CardView cardView;
 
         public myviewHolder(@NonNull View itemView) {

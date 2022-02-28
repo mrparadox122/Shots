@@ -54,7 +54,7 @@
 
 
         <ImageView
-            android:id="@+id/settings"
+            android:id="@+id/profilemenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -264,192 +264,27 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/listitem_suggest" />
 
-            <androidx.core.widget.NestedScrollView
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Yours Vedios"
+              android:paddingStart="15dp"
+              android:layout_marginTop="10dp"
+              android:textColor="@color/white"
+              android:textSize="18sp"
+              android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_1"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_2"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_3"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_4"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_5"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_6"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_7"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_2"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_9"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_7"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_8"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_9"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_7"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_8"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_9"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_7"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_8"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_9"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_7"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_8"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_9"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_1"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_8"/>
-
-                        <ImageView
-                            android:layout_width="145dp"
-                            android:layout_height="145dp"
-                            android:src="@drawable/img_9"/>
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </androidx.core.widget.NestedScrollView>
-
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:scrollingCache="true"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:listitem="@layout/item_myvideo_layout" />
 
 
         </LinearLayout>
