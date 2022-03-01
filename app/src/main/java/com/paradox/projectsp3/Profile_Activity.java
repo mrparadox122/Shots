@@ -126,9 +126,7 @@ public class Profile_Activity extends AppCompatActivity {
         follower_ll = findViewById(R.id.follower_ll);
         suggest_rv = findViewById(R.id.suggest_rv);
         profilemenu = findViewById(R.id.profilemenu);
-
         recyclerview = findViewById(R.id.recyclerview);
-
 
 
         recyclerview.setLayoutManager(new GridLayoutManager(this,3));
@@ -141,16 +139,15 @@ public class Profile_Activity extends AppCompatActivity {
             public void onClick(View view) {
 
                final Dialog dialog = new Dialog(Profile_Activity.this);
-                dialog.setContentView(R.layout.profile_menulist);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.getWindow().setGravity(Gravity.TOP);
+                dialog.setContentView(R.layout.bottomsheetlayout);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setGravity(Gravity.BOTTOM);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
 
 
-                TextView refferearn = dialog.findViewById(R.id.refferearn);
-
-                refferearn.setOnClickListener(new View.OnClickListener() {
+                TextView reffer_txt = dialog.findViewById(R.id.reffer_txt);
+                reffer_txt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
@@ -159,9 +156,19 @@ public class Profile_Activity extends AppCompatActivity {
                     }
                 });
 
-                TextView settings = dialog.findViewById(R.id.settings);
+                TextView diamonds_txt = dialog.findViewById(R.id.diamonds_txt);
 
-                settings.setOnClickListener(new View.OnClickListener() {
+                diamonds_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+                    }
+                });
+
+                TextView settings_txt = dialog.findViewById(R.id.settings_txt);
+
+                settings_txt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
@@ -170,10 +177,19 @@ public class Profile_Activity extends AppCompatActivity {
                     }
                 });
 
-                TextView logout = dialog.findViewById(R.id.logout);
+                TextView language_txt = dialog.findViewById(R.id.language_txt);
 
+                language_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                logout.setOnClickListener(new View.OnClickListener() {
+                        Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                TextView notification_txt = dialog.findViewById(R.id.notification_txt);
+                notification_txt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
@@ -183,6 +199,15 @@ public class Profile_Activity extends AppCompatActivity {
                 });
 
 
+                TextView inbox_txt = dialog.findViewById(R.id.inbox_txt);
+                inbox_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
+                        startActivity(intent);
+                    }
+                });
 
             }
         });
