@@ -8,11 +8,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -27,6 +33,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.paradox.projectsp3.Adapter.MyVideos_Adapter;
 import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
 import com.paradox.projectsp3.Followers_Following_Likes.Follower_model;
 import com.paradox.projectsp3.Followers_Following_Likes.FollowersAdapter;
@@ -34,6 +41,7 @@ import com.paradox.projectsp3.Followers_Following_Likes.FollowingAdapter;
 import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Adapter;
 import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Model;
+import com.paradox.projectsp3.Model.My_VideosModel;
 import com.paradox.projectsp3.Model.UserDetails;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
@@ -61,7 +69,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class Profile_Activity extends AppCompatActivity {
 
     public String id;
-   ImageView settings , back,share_img;
+   ImageView settings , back,share_img,profilemenu;
    CircleImageView pro_pic;
    TextView pro_name,email,bio,edit_profile;
 //   private Button edit_profile;
@@ -71,7 +79,7 @@ public class Profile_Activity extends AppCompatActivity {
 
    LinearLayout following_ll,follower_ll;
 
-   public TextView following_text,followers_text,likes_text,suggested_text;
+   public TextView following_text,followers_text,likes_text;
 
    RecyclerView suggest_rv;
     int i;
@@ -82,6 +90,12 @@ public class Profile_Activity extends AppCompatActivity {
     String suggest;
 
     UserDetails UserDetails = new UserDetails();
+
+    public RecyclerView recyclerview;
+
+    MyVideos_Adapter myVideos_adapter;
+    Context context;
+    List<My_VideosModel> my_videosModelList;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -110,6 +124,88 @@ public class Profile_Activity extends AppCompatActivity {
         suggest_rv = findViewById(R.id.suggest_rv);
         suggestmodel = new ArrayList<>();
         refrestly = findViewById(R.id.refrestly);
+        recyclerview = findViewById(R.id.recyclerview);
+        profilemenu = findViewById(R.id.profilemenu);
+
+        profilemenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final Dialog dialog = new Dialog(Profile_Activity.this);
+                dialog.setContentView(R.layout.bottomsheetlayout);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setGravity(Gravity.BOTTOM);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+                TextView reffer_txt = dialog.findViewById(R.id.reffer_txt);
+                reffer_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                TextView diamonds_txt = dialog.findViewById(R.id.diamonds_txt);
+
+                diamonds_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+                    }
+                });
+
+                TextView settings_txt = dialog.findViewById(R.id.settings_txt);
+
+                settings_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(Profile_Activity.this,ProfileSettings_Activity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                TextView language_txt = dialog.findViewById(R.id.language_txt);
+
+                language_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                TextView notification_txt = dialog.findViewById(R.id.notification_txt);
+                notification_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
+                        startActivity(intent);
+                    }
+                });
+
+
+                TextView inbox_txt = dialog.findViewById(R.id.inbox_txt);
+                inbox_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
+                        startActivity(intent);
+                    }
+                });
+
+
+            }
+        });
+
         refrestly.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -248,13 +344,13 @@ public class Profile_Activity extends AppCompatActivity {
               }
         });
 
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Profile_Activity.this,ProfileSettings_Activity.class);
-                startActivity(intent);
-            }
-        });
+//        settings.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Profile_Activity.this,ProfileSettings_Activity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override

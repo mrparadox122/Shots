@@ -9,7 +9,6 @@ import android.widget.Button;
 
 public class ChooseYoursIntrests_Activity extends AppCompatActivity {
 
-
     Button btnSubmit;
 
     @Override
@@ -21,7 +20,6 @@ public class ChooseYoursIntrests_Activity extends AppCompatActivity {
 
 
         btnSubmit = findViewById(R.id.btnSubmit);
-
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

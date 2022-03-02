@@ -25,6 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Buydiamonds_Activity"
+            android:exported="false" />
+        <activity
             android:name=".RefferandEarn_Activity"
             android:exported="false" />
         <activity

@@ -6,6 +6,7 @@ public class My_VideosModel {
     String viewtext;
 
     public My_VideosModel() {
+
     }
 
     public My_VideosModel(String img_url, String viewtext) {

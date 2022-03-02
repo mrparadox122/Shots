@@ -39,7 +39,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
+                android:weightSum="3"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:orientation="horizontal">
@@ -49,14 +49,29 @@
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="dance"
+                    android:text="Dance"
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/choose_bg"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text=" Fashion "
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+
                 <TextView
                     android:layout_weight="1"
                     android:layout_margin="5dp"
@@ -66,16 +81,16 @@
                     android:layout_height="wrap_content"
                     android:text="Comedy"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#FACD06"/>
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
+                android:weightSum="3"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:orientation="horizontal">
@@ -85,14 +100,27 @@
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Food"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="normal"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Motivetional"
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#11F407"/>
+                    android:textColor="@color/black"/>
                 <TextView
                     android:layout_weight="1"
                     android:layout_margin="5dp"
@@ -102,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:text="News"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
                     android:textColor="#070707"/>
@@ -111,7 +139,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
+                android:weightSum="3"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:orientation="horizontal">
@@ -125,10 +153,23 @@
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#020EF3"/>
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gaming"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="normal"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="@color/black"/>
                 <TextView
                     android:layout_weight="1"
                     android:layout_margin="5dp"
@@ -136,21 +177,35 @@
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Songs"
+                    android:text="Treditional"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#40E8BA"/>
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
+                android:weightSum="3"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" Fitness"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="normal"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_weight="1"
@@ -161,10 +216,10 @@
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="@color/app_color"/>
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_weight="1"
@@ -173,18 +228,18 @@
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Travel"
+                    android:text="Health"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#700A0A"/>
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
+                android:weightSum="3"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:orientation="horizontal">
@@ -194,14 +249,28 @@
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Pop Culture"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="normal"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Production"
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#02431C"/>
+                    android:textColor="@color/black"/>
+
                 <TextView
                     android:layout_weight="1"
                     android:layout_margin="5dp"
@@ -211,16 +280,16 @@
                     android:layout_height="wrap_content"
                     android:text="Jobs"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
+                android:weightSum="3"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:orientation="horizontal">
@@ -234,10 +303,25 @@
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#978E5A"/>
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cooking"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="normal"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="@color/black"/>
+
                 <TextView
                     android:layout_weight="1"
                     android:layout_margin="5dp"
@@ -247,88 +331,17 @@
                     android:layout_height="wrap_content"
                     android:text="Science"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#5DB837"/>
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_weight="1"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Educational"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="#B50990"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Treditional"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="#07E185"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_weight="1"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Speech"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="#35047C"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Shoping"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
+                android:weightSum="3"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:orientation="horizontal">
@@ -342,10 +355,25 @@
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_weight="1"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Songs"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textStyle="normal"
+                    android:textSize="14dp"
+                    android:background="@drawable/choose_bg"
+                    android:textColor="@color/black"/>
+
 
                 <TextView
                     android:layout_weight="1"
@@ -356,10 +384,10 @@
                     android:layout_height="wrap_content"
                     android:text="Sports"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:textSize="14dp"
                     android:background="@drawable/choose_bg"
-                    android:textColor="#AFF408"/>
+                    android:textColor="@color/black"/>
               </LinearLayout>
 
             <Button
