@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -56,7 +57,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     Button btn_signup,btn_submit,datePickerButton;
     String Dob,gender;
 
-    TextView date_et;
+    TextView date_et,terms,privacy;
 
     String[] Gender = {"Male", "Female", "Others"};
     String[] Options = {"Phone"};
@@ -120,6 +121,26 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         date_et = findViewById(R.id.date_et);
 
         verification = findViewById(R.id.verification);
+        terms = findViewById(R.id.terms);
+        privacy = findViewById(R.id.privacy);
+
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/Terms&conditions.html"));
+                startActivity(browserIntent);
+            }
+        });
+
+        privacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/index.html"));
+                startActivity(browserIntent);
+
+            }
+        });
 
 
         date_et.setOnClickListener(new View.OnClickListener() {

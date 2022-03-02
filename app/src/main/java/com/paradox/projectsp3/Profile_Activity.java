@@ -37,6 +37,7 @@ import com.paradox.projectsp3.Adapter.MyVideos_Adapter;
 import com.paradox.projectsp3.Followers_Following_Likes.BaseActivity;
 import com.paradox.projectsp3.Followers_Following_Likes.Follower_model;
 import com.paradox.projectsp3.Followers_Following_Likes.FollowersAdapter;
+import com.paradox.projectsp3.Followers_Following_Likes.Followers_Fragment;
 import com.paradox.projectsp3.Followers_Following_Likes.FollowingAdapter;
 import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Adapter;
@@ -126,6 +127,15 @@ public class Profile_Activity extends AppCompatActivity {
         refrestly = findViewById(R.id.refrestly);
         recyclerview = findViewById(R.id.recyclerview);
         profilemenu = findViewById(R.id.profilemenu);
+
+
+        follower_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Followers_Fragment.class);
+                startActivity(intent);
+            }
+        });
 
         profilemenu.setOnClickListener(new View.OnClickListener() {
             @Override

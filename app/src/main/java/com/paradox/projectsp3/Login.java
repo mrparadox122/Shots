@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,7 +28,7 @@ public class Login extends AppCompatActivity {
     Button btn_login;
     EditText mobileNumbr,pin;
     String PhoneNumber,password;
-    TextView createnewACC,skip_txt;
+    TextView createnewACC,skip_txt,termscondi;
     CheckBox remember_check;
 
     @Override
@@ -44,6 +45,8 @@ public class Login extends AppCompatActivity {
         createnewACC = findViewById(R.id.createnewACC);
         remember_check = findViewById(R.id.remember_check);
         skip_txt = findViewById(R.id.skip_txt);
+
+
 
         remember_check.setOnClickListener(new View.OnClickListener() {
             @Override

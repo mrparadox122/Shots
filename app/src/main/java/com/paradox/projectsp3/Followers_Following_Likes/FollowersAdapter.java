@@ -31,13 +31,11 @@ public class FollowersAdapter  extends RecyclerView.Adapter<FollowersAdapter.myv
         Log.e(TAG, "FollowersAdapter: "+follower_model.get(0) );
     }
 
-
     @NonNull
     @Override
     public FollowersAdapter.myviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_followers, parent, false);
         return new myviewHolder(view);
-
 
     }
 
