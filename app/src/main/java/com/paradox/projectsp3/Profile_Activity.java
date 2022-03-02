@@ -3,6 +3,7 @@ package com.paradox.projectsp3;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -84,6 +85,7 @@ public class Profile_Activity extends AppCompatActivity {
    RecyclerView suggest_rv;
     int i;
     List<Suggest_Model> suggestmodel;
+    List<My_VideosModel> videomodle;
     SwipeRefreshLayout refrestly;
 
 
@@ -95,7 +97,7 @@ public class Profile_Activity extends AppCompatActivity {
 
     MyVideos_Adapter myVideos_adapter;
     Context context;
-    List<My_VideosModel> my_videosModelList;
+//    List<My_VideosModel> my_videosModelList;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -123,6 +125,7 @@ public class Profile_Activity extends AppCompatActivity {
         follower_ll = findViewById(R.id.follower_ll);
         suggest_rv = findViewById(R.id.suggest_rv);
         suggestmodel = new ArrayList<>();
+        videomodle = new ArrayList<>();
         refrestly = findViewById(R.id.refrestly);
         recyclerview = findViewById(R.id.recyclerview);
         profilemenu = findViewById(R.id.profilemenu);
@@ -213,6 +216,91 @@ public class Profile_Activity extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
+        JSONObject dataa = new JSONObject();
+        try {
+
+            dataa.put("username",GlobalVariables.getId());
+            Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Retrofit retrofittt = new Retrofit.Builder()
+                .baseUrl(ApiInterface.userdetail_following_url)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build();
+
+        ApiInterface apiii = retrofittt.create(ApiInterface.class);
+        Call<String> callll = apiii.getUserdetails_video(dataa.toString());
+        callll.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+                        String jsonresponse = response.body().toString();
+                        //Following_Fragment following_fragment = new Following_Fragment();
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(jsonresponse);
+                            if(true){
+                                ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
+                                JSONArray dataArray  = obj.getJSONArray("body");
+
+                                for (i = 0; i < dataArray.length(); i++) {
+                                    JSONObject dataobj = dataArray.getJSONObject(i);
+                                    My_VideosModel my_videosModel = new My_VideosModel();
+//                                    Suggest_Model suggest_model = new Suggest_Model();
+//                                    suggest_model.setUsernamee(dataobj.getString("fullname").toString());
+//                                    suggest_model.setProfile_picc(dataobj.getString("profile_pic").toString());
+//                                    suggest_model.setIdd(dataobj.getString("id").toString());
+                                    my_videosModel.setImg_url(dataobj.getString("url"));
+                                    my_videosModel.setViewtext(dataobj.getString("views"));
+                                    my_videosModel.setVideoid(dataobj.getString("videoid"));
+                                    //suggestmodel.add(suggest_model);
+                                    videomodle.add(my_videosModel);
+
+                                    recyclerview.setLayoutManager(new GridLayoutManager(context,3));
+
+                                    myVideos_adapter = new MyVideos_Adapter(context,videomodle);
+                                    recyclerview.setAdapter(myVideos_adapter);
+
+//                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+//                                    suggest_rv.setLayoutManager(layoutManager3);
+//                                    Suggest_Adapter adapter = new Suggest_Adapter(getApplicationContext(),suggestmodel);
+//                                    suggest_rv.setAdapter(adapter);
+                                    //following_model.add(following_model1);
+
+
+                                    //Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
+                                }
+                                for (int j = 0; j < UserDetailsArrayList.size(); j++){
+//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
+                                }
+                            }else {
+                                Toast.makeText(getApplicationContext(), obj.optString("message")+"", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
 
 
 
