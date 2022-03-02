@@ -4,14 +4,16 @@ public class My_VideosModel {
 
     String img_url;
     String viewtext;
+    String videoid;
 
     public My_VideosModel() {
 
     }
 
-    public My_VideosModel(String img_url, String viewtext) {
+    public My_VideosModel(String img_url, String viewtext,String videoid) {
         this.img_url = img_url;
         this.viewtext = viewtext;
+        this.videoid = videoid;
     }
 
     public String getImg_url() {
@@ -28,5 +30,13 @@ public class My_VideosModel {
 
     public void setViewtext(String viewtext) {
         this.viewtext = viewtext;
+    }
+
+    public String getVideoid() {
+        return videoid;
+    }
+
+    public void setVideoid(String videoid) {
+        this.videoid = videoid;
     }
 }

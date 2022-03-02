@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.Model.My_VideosModel;
 import com.paradox.projectsp3.R;
 
@@ -19,6 +21,7 @@ public class MyVideos_Adapter extends RecyclerView.Adapter<MyVideos_Adapter.myvi
 
     Context context;
     List<My_VideosModel>my_videosModelList;
+//    GlobalVariables g = new GlobalVariables();
 
     public MyVideos_Adapter(Context context, List<My_VideosModel> my_videosModelList) {
         this.context = context;
@@ -35,6 +38,21 @@ public class MyVideos_Adapter extends RecyclerView.Adapter<MyVideos_Adapter.myvi
 
     @Override
     public void onBindViewHolder(@NonNull MyVideos_Adapter.myviewHolder holder, int position) {
+        context = holder.itemView.getContext();
+        holder.view_txt.setText(my_videosModelList.get(position).getViewtext());
+
+        Glide.with(context).load(my_videosModelList.get(position).getImg_url()).into(holder.thumb_image);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+        });
+
+
 
     }
 

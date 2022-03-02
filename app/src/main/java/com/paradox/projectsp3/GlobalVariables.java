@@ -1,5 +1,7 @@
 package com.paradox.projectsp3;
 
+import android.content.Context;
+
 public class GlobalVariables {
    static String username;
     static String fullname;
@@ -13,6 +15,7 @@ public class GlobalVariables {
     static int following;
     static int follwer;
     static int like;
+   public static Context contextl;
 
     public static int getFollowing() {
         return following;
