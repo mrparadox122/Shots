@@ -2,6 +2,9 @@ package com.paradox.projectsp3;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GlobalVariables {
    static String username;
     static String fullname;
@@ -16,6 +19,9 @@ public class GlobalVariables {
     static int follwer;
     static int like;
    public static Context contextl;
+
+    public static List<String> someList = new ArrayList<String>();
+
 
     public static int getFollowing() {
         return following;
