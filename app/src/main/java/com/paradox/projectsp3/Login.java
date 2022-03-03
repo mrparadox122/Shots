@@ -40,12 +40,12 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mobileNumbr = findViewById(R.id.et_mobile);
 
+
         btn_login = findViewById(R.id.login_bt);
         pin = findViewById(R.id.et_pin);
         createnewACC = findViewById(R.id.createnewACC);
         remember_check = findViewById(R.id.remember_check);
         skip_txt = findViewById(R.id.skip_txt);
-
 
 
         remember_check.setOnClickListener(new View.OnClickListener() {

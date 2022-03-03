@@ -1,4 +1,4 @@
-package com.paradox.projectsp3.MainRecyclerView;
+package com.paradox.projectsp3.HomeRecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -28,7 +28,7 @@ public class VideoPlayerRecyclerAdapter extends RecyclerView.Adapter<RecyclerVie
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new com.paradox.projectsp3.MainRecyclerView.VideoPlayerViewHolder(
+        return new com.paradox.projectsp3.HomeRecyclerView.VideoPlayerViewHolder(
                 LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_main, viewGroup, false));
     }
 

@@ -1,34 +1,22 @@
-package com.paradox.projectsp3.MainRecyclerView;
+package com.paradox.projectsp3.HomeRecyclerView;
 
 
-import android.Manifest;
-import android.app.Activity;
-import android.app.DownloadManager;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,12 +43,10 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
-import com.google.android.gms.cast.framework.SessionManager;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 public class VideoPlayerRecyclerView extends RecyclerView {
@@ -102,9 +88,6 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         init(context);
     }
     private void init(Context context){
-
-
-
         this.context = context.getApplicationContext();
         Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         Point point = new Point();
@@ -207,7 +190,6 @@ public class VideoPlayerRecyclerView extends RecyclerView {
                         if (progressBar != null) {
                             progressBar.setVisibility(VISIBLE);
                         }
-
                         break;
                     case Player.STATE_ENDED:
                         Log.d(TAG, "onPlayerStateChanged: Video ended.");
@@ -332,8 +314,6 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         requestManager = holder.requestManager;
         frameLayout = holder.itemView.findViewById(R.id.media_container);
         Glide.with(context).load(R.drawable.editorlogo).into(soundDisk);
-
-
 
         ///////////////////////////////////////////////////////////////////////////////////////
         videoSurfaceView.setPlayer(videoPlayer);

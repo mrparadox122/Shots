@@ -1,4 +1,4 @@
-package com.paradox.projectsp3.MainRecyclerView;
+package com.paradox.projectsp3.HomeRecyclerView;
 
 import android.graphics.Rect;
 import android.view.View;

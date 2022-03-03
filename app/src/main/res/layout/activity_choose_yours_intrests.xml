@@ -47,15 +47,17 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/dance"
                     android:layout_weight="1"
                     android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Dance"
+                    android:elevation="5dp"
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:padding="10dp"
-                    android:textStyle="normal"
+                    android:textStyle="bold"
                     android:textSize="12dp"
                     android:background="@drawable/choose_bg"
                     android:textColor="@color/white"/>

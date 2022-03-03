@@ -1,10 +1,4 @@
-package com.paradox.projectsp3.MainRecyclerView;
-
-
-import static android.content.ContentValues.TAG;
-
-import static com.paradox.projectsp3.Responses.ApiClient.retrofit;
-import static com.paradox.projectsp3.Responses.ApiClient.retrofit1;
+package com.paradox.projectsp3.Profile;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -12,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,29 +15,18 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
-import com.paradox.projectsp3.HomeActivty;
-import com.paradox.projectsp3.MessageMainActivity;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
-import com.paradox.projectsp3.Responses.Users;
-import com.paradox.projectsp3.ShareBottomSheetActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -53,11 +34,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-//import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import retrofit2.http.Body;
 
-public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
+public class MyVideoViewHolder extends RecyclerView.ViewHolder {
+
 
     FrameLayout media_container;
     ImageView like,Share,Comment;
@@ -77,7 +57,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     int likesno;
     int likesnominus;
 
-    public VideoPlayerViewHolder(@NonNull View itemView) {
+    public MyVideoViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
         views = itemView.findViewById(R.id.noViews);
@@ -98,11 +78,9 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         CommentView=itemView.findViewById(R.id.commentView);
         share = itemView.findViewById(R.id.share);
 
-
         Comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Context context1= itemView.getContext();
                 Dialog dialog=new Dialog(context1);
                 dialog.setContentView(R.layout.activity_comment);
@@ -140,7 +118,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                     call_like.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                          //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
                             likesn.setText(String.valueOf(likesno));
                         }
 
@@ -175,7 +153,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             Toast.makeText(context.getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
-                             likesn.setText(String.valueOf(likesnominus));
+                            likesn.setText(String.valueOf(likesnominus));
                         }
 
                         @Override
@@ -262,7 +240,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                 views.setText(mediaObject.getViews());
+                views.setText(mediaObject.getViews());
             }
 
             @Override
@@ -271,13 +249,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             }
 
         });
-
-
-
-
-
-
-
 
 
 //        ApiInterface service = retrofit1.create(ApiInterface.class);
@@ -300,6 +271,4 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //            }
 //        });
     }
-
-
 }

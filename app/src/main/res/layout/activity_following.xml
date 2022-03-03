@@ -8,7 +8,7 @@
     android:background="#FFC0B4"
     tools:context=".FollowingActivity">
 
-    <com.paradox.projectsp3.MainRecyclerView.VideoPlayerRecyclerView
+    <com.paradox.projectsp3.HomeRecyclerView.VideoPlayerRecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"

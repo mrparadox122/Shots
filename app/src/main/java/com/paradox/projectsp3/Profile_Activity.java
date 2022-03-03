@@ -229,7 +229,7 @@ public class Profile_Activity extends AppCompatActivity {
         JSONObject dataa = new JSONObject();
         try {
 
-            dataa.put("username",GlobalVariables.getId());
+            dataa.put("username","468");
             Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getId());
         } catch (JSONException e) {
             e.printStackTrace();

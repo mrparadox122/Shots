@@ -40,14 +40,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 
-import com.paradox.projectsp3.MainRecyclerView.VerticalSpacingItemDecorator;
-import com.paradox.projectsp3.MainRecyclerView.VideoPlayerRecyclerAdapter;
-import com.paradox.projectsp3.MainRecyclerView.VideoPlayerRecyclerView;
+import com.paradox.projectsp3.HomeRecyclerView.VerticalSpacingItemDecorator;
+import com.paradox.projectsp3.HomeRecyclerView.VideoPlayerRecyclerAdapter;
+import com.paradox.projectsp3.HomeRecyclerView.VideoPlayerRecyclerView;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
 import com.paradox.projectsp3.Responses.Users;
-import com.paradox.projectsp3.VideoEditorFolder.BaseCameraActivity;
 import com.paradox.projectsp3.VideoEditorFolder.PortraitCameraActivity;
 
 import retrofit2.Call;
