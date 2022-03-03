@@ -29,7 +29,7 @@ import java.util.ArrayList;
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
             return new com.paradox.projectsp3.HomeRecyclerView.VideoPlayerViewHolder(
-                    LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.myvideo_layout, viewGroup, false));
+                    LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_watch_layout, viewGroup, false));
         }
 
         @Override
