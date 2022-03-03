@@ -20,7 +20,24 @@ public class GlobalVariables {
     static int like;
    public static Context contextl;
 
+
     public static List<String> someList = new ArrayList<String>();
+
+
+
+    public String Video;
+
+
+
+    public String getVideo() {
+        return Video;
+    }
+
+    public void setVideo(String video) {
+        Video = video;
+    }
+
+
 
 
     public static int getFollowing() {
