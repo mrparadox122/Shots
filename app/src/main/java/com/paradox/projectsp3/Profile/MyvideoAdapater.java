@@ -34,6 +34,8 @@ import java.util.ArrayList;
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+
             try {
                 ((VideoPlayerViewHolder) viewHolder).onBind(mediaObjects.get(i), requestManager);
             } catch (IOException e) {

@@ -177,25 +177,6 @@
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2" />
 
-    <android.widget.Button
-        android:visibility="gone"
-        android:id="@+id/textButton"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="70dp"
-        android:textSize="10sp"
-        android:layout_height="25dp"
-        android:background="@drawable/follow_btn_back"
-        android:text="Follow"
-        android:textStyle="bold"
-
-
-        android:textColor="#DCD1D1"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.71000004" />
     <ProgressBar
         android:id="@+id/progressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
@@ -223,7 +204,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-
         android:layout_marginTop="300dp"
         android:background="#FAF5F5"
         android:orientation="vertical"

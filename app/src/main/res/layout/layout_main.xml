@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-    android:background="#FFC0B4">
+    android:background="#FFC0B4"
+    >
 
     <FrameLayout
         android:id="@+id/media_container"
@@ -42,6 +43,7 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp">
 
+
             </FrameLayout>
 
 
@@ -49,6 +51,8 @@
 
 
     </FrameLayout>
+
+
     <TextView
         android:id="@+id/comments"
         android:layout_width="wrap_content"
@@ -61,6 +65,9 @@
         app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+
+
     <TextView
         android:id="@+id/noViews"
         android:layout_width="wrap_content"
@@ -74,6 +81,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
     <TextView
         android:id="@+id/likesn"
         android:layout_width="wrap_content"
@@ -86,6 +96,7 @@
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="@+id/imageView9"
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profilepic"
         android:layout_width="30dp"
@@ -96,6 +107,8 @@
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+
     <TextView
         android:id="@+id/share"
         android:layout_width="wrap_content"
@@ -107,6 +120,8 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="36dp"
@@ -118,6 +133,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:srcCompat="@drawable/view"
         tools:ignore="VectorDrawableCompat" />
+
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="36dp"
@@ -129,6 +145,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:srcCompat="@drawable/ic_icon_ionic_ios_share_alt"
         tools:ignore="VectorDrawableCompat" />
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="38dp"
@@ -140,6 +157,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:srcCompat="@drawable/ic_icon_awesome_comment_dots"
         tools:ignore="VectorDrawableCompat" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="45dp"
@@ -150,6 +168,7 @@
         android:src="@drawable/disk_for_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="37dp"
@@ -161,6 +180,8 @@
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:srcCompat="@drawable/ic_icon_material_favorite"
         tools:ignore="VectorDrawableCompat" />
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="0dp"
@@ -179,6 +200,9 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
@@ -190,6 +214,8 @@
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2" />
+
+
     <android.widget.Button
         android:id="@+id/textButton"
         style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -208,6 +234,9 @@
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.71000004" />
+
+
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -222,6 +251,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="@+id/textView3" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
@@ -235,6 +265,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="60dp"
@@ -246,6 +278,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="VectorDrawableCompat" />
+
     <LinearLayout
         android:id="@+id/commentView"
         android:layout_width="match_parent"

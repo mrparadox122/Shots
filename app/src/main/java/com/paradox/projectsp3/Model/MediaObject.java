@@ -23,7 +23,6 @@ public class MediaObject {
         this.likes = likes;
         this.shares = shares;
         this.comments = comments;
-
     }
     public String getVideo_id(){
         return video_id;
