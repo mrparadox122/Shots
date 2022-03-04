@@ -9,6 +9,17 @@ public class GlobalVariables {
 
 
     public static String url;
+
+
+
+    public static String views;
+    public static String videoid;
+    public static String post_id;
+    public static String description;
+    public static String categories;
+    public static String likes;
+    public static String shares;
+    public static String comments;
     static String username;
     static String fullname;
     static String email;
@@ -38,6 +49,71 @@ public class GlobalVariables {
 
     public void setVideo(String video) {
         Video = video;
+    }
+
+
+    public static String getViews() {
+        return views;
+    }
+
+    public static void setViews(String views) {
+        GlobalVariables.views = views;
+    }
+
+    public static String getVideoid() {
+        return videoid;
+    }
+
+    public static void setVideoid(String videoid) {
+        GlobalVariables.videoid = videoid;
+    }
+
+    public static String getPost_id() {
+        return post_id;
+    }
+
+    public static void setPost_id(String post_id) {
+        GlobalVariables.post_id = post_id;
+    }
+
+    public static String getDescription() {
+        return description;
+    }
+
+    public static void setDescription(String description) {
+        GlobalVariables.description = description;
+    }
+
+    public static String getCategories() {
+        return categories;
+    }
+
+    public static void setCategories(String categories) {
+        GlobalVariables.categories = categories;
+    }
+
+    public static String getLikes() {
+        return likes;
+    }
+
+    public static void setLikes(String likes) {
+        GlobalVariables.likes = likes;
+    }
+
+    public static String getShares() {
+        return shares;
+    }
+
+    public static void setShares(String shares) {
+        GlobalVariables.shares = shares;
+    }
+
+    public static String getComments() {
+        return comments;
+    }
+
+    public static void setComments(String comments) {
+        GlobalVariables.comments = comments;
     }
 
 

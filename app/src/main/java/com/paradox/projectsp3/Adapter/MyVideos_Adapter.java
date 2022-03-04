@@ -123,6 +123,14 @@ public class MyVideos_Adapter extends RecyclerView.Adapter<MyVideos_Adapter.myvi
 //                                            my_videosModel.setVideoid(dataobj.getString("videoid"));
 //                                            my_videosModel.setPid(dataobj.getString("post_id"));
                                             GlobalVariables.setUrl(dataobj.getString("url"));
+                                            GlobalVariables.setViews(dataobj.getString("views"));
+                                            GlobalVariables.setVideoid(dataobj.getString("videoid"));
+                                            GlobalVariables.setPost_id(dataobj.getString("post_id"));
+                                            GlobalVariables.setDescription(dataobj.getString("description"));
+                                            GlobalVariables.setCategories(dataobj.getString("categories"));
+                                            GlobalVariables.setLikes(dataobj.getString("likes"));
+                                            GlobalVariables.setShares(dataobj.getString("shares"));
+                                            GlobalVariables.setComments(dataobj.getString("comments"));
                                             Intent intent = new Intent(context, MyVideosScreen_Activity.class);
                                             context.startActivity(intent);
 
