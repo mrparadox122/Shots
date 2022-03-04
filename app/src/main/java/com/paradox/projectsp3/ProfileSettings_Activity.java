@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -25,7 +26,10 @@ public class ProfileSettings_Activity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     ImageView back;
     TextView logout;
-    RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_language;
+    RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_language,ll_communityguidelines,ll_Leagal;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         ll_language= findViewById(R.id.ll_language);
         back= findViewById(R.id.back);
         logout= findViewById(R.id.logout);
+        ll_Leagal= findViewById(R.id.ll_Leagal);
+        ll_communityguidelines= findViewById(R.id.ll_communityguidelines);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +68,25 @@ public class ProfileSettings_Activity extends AppCompatActivity {
                onBackPressed();
             }
         });
+
+        ll_communityguidelines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/CommunitGuidelines.html"));
+                startActivity(browserIntent);
+
+            }
+        });
+
+        ll_communityguidelines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/index.html"));
+                startActivity(browserIntent);
+
+            }
+        });
+
 
 
         ll_manageACC.setOnClickListener(new View.OnClickListener() {
