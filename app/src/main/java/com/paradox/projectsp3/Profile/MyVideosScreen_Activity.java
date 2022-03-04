@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
@@ -33,10 +34,10 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
     private RequestManager requestManager;
 
-    ImageView like_image,comment_image,share;
+    ImageView like_image,comment_image,sound_imag,share;
     private enum VolumeState {ON, OFF};
     private VolumeState volumeState;
-    TextView like_txt,comment_txt,username,desc_txt,sound_name;
+    TextView like_txt,comment_txt,username,desc_txt,sound_name,shr_txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +51,18 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
         like_image = findViewById(R.id.like_image);
         comment_image = findViewById(R.id.comment_image);
+
         share = findViewById(R.id.share);
         volumeControl = findViewById(R.id.imageView12);
+        shr_txt = findViewById(R.id.shr_txt);
         like_txt = findViewById(R.id.like_txt);
         username = findViewById(R.id.username);
         videoSurfaceView = new PlayerView(this);
 
         comment_txt = findViewById(R.id.comment_txt);
         desc_txt = findViewById(R.id.desc_txt);
+
+        sound_imag = findViewById(R.id.imageView3);
 
         sound_name = findViewById(R.id.sound_name);
 
@@ -96,6 +101,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 //            Log.e(TAG, "onCreate: "+e.toString() );
 //        }
 
+        Glide.with(this).load(R.drawable.editorlogo).into(sound_imag);
 
         VideoView videoView= (VideoView)findViewById(R.id.videov);
 //        Uri uri = Uri.parse(TEST_URL);
@@ -105,6 +111,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         like_txt.setText(GlobalVariables.getLikes());
         comment_txt.setText(GlobalVariables.getComments());
         desc_txt.setText(GlobalVariables.getDescription());
+        shr_txt.setText(GlobalVariables.getShares());
     }
 
     private void setVolumeControl(VolumeState state){

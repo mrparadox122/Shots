@@ -120,17 +120,17 @@
                     android:src="@drawable/ic_icon_ionic_ios_share_alt" />
 
                 <TextView
+                    android:id="@+id/shr_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:shadowColor="@color/black"
                     android:shadowDx="1"
                     android:shadowDy="1"
                     android:shadowRadius="3"
-                    android:text="Share"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="13dp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
