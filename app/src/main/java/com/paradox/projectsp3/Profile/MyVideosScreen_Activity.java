@@ -102,6 +102,9 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         videoView.setVideoURI(vuri);
         videoView.requestFocus();
         videoView.start();
+        like_txt.setText(GlobalVariables.getLikes());
+        comment_txt.setText(GlobalVariables.getComments());
+        desc_txt.setText(GlobalVariables.getDescription());
     }
 
     private void setVolumeControl(VolumeState state){
