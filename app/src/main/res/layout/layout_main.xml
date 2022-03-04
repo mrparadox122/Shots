@@ -225,8 +225,6 @@
         android:background="@drawable/follow_btn_back"
         android:text="Follow"
         android:textStyle="bold"
-
-
         android:textColor="#DCD1D1"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -293,8 +291,9 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        >
 
-        ></LinearLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

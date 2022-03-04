@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GlobalVariables {
-   static String username;
+
+
+    public static String url;
+    static String username;
     static String fullname;
     static String email;
     static String dob;
@@ -65,6 +68,14 @@ public class GlobalVariables {
     }
 
 
+
+    public static String getUrl() {
+        return url;
+    }
+
+    public static void setUrl(String url) {
+        GlobalVariables.url = url;
+    }
 
     public static String getFullname() {
         return fullname;

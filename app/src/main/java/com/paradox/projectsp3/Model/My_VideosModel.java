@@ -6,14 +6,19 @@ public class My_VideosModel {
     String viewtext;
     String videoid;
 
+
+
+    String pid;
+
     public My_VideosModel() {
 
     }
 
-    public My_VideosModel(String img_url, String viewtext,String videoid) {
+    public My_VideosModel(String img_url, String viewtext,String videoid,String pid) {
         this.img_url = img_url;
         this.viewtext = viewtext;
         this.videoid = videoid;
+        this.pid = pid;
     }
 
     public String getImg_url() {
@@ -22,6 +27,14 @@ public class My_VideosModel {
 
     public void setImg_url(String img_url) {
         this.img_url = img_url;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String getViewtext() {

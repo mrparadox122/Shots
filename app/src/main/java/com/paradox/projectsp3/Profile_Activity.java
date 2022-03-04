@@ -241,7 +241,7 @@ public class Profile_Activity extends AppCompatActivity {
                 .build();
 
         ApiInterface apiii = retrofittt.create(ApiInterface.class);
-        Call<String> callll = apiii.getUserdetails_video(dataa.toString());
+        Call<String> callll = apiii.getUserdetails_videos(dataa.toString());
         callll.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -270,6 +270,7 @@ public class Profile_Activity extends AppCompatActivity {
                                     my_videosModel.setImg_url(dataobj.getString("url"));
                                     my_videosModel.setViewtext(dataobj.getString("views"));
                                     my_videosModel.setVideoid(dataobj.getString("videoid"));
+                                    my_videosModel.setPid(dataobj.getString("post_id"));
                                     //suggestmodel.add(suggest_model);
                                     videomodle.add(my_videosModel);
 
@@ -354,6 +355,7 @@ public class Profile_Activity extends AppCompatActivity {
                                     suggest_model.setUsernamee(dataobj.getString("fullname").toString());
                                     suggest_model.setProfile_picc(dataobj.getString("profile_pic").toString());
                                     suggest_model.setIdd(dataobj.getString("id").toString());
+
                                     suggestmodel.add(suggest_model);
                                     LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                                     suggest_rv.setLayoutManager(layoutManager3);
