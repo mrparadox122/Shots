@@ -28,9 +28,6 @@ public class ProfileSettings_Activity extends AppCompatActivity {
     TextView logout;
     RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_language,ll_communityguidelines,ll_Leagal;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +52,7 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         ll_Leagal= findViewById(R.id.ll_Leagal);
         ll_communityguidelines= findViewById(R.id.ll_communityguidelines);
 
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,11 +72,10 @@ public class ProfileSettings_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/CommunitGuidelines.html"));
                 startActivity(browserIntent);
-
             }
         });
 
-        ll_communityguidelines.setOnClickListener(new View.OnClickListener() {
+        ll_Leagal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/index.html"));

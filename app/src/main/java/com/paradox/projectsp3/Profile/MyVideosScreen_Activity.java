@@ -20,6 +20,8 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.R;
+
+
 public class MyVideosScreen_Activity extends AppCompatActivity {
 
 

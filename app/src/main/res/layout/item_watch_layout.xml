@@ -17,8 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/mainlayout">
-
-
+            s
             <com.google.android.exoplayer2.ui.PlayerView
                 android:id="@+id/playerview"
                 android:layout_width="match_parent"
@@ -87,7 +86,6 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:textStyle="bold"
-
                         android:fontFamily="sans-serif-thin"
 
                         />
@@ -155,9 +153,7 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:textStyle="bold"
-                        android:visibility="gone"
-
-                        />
+                        android:visibility="gone" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -184,7 +180,6 @@
                     android:textColor="@color/white"
                     android:textSize="13dp"
                     android:textStyle="bold"
-
                     />
 
                 <TextView
