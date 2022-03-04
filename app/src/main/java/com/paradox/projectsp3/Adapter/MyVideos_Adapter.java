@@ -61,7 +61,6 @@ public class MyVideos_Adapter extends RecyclerView.Adapter<MyVideos_Adapter.myvi
     }
 
 
-
     @Override
     public void onBindViewHolder(@NonNull MyVideos_Adapter.myviewHolder holder, @SuppressLint("RecyclerView") int position) {
         context = holder.itemView.getContext();

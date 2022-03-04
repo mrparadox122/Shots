@@ -6,13 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.bumptech.glide.RequestManager;
@@ -20,6 +27,18 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.Responses.ApiInterface;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 public class MyVideosScreen_Activity extends AppCompatActivity {
@@ -45,7 +64,6 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-
 //        videoSurfaceView = (PlayerView) findViewById(R.id.player_view);
 
         like_image = findViewById(R.id.like_image);
@@ -60,6 +78,122 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         desc_txt = findViewById(R.id.desc_txt);
 
         sound_name = findViewById(R.id.sound_name);
+
+
+        like_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if(checklike)
+//                {
+//                    JSONObject dislike = new JSONObject();
+//                    try {
+//                        dislike.put("video_id", video_id);
+//                        dislike.put("flag", "1");
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Retrofit.Builder retrofit = new Retrofit.Builder()
+//                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+//                            .addConverterFactory(ScalarsConverterFactory.create())
+//                            .addConverterFactory(GsonConverterFactory.create());
+//                    Retrofit retrofit2 = retrofit.build();
+//
+//
+//                    //get client
+//                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+//                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
+//                    call_like.enqueue(new Callback<ResponseBody>() {
+//                        @Override
+//                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                            //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+//                            likesn.setText(String.valueOf(likesno));
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+////                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    });
+//                    like.setImageResource(R.drawable.ic_icon_material_favorite_red);
+//                    checklike=false;
+//                }
+//                else if (!checklike)
+//                {
+//                    JSONObject dislike = new JSONObject();
+//                    try {
+//                        dislike.put("video_id", video_id);
+//                        dislike.put("flag", "4");
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Retrofit.Builder retrofit = new Retrofit.Builder()
+//                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+//                            .addConverterFactory(ScalarsConverterFactory.create())
+//                            .addConverterFactory(GsonConverterFactory.create());
+//                    Retrofit retrofit2 = retrofit.build();
+//
+//                    //get client
+//                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+//                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
+//                    call_like.enqueue(new Callback<ResponseBody>() {
+//                        @Override
+//                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                            Toast.makeText(context.getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
+//                            likesn.setText(String.valueOf(likesnominus));
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    });
+//
+//
+//                    like.setImageResource(R.drawable.ic_icon_material_favorite);
+//                    checklike=true;
+//                }
+            }
+        });
+
+
+//        comment_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//
+//                Context context1= itemView.getContext();
+//                Dialog dialog=new Dialog(context1);
+//                dialog.setContentView(R.layout.activity_comment);
+//                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                dialog.getWindow().setGravity(Gravity.BOTTOM);
+//                dialog.show();
+//            }
+//
+//        });
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Context sharecontext= itemView.getContext();
+//                Dialog dialog=new Dialog(sharecontext);
+//                dialog.setContentView(R.layout.activity_share_bottom_sheet);
+//                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                dialog.getWindow().setGravity(Gravity.BOTTOM);
+//                dialog.show();
+
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("video/mp4");
+                String body = String.valueOf("");
+                String sub = "Shots";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,body);
+                startActivity(Intent.createChooser(myIntent, "Share Using"));
+            }
+        });
 
 
 //        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
@@ -104,6 +238,8 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         videoView.start();
     }
 
+
+
     private void setVolumeControl(VolumeState state){
         volumeState = state;
         if(state == VolumeState.OFF){
@@ -115,7 +251,6 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
             animateVolumeControl();
         }
     }
-
 
     private void animateVolumeControl(){
         if(volumeControl != null){
@@ -136,6 +271,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
                     .alpha(0f)
                     .setDuration(600).setStartDelay(1000);
         }
+
     }
 
 

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Profile.MyVideosScreen_Activity">
 
-
     <RelativeLayout
         android:id="@+id/mainlayout"
         android:layout_width="match_parent"
@@ -98,7 +97,6 @@
                     android:textColor="@color/white"
                     android:textSize="13dp"
                     android:textStyle="bold"
-
                     />
 
             </LinearLayout>
@@ -126,11 +124,11 @@
                     android:shadowDx="1"
                     android:shadowDy="1"
                     android:shadowRadius="3"
-                    android:text="Share"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="13dp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
             </LinearLayout>
 
         </LinearLayout>
@@ -161,7 +159,6 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerCrop"
                         android:src="@drawable/find_user_male" />
-
                 </RelativeLayout>
 
                 <TextView

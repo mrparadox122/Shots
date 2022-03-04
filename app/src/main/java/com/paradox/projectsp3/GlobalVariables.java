@@ -7,11 +7,7 @@ import java.util.List;
 
 public class GlobalVariables {
 
-
     public static String url;
-
-
-
     public static String views;
     public static String videoid;
     public static String post_id;
@@ -34,14 +30,9 @@ public class GlobalVariables {
     static int like;
    public static Context contextl;
 
-
     public static List<String> someList = new ArrayList<String>();
 
-
-
     public String Video;
-
-
 
     public String getVideo() {
         return Video;
@@ -50,7 +41,6 @@ public class GlobalVariables {
     public void setVideo(String video) {
         Video = video;
     }
-
 
     public static String getViews() {
         return views;
@@ -116,9 +106,6 @@ public class GlobalVariables {
         GlobalVariables.comments = comments;
     }
 
-
-
-
     public static int getFollowing() {
         return following;
     }
@@ -142,8 +129,6 @@ public class GlobalVariables {
     public static void setLike(int like) {
         GlobalVariables.like = like;
     }
-
-
 
     public static String getUrl() {
         return url;
