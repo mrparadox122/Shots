@@ -128,7 +128,7 @@ public class MyVideos_Adapter extends RecyclerView.Adapter<MyVideos_Adapter.myvi
                                             GlobalVariables.setDescription(dataobj.getString("description"));
                                             GlobalVariables.setCategories(dataobj.getString("categories"));
                                             GlobalVariables.setLikes(dataobj.getString("likes"));
-                                            GlobalVariables.setShares(dataobj.getString("shares"));
+                                            GlobalVariables.setShares(String.valueOf(dataobj.getString("shares ").toString()));
                                             GlobalVariables.setComments(dataobj.getString("comments"));
                                             Intent intent = new Intent(context, MyVideosScreen_Activity.class);
                                             context.startActivity(intent);
