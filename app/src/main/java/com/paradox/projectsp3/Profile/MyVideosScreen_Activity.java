@@ -53,10 +53,14 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
     private RequestManager requestManager;
 
-    ImageView like_image,comment_image,sound_imag,share;
+    ImageView like_image,comment_image,sound_image,share;
     private enum VolumeState {ON, OFF};
     private VolumeState volumeState;
     TextView like_txt,comment_txt,username,desc_txt,sound_name,shr_txt;
+    Boolean checklike = true;
+    int likesno;
+    int shareno;
+    VideoView videoView= (VideoView)findViewById(R.id.videov);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,85 +84,95 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         comment_txt = findViewById(R.id.comment_txt);
         desc_txt = findViewById(R.id.desc_txt);
 
-        sound_imag = findViewById(R.id.imageView3);
+        sound_image = findViewById(R.id.sound_image);
 
         sound_name = findViewById(R.id.sound_name);
+
 
 
         like_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(checklike)
-//                {
-//                    JSONObject dislike = new JSONObject();
-//                    try {
-//                        dislike.put("video_id", video_id);
-//                        dislike.put("flag", "1");
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    Retrofit.Builder retrofit = new Retrofit.Builder()
-//                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
-//                            .addConverterFactory(ScalarsConverterFactory.create())
-//                            .addConverterFactory(GsonConverterFactory.create());
-//                    Retrofit retrofit2 = retrofit.build();
-//
-//
-//                    //get client
-//                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-//                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
-//                    call_like.enqueue(new Callback<ResponseBody>() {
-//                        @Override
-//                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                            //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
-//                            likesn.setText(String.valueOf(likesno));
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<ResponseBody> call, Throwable t) {
-////                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    });
-//                    like.setImageResource(R.drawable.ic_icon_material_favorite_red);
-//                    checklike=false;
-//                }
-//                else if (!checklike)
-//                {
-//                    JSONObject dislike = new JSONObject();
-//                    try {
-//                        dislike.put("video_id", video_id);
-//                        dislike.put("flag", "4");
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    Retrofit.Builder retrofit = new Retrofit.Builder()
-//                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
-//                            .addConverterFactory(ScalarsConverterFactory.create())
-//                            .addConverterFactory(GsonConverterFactory.create());
-//                    Retrofit retrofit2 = retrofit.build();
-//
-//                    //get client
-//                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-//                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
-//                    call_like.enqueue(new Callback<ResponseBody>() {
-//                        @Override
-//                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                            Toast.makeText(context.getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
-//                            likesn.setText(String.valueOf(likesnominus));
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                if(checklike)
+                {
+                    JSONObject dislike = new JSONObject();
+                    try {
+                        dislike.put("video_id", GlobalVariables.getVideoid());
+                        dislike.put("flag", "1");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Retrofit.Builder retrofit = new Retrofit.Builder()
+                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create());
+                    Retrofit retrofit2 = retrofit.build();
+
+
+                    //get client
+                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
+                    call_like.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                            if (response.isSuccessful()){
+                                likesno+=1;
+                                like_txt.setText(String.valueOf(likesno));
+                            }
+
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
 //                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    });
-//
-//
-//                    like.setImageResource(R.drawable.ic_icon_material_favorite);
-//                    checklike=true;
-//                }
+
+                        }
+                    });
+                    like_image.setImageResource(R.drawable.ic_icon_material_favorite_red);
+                    checklike=false;
+                }
+                else if (!checklike)
+                {
+                    JSONObject dislike = new JSONObject();
+                    try {
+                        dislike.put("video_id", GlobalVariables.getVideoid());
+                        dislike.put("flag", "4");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Retrofit.Builder retrofit = new Retrofit.Builder()
+                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create());
+                    Retrofit retrofit2 = retrofit.build();
+
+                    //get client
+                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
+                    call_like.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            if (response.isSuccessful()){
+                                likesno-=1;
+                                Toast.makeText(getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
+                                like_txt.setText(String.valueOf(likesno));
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+
+                    like_image.setImageResource(R.drawable.ic_icon_material_favorite);
+                    checklike=true;
+                }
             }
         });
 
@@ -189,6 +203,42 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 //                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 //                dialog.getWindow().setGravity(Gravity.BOTTOM);
 //                dialog.show();
+
+                JSONObject dislike = new JSONObject();
+                try {
+                    dislike.put("video_id", GlobalVariables.getVideoid());
+                    dislike.put("flag", "2");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Retrofit.Builder retrofit = new Retrofit.Builder()
+                        .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                        .addConverterFactory(ScalarsConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create());
+                Retrofit retrofit2 = retrofit.build();
+
+
+                //get client
+                ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
+                call_like.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful()){
+                            shareno+=1;
+                            shr_txt.setText(String.valueOf(shareno));
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                    }
+                });
 
                 Intent myIntent = new Intent(Intent.ACTION_SEND);
                 myIntent.setType("video/mp4");
@@ -235,13 +285,16 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 //            Log.e(TAG, "onCreate: "+e.toString() );
 //        }
 
-        Glide.with(this).load(R.drawable.editorlogo).into(sound_imag);
+        likesno = Integer.parseInt(GlobalVariables.getLikes());
+        shareno = Integer.parseInt(GlobalVariables.getShares());
+        Glide.with(this).load(R.drawable.editorlogo).into(sound_image);
 
-        VideoView videoView= (VideoView)findViewById(R.id.videov);
+
 //        Uri uri = Uri.parse(TEST_URL);
         videoView.setVideoURI(vuri);
         videoView.requestFocus();
         videoView.start();
+
         like_txt.setText(GlobalVariables.getLikes());
         comment_txt.setText(GlobalVariables.getComments());
         desc_txt.setText(GlobalVariables.getDescription());
@@ -251,12 +304,15 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
 
     private void setVolumeControl(VolumeState state){
+
         volumeState = state;
         if(state == VolumeState.OFF){
+            videoView.pause();
             videoPlayer.pause();
             animateVolumeControl();
         }
         else if(state == VolumeState.ON){
+            videoView.resume();
             videoPlayer.play();
             animateVolumeControl();
         }

@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
+import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
@@ -59,6 +60,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     String video_id;
     int likesno;
     int likesnominus;
+    int shareno;
 
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -183,6 +185,42 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //                dialog.getWindow().setGravity(Gravity.BOTTOM);
 //                dialog.show();
 
+                JSONObject dislike = new JSONObject();
+                try {
+                    dislike.put("video_id", video_id);
+                    dislike.put("flag", "2");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Retrofit.Builder retrofit = new Retrofit.Builder()
+                        .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                        .addConverterFactory(ScalarsConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create());
+                Retrofit retrofit2 = retrofit.build();
+
+
+                //get client
+                ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+                Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
+                call_like.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful()){
+                            shareno+=1;
+                            share.setText(String.valueOf(shareno));
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
                 Intent myIntent = new Intent(Intent.ACTION_SEND);
                 myIntent.setType("video/mp4");
                 String body = String.valueOf(mediaObjectUrl);
@@ -204,7 +242,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         likesnominus = Integer.parseInt(mediaObject.getLikes());
         likesno = 0b1 + Integer.parseInt(mediaObject.getLikes());
         commentn.setText(mediaObject.getComments());
-        commentn.setText(mediaObject.getShares());
+        share.setText(mediaObject.getShares());
+        shareno = Integer.parseInt(mediaObject.getShares());
 
 
         title.setText(mediaObject.getDescription()+"\n"+mediaObject.getPost_categories());
