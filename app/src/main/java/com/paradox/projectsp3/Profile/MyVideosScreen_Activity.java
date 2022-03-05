@@ -27,6 +27,7 @@ import com.bumptech.glide.RequestManager;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.paradox.projectsp3.GlobalVariables;
+import com.paradox.projectsp3.HomeRecyclerView.VideoPlayerRecyclerView;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
 
@@ -60,7 +61,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
     Boolean checklike = true;
     int likesno;
     int shareno;
-    VideoView videoView= (VideoView)findViewById(R.id.videov);
+    VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         desc_txt = findViewById(R.id.desc_txt);
 
         sound_image = findViewById(R.id.sound_image);
+        videoView= (VideoView)findViewById(R.id.videov);
 
         sound_name = findViewById(R.id.sound_name);
 
@@ -294,11 +296,60 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         videoView.setVideoURI(vuri);
         videoView.requestFocus();
         videoView.start();
+        JSONObject dislike = new JSONObject();
+        try {
+            dislike.put("video_id", GlobalVariables.getVideoid());
+            dislike.put("flag", "6");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Retrofit.Builder retrofit = new Retrofit.Builder()
+                .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit2 = retrofit.build();
+
+
+        //get client
+        ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+        Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
+        call_like.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()){
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         like_txt.setText(GlobalVariables.getLikes());
         comment_txt.setText(GlobalVariables.getComments());
         desc_txt.setText(GlobalVariables.getDescription());
         shr_txt.setText(GlobalVariables.getShares());
+    }
+
+
+    private void toggleVolume() {
+        if (videoView != null) {
+            if (volumeState == VolumeState.OFF) {
+                Log.d(TAG, "togglePlaybackState: enabling volume.");
+                setVolumeControl(VolumeState.ON);
+
+            } else if(volumeState == VolumeState.ON) {
+                Log.d(TAG, "togglePlaybackState: disabling volume.");
+                setVolumeControl(VolumeState.OFF);
+
+            }
+        }
     }
 
 
