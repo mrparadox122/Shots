@@ -72,7 +72,6 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
         like_image = findViewById(R.id.like_image);
         comment_image = findViewById(R.id.comment_image);
-
         share = findViewById(R.id.share);
         volumeControl = findViewById(R.id.imageView12);
         shr_txt = findViewById(R.id.shr_txt);
