@@ -84,7 +84,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
         comment_txt = findViewById(R.id.comment_txt);
         desc_txt = findViewById(R.id.desc_txt);
-
+//
         sound_image = findViewById(R.id.sound_image);
         videoView= (VideoView)findViewById(R.id.videov);
 
