@@ -28,7 +28,6 @@ public class ChooseYoursIntrests_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_yours_intrests);
         getSupportActionBar().hide();
 
-
         btnSubmit = findViewById(R.id.btnSubmit);
         dance = findViewById(R.id.dance);
         fashion = findViewById(R.id.fashion);
