@@ -72,17 +72,17 @@ public class P_Commnets extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
 
-                String message=message_edit.getText().toString();
-                if(!TextUtils.isEmpty(message)){
-                    // if(Variables.sharedPreferences.getBoolean(Variables.islogin,false)){
-                    // send_Comments(video_id,message);
-                    message_edit.setText(null);
-                    // send_progress.setVisibility(View.VISIBLE);
-                    send_btn.setVisibility(View.GONE);
-                }
-                else {
-                    Toast.makeText(context, "Please Login into the app", Toast.LENGTH_SHORT).show();
-                }
+//                String message=message_edit.getText().toString();
+//                if(!TextUtils.isEmpty(message)){
+//                    // if(Variables.sharedPreferences.getBoolean(Variables.islogin,false)){
+//                    // send_Comments(video_id,message);
+//                    message_edit.setText(null);
+//                    // send_progress.setVisibility(View.VISIBLE);
+//                    send_btn.setVisibility(View.GONE);
+//                }
+//                else {
+//                    Toast.makeText(context, "Please Login into the app", Toast.LENGTH_SHORT).show();
+//                }
 
             }
         });
