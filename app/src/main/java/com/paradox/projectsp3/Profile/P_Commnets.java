@@ -47,14 +47,6 @@ public class P_Commnets extends AppCompatActivity {
         comments_modelList = new ArrayList<>();
         adapter = new Comments_Adapter(this,comments_modelList);
         recyclerview.setAdapter(adapter);
-        //adapter.notifyDataSetChanged();
-
-//        comment_screen.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
 
         Goback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,28 +54,28 @@ public class P_Commnets extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-
+//
+//
 
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+//
                 Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
-
-//                String message=message_edit.getText().toString();
-//                if(!TextUtils.isEmpty(message)){
-//                    // if(Variables.sharedPreferences.getBoolean(Variables.islogin,false)){
-//                    // send_Comments(video_id,message);
-//                    message_edit.setText(null);
-//                    // send_progress.setVisibility(View.VISIBLE);
-//                    send_btn.setVisibility(View.GONE);
-//                }
-//                else {
-//                    Toast.makeText(context, "Please Login into the app", Toast.LENGTH_SHORT).show();
-//                }
-
+//
+////                String message=message_edit.getText().toString();
+////                if(!TextUtils.isEmpty(message)){
+////                    // if(Variables.sharedPreferences.getBoolean(Variables.islogin,false)){
+////                    // send_Comments(video_id,message);
+////                    message_edit.setText(null);
+////                    // send_progress.setVisibility(View.VISIBLE);
+////                    send_btn.setVisibility(View.GONE);
+////                }
+////                else {
+////                    Toast.makeText(context, "Please Login into the app", Toast.LENGTH_SHORT).show();
+////                }
+//
             }
         });
 

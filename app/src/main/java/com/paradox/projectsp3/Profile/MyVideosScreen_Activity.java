@@ -4,6 +4,7 @@ import static com.yalantis.ucrop.UCropFragment.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +35,9 @@ import com.paradox.projectsp3.Responses.ApiInterface;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -62,6 +67,18 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
     int likesno;
     int shareno;
     VideoView videoView;
+
+    /////
+
+
+    View view;
+    Context context;
+    RecyclerView recyclerview_cm;
+    Comments_Adapter cm_adapter;
+    List<Comments_Model> cmcomments_modelList;
+    //    FrameLayout comment_screen;
+    EditText message_edit;
+    ImageView cmsend_btn,cmGoback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,12 +205,21 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
                 startActivity(intent);
 
 //                final Dialog dialog = new Dialog(MyVideosScreen_Activity.this);
-//                dialog.setContentView(R.layout.activity_pcommnets);
+//                dialog.setContentView(R.layout.comment_list);
 //                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
 //                dialog.getWindow().setGravity(Gravity.BOTTOM);
 //                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 //                dialog.show();
-
+//
+//                recyclerview_cm = findViewById(R.id.recyclerview);
+//                // comment_screen=findViewById(R.id.comment_screen);
+//                cmsend_btn = findViewById(R.id.send_btn);
+//                cmGoback = findViewById(R.id.Goback);
+//
+//                recyclerview_cm.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
+//                cmcomments_modelList = new ArrayList<>();
+//                cm_adapter = new Comments_Adapter(this,cmcomments_modelList);
+//                recyclerview_cm.setAdapter(cm_adapter);
             }
 
         });

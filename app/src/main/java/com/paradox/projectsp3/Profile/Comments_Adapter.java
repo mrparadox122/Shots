@@ -18,11 +18,11 @@ import java.util.List;
 public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myviewholder> {
 
     Context context;
-    List<Comments_Model>comments_modelList;
+    List<Comments_Model>cmcomments_modelList;
 
-    public Comments_Adapter(Context context, List<Comments_Model> comments_modelList) {
-        this.context = context;
-        this.comments_modelList = comments_modelList;
+    public Comments_Adapter(P_Commnets context, List<Comments_Model> comments_modelList) {
+        this.context = (Context) context;
+        this.cmcomments_modelList = comments_modelList;
     }
 
     @NonNull
@@ -36,15 +36,15 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
     public void onBindViewHolder(@NonNull Comments_Adapter.myviewholder holder, int position) {
 
 
-        holder.username.setText(comments_modelList.get(position).getUsername());
-        holder.message.setText(comments_modelList.get(position).getMassege());
+        holder.username.setText(cmcomments_modelList.get(position).getUsername());
+        holder.message.setText(cmcomments_modelList.get(position).getMassege());
 
-        Glide.with(context).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
+        Glide.with(context).load(cmcomments_modelList.get(position).getImg_url()).into(holder.user_pic);
     }
 
     @Override
     public int getItemCount() {
-        return comments_modelList.size() ;
+        return cmcomments_modelList.size() ;
     }
 
     public class myviewholder extends RecyclerView.ViewHolder  {
