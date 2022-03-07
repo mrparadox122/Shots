@@ -58,6 +58,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
     private VolumeState volumeState;
     TextView like_txt,comment_txt,username,desc_txt,sound_name,shr_txt;
     Boolean checklike = true;
+    Uri vuri;
     int likesno;
     int shareno;
     VideoView videoView;
@@ -76,6 +77,9 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         volumeControl = findViewById(R.id.imageView12);
         shr_txt = findViewById(R.id.shr_txt);
         like_txt = findViewById(R.id.like_txt);
+
+
+
         username = findViewById(R.id.username);
         videoSurfaceView = new PlayerView(this);
 
@@ -180,12 +184,15 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         comment_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog dialog = new Dialog(MyVideosScreen_Activity.this);
-                dialog.setContentView(R.layout.fragment_comments);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.getWindow().setGravity(Gravity.BOTTOM);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                Intent intent = new Intent(MyVideosScreen_Activity.this,P_Commnets.class);
+                startActivity(intent);
+
+//                final Dialog dialog = new Dialog(MyVideosScreen_Activity.this);
+//                dialog.setContentView(R.layout.activity_pcommnets);
+//                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//                dialog.getWindow().setGravity(Gravity.BOTTOM);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                dialog.show();
 
             }
 
@@ -261,7 +268,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 //        videoSurfaceView.setUseController(false);
 //
 //        setVolumeControl(VolumeState.ON);
-        Uri vuri = Uri.parse(GlobalVariables.url);
+        vuri = Uri.parse(GlobalVariables.url);
 //        try {
 //
 //

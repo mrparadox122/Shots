@@ -151,7 +151,6 @@ public class Profile_Activity extends AppCompatActivity {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
 
-
                 TextView reffer_txt = dialog.findViewById(R.id.reffer_txt);
                 reffer_txt.setOnClickListener(new View.OnClickListener() {
                     @Override

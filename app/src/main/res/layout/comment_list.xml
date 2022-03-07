@@ -9,8 +9,7 @@
         android:layout_height="1dp"
         android:id="@+id/line"
         android:orientation="vertical"
-        android:background="@color/black75"
-        />
+        android:background="@color/black75" />
 
     <RelativeLayout
         android:layout_width="match_parent"

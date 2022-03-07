@@ -44,10 +44,10 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
 
     @Override
     public int getItemCount() {
-        return 5 ;
+        return comments_modelList.size() ;
     }
 
-    public class myviewholder extends RecyclerView.ViewHolder  implements View.OnLongClickListener {
+    public class myviewholder extends RecyclerView.ViewHolder  {
 
         ImageView user_pic;
         TextView username,message;
@@ -61,11 +61,6 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
 
         }
 
-        @Override
-        public boolean onLongClick(View view) {
-            comments_modelList.remove(getAdapterPosition());
-            notifyItemRemoved(getAdapterPosition());
-            return true;
-        }
+
     }
 }
