@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
 import com.paradox.projectsp3.GlobalVariables;
+import com.paradox.projectsp3.HomeComment.HomeComment_Activity;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
@@ -62,6 +63,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     int likesnominus;
     int shareno;
 
+
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
@@ -86,13 +88,18 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         Comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context1= itemView.getContext();
-                Dialog dialog=new Dialog(context1);
-                dialog.setContentView(R.layout.activity_comment);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.getWindow().setGravity(Gravity.BOTTOM);
-                dialog.show();
+
+                Intent intent = new Intent(context, HomeComment_Activity.class);
+                context.startActivity(intent);
+
+
+//                Context context1= itemView.getContext();
+//                Dialog dialog=new Dialog(context1);
+//                dialog.setContentView(R.layout.activity_comment);
+//                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                dialog.getWindow().setGravity(Gravity.BOTTOM);
+//                dialog.show();
             }
 
         });

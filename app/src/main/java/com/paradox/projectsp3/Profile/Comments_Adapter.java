@@ -1,6 +1,7 @@
 package com.paradox.projectsp3.Profile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.paradox.projectsp3.OthersProfile_Activity;
 import com.paradox.projectsp3.R;
 
 import java.util.List;
@@ -24,6 +26,7 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
         this.context = context;
         this.comments_modelList = comments_modelList;
     }
+
 
     @NonNull
     @Override
@@ -39,6 +42,15 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
         holder.username.setText(comments_modelList.get(position).getUsername());
         holder.message.setText(comments_modelList.get(position).getMassege());
         //Glide.with(context).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(context, OthersProfile_Activity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -57,6 +69,9 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
             user_pic = itemView.findViewById(R.id.user_pic);
             username = itemView.findViewById(R.id.username);
             message = itemView.findViewById(R.id.message);
+
+
+
 
         }
 

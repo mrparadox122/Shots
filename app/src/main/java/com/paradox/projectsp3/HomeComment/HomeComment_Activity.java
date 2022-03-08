@@ -36,7 +36,7 @@ public class HomeComment_Activity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        hm_recyclerview = findViewById(R.id.recyclerview);
+        hm_recyclerview = findViewById(R.id.hm_recyclerview);
         // comment_screen=findViewById(R.id.comment_screen);
         send_btn = findViewById(R.id.send_btn);
         Goback = findViewById(R.id.Goback);
