@@ -1,7 +1,6 @@
 package com.paradox.projectsp3.Profile;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.paradox.projectsp3.OthersProfile_Activity;
 import com.paradox.projectsp3.R;
 
 import java.util.List;
@@ -20,17 +18,17 @@ import java.util.List;
 public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myviewholder> {
 
     Context context;
-    List<Comments_Model>cmcomments_modelList;
+    List<Comments_Model>comments_modelList;
 
-    public Comments_Adapter(P_Commnets context, List<Comments_Model> comments_modelList) {
-        this.context = (Context) context;
-        this.cmcomments_modelList = comments_modelList;
+    public Comments_Adapter(Context context, List<Comments_Model> comments_modelList) {
+        this.context = context;
+        this.comments_modelList = comments_modelList;
     }
 
     @NonNull
     @Override
     public Comments_Adapter.myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.comment_list,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_list,parent,false);
         return new myviewholder(view);
     }
 
@@ -38,16 +36,14 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
     public void onBindViewHolder(@NonNull Comments_Adapter.myviewholder holder, int position) {
 
 
-        holder.username.setText(cmcomments_modelList.get(position).getUsername());
-        holder.message.setText(cmcomments_modelList.get(position).getMassege());
-
-        Glide.with(context).load(cmcomments_modelList.get(position).getImg_url()).into(holder.user_pic);
-
+        holder.username.setText(comments_modelList.get(position).getUsername());
+        holder.message.setText(comments_modelList.get(position).getMassege());
+        //Glide.with(context).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
     }
 
     @Override
     public int getItemCount() {
-        return cmcomments_modelList.size() ;
+        return comments_modelList.size() ;
     }
 
     public class myviewholder extends RecyclerView.ViewHolder  {
@@ -61,14 +57,6 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
             user_pic = itemView.findViewById(R.id.user_pic);
             username = itemView.findViewById(R.id.username);
             message = itemView.findViewById(R.id.message);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, OthersProfile_Activity.class);
-                    context.startActivity(intent);
-                }
-            });
 
         }
 
