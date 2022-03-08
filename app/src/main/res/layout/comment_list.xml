@@ -5,11 +5,11 @@
     android:background="@color/black_65">
 
     <LinearLayout
+        android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:id="@+id/line"
-        android:orientation="vertical"
-        android:background="@color/black75" />
+        android:background="@color/black75"
+        android:orientation="vertical" />
 
     <RelativeLayout
         android:layout_width="match_parent"

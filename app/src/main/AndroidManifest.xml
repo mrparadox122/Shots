@@ -25,6 +25,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".HomeComment.HomeComment_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Profile.P_Commnets"
             android:exported="false" />
         <activity
