@@ -70,7 +70,6 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
     /////
 
-
     View view;
     Context context;
     RecyclerView recyclerview_cm;
@@ -100,11 +99,9 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         username = findViewById(R.id.username);
         videoSurfaceView = new PlayerView(this);
 
-
         videoView= (VideoView)findViewById(R.id.videov);
         comment_txt = findViewById(R.id.comment_txt);
         desc_txt = findViewById(R.id.desc_txt);
-//
         sound_image = findViewById(R.id.sound_image);
 
         sound_name = findViewById(R.id.sound_name);
