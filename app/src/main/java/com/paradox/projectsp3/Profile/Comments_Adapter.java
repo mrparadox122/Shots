@@ -28,7 +28,7 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
     @NonNull
     @Override
     public Comments_Adapter.myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.comment_list,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_list,parent,false);
         return new myviewholder(view);
     }
 
@@ -38,8 +38,7 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
 
         holder.username.setText(comments_modelList.get(position).getUsername());
         holder.message.setText(comments_modelList.get(position).getMassege());
-
-        Glide.with(context).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
+        //Glide.with(context).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
     }
 
     @Override

@@ -371,7 +371,6 @@ public class Profile_Activity extends AppCompatActivity {
                             }else {
                                 Toast.makeText(getApplicationContext(), obj.optString("message")+"", Toast.LENGTH_SHORT).show();
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
