@@ -64,8 +64,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     int shareno;
 
 
-
-
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
@@ -216,7 +214,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                             shareno+=1;
                             share.setText(String.valueOf(shareno));
                         }
-
 
                     }
 

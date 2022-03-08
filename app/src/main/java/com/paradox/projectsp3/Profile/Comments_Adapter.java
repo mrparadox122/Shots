@@ -38,19 +38,11 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
     @Override
     public void onBindViewHolder(@NonNull Comments_Adapter.myviewholder holder, int position) {
 
-
         holder.username.setText(comments_modelList.get(position).getUsername());
         holder.message.setText(comments_modelList.get(position).getMassege());
-        //Glide.with(context).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
+        Glide.with(context).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(context, OthersProfile_Activity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                context.startActivity(intent);
-            }
-        });
+
     }
 
     @Override
