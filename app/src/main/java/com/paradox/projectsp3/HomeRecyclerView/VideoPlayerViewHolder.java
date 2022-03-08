@@ -258,6 +258,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
         ////// set view to video
         video_id = mediaObject.getVideo_id().toString();
+        GlobalVariables.setVideoid(video_id);
 
 //        String users = (video_id +
 //                "    \"flag\": \"6\"\n" +

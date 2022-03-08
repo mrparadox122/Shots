@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
+
 import com.paradox.projectsp3.R;
 
 import java.util.List;
@@ -16,9 +16,9 @@ import java.util.List;
 public class homeCommentAdapter extends RecyclerView.Adapter<homeCommentAdapter.myviewholder> {
 
     Context context;
-    List<homeCommentModel> homeCommentModelList;
+    List<HomeCommentModel> homeCommentModelList;
 
-    public homeCommentAdapter(Context context, List<homeCommentModel> homeCommentModelList) {
+    public homeCommentAdapter(Context context, List<HomeCommentModel> homeCommentModelList) {
         this.context = context;
         this.homeCommentModelList = homeCommentModelList;
     }
@@ -26,7 +26,7 @@ public class homeCommentAdapter extends RecyclerView.Adapter<homeCommentAdapter.
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.comment_list,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_list,parent,false);
         return new myviewholder(view);
     }
 
@@ -36,7 +36,7 @@ public class homeCommentAdapter extends RecyclerView.Adapter<homeCommentAdapter.
         holder.username.setText(homeCommentModelList.get(position).getUsername());
         holder.message.setText(homeCommentModelList.get(position).getMassege());
 
-        Glide.with(context).load(homeCommentModelList.get(position).getImg_url()).into(holder.user_pic);
+        //Glide.with(context).load(homeCommentModelList.get(position).getImg_url()).into(holder.user_pic);
     }
 
     @Override

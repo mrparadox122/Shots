@@ -1,15 +1,15 @@
 package com.paradox.projectsp3.HomeComment;
 
-public class homeCommentModel {
+public class HomeCommentModel {
 
     String username;
     String massege;
     String img_url;
 
-    public homeCommentModel() {
+    public HomeCommentModel() {
     }
 
-    public homeCommentModel(String username, String massege, String img_url) {
+    public HomeCommentModel(String username, String massege, String img_url) {
         this.username = username;
         this.massege = massege;
         this.img_url = img_url;
