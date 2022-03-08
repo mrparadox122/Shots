@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.GlobalVariables;
+import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.Profile.Comments_Model;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
@@ -53,7 +55,6 @@ public class HomeComment_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_comment);
-
         getSupportActionBar().hide();
 
         hm_recyclerview = findViewById(R.id.hm_recyclerview);
@@ -65,20 +66,6 @@ public class HomeComment_Activity extends AppCompatActivity {
 
 
         Goback = findViewById(R.id.Goback);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         JSONObject data = new JSONObject();
         try {
@@ -157,36 +144,12 @@ public class HomeComment_Activity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         Goback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+
+                Intent intent = new Intent(getApplicationContext(),HomeActivty.class);
+                startActivity(intent);
             }
         });
 
@@ -194,18 +157,6 @@ public class HomeComment_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
-//
-////                String message=message_edit.getText().toString();
-////                if(!TextUtils.isEmpty(message)){
-////                    // if(Variables.sharedPreferences.getBoolean(Variables.islogin,false)){
-////                    // send_Comments(video_id,message);
-////                    message_edit.setText(null);
-////                    // send_progress.setVisibility(View.VISIBLE);
-////                    send_btn.setVisibility(View.GONE);
-////                }
-////                else {
-////                    Toast.makeText(context, "Please Login into the app", Toast.LENGTH_SHORT).show();
-////                }
 
             }
         });

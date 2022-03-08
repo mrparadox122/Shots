@@ -79,6 +79,8 @@ public class VideoPlayerRecyclerView extends RecyclerView {
     // controlling playback state
     private VolumeState volumeState;
 
+
+
     public VideoPlayerRecyclerView(@NonNull Context context) {
         super(context);
         init(context);

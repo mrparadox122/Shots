@@ -64,6 +64,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     int shareno;
 
 
+
+
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
@@ -77,8 +79,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         like=itemView.findViewById(R.id.imageView9);
         likesn = itemView.findViewById(R.id.likesn);
         commentn = itemView.findViewById(R.id.comments);
-
-
         Comment=itemView.findViewById(R.id.imageView8);
         context= itemView.getContext();
         Share=itemView.findViewById(R.id.imageView6);
@@ -91,7 +91,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                 Intent intent = new Intent(context, HomeComment_Activity.class);
                 context.startActivity(intent);
-
 
 //                Context context1= itemView.getContext();
 //                Dialog dialog=new Dialog(context1);
@@ -240,6 +239,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+
+
     @SuppressLint("SetTextI18n")
     public void onBind(MediaObject mediaObject, RequestManager requestManager) throws IOException {
         this.requestManager = requestManager;
@@ -321,6 +322,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //            }
 //        });
     }
+
 
 
 }
