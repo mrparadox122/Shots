@@ -42,6 +42,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 //import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
+
 public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
     FrameLayout media_container;
@@ -64,6 +65,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     int shareno;
 
 
+    RecyclerView rv_comments;
+
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
@@ -81,7 +84,9 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         context= itemView.getContext();
         Share=itemView.findViewById(R.id.imageView6);
         CommentView=itemView.findViewById(R.id.commentView);
-        share = itemView.findViewById(R.id.share);
+        share =itemView.findViewById(R.id.share);
+
+
 
         Comment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,20 +97,15 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                 Context context1= itemView.getContext();
                 Dialog dialog=new Dialog(context1);
-                dialog.setContentView(R.layout.activity_home_comment);
+                dialog.setContentView(R.layout.comment_list);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
                 dialog.show();
 
-
-                HomeComment_Activity home = new HomeComment_Activity();
-
-
             }
 
         });
-
 
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -240,9 +240,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-
-
-
     @SuppressLint("SetTextI18n")
     public void onBind(MediaObject mediaObject, RequestManager requestManager) throws IOException {
         this.requestManager = requestManager;
@@ -324,7 +321,4 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //            }
 //        });
     }
-
-
-
 }

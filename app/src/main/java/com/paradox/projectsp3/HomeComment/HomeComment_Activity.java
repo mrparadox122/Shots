@@ -44,8 +44,7 @@ public class HomeComment_Activity extends AppCompatActivity {
     homeCommentAdapter homeadapter;
 
     int i;
-
-
+    
     List<HomeCommentModel> homeCommentModelList;
     //    FrameLayout comment_screen;
     EditText message_edit;
