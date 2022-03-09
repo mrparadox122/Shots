@@ -45,6 +45,7 @@ public class P_Commnets extends AppCompatActivity {
     RecyclerView recyclerview;
     Comments_Adapter adapter;
     List<Comments_Model> comments_model;
+    Comments_Model comments_model1;
     String message_editst;
 //    FrameLayout comment_screen;
     EditText message_edit;
@@ -111,7 +112,7 @@ public class P_Commnets extends AppCompatActivity {
                                 JSONArray dataArray  = obj.getJSONArray("body");
                                 for (i = 0; i < dataArray.length(); i++) {
                                     JSONObject dataobj = dataArray.getJSONObject(i);
-                                      Comments_Model comments_model1 = new Comments_Model();
+                                      comments_model1 = new Comments_Model();
 //                                    Following_Model following_model1 = new Following_Model();
                                       comments_model1.setImg_url(dataobj.getString("profile_pic"));
                                       comments_model1.setUsername(dataobj.getString("fullname"));
@@ -119,6 +120,7 @@ public class P_Commnets extends AppCompatActivity {
                                       comments_model1.setUs_id(dataobj.getString("user_id"));
                                       comments_model1.setVideo_id(dataobj.getString("video_id"));
                                       comments_model1.setComment_id(dataobj.getString("comment_id"));
+                                      comments_model1.setPost_id(dataobj.getString("post_id"));
                                       comments_model.add(comments_model1);
 //                                    following_model1.setUsername(dataobj.getString("fullname").toString());
 //                                    following_model1.setProfile_pic(dataobj.getString("profile_pic").toString());
@@ -224,6 +226,7 @@ public class P_Commnets extends AppCompatActivity {
                         data.put("komment","'"+message_edit.getText().toString()+"'");
                         data.put("user_id",GlobalVariables.getId());
                         data.put("comment_id","value-1");
+                        data.put("post_id",GlobalVariables.getPost_id());
                         data.put("flag","1");
                         Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getPost_id()+GlobalVariables.getVideoid());
                     } catch (JSONException e) {
@@ -247,10 +250,11 @@ public class P_Commnets extends AppCompatActivity {
                                 if (response.body() != null) {
                                     Log.i("onSuccess", response.body().toString());
                                     String jsonresponse = response.body().toString();
-                                    if (response.body().equals("s")){
+                                    if (response.body().equals("ss1")){
                                         Toast.makeText(P_Commnets.this, "comment", Toast.LENGTH_SHORT).show();
                                         finish();
                                         startActivity(getIntent());
+
                                     }
 
                                 } else {

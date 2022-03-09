@@ -61,7 +61,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
     ImageView like_image,comment_image,sound_image,share;
     private enum VolumeState {ON, OFF};
     private VolumeState volumeState;
-    TextView like_txt,comment_txt,username,desc_txt,sound_name,shr_txt;
+    public TextView like_txt,comment_txt,username,desc_txt,sound_name,shr_txt;
     Boolean checklike = true;
     Uri vuri;
     int likesno;
@@ -365,6 +365,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         }
 
     }
+
 
 
 }
