@@ -18,6 +18,7 @@ public class VideoPlayerRecyclerAdapter extends RecyclerView.Adapter<RecyclerVie
 
     private ArrayList<MediaObject> mediaObjects;
     private RequestManager requestManager;
+    int j;
 
 
     public VideoPlayerRecyclerAdapter(ArrayList<MediaObject> mediaObjects, RequestManager requestManager) {
@@ -35,7 +36,10 @@ public class VideoPlayerRecyclerAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         try {
+
+
             ((VideoPlayerViewHolder) viewHolder).onBind(mediaObjects.get(i), requestManager);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

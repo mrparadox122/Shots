@@ -40,7 +40,7 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
 
         holder.username.setText(comments_modelList.get(position).getUsername());
         holder.message.setText(comments_modelList.get(position).getMassege());
-        Glide.with(context).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
+        Glide.with(holder.itemView.getContext()).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
 
 
     }
@@ -52,11 +52,13 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
 
     public class myviewholder extends RecyclerView.ViewHolder  {
 
+        Context context1;
         ImageView user_pic;
         TextView username,message;
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
+
 
             user_pic = itemView.findViewById(R.id.user_pic);
             username = itemView.findViewById(R.id.username);

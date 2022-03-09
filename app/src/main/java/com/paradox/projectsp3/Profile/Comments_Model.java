@@ -8,13 +8,28 @@ public class Comments_Model {
     String img_url;
 
 
+
+    String us_id;
+
+
+
+
+    String comment_id;
+    String video_id;
+
+
+
     public Comments_Model() {
     }
 
-    public Comments_Model(String username, String massege, String img_url) {
+    public Comments_Model(String username, String massege, String img_url,String us_id,String comment_id,String video_id) {
         this.username = username;
         this.massege = massege;
         this.img_url = img_url;
+        this.us_id = us_id;
+        this.comment_id = comment_id;
+        this.video_id = video_id;
+
     }
 
     public String getUsername() {
@@ -32,6 +47,33 @@ public class Comments_Model {
     public void setMassege(String massege) {
         this.massege = massege;
     }
+
+
+    public String getUs_id() {
+        return us_id;
+    }
+
+    public void setUs_id(String us_id) {
+        this.us_id = us_id;
+    }
+
+
+    public String getComment_id() {
+        return comment_id;
+    }
+
+    public void setComment_id(String comment_id) {
+        this.comment_id = comment_id;
+    }
+
+    public String getVideo_id() {
+        return video_id;
+    }
+
+    public void setVideo_id(String video_id) {
+        this.video_id = video_id;
+    }
+
 
     public String getImg_url() {
         return img_url;

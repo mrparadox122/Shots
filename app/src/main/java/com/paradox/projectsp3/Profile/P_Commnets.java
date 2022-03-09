@@ -45,6 +45,7 @@ public class P_Commnets extends AppCompatActivity {
     RecyclerView recyclerview;
     Comments_Adapter adapter;
     List<Comments_Model> comments_model;
+    String message_editst;
 //    FrameLayout comment_screen;
     EditText message_edit;
     ImageView send_btn,Goback;
@@ -61,6 +62,8 @@ public class P_Commnets extends AppCompatActivity {
         recyclerview = findViewById(R.id.recyclerview);
        // comment_screen=findViewById(R.id.comment_screen);
         send_btn = findViewById(R.id.send_btn);
+
+        message_edit = findViewById(R.id.message_edit);
 
         comments_model = new ArrayList<>();
 
@@ -113,6 +116,9 @@ public class P_Commnets extends AppCompatActivity {
                                       comments_model1.setImg_url(dataobj.getString("profile_pic"));
                                       comments_model1.setUsername(dataobj.getString("fullname"));
                                       comments_model1.setMassege(dataobj.getString("comments"));
+                                      comments_model1.setUs_id(dataobj.getString("user_id"));
+                                      comments_model1.setVideo_id(dataobj.getString("video_id"));
+                                      comments_model1.setComment_id(dataobj.getString("comment_id"));
                                       comments_model.add(comments_model1);
 //                                    following_model1.setUsername(dataobj.getString("fullname").toString());
 //                                    following_model1.setProfile_pic(dataobj.getString("profile_pic").toString());
@@ -201,6 +207,88 @@ public class P_Commnets extends AppCompatActivity {
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                message_editst = String.valueOf(message_edit.getText());
+
+                if (GlobalVariables.getId() == null || GlobalVariables.getId() == "null"){
+                    Toast.makeText(getApplicationContext(), "login to comment", Toast.LENGTH_SHORT).show();
+                }
+                else if (message_editst.equals("")){
+                    Toast.makeText(getApplicationContext(), "enter comment", Toast.LENGTH_SHORT).show();
+                }
+                else if (GlobalVariables.getId() != null && !message_editst.equals("") ){
+                    JSONObject data = new JSONObject();
+                    try {
+
+                        data.put("video_id",GlobalVariables.getVideoid());
+                        data.put("komment","'"+message_edit.getText().toString()+"'");
+                        data.put("user_id",GlobalVariables.getId());
+                        data.put("comment_id","value-1");
+                        data.put("flag","1");
+                        Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getPost_id()+GlobalVariables.getVideoid());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(ApiInterface.userdetail_following_url)
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .build();
+
+                    ApiInterface apii = retrofit.create(ApiInterface.class);
+                    Call<String> calll = apii.getUserus_c_p(data.toString());
+                    calll.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
+                            //Toast.makeText()
+                            if (response.isSuccessful()) {
+                                Gson gson = new Gson();
+                                if (response.body() != null) {
+                                    Log.i("onSuccess", response.body().toString());
+                                    String jsonresponse = response.body().toString();
+                                    if (response.body().equals("s")){
+                                        Toast.makeText(P_Commnets.this, "comment", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                        startActivity(getIntent());
+                                    }
+
+                                } else {
+                                    Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            Log.e(TAG, "onFailure: //////////////////" + t);
+
+                        }
+                    });
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();

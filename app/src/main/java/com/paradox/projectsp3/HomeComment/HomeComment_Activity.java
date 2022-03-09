@@ -110,9 +110,11 @@ public class HomeComment_Activity extends AppCompatActivity {
                                     homecommentmodle1.setMassege(dataobj.getString("comments"));
                                     homeCommentModelList.add(homecommentmodle1);
 
+//
+
                                     hm_recyclerview.setLayoutManager(new LinearLayoutManager(context,RecyclerView.VERTICAL,false));
 
-                                    homeadapter = new homeCommentAdapter(getApplicationContext(),homeCommentModelList);
+                                    homeadapter = new homeCommentAdapter(context,homeCommentModelList);
                                     hm_recyclerview.setAdapter(homeadapter);
 
 
@@ -145,6 +147,7 @@ public class HomeComment_Activity extends AppCompatActivity {
         Goback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getApplicationContext(),HomeActivty.class);
                 startActivity(intent);
             }

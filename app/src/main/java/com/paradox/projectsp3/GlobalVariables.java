@@ -24,6 +24,10 @@ public class GlobalVariables {
     static String Gender;
     static String profile_pic;
     static String bio;
+
+    public static int j = 0;
+    public static int new_pos;
+
     static String id;
     static int following;
     static int follwer;
