@@ -87,16 +87,21 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, HomeComment_Activity.class);
-                context.startActivity(intent);
+//                Intent intent = new Intent(context, HomeComment_Activity.class);
+//                context.startActivity(intent);
 
-//                Context context1= itemView.getContext();
-//                Dialog dialog=new Dialog(context1);
-//                dialog.setContentView(R.layout.activity_comment);
-//                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                dialog.getWindow().setGravity(Gravity.BOTTOM);
-//                dialog.show();
+                Context context1= itemView.getContext();
+                Dialog dialog=new Dialog(context1);
+                dialog.setContentView(R.layout.activity_home_comment);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().setGravity(Gravity.BOTTOM);
+                dialog.show();
+
+
+                HomeComment_Activity home = new HomeComment_Activity();
+
+
             }
 
         });
