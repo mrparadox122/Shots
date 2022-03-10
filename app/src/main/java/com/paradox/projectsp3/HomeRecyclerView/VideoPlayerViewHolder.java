@@ -1,6 +1,8 @@
 package com.paradox.projectsp3.HomeRecyclerView;
 
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -8,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,14 +27,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
+import com.google.gson.Gson;
+import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.HomeComment.HomeComment_Activity;
 import com.paradox.projectsp3.Model.MediaObject;
 import com.paradox.projectsp3.Profile.Comments_Adapter;
 import com.paradox.projectsp3.Profile.Comments_Model;
+import com.paradox.projectsp3.Profile.P_Commnets;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,16 +73,22 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     Context context;
     String mediaObjectUrl;
     Boolean checklike = true;
+    Boolean checkKomment = false;
     String video_id;
+    String video_id_to_c;
+    String us_id_to_c;
     int likesno;
     int likesnominus;
     int shareno;
 
     Comments_Adapter cmadapter;
-    List<Comments_Model>commentsModelList;
+    List<Comments_Model> comments_model;
+    Comments_Model comments_model1;
+    int i;
 
     ImageView Goback,send_btn;
     RecyclerView rv_comments;
+    String message_editst;
     EditText message_edit;
 
 
@@ -97,6 +110,9 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         Share=itemView.findViewById(R.id.imageView6);
         CommentView=itemView.findViewById(R.id.commentView);
         share =itemView.findViewById(R.id.share);
+        checkKomment = false;
+
+        comments_model = new ArrayList<>();
 
 
 
@@ -104,55 +120,237 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
 
-//                Intent intent = new Intent(context, HomeComment_Activity.class);
-//                context.startActivity(intent);
-
-                Context context1= itemView.getContext();
-                Dialog dialog=new Dialog(context1);
-                dialog.setContentView(R.layout.newcommentlist);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.getWindow().setGravity(Gravity.BOTTOM);
 
 
-                rv_comments = dialog.findViewById(R.id.recylerview_comm);
-                Goback = dialog.findViewById(R.id.Goback);
-                message_edit = dialog.findViewById(R.id.message_edit);
-                send_btn = dialog.findViewById(R.id.send_btn);
 
 
-                rv_comments.setLayoutManager(new LinearLayoutManager(context1,RecyclerView.VERTICAL,false));
-               commentsModelList = new ArrayList<>();
-                cmadapter = new Comments_Adapter(context1,commentsModelList);
-                rv_comments.setAdapter(cmadapter);
 
 
-                Goback.setOnClickListener(new View.OnClickListener() {
+
+
+
+                JSONObject data = new JSONObject();
+                try {
+
+                    data.put("video_id",video_id_to_c);
+                    Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getPost_id()+video_id_to_c);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(ApiInterface.userdetail_following_url)
+                        .addConverterFactory(ScalarsConverterFactory.create())
+                        .build();
+
+                ApiInterface api = retrofit.create(ApiInterface.class);
+                Call<String> call = api.getUserus_c(data.toString());
+                call.enqueue(new Callback<String>() {
                     @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
+
+                        Context context1= itemView.getContext();
+                        Dialog dialog=new Dialog(context1);
+                        dialog.setContentView(R.layout.newcommentlist);
+                        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.getWindow().setGravity(Gravity.BOTTOM);
+                        rv_comments = dialog.findViewById(R.id.recylerview_comm);
+                        Goback = dialog.findViewById(R.id.Goback);
+                        message_edit = dialog.findViewById(R.id.message_edit);
+                        send_btn = dialog.findViewById(R.id.send_btn);
+
+
+                        Goback.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        send_btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                message_editst = String.valueOf(message_edit.getText());
+
+                                if (GlobalVariables.getId() == null || GlobalVariables.getId() == "null"){
+                                    Toast.makeText(context1.getApplicationContext(), "login to comment", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (message_editst.equals("")){
+                                    Toast.makeText(context1.getApplicationContext(), "enter comment", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (GlobalVariables.getId() != null && !message_editst.equals("") ){
+                                    JSONObject data = new JSONObject();
+                                    try {
+                                        data.put("video_id",video_id_to_c);
+                                        data.put("komment","'"+message_edit.getText().toString()+"'");
+                                        data.put("user_id",GlobalVariables.getId());
+                                        data.put("comment_id","value-1");
+                                        data.put("flag","1");
+                                        Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getPost_id()+GlobalVariables.getVideoid());
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    Retrofit retrofit = new Retrofit.Builder()
+                                            .baseUrl(ApiInterface.userdetail_following_url)
+                                            .addConverterFactory(ScalarsConverterFactory.create())
+                                            .build();
+
+                                    ApiInterface apii = retrofit.create(ApiInterface.class);
+                                    Call<String> calll = apii.getUserus_c_p(data.toString());
+                                    calll.enqueue(new Callback<String>() {
+                                        @Override
+                                        public void onResponse(Call<String> call, Response<String> response1) {
+                                            Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response1.body()));
+                                            //Toast.makeText()
+                                            if (response1.isSuccessful()) {
+                                                Gson gson = new Gson();
+                                                if (response1.body() != null) {
+                                                    Log.i("onSuccess", response1.body().toString());
+                                                    String jsonresponse = response1.body().toString();
+                                                    if (response1.body().equals("ss1")){
+                                                        message_edit.setText("");
+                                                        int nc = Integer.parseInt(commentn.getText().toString());
+                                                        nc+=1;
+                                                        commentn.setText(String.valueOf(nc));
+                                                        Toast.makeText(context1.getApplicationContext(), "comment added", Toast.LENGTH_SHORT).show();
+                                                        dialog.dismiss();
+
+
+                                                    }
+
+                                                } else {
+                                                    Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<String> call, Throwable t) {
+                                            Log.e(TAG, "onFailure: //////////////////" + t);
+
+                                        }
+                                    });
+                                }
+
+                            }
+                        });
+
+                        //Toast.makeText()
+                        if (response.isSuccessful()) {
+                            comments_model.clear();
+
+
+
+                            Gson gson = new Gson();
+                            if (response.body() != null) {
+                                Log.i("onSuccess", response.body().toString());
+                                String jsonresponse = response.body().toString();
+                                //Following_Fragment following_fragment = new Following_Fragment();
+                                try {
+                                    //getting the whole json object from the response
+                                    JSONObject obj = new JSONObject(jsonresponse);
+                                    if(true){
+                                        ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
+                                        JSONArray dataArray  = obj.getJSONArray("body");
+                                        for (i = 0; i < dataArray.length(); i++) {
+                                            JSONObject dataobj = dataArray.getJSONObject(i);
+                                            comments_model1 = new Comments_Model();
+
+//                                    Following_Model following_model1 = new Following_Model();
+                                            comments_model1.setImg_url(dataobj.getString("profile_pic"));
+                                            comments_model1.setUsername(dataobj.getString("fullname"));
+                                            comments_model1.setMassege(dataobj.getString("comments"));
+                                            comments_model1.setUs_id(dataobj.getString("user_id"));
+                                            comments_model1.setVideo_id(dataobj.getString("video_id"));
+                                            comments_model1.setComment_id(dataobj.getString("comment_id"));
+                                            comments_model1.setPost_id(dataobj.getString("post_id"));
+                                            comments_model.add(comments_model1);
+
+                                            dialog.show();
+
+                                            rv_comments.setLayoutManager(new LinearLayoutManager(context1,RecyclerView.VERTICAL,false));
+
+                                            cmadapter = new Comments_Adapter(context1,comments_model);
+                                            rv_comments.setAdapter(cmadapter);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            Log.e(TAG, "writeTv: "+ comments_model+comments_model1.getUsername() );
+                                        }
+
+                                        Log.e(TAG, "onResponse: "+checkKomment );
+
+
+                                        for (int j = 0; j < UserDetailsArrayList.size(); j++){
+//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
+                                        }
+                                    }else {
+                                        rv_comments.setLayoutManager(new LinearLayoutManager(context1,RecyclerView.VERTICAL,false));
+
+                                        cmadapter = new Comments_Adapter(context1,comments_model);
+                                        rv_comments.setAdapter(cmadapter);
+
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            } else {
+                                Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Log.e(TAG, "onFailure: //////////////////" + t);
+
                     }
                 });
 
-                send_btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        Toast.makeText(context1.getApplicationContext(), "comments Empty", Toast.LENGTH_SHORT).show();
-
-                        String message=message_edit.getText().toString();
-
-                    }
-                });
 
 
 
-
-
-                dialog.show();
             }
 
         });
+
+
+
+
+
+
 
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,7 +411,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                     call_like.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            Toast.makeText(context.getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
                              likesn.setText(String.valueOf(likesnominus));
                         }
 
@@ -306,7 +503,9 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
         ////// set view to video
         video_id = mediaObject.getVideo_id().toString();
-        GlobalVariables.setVideoid(video_id);
+        video_id_to_c = mediaObject.getVideo_id().toString();
+        us_id_to_c = mediaObject.getUser_id().toString();
+        checkKomment = false;
 
 //        String users = (video_id +
 //                "    \"flag\": \"6\"\n" +

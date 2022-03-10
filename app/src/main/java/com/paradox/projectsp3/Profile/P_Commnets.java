@@ -221,7 +221,6 @@ public class P_Commnets extends AppCompatActivity {
                 else if (GlobalVariables.getId() != null && !message_editst.equals("") ){
                     JSONObject data = new JSONObject();
                     try {
-
                         data.put("video_id",GlobalVariables.getVideoid());
                         data.put("komment","'"+message_edit.getText().toString()+"'");
                         data.put("user_id",GlobalVariables.getId());
