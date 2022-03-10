@@ -466,7 +466,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
         title.setText(mediaObject.getDescription()+"\n"+mediaObject.getPost_categories());
 
-
         this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
         ////// set view to video
         video_id = mediaObject.getVideo_id().toString();

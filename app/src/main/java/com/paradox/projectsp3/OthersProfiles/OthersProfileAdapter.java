@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.paradox.projectsp3.Followers_Following_Likes.FollowersAdapter;
 import com.paradox.projectsp3.R;
 
@@ -36,19 +39,29 @@ public class OthersProfileAdapter extends RecyclerView.Adapter<OthersProfileAdap
     public void onBindViewHolder(@NonNull OthersProfileAdapter.myviewholder holder, int position) {
 
 
+        context = holder.itemView.getContext();
+        holder.view_txt.setText(othersProfileModelList.get(position).getViewtext());
+
+        Glide.with(context).load(othersProfileModelList.get(position).getImg_url()).into(holder.thumb_image);
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return othersProfileModelList.size();
     }
 
     public class myviewholder extends RecyclerView.ViewHolder {
 
 
+        ImageView thumb_image;
+        TextView view_txt;
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
+
+            thumb_image = itemView.findViewById(R.id.thumb_image);
+            view_txt = itemView.findViewById(R.id.view_txt);
         }
     }
 }
