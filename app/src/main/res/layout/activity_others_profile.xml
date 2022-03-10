@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    tools:context=".OthersProfile_Activity">
-
+    tools:context=".OthersProfiles.OthersProfile_Activity">
 
     <LinearLayout
         android:background="@color/black"
@@ -96,7 +95,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="90dp"
                         android:layout_height="90dp"
-                        android:id="@+id/pro_pic" />
+                        android:id="@+id/o_pro_pic" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -145,7 +144,7 @@
                         android:gravity="center">
 
                         <LinearLayout
-                            android:id="@+id/following_ll"
+                            android:id="@+id/o_following_ll"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -172,7 +171,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/follower_ll"
+                            android:id="@+id/o_follower_ll"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -232,7 +231,7 @@
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview"
+                    android:id="@+id/o_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -244,7 +243,6 @@
                     tools:listitem="@layout/item_myvideo_layout" />
 
             </LinearLayout>
-
 
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -81,6 +81,10 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     int likesnominus;
     int shareno;
 
+
+    ImageView profilepic;
+    TextView textView4;
+
     Comments_Adapter cmadapter;
     List<Comments_Model> comments_model;
     Comments_Model comments_model1;
@@ -90,7 +94,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     RecyclerView rv_comments;
     String message_editst;
     EditText message_edit;
-
 
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -110,23 +113,21 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         Share=itemView.findViewById(R.id.imageView6);
         CommentView=itemView.findViewById(R.id.commentView);
         share =itemView.findViewById(R.id.share);
+
+
+        profilepic =itemView.findViewById(R.id.profilepic);
+        textView4 =itemView.findViewById(R.id.textView4);
+
+
+
         checkKomment = false;
 
         comments_model = new ArrayList<>();
 
 
-
         Comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
-
-
-
-
-
 
 
                 JSONObject data = new JSONObject();
@@ -494,6 +495,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         likesno = 0b1 + Integer.parseInt(mediaObject.getLikes());
         commentn.setText(mediaObject.getComments());
         share.setText(mediaObject.getShares());
+        textView4.setText(mediaObject.getUser_id());
+
         shareno = Integer.parseInt(mediaObject.getShares());
 
 

@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.paradox.projectsp3.OthersProfile_Activity;
+import com.paradox.projectsp3.OthersProfiles.OthersProfile_Activity;
 import com.paradox.projectsp3.R;
 
 import java.util.List;
@@ -42,6 +42,14 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
         holder.message.setText(comments_modelList.get(position).getMassege());
         Glide.with(holder.itemView.getContext()).load(comments_modelList.get(position).getImg_url()).into(holder.user_pic);
 
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,OthersProfile_Activity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

@@ -187,7 +187,6 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
                         }
                     });
 
-
                     like_image.setImageResource(R.drawable.ic_icon_material_favorite);
                     checklike=true;
                 }

@@ -25,7 +25,7 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".OthersProfile_Activity"
+            android:name=".OthersProfiles.OthersProfile_Activity"
             android:exported="false" />
         <activity
             android:name=".HomeComment.HomeComment_Activity"
