@@ -261,7 +261,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                                             JSONObject dataobj = dataArray.getJSONObject(i);
                                             comments_model1 = new Comments_Model();
 
-//                                    Following_Model following_model1 = new Following_Model();
                                             comments_model1.setImg_url(dataobj.getString("profile_pic"));
                                             comments_model1.setUsername(dataobj.getString("fullname"));
                                             comments_model1.setMassege(dataobj.getString("comments"));
@@ -277,43 +276,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                                             cmadapter = new Comments_Adapter(context1,comments_model);
                                             rv_comments.setAdapter(cmadapter);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                            Log.e(TAG, "writeTv: "+ comments_model+comments_model1.getUsername() );
                                         }
 
-                                        Log.e(TAG, "onResponse: "+checkKomment );
-
-
-                                        for (int j = 0; j < UserDetailsArrayList.size(); j++){
-//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
-                                        }
                                     }else {
                                         rv_comments.setLayoutManager(new LinearLayoutManager(context1,RecyclerView.VERTICAL,false));
 
