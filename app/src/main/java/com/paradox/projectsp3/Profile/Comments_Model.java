@@ -6,21 +6,12 @@ public class Comments_Model {
     String username;
     String massege;
     String img_url;
-
-
-
     String us_id;
-
-
-
 
     String comment_id;
     String video_id;
 
-
-
     String post_id;
-
 
 
     public Comments_Model() {

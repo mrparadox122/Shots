@@ -7,9 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,12 +20,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
 import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.HomeComment.HomeComment_Activity;
 import com.paradox.projectsp3.Model.MediaObject;
+import com.paradox.projectsp3.Profile.Comments_Adapter;
+import com.paradox.projectsp3.Profile.Comments_Model;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
 
@@ -31,6 +36,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import okhttp3.ResponseBody;
@@ -64,8 +71,13 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     int likesnominus;
     int shareno;
 
+    Comments_Adapter cmadapter;
+    List<Comments_Model>commentsModelList;
 
+    ImageView Goback,send_btn;
     RecyclerView rv_comments;
+    EditText message_edit;
+
 
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -97,12 +109,47 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                 Context context1= itemView.getContext();
                 Dialog dialog=new Dialog(context1);
-                dialog.setContentView(R.layout.comment_list);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setContentView(R.layout.newcommentlist);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
-                dialog.show();
 
+
+                rv_comments = dialog.findViewById(R.id.recylerview_comm);
+                Goback = dialog.findViewById(R.id.Goback);
+                message_edit = dialog.findViewById(R.id.message_edit);
+                send_btn = dialog.findViewById(R.id.send_btn);
+
+
+                rv_comments.setLayoutManager(new LinearLayoutManager(context1,RecyclerView.VERTICAL,false));
+               commentsModelList = new ArrayList<>();
+                cmadapter = new Comments_Adapter(context1,commentsModelList);
+                rv_comments.setAdapter(cmadapter);
+
+
+                Goback.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                send_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Toast.makeText(context1.getApplicationContext(), "comments Empty", Toast.LENGTH_SHORT).show();
+
+                        String message=message_edit.getText().toString();
+
+                    }
+                });
+
+
+
+
+
+                dialog.show();
             }
 
         });
@@ -254,6 +301,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
 
         title.setText(mediaObject.getDescription()+"\n"+mediaObject.getPost_categories());
+
 
         this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
         ////// set view to video
