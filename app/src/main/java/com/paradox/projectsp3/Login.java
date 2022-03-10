@@ -104,7 +104,7 @@ public class Login extends AppCompatActivity {
                                 Log.e(TAG, "data: " + data);
                                 if (result.equals("Login Success")) {
                                     Toast.makeText(Login.this, result, Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Login.this, HomeActivty.class);
+                                    Intent intent = new Intent(Login.this, Profile_Activity.class);
                                     GlobalVariables globalVariables = new GlobalVariables();
                                     Log.e(TAG, "run: before init "+globalVariables.username+PhoneNumber );
                                     globalVariables.setUsername(String.valueOf(PhoneNumber));
