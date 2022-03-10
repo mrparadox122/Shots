@@ -9,7 +9,6 @@
     tools:context=".OthersProfile_Activity">
 
 
-
     <LinearLayout
         android:background="@color/black"
         android:layout_width="match_parent"
