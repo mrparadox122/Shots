@@ -27,6 +27,8 @@ public interface ApiInterface {
     String userfoto = "http://13.127.217.99/dashboard/paradoxApi/profile_pic/";
     @POST("read.php")
     Call<String> getUserdetails(@Body String body);
+    @POST("getUsersOp.php")
+    Call<String> getUsersOp(@Body String body);
     @Multipart
     @POST("upload.php")
     Call<String> upload_pic(@Part("subject") String data,@Part MultipartBody.Part file);
