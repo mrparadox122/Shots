@@ -9,6 +9,7 @@ public class GlobalVariables {
 
 
 
+    public static Boolean autorefs = true;
     public static String other_p_ud;
     public static String url;
     public static String views;
