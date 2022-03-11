@@ -7,6 +7,9 @@ import java.util.List;
 
 public class GlobalVariables {
 
+
+
+    public String other_p_ud;
     public static String url;
     public static String views;
     public static String videoid;
@@ -34,7 +37,17 @@ public class GlobalVariables {
     static int like;
    public static Context contextl;
 
+
     public static List<String> someList = new ArrayList<String>();
+
+    public String getOther_p_ud() {
+        return other_p_ud;
+    }
+
+    public void setOther_p_ud(String other_p_ud) {
+        this.other_p_ud = other_p_ud;
+    }
+
 
     public String Video;
 
