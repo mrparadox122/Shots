@@ -33,6 +33,7 @@ import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.HomeComment.HomeComment_Activity;
 import com.paradox.projectsp3.Model.MediaObject;
+import com.paradox.projectsp3.OthersProfiles.OthersProfile_Activity;
 import com.paradox.projectsp3.Profile.Comments_Adapter;
 import com.paradox.projectsp3.Profile.Comments_Model;
 import com.paradox.projectsp3.Profile.P_Commnets;
@@ -571,6 +572,17 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         us_id_to_c = mediaObject.getUser_id().toString();
         checkKomment = false;
 
+        u_nam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalVariables globalVariables = new GlobalVariables();
+                globalVariables.setOther_p_ud(mediaObject.getUser_id());
+                cn();
+
+
+            }
+        });
+
 //        String users = (video_id +
 //                "    \"flag\": \"6\"\n" +
 //                "}");
@@ -631,5 +643,9 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //
 //            }
 //        });
+    }
+    private void cn(){
+        Intent intent = new Intent(context,OthersProfile_Activity.class);
+        context.startActivity(intent);
     }
 }

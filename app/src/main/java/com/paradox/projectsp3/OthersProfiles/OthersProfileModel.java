@@ -6,14 +6,26 @@ public class OthersProfileModel {
     String viewtext;
     String videoid;
 
+
+
+    String pid;
+
     public OthersProfileModel() {
     }
 
 
-    public OthersProfileModel(String img_url, String viewtext, String videoid) {
+    public OthersProfileModel(String img_url, String viewtext, String videoid,String pid) {
         this.img_url = img_url;
         this.viewtext = viewtext;
         this.videoid = videoid;
+        this.pid = pid;
+    }
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String getImg_url() {

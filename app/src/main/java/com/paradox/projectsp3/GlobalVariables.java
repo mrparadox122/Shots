@@ -9,7 +9,7 @@ public class GlobalVariables {
 
 
 
-    public String other_p_ud;
+    public static String other_p_ud;
     public static String url;
     public static String views;
     public static String videoid;
@@ -19,6 +19,7 @@ public class GlobalVariables {
     public static String likes;
     public static String shares;
     public static String comments;
+
     static String username;
     static String fullname;
     static String email;
