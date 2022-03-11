@@ -26,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.google.gson.Gson;
 import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
@@ -61,6 +62,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
     FrameLayout media_container;
     ImageView like,Share,Comment;
+
     TextView title,views;
     ImageView thumbnail, volumeControl,soundDisk;
     ProgressBar progressBar;
@@ -499,6 +501,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                             for (i = 0; i < dataArray.length(); i++) {
                                 JSONObject dataobj = dataArray.getJSONObject(i);
                                 u_nam.setText(dataobj.getString("fullname"));
+                                Glide.with(context).load(dataobj.getString("profile_pic")).into(profilepic);
 
 
 
