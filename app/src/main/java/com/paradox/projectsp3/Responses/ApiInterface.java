@@ -82,4 +82,7 @@ public interface ApiInterface {
     @POST("Sv.php")
     Call<String> getUserdetails_video(@Body String body);
 
+    @POST("us_dtl_for_hm.php")
+    Call<String> getStringScalar_for_hm(@Body String body);
+
 }

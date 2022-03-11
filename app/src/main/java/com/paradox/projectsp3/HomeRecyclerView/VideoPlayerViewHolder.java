@@ -83,7 +83,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
 
     ImageView profilepic;
-    TextView textView4;
+    TextView u_nam;
 
     Comments_Adapter cmadapter;
     List<Comments_Model> comments_model;
@@ -116,7 +116,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
 
         profilepic =itemView.findViewById(R.id.profilepic);
-        textView4 =itemView.findViewById(R.id.textView4);
+        u_nam =itemView.findViewById(R.id.textView4);
 
 
 
@@ -132,7 +132,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                 JSONObject data = new JSONObject();
                 try {
-
                     data.put("video_id",video_id_to_c);
                     Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getPost_id()+video_id_to_c);
                 } catch (JSONException e) {
@@ -453,13 +452,109 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     public void onBind(MediaObject mediaObject, RequestManager requestManager) throws IOException {
         this.requestManager = requestManager;
         parent.setTag(this);
+
+
+
+
+        JSONObject jsonObject1 = new JSONObject();
+        try {
+            jsonObject1.put("username", mediaObject.getUser_id());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+//        Unirest.setTimeouts(0, 0);
+//            String response = Unirest.post("http://13.127.217.99/dashboard/update.php")
+//                    .header("Content-Type", "text/plain")
+//                    .body("{\r\n    \"video_id\": \"14\",\r\n    \"flag\": \"6\"\r\n}")
+//                    .toString();
+//            Log.e(TAG, "onBind://////////// "+response);
+
+        Retrofit.Builder retrofit1 = new Retrofit.Builder()
+                .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit3 = retrofit1.build();
+
+
+        //get client
+        ApiInterface apiInterface1 = retrofit3.create(ApiInterface.class);
+        Call<String> calll = apiInterface1.getStringScalar_for_hm(jsonObject1.toString());
+        calll.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e(TAG, "onResponse: "+response.body() );
+
+
+                if (response.body() != null) {
+                    Log.i("onSuccess", response.body().toString());
+                    String jsonresponse = response.body().toString();
+
+                    try {
+                        //getting the whole json object from the response
+                        JSONObject obj = new JSONObject(jsonresponse);
+                        if (true) {
+
+                            JSONArray dataArray = obj.getJSONArray("body");
+                            for (i = 0; i < dataArray.length(); i++) {
+                                JSONObject dataobj = dataArray.getJSONObject(i);
+                                u_nam.setText(dataobj.getString("fullname"));
+
+
+
+                            }
+
+                        } else {
+
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_LONG).show();
+            }
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         mediaObjectUrl = mediaObject.getMedia_url();
         likesn.setText(mediaObject.getLikes());
         likesnominus = Integer.parseInt(mediaObject.getLikes());
         likesno = 0b1 + Integer.parseInt(mediaObject.getLikes());
         commentn.setText(mediaObject.getComments());
         share.setText(mediaObject.getShares());
-        textView4.setText(mediaObject.getUser_id());
 
         shareno = Integer.parseInt(mediaObject.getShares());
 
