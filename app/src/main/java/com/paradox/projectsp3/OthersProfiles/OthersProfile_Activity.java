@@ -142,10 +142,17 @@ public class OthersProfile_Activity extends AppCompatActivity {
                                     //suggestmodel.add(suggest_model);
                                     othersProfileModelList.add(othersProfileModel);
 
-                                    LinearLayoutManager layoutManager4 = new LinearLayoutManager(OthersProfile_Activity.this, LinearLayoutManager.HORIZONTAL, false);
-                                    o_recyclerview.setLayoutManager(layoutManager4);
-                                    othersProfileAdapter  = new OthersProfileAdapter(OthersProfile_Activity.this,othersProfileModelList);
+//                                    LinearLayoutManager layoutManager4 = new LinearLayoutManager(OthersProfile_Activity.this, LinearLayoutManager.HORIZONTAL, false);
+//                                    o_recyclerview.setLayoutManager(layoutManager4);
+//                                    othersProfileAdapter  = new OthersProfileAdapter(OthersProfile_Activity.this,othersProfileModelList);
+//                                    o_recyclerview.setAdapter(othersProfileAdapter);
+
+
+                                    o_recyclerview.setLayoutManager(new GridLayoutManager(getApplicationContext(),3));
+
+                                    othersProfileAdapter = new OthersProfileAdapter(getApplicationContext(),othersProfileModelList);
                                     o_recyclerview.setAdapter(othersProfileAdapter);
+
 
 //                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
 //                                    suggest_rv.setLayoutManager(layoutManager3);
