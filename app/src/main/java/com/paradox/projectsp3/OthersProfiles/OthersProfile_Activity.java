@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.paradox.projectsp3.Followers_Following_Likes.FollowersAdapter;
 import com.paradox.projectsp3.R;
@@ -22,6 +23,7 @@ public class OthersProfile_Activity extends AppCompatActivity {
     LinearLayout o_following_ll,o_follower_ll;
     RecyclerView o_recyclerview;
 
+    TextView following_text,followers_text,likes_text;
 
     List<OthersProfileModel>othersProfileModelList;
     OthersProfileAdapter othersProfileAdapter;
@@ -33,10 +35,15 @@ public class OthersProfile_Activity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        o_pro_pic = findViewById(R.id.o_pro_pic);
+
         o_following_ll = findViewById(R.id.o_following_ll);
         o_follower_ll = findViewById(R.id.o_follower_ll);
         o_recyclerview = findViewById(R.id.o_recyclerview);
+
+        o_pro_pic = findViewById(R.id.o_pro_pic);
+        following_text = findViewById(R.id.following_text);
+        followers_text = findViewById(R.id.followers_text);
+        likes_text = findViewById(R.id.likes_text);
 
 
         LinearLayoutManager layoutManager4 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
