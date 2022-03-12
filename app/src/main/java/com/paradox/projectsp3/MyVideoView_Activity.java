@@ -120,19 +120,21 @@ public class MyVideoView_Activity extends AppCompatActivity {
             imageview.setImageURI(imageuri);
             btn_image.setText("Image Uploaded");
         }
-        if (requestCode == 2){
+        if (requestCode == 2) {
             Uri vediouri = data.getData();
-//
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put("description", "shots");
-                jsonObject.put("user_id", "468");
-                jsonObject.put("category_id","2");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            File file = new File(getPath(vediouri));
-            File f = new File(getPath(vediouri));
+            Log.e(TAG, "onActivityResult: "+GlobalVariables.getId() );
+            if (GlobalVariables.getId() != null && GlobalVariables.getId()!= "") {
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("description", "shots");
+                    jsonObject.put("user_id", GlobalVariables.getId());
+                    jsonObject.put("category_id","2");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                File file = new File(getPath(vediouri));
+                File f = new File(getPath(vediouri));
 
 
 //Convert bitmap to byte array
@@ -161,34 +163,41 @@ public class MyVideoView_Activity extends AppCompatActivity {
 //            }
 
 
-            RequestBody descriptionPart = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());
+                RequestBody descriptionPart = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());
 
-            RequestBody filepart = RequestBody.create(MediaType.parse("video/mp4"),file);
-            RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),f);
+                RequestBody filepart = RequestBody.create(MediaType.parse("video/mp4"),file);
+                RequestBody filepart1 = RequestBody.create(MediaType.parse("image/*"),f);
 
-            MultipartBody.Part file1= MultipartBody.Part.createFormData("video",file.getName(),filepart);
-            MultipartBody.Part file2= MultipartBody.Part.createFormData("thumbnail",f.getName()+".jpg",filepart1);
+                MultipartBody.Part file1= MultipartBody.Part.createFormData("video",file.getName(),filepart);
+                MultipartBody.Part file2= MultipartBody.Part.createFormData("thumbnail",f.getName()+".jpg",filepart1);
 
-            ApiInterface service = retrofit.create(ApiInterface.class);
+                ApiInterface service = retrofit.create(ApiInterface.class);
 
-            Call<Users> call = service.upload(descriptionPart,file1,file2);
-            call.enqueue(new Callback<Users>() {
-                @Override
-                public void onResponse(Call<Users> call, Response<Users> response) {
-                    Log.i("mok","S");
+                Call<Users> call = service.upload(descriptionPart,file1,file2);
+                call.enqueue(new Callback<Users>() {
+                    @Override
+                    public void onResponse(Call<Users> call, Response<Users> response) {
+                        Log.i("mok","S");
+                        v_video.setVisibility(View.VISIBLE);
+                        Toast.makeText(getApplicationContext(),"Video Uploaded",Toast.LENGTH_SHORT).show();
+                        v_video.setVideoURI(vediouri);
+                        setTitle("Video Uploaded");
+                        v_video.start();
+                        btn_video.setText("Vedio Uploaded");
 
-                }
+                    }
 
-                @Override
-                public void onFailure(Call<Users> call, Throwable t) {
-                    Log.i("mok","F");
+                    @Override
+                    public void onFailure(Call<Users> call, Throwable t) {
+                        Log.i("mok","F");
 
-                    Log.i("mok",t.getCause()+"");
-                    Log.i("mok","T");
-                    finish();
+                        Log.i("mok",t.getCause()+"");
+                        Log.i("mok","T");
+                        Toast.makeText(MyVideoView_Activity.this, t+t.getCause().toString()+t.getMessage(), Toast.LENGTH_SHORT).show();
+                        finish();
 
-                }
-            });
+                    }
+                });
 
 
 //            OkHttpClient client = new OkHttpClient().newBuilder()
@@ -240,14 +249,16 @@ public class MyVideoView_Activity extends AppCompatActivity {
 //                             }
 //            });
 
-            v_video.setVisibility(View.VISIBLE);
-            Toast.makeText(getApplicationContext(),"Video Uploaded",Toast.LENGTH_SHORT).show();
-            v_video.setVideoURI(vediouri);
-            setTitle("Video Uploaded");
-            v_video.start();
-            btn_video.setText("Vedio Uploaded");
-        }
 
+            }
+            else {
+                Toast.makeText(this, "login to upload", Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+//
+        }
 //        if (requestCode == 1){
 //
 //            Uri videouri = data.getData();
@@ -295,7 +306,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
 //            v_video.setVideoURI(videouri);
 //            v_video.start();
 //        }
-    }
+
 
     @Override
     public void onBackPressed() {

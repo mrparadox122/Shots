@@ -77,6 +77,7 @@ public class Profile_Activity extends AppCompatActivity {
 //   private Button edit_profile;
    private ArrayList<UserDetails> userDetailsArrayList = new ArrayList<>();
    public static ApiInterface apiInterface;
+
    List<UserDetails> userDetails;
 
    LinearLayout following_ll,follower_ll;
@@ -228,7 +229,7 @@ public class Profile_Activity extends AppCompatActivity {
         JSONObject dataa = new JSONObject();
         try {
 
-            dataa.put("username","468");
+            dataa.put("username",GlobalVariables.getId());
             Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getId());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -581,6 +582,8 @@ public class Profile_Activity extends AppCompatActivity {
     }
     private void LoadAllDetails(){
             getResponse();
+
+
     }
 
 
@@ -608,6 +611,11 @@ public class Profile_Activity extends AppCompatActivity {
                 //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
+                        if (GlobalVariables.autorefs){
+                            finish();
+                            startActivity(getIntent());
+                            GlobalVariables.autorefs = false;
+                        }
                         Log.i("onSuccess", response.body().toString());
                         String jsonresponse = response.body().toString();
                         writeTv(jsonresponse);
@@ -668,6 +676,8 @@ public class Profile_Activity extends AppCompatActivity {
                     Log.e(TAG, "writeTv: "+GlobalVariables.getFullname()+GlobalVariables.getUsername() );
                 }
 
+
+
                 for (int j = 0; j < UserDetailsArrayList.size(); j++){
 
 //                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
@@ -680,7 +690,9 @@ public class Profile_Activity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
     }
+
 
     ///////////////////////
 

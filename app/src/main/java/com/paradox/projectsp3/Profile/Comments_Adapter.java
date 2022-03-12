@@ -1,5 +1,6 @@
 package com.paradox.projectsp3.Profile;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.OthersProfiles.OthersProfile_Activity;
 import com.paradox.projectsp3.R;
 
@@ -36,7 +38,7 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Comments_Adapter.myviewholder holder, int position) {
+    public void onBindViewHolder(@NonNull Comments_Adapter.myviewholder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.username.setText(comments_modelList.get(position).getUsername());
         holder.message.setText(comments_modelList.get(position).getMassege());
@@ -46,8 +48,10 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,OthersProfile_Activity.class);
-                context.startActivity(intent);
+                GlobalVariables globalVariables = new GlobalVariables();
+                globalVariables.setOther_p_ud(comments_modelList.get(position).getUs_id());
+                Intent intent = new Intent(holder.itemView.getContext(),OthersProfile_Activity.class);
+                holder.itemView.getContext().startActivity(intent);
             }
         });
 

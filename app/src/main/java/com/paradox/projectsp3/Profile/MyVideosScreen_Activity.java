@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -33,6 +34,7 @@ import com.paradox.projectsp3.Profile_Activity;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,12 +60,14 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
     private RequestManager requestManager;
 
-    ImageView like_image,comment_image,sound_image,share;
+    ImageView like_image,comment_image,sound_image,share,user_pic;
     private enum VolumeState {ON, OFF};
     private VolumeState volumeState;
     public TextView like_txt,comment_txt,username,desc_txt,sound_name,shr_txt;
     Boolean checklike = true;
     Uri vuri;
+
+    int i;
     int likesno;
     int shareno;
     VideoView videoView;
@@ -89,6 +93,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
         like_image = findViewById(R.id.like_image);
         comment_image = findViewById(R.id.comment_image);
+        user_pic = findViewById(R.id.user_pic);
         share = findViewById(R.id.share);
         volumeControl = findViewById(R.id.imageView12);
         shr_txt = findViewById(R.id.shr_txt);
@@ -105,6 +110,87 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         sound_image = findViewById(R.id.sound_image);
 
         sound_name = findViewById(R.id.sound_name);
+
+
+
+        JSONObject jsonObject1 = new JSONObject();
+        try {
+            jsonObject1.put("username", GlobalVariables.getId());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+//        Unirest.setTimeouts(0, 0);
+//            String response = Unirest.post("http://13.127.217.99/dashboard/update.php")
+//                    .header("Content-Type", "text/plain")
+//                    .body("{\r\n    \"video_id\": \"14\",\r\n    \"flag\": \"6\"\r\n}")
+//                    .toString();
+//            Log.e(TAG, "onBind://////////// "+response);
+
+        Retrofit.Builder retrofit1 = new Retrofit.Builder()
+                .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit3 = retrofit1.build();
+
+
+        //get client
+        ApiInterface apiInterface1 = retrofit3.create(ApiInterface.class);
+        Call<String> calll = apiInterface1.getStringScalar_for_hm(jsonObject1.toString());
+        calll.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e(ContentValues.TAG, "onResponse: "+response.body() );
+
+
+                if (response.body() != null) {
+                    Log.i("onSuccess", response.body().toString());
+                    String jsonresponse = response.body().toString();
+
+                    try {
+                        //getting the whole json object from the response
+                        JSONObject obj = new JSONObject(jsonresponse);
+                        if (true) {
+
+                            JSONArray dataArray = obj.getJSONArray("body");
+                            for (i = 0; i < dataArray.length(); i++) {
+                                JSONObject dataobj = dataArray.getJSONObject(i);
+                                username.setText(dataobj.getString("fullname"));
+                                Glide.with(getApplicationContext()).load(dataobj.getString("profile_pic")).into(user_pic);
+
+
+
+                            }
+
+                        } else {
+
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_LONG).show();
+            }
+
+        });
 
 
 
