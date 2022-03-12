@@ -304,7 +304,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
 
         VideoPlayerViewHolder holder = (VideoPlayerViewHolder) child.getTag();
         if (holder == null) {
-            playPosition = -1;
+            playPosition = 1;
             return;
         }
 
@@ -377,7 +377,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
         if (index >= 0) {
             parent.removeViewAt(index);
             isVideoViewAdded = false;
-            viewHolderParent.setOnClickListener(null);
+//            viewHolderParent.setOnClickListener(null);
         }
         viewHolderParent = null;
 

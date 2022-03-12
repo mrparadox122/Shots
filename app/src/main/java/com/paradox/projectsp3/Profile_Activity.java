@@ -650,7 +650,6 @@ public class Profile_Activity extends AppCompatActivity {
                 JSONArray dataArray  = obj.getJSONArray("body");
 
                 for (int i = 0; i < dataArray.length(); i++) {
-
                     UserDetails UserDetails = new UserDetails();
                     JSONObject dataobj = dataArray.getJSONObject(i);
                     UserDetails.setId(dataobj.getString("id"));

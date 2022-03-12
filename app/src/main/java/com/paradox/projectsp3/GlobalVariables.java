@@ -11,6 +11,7 @@ public class GlobalVariables {
 
     public static Boolean autorefs = true;
     public static String us_id_ofr_singl_vid;
+
     public static String url;
     public static String views;
     public static String videoid;

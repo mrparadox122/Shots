@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.paradox.projectsp3.GlobalVariables;
 
 
 public class Pager_Adapter extends FragmentPagerAdapter {
@@ -19,6 +20,7 @@ public class Pager_Adapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
+
         switch (position) {
             case 0:
                 return new Following_Fragment();
