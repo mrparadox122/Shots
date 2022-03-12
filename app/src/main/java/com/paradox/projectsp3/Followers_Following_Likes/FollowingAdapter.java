@@ -114,6 +114,14 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
         });
 
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
+
     }
 
     @Override

@@ -44,6 +44,14 @@ public class FollowersAdapter  extends RecyclerView.Adapter<FollowersAdapter.myv
         holder.usenname_txt.setText(follower_model.get(position).getUsername());
         Glide.with(context).load(follower_model.get(position).getProfile_pic()).into(holder.pic_img);
 
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 
     @Override

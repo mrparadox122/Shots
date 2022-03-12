@@ -121,17 +121,12 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         profilepic =itemView.findViewById(R.id.profilepic);
         u_nam =itemView.findViewById(R.id.textView4);
 
-
-
         checkKomment = false;
-
         comments_model = new ArrayList<>();
-
 
         Comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 JSONObject data = new JSONObject();
                 try {
