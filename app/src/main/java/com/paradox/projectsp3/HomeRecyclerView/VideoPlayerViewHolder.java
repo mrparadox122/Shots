@@ -127,6 +127,17 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         Comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Context context1= itemView.getContext();
+                Dialog dialog=new Dialog(context1);
+                dialog.setContentView(R.layout.newcommentlist);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().setGravity(Gravity.BOTTOM);
+                rv_comments = dialog.findViewById(R.id.recylerview_comm);
+                Goback = dialog.findViewById(R.id.Goback);
+                message_edit = dialog.findViewById(R.id.message_edit);
+                send_btn = dialog.findViewById(R.id.send_btn);
+                dialog.show();
 
                 JSONObject data = new JSONObject();
                 try {
@@ -148,16 +159,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                     public void onResponse(Call<String> call, Response<String> response) {
                         Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
 
-                        Context context1= itemView.getContext();
-                        Dialog dialog=new Dialog(context1);
-                        dialog.setContentView(R.layout.newcommentlist);
-                        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        dialog.getWindow().setGravity(Gravity.BOTTOM);
-                        rv_comments = dialog.findViewById(R.id.recylerview_comm);
-                        Goback = dialog.findViewById(R.id.Goback);
-                        message_edit = dialog.findViewById(R.id.message_edit);
-                        send_btn = dialog.findViewById(R.id.send_btn);
+
 
 
                         Goback.setOnClickListener(new View.OnClickListener() {
@@ -267,7 +269,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                                             comments_model1.setPost_id(dataobj.getString("post_id"));
                                             comments_model.add(comments_model1);
 
-                                            dialog.show();
+
 
                                             rv_comments.setLayoutManager(new LinearLayoutManager(context1,RecyclerView.VERTICAL,false));
 
