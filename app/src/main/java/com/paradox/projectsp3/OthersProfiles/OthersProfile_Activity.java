@@ -89,8 +89,8 @@ public class OthersProfile_Activity extends AppCompatActivity {
         JSONObject dataa = new JSONObject();
         try {
             GlobalVariables globalVariables = new GlobalVariables();
-            dataa.put("username",globalVariables.getOther_p_ud());
-            Log.e(TAG, "getResponse:json data put for api ///////////////" + globalVariables.getOther_p_ud());
+            dataa.put("username",globalVariables.Getus_id_ofr_singl_vid());
+            Log.e(TAG, "getResponse:json data put for api ///////////////" + globalVariables.Getus_id_ofr_singl_vid());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -195,9 +195,9 @@ public class OthersProfile_Activity extends AppCompatActivity {
         JSONObject data = new JSONObject();
         try {
             GlobalVariables globalVariables = new GlobalVariables();
-            data.put("username", globalVariables.getOther_p_ud());
+            data.put("username", globalVariables.Getus_id_ofr_singl_vid());
 
-            Log.e(TAG, "getResponse:json data put for api"+globalVariables.getOther_p_ud());
+            Log.e(TAG, "getResponse:json data put for api"+globalVariables.Getus_id_ofr_singl_vid());
         } catch (JSONException e) {
             e.printStackTrace();
         }

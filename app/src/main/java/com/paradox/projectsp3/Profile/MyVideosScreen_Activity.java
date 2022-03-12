@@ -115,7 +115,9 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
         JSONObject jsonObject1 = new JSONObject();
         try {
-            jsonObject1.put("username", GlobalVariables.getId());
+            GlobalVariables globalVariables = new GlobalVariables();
+            jsonObject1.put("username", globalVariables.Getus_id_ofr_singl_vid());
+            Log.e(TAG, "onCreate: "+globalVariables.Getus_id_ofr_singl_vid() );
 
         } catch (JSONException e) {
             e.printStackTrace();

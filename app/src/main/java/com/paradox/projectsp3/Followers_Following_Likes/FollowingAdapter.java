@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.NewEditProfile_Activity;
+import com.paradox.projectsp3.OthersProfiles.OthersProfile_Activity;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
 
@@ -70,6 +72,30 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
         Log.e(TAG, "onBindViewHolder: "+followingModels.size() );
         holder.txt_name.setText(String.valueOf(followingModels.get(position).getUsername()));
         Glide.with(context).load(followingModels.get(position).getProfile_pic()).into(holder.pic_img);
+        holder.txt_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalVariables globalVariables = new GlobalVariables();
+                globalVariables.Setus_id_ofr_singl_vid(followingModels.get(position).getId());
+                Intent intent = new Intent(context, OthersProfile_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+
+            }
+        });
+        holder.pic_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalVariables globalVariables = new GlobalVariables();
+                globalVariables.Setus_id_ofr_singl_vid(followingModels.get(position).getId());
+                Intent intent = new Intent(context, OthersProfile_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+
+            }
+        });
+
+
 
         holder.btn_following.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -49,6 +49,7 @@ public class FollowersAdapter  extends RecyclerView.Adapter<FollowersAdapter.myv
             @Override
             public void onClick(View view) {
 
+
             }
         });
 

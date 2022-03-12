@@ -571,8 +571,10 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 GlobalVariables globalVariables = new GlobalVariables();
-                globalVariables.setOther_p_ud(mediaObject.getUser_id());
-                cn();
+                globalVariables.Setus_id_ofr_singl_vid(mediaObject.getUser_id());
+                Intent intent = new Intent(context,OthersProfile_Activity.class);
+                context.startActivity(intent);
+
 
 
             }
@@ -639,8 +641,5 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //            }
 //        });
     }
-    private void cn(){
-        Intent intent = new Intent(context,OthersProfile_Activity.class);
-        context.startActivity(intent);
-    }
+
 }

@@ -3,6 +3,7 @@ import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.paradox.projectsp3.GlobalVariables;
+import com.paradox.projectsp3.OthersProfiles.OthersProfile_Activity;
 import com.paradox.projectsp3.Profile_Activity;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
@@ -59,7 +61,11 @@ public class Suggest_Adapter extends RecyclerView.Adapter<Suggest_Adapter.myview
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, suggestmodel.get(position).getIdd(), Toast.LENGTH_SHORT).show();
+                GlobalVariables globalVariables = new GlobalVariables();
+                globalVariables.Setus_id_ofr_singl_vid(suggestmodel.get(position).getIdd());
+                Intent intent = new Intent(context, OthersProfile_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
 

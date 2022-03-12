@@ -10,7 +10,7 @@ public class GlobalVariables {
 
 
     public static Boolean autorefs = true;
-    public static String other_p_ud;
+    public static String us_id_ofr_singl_vid;
     public static String url;
     public static String views;
     public static String videoid;
@@ -42,12 +42,12 @@ public class GlobalVariables {
 
     public static List<String> someList = new ArrayList<String>();
 
-    public String getOther_p_ud() {
-        return other_p_ud;
+    public String Getus_id_ofr_singl_vid() {
+        return us_id_ofr_singl_vid;
     }
 
-    public void setOther_p_ud(String other_p_ud) {
-        this.other_p_ud = other_p_ud;
+    public void Setus_id_ofr_singl_vid(String us_id_ofr_singl_vid) {
+        this.us_id_ofr_singl_vid = us_id_ofr_singl_vid;
     }
 
 

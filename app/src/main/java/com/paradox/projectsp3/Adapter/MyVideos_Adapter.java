@@ -76,6 +76,8 @@ public class MyVideos_Adapter extends RecyclerView.Adapter<MyVideos_Adapter.myvi
 
                 JSONObject dataa = new JSONObject();
                 try {
+                    GlobalVariables globalVariables = new GlobalVariables();
+                    globalVariables.Setus_id_ofr_singl_vid(GlobalVariables.getId());
 
                     dataa.put("post_id",provedio.get(position).getPid());
                     dataa.put("video_id",provedio.get(position).getVideoid());

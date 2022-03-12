@@ -49,7 +49,7 @@ public class Comments_Adapter  extends RecyclerView.Adapter<Comments_Adapter.myv
             @Override
             public void onClick(View view) {
                 GlobalVariables globalVariables = new GlobalVariables();
-                globalVariables.setOther_p_ud(comments_modelList.get(position).getUs_id());
+                globalVariables.Setus_id_ofr_singl_vid(comments_modelList.get(position).getUs_id());
                 Intent intent = new Intent(holder.itemView.getContext(),OthersProfile_Activity.class);
                 holder.itemView.getContext().startActivity(intent);
             }
