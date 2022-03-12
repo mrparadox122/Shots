@@ -56,14 +56,6 @@ public class Suggest_Adapter extends RecyclerView.Adapter<Suggest_Adapter.myview
 
         holder.name_txt.setText(suggestmodel.get(position).getUsernamee());
         Glide.with(context).load(suggestmodel.get(position).getProfile_picc()).into(holder.img_pic);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, suggestmodel.get(position).getIdd(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
         holder.btn_sug_fol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
