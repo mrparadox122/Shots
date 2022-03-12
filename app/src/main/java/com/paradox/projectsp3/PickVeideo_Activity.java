@@ -77,9 +77,7 @@ public class PickVeideo_Activity extends AppCompatActivity {
             Log.e(TAG, "onActivityResult: ////////////////////////////as/fafefaws/////////////////" );
         }
 //        if (requestCode == 1){
-//
 //            Uri videouri = data.getData();
-//
 //            JSONObject jsonObject = new JSONObject();
 //            try {
 //                jsonObject.put("description", "shots");
@@ -88,7 +86,7 @@ public class PickVeideo_Activity extends AppCompatActivity {
 //            } catch (JSONException e) {
 //                e.printStackTrace();
 //            }
-//
+
 //            OkHttpClient client = new OkHttpClient().newBuilder()
 //                    .build();
 //            MediaType mediaType = MediaType.parse("text/plain");
@@ -118,7 +116,8 @@ public class PickVeideo_Activity extends AppCompatActivity {
 //                    Log.e(TAG, "onFailure: ////////////////////////////////////////////////" );
 //                }
 //            });
-//
+
+        
 //            v_video.setVisibility(View.VISIBLE);
 //            v_video.setVideoURI(videouri);
 //            v_video.start();
