@@ -158,7 +158,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                         Goback = dialog.findViewById(R.id.Goback);
                         message_edit = dialog.findViewById(R.id.message_edit);
                         send_btn = dialog.findViewById(R.id.send_btn);
-                        dialog.show();
 
 
                         Goback.setOnClickListener(new View.OnClickListener() {
@@ -268,7 +267,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                                             comments_model1.setPost_id(dataobj.getString("post_id"));
                                             comments_model.add(comments_model1);
 
-
+                                            dialog.show();
 
                                             rv_comments.setLayoutManager(new LinearLayoutManager(context1,RecyclerView.VERTICAL,false));
 
@@ -561,8 +560,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
         title.setText(mediaObject.getDescription()+"\n"+mediaObject.getPost_categories());
 
-//        this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
-        Glide.with(context).load(mediaObject.getMedia_url()).into(thumbnail);
+        this.requestManager.load(mediaObject.getThumbnail()).into(thumbnail);
         ////// set view to video
         video_id = mediaObject.getVideo_id().toString();
         video_id_to_c = mediaObject.getVideo_id().toString();

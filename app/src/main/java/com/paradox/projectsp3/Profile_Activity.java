@@ -141,6 +141,14 @@ public class Profile_Activity extends AppCompatActivity {
             }
         });
 
+        following_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Followers_Fragment.class);
+                startActivity(intent);
+            }
+        });
+
         profilemenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -428,6 +436,15 @@ public class Profile_Activity extends AppCompatActivity {
 
 
         following_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile_Activity.this, BaseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        follower_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Profile_Activity.this, BaseActivity.class);

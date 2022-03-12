@@ -86,13 +86,6 @@ public class OthersProfile_Activity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
         JSONObject dataa = new JSONObject();
         try {
             GlobalVariables globalVariables = new GlobalVariables();
