@@ -102,7 +102,7 @@ public class Profile_Activity extends AppCompatActivity {
     Context context;
 //    List<My_VideosModel> my_videosModelList;
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint({"ResourceAsColor", "NewApi"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -321,79 +321,8 @@ public class Profile_Activity extends AppCompatActivity {
 
         });
 
-        JSONObject data = new JSONObject();
-        try {
-
-            data.put("username", GlobalVariables.getId());
-            Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getId());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        Retrofit retrofitt = new Retrofit.Builder()
-                .baseUrl(ApiInterface.userdetail_following_url)
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .build();
-
-        ApiInterface apii = retrofitt.create(ApiInterface.class);
-        Call<String> calll = apii.getUserdetails_suggestion(data.toString());
-        calll.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
-                //Toast.makeText()
-                if (response.isSuccessful()) {
-                    Gson gson = new Gson();
-                    if (response.body() != null) {
-                        Log.i("onSuccess", response.body().toString());
-                        String jsonresponse = response.body().toString();
-                        //Following_Fragment following_fragment = new Following_Fragment();
-                        try {
-                            //getting the whole json object from the response
-                            JSONObject obj = new JSONObject(jsonresponse);
-                            if(true){
-                                ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
-                                JSONArray dataArray  = obj.getJSONArray("body");
-
-                                for (i = 0; i < dataArray.length(); i++) {
-                                    JSONObject dataobj = dataArray.getJSONObject(i);
-                                    Suggest_Model suggest_model = new Suggest_Model();
-                                    suggest_model.setUsernamee(dataobj.getString("fullname").toString());
-                                    suggest_model.setProfile_picc(dataobj.getString("profile_pic").toString());
-                                    suggest_model.setIdd(dataobj.getString("id").toString());
-
-                                    suggestmodel.add(suggest_model);
-                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-                                    suggest_rv.setLayoutManager(layoutManager3);
-                                    Suggest_Adapter adapter = new Suggest_Adapter(getApplicationContext(),suggestmodel);
-                                    suggest_rv.setAdapter(adapter);
-                                    //following_model.add(following_model1);
 
 
-                                    //Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
-                                }
-                                for (int j = 0; j < UserDetailsArrayList.size(); j++){
-//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
-                                }
-                            }else {
-                                Toast.makeText(getApplicationContext(), obj.optString("message")+"", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    } else {
-                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.e(TAG, "onFailure: //////////////////" + t);
-
-            }
-        });
 
 
 //        apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
@@ -732,6 +661,7 @@ public class Profile_Activity extends AppCompatActivity {
 //
 //    }
 
+    @SuppressLint("NewApi")
     private void add_details(){
         Log.e(TAG, "add_details: "+GlobalVariables.getProfile_pic() );
         Glide.with(this).load(String.valueOf(GlobalVariables.getProfile_pic())).into(pro_pic);
@@ -741,10 +671,147 @@ public class Profile_Activity extends AppCompatActivity {
         followers_text.setText(String.valueOf(GlobalVariables.getFollwer()));
         following_text.setText(String.valueOf(GlobalVariables.getFollowing()));
         likes_text.setText(String.valueOf(GlobalVariables.getLike()));
+        GlobalVariables.suggestlist.add(GlobalVariables.getId());
+        suggest();
         Log.e(TAG, "add_details: "+followers_text.getText()+following_text.getText()+likes_text.getText());
 
 
 
+    }
+    void suggest(){
+        JSONObject data1 = new JSONObject();
+        try {
+
+            data1.put("username", GlobalVariables.getId());
+            Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.getId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ApiInterface.userdetail_following_url)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build();
+
+        ApiInterface api = retrofit.create(ApiInterface.class);
+        Call<String> call = api.getUserdetails_following(data1.toString());
+        call.enqueue(new Callback<String>() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+                        String jsonresponse = response.body().toString();
+                        //Following_Fragment following_fragment = new Following_Fragment();
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(jsonresponse);
+                            if(true){
+
+                                JSONArray dataArray  = obj.getJSONArray("body");
+                                for (i = 0; i < dataArray.length(); i++) {
+                                    JSONObject dataobj = dataArray.getJSONObject(i);
+                                    GlobalVariables.suggestlist.add(dataobj.getString("id"));
+                                }
+
+                            }else {
+                                Toast.makeText(getApplicationContext(), obj.optString("message")+"", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e(TAG, "onFailure: //////////////////" + t);
+
+            }
+        });
+
+        JSONObject data = new JSONObject();
+        try {
+
+            data.put("username", GlobalVariables.suggestlist.toString());
+            Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.suggestlist.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Retrofit retrofitt = new Retrofit.Builder()
+                .baseUrl(ApiInterface.userdetail_following_url)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build();
+
+        ApiInterface apii = retrofitt.create(ApiInterface.class);
+        Call<String> calll = apii.getUserdetails_suggestion(data.toString());
+        calll.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+                        String jsonresponse = response.body().toString();
+                        //Following_Fragment following_fragment = new Following_Fragment();
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(jsonresponse);
+                            if(true){
+                                ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
+                                JSONArray dataArray  = obj.getJSONArray("body");
+
+                                for (i = 0; i < dataArray.length(); i++) {
+                                    JSONObject dataobj = dataArray.getJSONObject(i);
+                                    Suggest_Model suggest_model = new Suggest_Model();
+                                    suggest_model.setUsernamee(dataobj.getString("fullname").toString());
+                                    suggest_model.setProfile_picc(dataobj.getString("profile_pic").toString());
+                                    suggest_model.setIdd(dataobj.getString("id").toString());
+
+                                    suggestmodel.add(suggest_model);
+                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                                    suggest_rv.setLayoutManager(layoutManager3);
+                                    Suggest_Adapter adapter = new Suggest_Adapter(getApplicationContext(),suggestmodel);
+                                    suggest_rv.setAdapter(adapter);
+                                    //following_model.add(following_model1);
+
+
+                                    //Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
+                                }
+                                for (int j = 0; j < UserDetailsArrayList.size(); j++){
+//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
+                                }
+                            }else {
+                                Toast.makeText(getApplicationContext(), obj.optString("message")+"", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e(TAG, "onFailure: //////////////////" + t);
+
+            }
+        });
     }
 
 
