@@ -2,6 +2,7 @@ package com.paradox.projectsp3.Followers_Following_Likes;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -84,6 +85,7 @@ public class Following_Fragment extends Fragment {
         ApiInterface api = retrofit.create(ApiInterface.class);
         Call<String> call = api.getUserdetails_following(data.toString());
         call.enqueue(new Callback<String>() {
+            @SuppressLint("NewApi")
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
@@ -106,6 +108,8 @@ public class Following_Fragment extends Fragment {
                                         following_model1.setUsername(dataobj.getString("fullname").toString());
                                         following_model1.setProfile_pic(dataobj.getString("profile_pic").toString());
                                         following_model1.setId(dataobj.getString("id").toString());
+                                        GlobalVariables.suggestlist.add(dataobj.getString("id"));
+
                                         following_model.add(following_model1);
                                         rv_following = view.findViewById(R.id.rv_following);
                                         followingAdapter = new FollowingAdapter(getContext(), following_model);
@@ -141,6 +145,7 @@ public class Following_Fragment extends Fragment {
 
 
     }
+
 
 
 

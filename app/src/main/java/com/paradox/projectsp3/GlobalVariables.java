@@ -1,9 +1,11 @@
 package com.paradox.projectsp3;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class GlobalVariables {
 
@@ -42,6 +44,8 @@ public class GlobalVariables {
 
 
     public static List<String> someList = new ArrayList<String>();
+    @SuppressLint("NewApi")
+    public static StringJoiner suggestlist = new StringJoiner(",");
 
     public String Getus_id_ofr_singl_vid() {
         return us_id_ofr_singl_vid;
