@@ -40,6 +40,7 @@ import com.paradox.projectsp3.Followers_Following_Likes.Follower_model;
 import com.paradox.projectsp3.Followers_Following_Likes.FollowersAdapter;
 import com.paradox.projectsp3.Followers_Following_Likes.Followers_Fragment;
 import com.paradox.projectsp3.Followers_Following_Likes.FollowingAdapter;
+import com.paradox.projectsp3.Followers_Following_Likes.Following_Fragment;
 import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
 import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Adapter;
 import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Model;
@@ -144,7 +145,7 @@ public class Profile_Activity extends AppCompatActivity {
         following_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Followers_Fragment.class);
+                Intent intent = new Intent(getApplicationContext(), Following_Fragment.class);
                 startActivity(intent);
             }
         });
@@ -320,9 +321,6 @@ public class Profile_Activity extends AppCompatActivity {
 
         });
 
-
-
-
         JSONObject data = new JSONObject();
         try {
 
@@ -398,11 +396,6 @@ public class Profile_Activity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
 //        apiInterface = ApiClient.getUserDetails().create(ApiInterface.class);
         userDetails = new ArrayList<>();
 
@@ -417,9 +410,6 @@ public class Profile_Activity extends AppCompatActivity {
                 myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
                 myIntent.putExtra(Intent.EXTRA_TEXT,body);
                 startActivity(Intent.createChooser(myIntent, "Share Using"));
-
-//                Intent intent = new Intent(Profile_Activity.this, ProfileMenu_Activity.class);
-//                startActivity(intent);
 
             }
         });

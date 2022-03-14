@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +16,7 @@ import com.paradox.projectsp3.R;
 
 import java.util.List;
 
-public class homeCommentAdapter extends RecyclerView.Adapter<homeCommentAdapter.myviewholder> {
+public class homeCommentAdapter extends RecyclerView.Adapter<homeCommentAdapter.myviewholder>  {
 
     Context context;
     List<HomeCommentModel> homeCommentModelList;
@@ -45,7 +47,7 @@ public class homeCommentAdapter extends RecyclerView.Adapter<homeCommentAdapter.
         return homeCommentModelList.size();
     }
 
-    public class myviewholder extends RecyclerView.ViewHolder {
+    public class myviewholder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
 
         ImageView user_pic;
         TextView username,message;
@@ -56,6 +58,17 @@ public class homeCommentAdapter extends RecyclerView.Adapter<homeCommentAdapter.
             user_pic = itemView.findViewById(R.id.user_pic);
             username = itemView.findViewById(R.id.username);
             message = itemView.findViewById(R.id.message);
+
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            homeCommentModelList.remove(getAdapterPosition());
+            notifyItemRemoved(getAdapterPosition());
+
+            Toast.makeText(context, "Comment Deleted", Toast.LENGTH_SHORT).show();
+
+            return false;
         }
     }
 }

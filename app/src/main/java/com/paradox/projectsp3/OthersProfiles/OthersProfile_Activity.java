@@ -49,7 +49,6 @@ public class OthersProfile_Activity extends AppCompatActivity {
 
     SwipeRefreshLayout refrestly;
 
-
     RecyclerView o_recyclerview;
     TextView following_text,followers_text,likes_text,pro_name,bio;
     int i;

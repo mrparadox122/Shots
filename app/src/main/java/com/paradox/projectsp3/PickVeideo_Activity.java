@@ -117,7 +117,7 @@ public class PickVeideo_Activity extends AppCompatActivity {
 //                }
 //            });
 
-        
+
 //            v_video.setVisibility(View.VISIBLE);
 //            v_video.setVideoURI(videouri);
 //            v_video.start();

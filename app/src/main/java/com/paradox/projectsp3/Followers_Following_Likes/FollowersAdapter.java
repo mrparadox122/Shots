@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,12 +46,10 @@ public class FollowersAdapter  extends RecyclerView.Adapter<FollowersAdapter.myv
         holder.usenname_txt.setText(follower_model.get(position).getUsername());
         Glide.with(context).load(follower_model.get(position).getProfile_pic()).into(holder.pic_img);
 
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.remove_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                Toast.makeText(context, "Click on Remove", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -63,14 +63,15 @@ public class FollowersAdapter  extends RecyclerView.Adapter<FollowersAdapter.myv
     public class myviewHolder extends RecyclerView.ViewHolder {
 
         TextView usenname_txt;
+        Button remove_btn;
         ImageView pic_img;
-
 
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
 
             usenname_txt = itemView.findViewById(R.id.usenname_txt);
             pic_img = itemView.findViewById(R.id.pic_img);
+            remove_btn = itemView.findViewById(R.id.remove_btn);
 
 
 
