@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <com.wonderkiln.camerakit.CameraView
             android:id="@+id/camera"
             android:layout_width="match_parent"
@@ -30,19 +29,30 @@
             android:layout_height="20dp"
             android:layout_margin="5dp">
 
+            <com.rachitgoyal.durationitem.DurationView
+                android:id="@+id/segmented_progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:divisions="30"
+                app:progressBarBackgroundColor="#b4b4b4"
+                app:progressBarColor="#3d70d6"
+                app:dividerColor="#ffffff"
+                app:dividerWidth="0dp"
+                app:isDividerEnabled="true"
+                app:cornerRadius="4dp"/>
 
         </RelativeLayout>
 
         <ImageButton
+            android:id="@+id/Goback"
             android:layout_width="55dp"
             android:layout_height="55dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/transparent"
             android:padding="5dp"
             android:scaleType="fitCenter"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/Goback"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_white_cross"/>
+            android:src="@drawable/ic_white_cross" />
 
         <!--        <LinearLayout-->
         <!--            android:id="@+id/add_sound_layout"-->
