@@ -40,7 +40,7 @@ public class GlobalVariables {
     static int following;
     static int follwer;
     static int like;
-   public static Context contextl;
+    public static Context contextl;
 
 
     public static List<String> someList = new ArrayList<String>();

@@ -319,10 +319,13 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(checklike)
                 {
                     JSONObject dislike = new JSONObject();
                     try {
+                        dislike.put("us_id_who_liked",GlobalVariables.getId());
+                        dislike.put("uploader_us_id",us_id_to_c);
                         dislike.put("video_id", video_id);
                         dislike.put("flag", "1");
                     } catch (JSONException e) {
@@ -337,16 +340,18 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                     //get client
                     ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
-                    call_like.enqueue(new Callback<ResponseBody>() {
+                    Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
+                    call_like.enqueue(new Callback<String>() {
                         @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        public void onResponse(Call<String> call, Response<String> response) {
                           //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+                            Log.e(TAG, "onResponse: "+response.body()+GlobalVariables.getId());
+
                             likesn.setText(String.valueOf(likesno));
                         }
 
                         @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        public void onFailure(Call<String> call, Throwable t) {
 //                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
 
                         }
@@ -354,10 +359,12 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                     like.setImageResource(R.drawable.ic_icon_material_favorite_red);
                     checklike=false;
                 }
-                else if (!checklike)
+                else if (checklike!=true)
                 {
                     JSONObject dislike = new JSONObject();
                     try {
+                        dislike.put("us_id_who_liked",GlobalVariables.getId());
+                        dislike.put("uploader_us_id",us_id_to_c);
                         dislike.put("video_id", video_id);
                         dislike.put("flag", "4");
                     } catch (JSONException e) {
@@ -371,15 +378,16 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                     //get client
                     ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
-                    call_like.enqueue(new Callback<ResponseBody>() {
+                    Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
+                    call_like.enqueue(new Callback<String>() {
                         @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        public void onResponse(Call<String> call, Response<String> response) {
                              likesn.setText(String.valueOf(likesnominus));
+                            Log.e(TAG, "onResponse: "+response.body()+GlobalVariables.getId() );
                         }
 
                         @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        public void onFailure(Call<String> call, Throwable t) {
                             Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
 
                         }
@@ -418,10 +426,10 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
                 //get client
                 ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-                Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
-                call_like.enqueue(new Callback<ResponseBody>() {
+                Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
+                call_like.enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    public void onResponse(Call<String> call, Response<String> response) {
                         //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
                         if (response.isSuccessful()){
                             shareno+=1;
@@ -431,7 +439,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    public void onFailure(Call<String> call, Throwable t) {
 //                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
 
                     }
@@ -550,6 +558,11 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
 
 
+
+
+
+
+
         mediaObjectUrl = mediaObject.getMedia_url();
         likesn.setText(mediaObject.getLikes());
         likesnominus = Integer.parseInt(mediaObject.getLikes());
@@ -608,18 +621,56 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
         //get client
         ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-        Call<ResponseBody> call = apiInterface.getStringScalar(jsonObject.toString());
-        call.enqueue(new Callback<ResponseBody>() {
+        Call<String> call = apiInterface.getStringScalar(jsonObject.toString());
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                  views.setText(mediaObject.getViews());
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
                 Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_LONG).show();
             }
 
+        });
+
+        JSONObject dislike = new JSONObject();
+        try {
+            dislike.put("us_id_who_liked",GlobalVariables.getId());
+            dislike.put("uploader_us_id",mediaObject.getUser_id());
+            dislike.put("video_id", video_id);
+            dislike.put("flag", "8");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Retrofit.Builder retrofit89 = new Retrofit.Builder()
+                .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit29 = retrofit89.build();
+
+        //get client
+        ApiInterface apiInterface9 = retrofit29.create(ApiInterface.class);
+        Call<String> call_like = apiInterface9.getStringScalar(dislike.toString());
+        call_like.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.body().equals("dfsrx")){
+
+                    like.setImageResource(R.drawable.ic_icon_material_favorite_red);
+                    checklike=false;
+                }
+                else {
+                    checklike=true;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+
+            }
         });
 
 

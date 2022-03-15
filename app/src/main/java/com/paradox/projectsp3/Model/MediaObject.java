@@ -6,6 +6,9 @@ public class MediaObject {
 
     private String title,video_id,description,date,user_id,post_categories,post_id,views,user_name,url,thumbnail,likes,comments,shares;
 
+    public MediaObject(){
+
+    }
 
     public MediaObject(String title,String video_id,String description,String date,String user_id,String post_categories,String post_id,String view,String user_name,String media_url,String thumbnail)
     {

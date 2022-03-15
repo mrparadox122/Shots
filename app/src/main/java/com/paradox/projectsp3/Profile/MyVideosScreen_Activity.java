@@ -217,10 +217,10 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
                     //get client
                     ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
-                    call_like.enqueue(new Callback<ResponseBody>() {
+                    Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
+                    call_like.enqueue(new Callback<String>() {
                         @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        public void onResponse(Call<String> call, Response<String> response) {
                             //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
                             if (response.isSuccessful()){
                                 likesno+=1;
@@ -231,7 +231,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        public void onFailure(Call<String> call, Throwable t) {
 //                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
 
                         }
@@ -256,10 +256,10 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
                     //get client
                     ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-                    Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
-                    call_like.enqueue(new Callback<ResponseBody>() {
+                    Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
+                    call_like.enqueue(new Callback<String>() {
                         @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        public void onResponse(Call<String> call, Response<String> response) {
                             if (response.isSuccessful()){
                                 likesno-=1;
                                 Toast.makeText(getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
@@ -269,7 +269,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        public void onFailure(Call<String> call, Throwable t) {
                             Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
 
                         }
@@ -334,10 +334,10 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 
                 //get client
                 ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-                Call<ResponseBody> call_like = apiInterface.getStringScalar(dislike.toString());
-                call_like.enqueue(new Callback<ResponseBody>() {
+                Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
+                call_like.enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    public void onResponse(Call<String> call, Response<String> response) {
                         //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
                         if (response.isSuccessful()){
                             shareno+=1;
@@ -347,7 +347,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    public void onFailure(Call<String> call, Throwable t) {
 //                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
 
                     }
