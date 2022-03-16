@@ -108,13 +108,11 @@ public class HomeActivty extends AppCompatActivity {
         comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 comment.setImageResource(R.drawable.aaa);
                 Ghar.setImageResource(R.drawable.ic_icon_feather_home);
-
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
                 profile.setImageResource(R.drawable.ic_icon_awesome_user);
+
 
                 Intent intent=new Intent(HomeActivty.this,MessageMainActivity.class);
                 startActivity(intent);
@@ -155,8 +153,6 @@ public class HomeActivty extends AppCompatActivity {
     }
 
     private void init(){
-
-
         //////////////////////////////////////////////////////////////
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT< 21){
             setWindowFlag(this,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,true);
@@ -169,10 +165,7 @@ public class HomeActivty extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
-
         ///// RecyclerView//////////
-
-
 
       recyclerview = (VideoPlayerRecyclerView) findViewById(R.id.recyclerview);
    LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -211,7 +204,6 @@ public class HomeActivty extends AppCompatActivity {
                 }
 
             }
-
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
                 Toast.makeText(HomeActivty.this,"Network Error.",Toast.LENGTH_SHORT).show();

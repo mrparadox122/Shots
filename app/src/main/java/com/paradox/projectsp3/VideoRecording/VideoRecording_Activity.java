@@ -53,7 +53,6 @@ public class VideoRecording_Activity extends AppCompatActivity  {
 
     private static final String TAG = "Video_Recoder_A";
 
-
     CameraView cameraView;
     int number = 0;
 
@@ -105,13 +104,8 @@ public class VideoRecording_Activity extends AppCompatActivity  {
 
         flash_btn = findViewById(R.id.flash_camera);
 
-
-
-
-        add_sound_txt = findViewById(R.id.add_sound_txt);
-
-
         
+        add_sound_txt = findViewById(R.id.add_sound_txt);
 
         Intent intent = getIntent();
         if (intent.hasExtra("sound_name")) {

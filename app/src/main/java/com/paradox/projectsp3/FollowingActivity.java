@@ -37,6 +37,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FollowingActivity extends AppCompatActivity {
+
+
     private ArrayList<MediaObject> mediaObjectList=new ArrayList<>();
     private VideoPlayerRecyclerView  recyclerview;
     public static ApiInterface apiInterface;
@@ -86,11 +88,6 @@ public class FollowingActivity extends AppCompatActivity {
         mSnapHelper.attachToRecyclerView(recyclerview);
 
         LoadAllPosts();
-
-
-
-
-
     }
 
     private void LoadAllPosts() {
