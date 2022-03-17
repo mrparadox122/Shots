@@ -29,17 +29,17 @@
             android:layout_height="20dp"
             android:layout_margin="5dp">
 
-            <com.rachitgoyal.durationitem.DurationView
-                android:id="@+id/segmented_progress_bar"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                app:divisions="30"
-                app:progressBarBackgroundColor="#b4b4b4"
-                app:progressBarColor="#3d70d6"
-                app:dividerColor="#ffffff"
-                app:dividerWidth="0dp"
-                app:isDividerEnabled="true"
-                app:cornerRadius="4dp"/>
+<!--            <com.rachitgoyal.durationitem.DurationView-->
+<!--                android:id="@+id/segmented_progress_bar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="10dp"-->
+<!--                app:divisions="30"-->
+<!--                app:progressBarBackgroundColor="#b4b4b4"-->
+<!--                app:progressBarColor="#3d70d6"-->
+<!--                app:dividerColor="#ffffff"-->
+<!--                app:dividerWidth="0dp"-->
+<!--                app:isDividerEnabled="true"-->
+<!--                app:cornerRadius="4dp"/>-->
 
         </RelativeLayout>
 
