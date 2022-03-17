@@ -179,7 +179,6 @@ public class HomeActivty extends AppCompatActivity {
 
         SnapHelper mSnapHelper = new PagerSnapHelper();
         mSnapHelper.attachToRecyclerView(recyclerview);
-
         LoadAllPosts();
 
     }
