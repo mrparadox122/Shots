@@ -52,34 +52,25 @@ import java.util.List;
 public class VideoRecording_Activity extends AppCompatActivity  {
 
     private static final String TAG = "Video_Recoder_A";
-
     CameraView cameraView;
     int number = 0;
-
     ArrayList<String> videopaths = new ArrayList<>();
 
     ImageButton record_image;
     ImageButton done_btn;
     boolean is_recording = false;
     boolean is_flash_on = false;
-
     ImageButton flash_btn;
-
     LinearLayout camera_options, upload_layout;
-
     ImageButton rotate_camera, cut_video_btn;
-
 
     public static int Sounds_list_Request_code = 1;
     TextView add_sound_txt;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_recording);
-
-
 
 //        Variables.selected_sound_id = "null";
 //        Variables.recording_duration = Variables.max_recording_duration;
@@ -87,21 +78,15 @@ public class VideoRecording_Activity extends AppCompatActivity  {
         cameraView = findViewById(R.id.camera);
         camera_options = findViewById(R.id.camera_options);
         upload_layout = findViewById(R.id.upload_layout);
-
         record_image = findViewById(R.id.record_image);
-
 //        findViewById(R.id.upload_layout).setOnClickListener(this);
 
         cut_video_btn = findViewById(R.id.cut_video_btn);
         cut_video_btn.setVisibility(View.GONE);
-
-
         done_btn = findViewById(R.id.done);
         done_btn.setEnabled(false);
 
-
         rotate_camera = findViewById(R.id.rotate_camera);
-
         flash_btn = findViewById(R.id.flash_camera);
 
         
@@ -131,7 +116,6 @@ public class VideoRecording_Activity extends AppCompatActivity  {
 
 
     }
-
 
     public void initlize_Video_progress() {
 //        sec_passed = 0;
@@ -655,8 +639,6 @@ public class VideoRecording_Activity extends AppCompatActivity  {
 //
 //    }
 
-
-
     // this will play the sound with the video when we select the audio
     MediaPlayer audio;
 
@@ -667,12 +649,6 @@ public class VideoRecording_Activity extends AppCompatActivity  {
         super.onResume();
         cameraView.start();
     }
-
-
-
-
-
-
 
     // this will delete all the video parts that is create during priviously created video
 

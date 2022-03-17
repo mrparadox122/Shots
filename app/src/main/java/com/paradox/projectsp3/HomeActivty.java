@@ -40,6 +40,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 
+import com.paradox.projectsp3.HomeFollowing.FollowingActivity;
 import com.paradox.projectsp3.HomeRecyclerView.VerticalSpacingItemDecorator;
 import com.paradox.projectsp3.HomeRecyclerView.VideoPlayerRecyclerAdapter;
 import com.paradox.projectsp3.HomeRecyclerView.VideoPlayerRecyclerView;
@@ -249,7 +250,7 @@ public class HomeActivty extends AppCompatActivity {
 
 
     public void following(View view) {
-        Intent intent=new Intent(HomeActivty.this,FollowingActivity.class);
+        Intent intent=new Intent(HomeActivty.this, FollowingActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
 

@@ -142,7 +142,7 @@
             android:exported="false"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".FollowingActivity"
+            android:name=".HomeFollowing.FollowingActivity"
             android:exported="false"
             android:screenOrientation="nosensor" />
 

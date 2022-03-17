@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true"
     android:background="#FFC0B4"
-    tools:context=".FollowingActivity">
+    tools:context=".HomeFollowing.FollowingActivity">
 
     <com.paradox.projectsp3.HomeRecyclerView.VideoPlayerRecyclerView
         android:id="@+id/homefollowing_recyclerview"
