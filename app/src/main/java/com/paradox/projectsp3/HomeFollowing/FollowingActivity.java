@@ -28,19 +28,16 @@ import java.util.List;
 public class FollowingActivity extends AppCompatActivity {
 
 
-
-
     private VideoPlayerRecyclerView  homefollowing_recyclerview;
     List<homeFollwoingmodel>homeFollwoingmodelList;
+    homeFollowingAdapter homeFollowingAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_following);
         super.onCreate(savedInstanceState);
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
-//        apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
         init();
 
         homefollowing_recyclerview = findViewById(R.id.homefollowing_recyclerview);
@@ -66,8 +63,8 @@ public class FollowingActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager3 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         homefollowing_recyclerview.setLayoutManager(layoutManager3);
-        homeFollowingAdapter adapter = new homeFollowingAdapter(this, homeFollwoingmodelList);
-        homefollowing_recyclerview.setAdapter(adapter);
+        homeFollowingAdapter  = new homeFollowingAdapter(this, homeFollwoingmodelList);
+        homefollowing_recyclerview.setAdapter(homeFollowingAdapter);
 
 
 //        homefollowing_recyclerview = (VideoPlayerRecyclerView) findViewById(R.id.homefollowing_recyclerview);
