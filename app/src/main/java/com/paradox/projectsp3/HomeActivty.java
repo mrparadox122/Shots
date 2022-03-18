@@ -49,6 +49,7 @@ import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
 import com.paradox.projectsp3.Responses.Users;
 import com.paradox.projectsp3.VideoEditorFolder.PortraitCameraActivity;
+import com.paradox.projectsp3.VideoRecording.VideoRecording_Activity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

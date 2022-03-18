@@ -71,8 +71,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     private TextView addSound;
     Dialog dialogSetting;
     CircleImageView showVideoPath;
-
-    private ImageView recordBtn,pauseBtn,Face,Edit,Timer,setting,Pause_video,Play_video,Photo_filter,btn_switch_camera;
+     ImageView recordBtn,pauseBtn,Face,Edit,Timer,setting,Pause_video,Play_video,Photo_filter,btn_switch_camera;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
     protected int cameraHeight = 720;
@@ -82,12 +81,10 @@ public class BaseCameraActivity extends AppCompatActivity {
     TextView Time15,Time30,Time60;
     TextView sound_button;
     private MediaPlayer mp;
-
     private boolean toggleClick = false;
-
     private ListView lv;
-
     private String sound_url=null, sound_title=null;
+
 
     protected void onCreateActivity() {
         getSupportActionBar().hide();
@@ -107,6 +104,7 @@ public class BaseCameraActivity extends AppCompatActivity {
         Pause_video=findViewById(R.id.pause_video);
         Play_video=findViewById(R.id.play_video);
         final boolean[] timer = {false};
+
         Timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -204,16 +202,16 @@ public class BaseCameraActivity extends AppCompatActivity {
         }
 
 
-        addSound.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(BaseCameraActivity.this, SoundActivity.class);
-                startActivity(intent);
-                Animatoo.animateCard(BaseCameraActivity.this);
-                finish();
-
-            }
-        });
+//        addSound.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(BaseCameraActivity.this, SoundActivity.class);
+//                startActivity(intent);
+//                Animatoo.animateCard(BaseCameraActivity.this);
+//                finish();
+//
+//            }
+//        });
 
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,30 +239,29 @@ public class BaseCameraActivity extends AppCompatActivity {
         });
 
 
-        Face.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(time15[0]||time30[0]| time60[0]) {
-                Intent intent=new Intent(BaseCameraActivity.this, FaceFilterActivity.class);
-                intent.putExtra("time15",time15[0]);
-                intent.putExtra("time30",time15[0]);
-                intent.putExtra("time60",time15[0]);
-                Animatoo.animateSlideUp(BaseCameraActivity.this);
-                startActivity(intent);
-                finish();
-            }
-
-                else
-                {
-                    Toast toast=Toast.makeText(BaseCameraActivity.this," Plz Select Time",Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER,0,0);
-                    toast.show();
-                }
-
-            }
-
-        });
+//        Face.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(time15[0]||time30[0]| time60[0]) {
+//                Intent intent=new Intent(BaseCameraActivity.this, FaceFilterActivity.class);
+//                intent.putExtra("time15",time15[0]);
+//                intent.putExtra("time30",time15[0]);
+//                intent.putExtra("time60",time15[0]);
+//                Animatoo.animateSlideUp(BaseCameraActivity.this);
+//                startActivity(intent);
+//                finish();
+//            }
+//
+//                else
+//                {
+//                    Toast toast=Toast.makeText(BaseCameraActivity.this," Plz Select Time",Toast.LENGTH_SHORT);
+//                    toast.setGravity(Gravity.CENTER,0,0);
+//                    toast.show();
+//                }
+//
+//            }
+//
+//        });
 
 
 
@@ -316,7 +313,7 @@ public class BaseCameraActivity extends AppCompatActivity {
 
                 
                 recordBtn.setVisibility(View.GONE);
-                Face.setVisibility(View.VISIBLE);
+//                Face.setVisibility(View.VISIBLE);
                 //Edit.setVisibility(View.VISIBLE);
                 pauseBtn.setVisibility(View.VISIBLE);
                 Toast.makeText(this, "Recording Started", Toast.LENGTH_SHORT).show();
@@ -463,10 +460,9 @@ public class BaseCameraActivity extends AppCompatActivity {
             GPUCameraRecorder.stop();
             recordBtn.setVisibility(View.VISIBLE);
             pauseBtn.setVisibility(View.GONE);
-            Face.setVisibility(View.VISIBLE);
+//            Face.setVisibility(View.VISIBLE);
 //                            Edit.setVisibility(View.VISIBLE);
             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
-
             sound_button.setText("Add Sound");
         });
         findViewById(R.id.btn_flash).setOnClickListener(v -> {
@@ -615,10 +611,10 @@ public class BaseCameraActivity extends AppCompatActivity {
                         toggleClick = false;
                     }
 
-                    @Override
-                    public void onVideoFileReady() {
-
-                    }
+//                    @Override
+//                    public void onVideoFileReady() {
+//
+//                    }
                 })
                 .videoSize(videoWidth, videoHeight)
                 .cameraSize(cameraWidth, cameraHeight)

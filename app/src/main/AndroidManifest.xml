@@ -25,6 +25,21 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SoundsList.SoundList_Main_A"
+            android:exported="false" />
+        <activity
+            android:name=".VideoRecording.Post_Video_A"
+            android:exported="false" />
+        <activity
+            android:name=".VideoRecording.GallerySelectedVideo_A"
+            android:exported="false" />
+        <activity
+            android:name=".VideoRecording.Preview_Video_A"
+            android:exported="false" />
+        <activity
+            android:name=".CreateShotsCamera.Camera_Activity"
+            android:exported="false" />
+        <activity
             android:name=".VideoRecording.VideoRecording_Activity"
             android:exported="false" />
         <activity
@@ -50,10 +65,9 @@
             android:exported="false" />
         <activity
             android:name=".ProfileMenu_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Practice_Following.MyBase_Activity"
-            android:exported="false" />
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Practice_Following.MyBase_Activity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".Followers_Following_Likes.BaseActivity"
             android:exported="false" />
@@ -92,10 +106,9 @@
             android:exported="false" />
         <activity
             android:name=".ShareBottomSheetActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Comments.Comment"
-            android:exported="false" />
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Comments.Comment" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".ForgotPassword_Activity"
             android:exported="false" />
@@ -176,24 +189,20 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
-        <activity
-            android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.APP_BROWSER" />
-
-                <data android:scheme="@string/fb_login_protocol_scheme" />
-            </intent-filter>
-        </activity>
-
+        </activity> <!-- <activity -->
+        <!-- android:name="com.facebook.FacebookActivity" -->
+        <!-- android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" -->
+        <!-- android:label="@string/app_name" /> -->
+        <!-- <activity -->
+        <!-- android:name="com.facebook.CustomTabActivity" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW" /> -->
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+        <!-- <category android:name="android.intent.category.APP_BROWSER" /> -->
+        <!-- <data android:scheme="@string/fb_login_protocol_scheme" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />

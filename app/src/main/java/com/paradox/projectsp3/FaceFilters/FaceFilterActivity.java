@@ -129,10 +129,8 @@ public class FaceFilterActivity extends AppCompatActivity {
     private MediaProjection mMediaProjection;
     private VirtualDisplay mVirtualDisplay;
     private MediaProjectionCallback mMediaProjectionCallback;
-
     private MediaRecorder mMediaRecorder;
     private Object Handler;
-
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -141,7 +139,6 @@ public class FaceFilterActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-
         setContentView(R.layout.activity_face_filter);
 
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
@@ -151,33 +148,15 @@ public class FaceFilterActivity extends AppCompatActivity {
         cameraRecord =  findViewById(R.id.recoredbtn);
         pause = findViewById(R.id.pause);
 
-
-
         ///////screen record////////////
         DisplayMetrics metrics=new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         mScreenDensity =metrics.densityDpi;
 
 
-//
-
         //prepareRecorder();
-
-
         mProjectionManager =(MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
-
-
-
         mMediaProjectionCallback=new MediaProjectionCallback();
-
-
-
-
-
-
-
-
-
         ImageButton face = (ImageButton) findViewById(R.id.face);
         face.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
