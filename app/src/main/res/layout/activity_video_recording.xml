@@ -25,8 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_margin="5dp">
-
-
             <com.paradox.projectsp3.SegmentProgress.SegmentedProgressBar
                 android:id="@+id/video_progress"
                 android:layout_width="match_parent"
@@ -34,12 +32,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:background="@color/fifty_transparent_black"
-
                 />
 
         </RelativeLayout>
-
-
 
         <LinearLayout
             android:id="@+id/add_sound_layout"

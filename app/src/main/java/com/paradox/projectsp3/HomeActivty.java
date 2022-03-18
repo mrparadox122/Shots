@@ -293,7 +293,7 @@ public class HomeActivty extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(HomeActivty.this, VideoRecording_Activity.class);
+                Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
 

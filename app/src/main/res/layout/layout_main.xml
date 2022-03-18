@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-    android:background="#FFC0B4"
-    >
+    android:background="#FFC0B4">
 
     <FrameLayout
         android:id="@+id/media_container"
@@ -34,7 +33,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
-
 
             <FrameLayout
                 android:id="@+id/commentLayout"

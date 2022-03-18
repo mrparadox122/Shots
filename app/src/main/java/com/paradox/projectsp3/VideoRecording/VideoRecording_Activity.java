@@ -209,7 +209,7 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
     public void check_done_btn_enable() {
         if (sec_passed > (Variables.min_time_recording / 1000)) {
-            done_btn.setBackgroundResource(R.drawable.ic_done);
+            done_btn.setBackgroundResource(R.drawable.ic_not_done);
             done_btn.setEnabled(true);
             Log.e(TAG, "Check_done_btn_enable: done");
         } else {
