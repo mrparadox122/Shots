@@ -716,6 +716,7 @@ public class Profile_Activity extends AppCompatActivity {
                                 for (i = 0; i < dataArray.length(); i++) {
                                     JSONObject dataobj = dataArray.getJSONObject(i);
                                     GlobalVariables.suggestlist.add(dataobj.getString("id"));
+                                    GlobalVariables.folglist.add(dataobj.getString("id"));
                                 }
 
                             }else {

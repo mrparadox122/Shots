@@ -46,6 +46,8 @@ public class GlobalVariables {
     public static List<String> someList = new ArrayList<String>();
     @SuppressLint("NewApi")
     public static StringJoiner suggestlist = new StringJoiner(",");
+    @SuppressLint("NewApi")
+    public static StringJoiner folglist = new StringJoiner(",");
 
     public String Getus_id_ofr_singl_vid() {
         return us_id_ofr_singl_vid;

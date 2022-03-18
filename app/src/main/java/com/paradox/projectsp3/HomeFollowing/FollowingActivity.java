@@ -1,10 +1,12 @@
 package com.paradox.projectsp3.HomeFollowing;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -20,13 +22,13 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
-import com.paradox.projectsp3.Followers_Following_Likes.FollowersAdapter;
+import com.google.gson.Gson;
+import com.paradox.projectsp3.Followers_Following_Likes.Following_Model;
+import com.paradox.projectsp3.Followers_Following_Likes.Suggest_Model;
 import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.HomeRecyclerView.VideoPlayerRecyclerView;
 import com.paradox.projectsp3.MessageMainActivity;
-import com.paradox.projectsp3.Profile.MyVideosScreen_Activity;
-import com.paradox.projectsp3.Profile.P_Commnets;
 import com.paradox.projectsp3.Profile_Activity;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
@@ -37,21 +39,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class FollowingActivity extends AppCompatActivity {
 
 
-    private VideoPlayerRecyclerView  homefollowing_recyclerview;
-    List<homeFollwoingmodel>homeFollwoingmodelList;
+    private RecyclerView homefollowing_recyclerview;
+    List<HomeFollwoingmodel>homeFollwoingmodelList;
     homeFollowingAdapter homeFollowingAdapter;
+    int i;
 
     public boolean user = true;
 
@@ -60,6 +63,8 @@ public class FollowingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_following);
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+
+        homeFollwoingmodelList = new ArrayList<>();
 
         init();
 
@@ -158,165 +163,191 @@ public class FollowingActivity extends AppCompatActivity {
         }
 
 
-        Retrofit.Builder retrofit1 = new Retrofit.Builder()
-                .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+
+        JSONObject data = new JSONObject();
+        try {
+
+            data.put("username", GlobalVariables.suggestlist.toString());
+            Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.suggestlist.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Retrofit retrofitt = new Retrofit.Builder()
+                .baseUrl(ApiInterface.userdetail_following_url)
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create());
-        Retrofit retrofit3 = retrofit1.build();
+                .build();
 
-
-        //get client
-        ApiInterface apiInterface1 = retrofit3.create(ApiInterface.class);
-        Call<String> calll = apiInterface1.getStringScalar_for_hm(jsonObject1.toString());
+        ApiInterface apii = retrofitt.create(ApiInterface.class);
+        Call<String> calll = apii.getUserdetails_suggestion(data.toString());
         calll.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Log.e(ContentValues.TAG, "onResponse: "+response.body() );
+                Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+                        String jsonresponse = response.body().toString();
+                        //Following_Fragment following_fragment = new Following_Fragment();
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(jsonresponse);
+                            if(true){
+                                ArrayList<Following_Model> UserDetailsArrayList = new ArrayList<>();
+                                JSONArray dataArray  = obj.getJSONArray("body");
+
+                                for (i = 0; i < dataArray.length(); i++) {
+                                    JSONObject dataobj = dataArray.getJSONObject(i);
+                                    Suggest_Model suggest_model = new Suggest_Model();
+                                    HomeFollwoingmodel homeFollwoingmodel = new HomeFollwoingmodel();
+                                    homeFollwoingmodel.setComments(dataobj.getString("comments"));
+                                    homeFollwoingmodel.setDescription(dataobj.getString("description"));
+                                    homeFollwoingmodel.setProfile_pic(dataobj.getString("profile_pic"));
+                                    homeFollwoingmodel.setMedia_url(dataobj.getString("url"));
+                                    homeFollwoingmodel.setLikes(dataobj.getString("likes"));
+                                    homeFollwoingmodel.setShares(dataobj.getString("shares"));
+                                    homeFollwoingmodel.setViews(dataobj.getString("views"));
+                                    homeFollwoingmodel.setPost_categories(dataobj.getString("catergory_name"));
+                                    homeFollwoingmodel.setUrl(dataobj.getString("url"));
+                                    homeFollwoingmodel.setUser_name(dataobj.getString("fullname"));
+                                    homeFollwoingmodel.setPost_id(dataobj.getString("post_id"));
+                                    homeFollwoingmodel.setUser_id(dataobj.getString("user_id"));
+                                    homeFollwoingmodel.setVideo_id(dataobj.getString("videoid"));
+                                    homeFollwoingmodelList.add(homeFollwoingmodel);
+                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                                    homefollowing_recyclerview.setLayoutManager(layoutManager3);
+                                    homeFollowingAdapter  = new homeFollowingAdapter(getApplicationContext(), homeFollwoingmodelList);
+                                    homefollowing_recyclerview.setAdapter(homeFollowingAdapter);
+
+//                                    suggestmodel.add(suggest_model);
+//                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+//                                    suggest_rv.setLayoutManager(layoutManager3);
+//                                    Suggest_Adapter adapter = new Suggest_Adapter(getApplicationContext(),suggestmodel);
+//                                    suggest_rv.setAdapter(adapter);
+                                    //following_model.add(following_model1);
 
 
-                if (response.body() != null) {
-                    Log.i("onSuccess", response.body().toString());
-                    String jsonresponse = response.body().toString();
-
-                    try {
-                        //getting the whole json object from the response
-                        JSONObject obj = new JSONObject(jsonresponse);
-                        if (true) {
-
-                            JSONArray dataArray = obj.getJSONArray("body");
-                            for (i = 0; i < dataArray.length(); i++) {
-                                JSONObject dataobj = dataArray.getJSONObject(i);
-                                username.setText(dataobj.getString("fullname"));
-                                Glide.with(getApplicationContext()).load(dataobj.getString("profile_pic")).into(user_pic);
-
-
-
+                                    //Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
+                                }
+                                for (int j = 0; j < UserDetailsArrayList.size(); j++){
+//                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
+                                }
+                            }else {
+                                Toast.makeText(getApplicationContext(), obj.optString("message")+"", Toast.LENGTH_SHORT).show();
                             }
-
-                        } else {
-
-
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
-
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_LONG).show();
-            }
+                Log.e(TAG, "onFailure: //////////////////" + t);
 
-        });
-
-
-
-        like_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(checklike)
-                {
-                    JSONObject dislike = new JSONObject();
-                    try {
-                        dislike.put("video_id", GlobalVariables.getVideoid());
-                        dislike.put("flag", "1");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Retrofit.Builder retrofit = new Retrofit.Builder()
-                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
-                            .addConverterFactory(ScalarsConverterFactory.create())
-                            .addConverterFactory(GsonConverterFactory.create());
-                    Retrofit retrofit2 = retrofit.build();
-
-
-                    //get client
-                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-                    Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
-                    call_like.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
-                            if (response.isSuccessful()){
-                                likesno+=1;
-                                like_txt.setText(String.valueOf(likesno));
-                            }
-
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
-//                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
-
-                        }
-                    });
-                    like_image.setImageResource(R.drawable.ic_icon_material_favorite_red);
-                    checklike=false;
-                }
-                else if (!checklike)
-                {
-                    JSONObject dislike = new JSONObject();
-                    try {
-                        dislike.put("video_id", GlobalVariables.getVideoid());
-                        dislike.put("flag", "4");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Retrofit.Builder retrofit = new Retrofit.Builder()
-                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
-                            .addConverterFactory(ScalarsConverterFactory.create())
-                            .addConverterFactory(GsonConverterFactory.create());
-                    Retrofit retrofit2 = retrofit.build();
-
-                    //get client
-                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-                    Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
-                    call_like.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            if (response.isSuccessful()){
-                                likesno-=1;
-                                Toast.makeText(getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
-                                like_txt.setText(String.valueOf(likesno));
-                            }
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
-
-                        }
-                    });
-
-                    like_image.setImageResource(R.drawable.ic_icon_material_favorite);
-                    checklike=true;
-                }
             }
         });
 
 
-        comment_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyVideosScreen_Activity.this, P_Commnets.class);
-                startActivity(intent);
 
+//        like_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(checklike)
+//                {
+//                    JSONObject dislike = new JSONObject();
+//                    try {
+//                        dislike.put("video_id", GlobalVariables.getVideoid());
+//                        dislike.put("flag", "1");
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Retrofit.Builder retrofit = new Retrofit.Builder()
+//                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+//                            .addConverterFactory(ScalarsConverterFactory.create())
+//                            .addConverterFactory(GsonConverterFactory.create());
+//                    Retrofit retrofit2 = retrofit.build();
+//
+//
+//                    //get client
+//                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+//                    Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
+//                    call_like.enqueue(new Callback<String>() {
+//                        @Override
+//                        public void onResponse(Call<String> call, Response<String> response) {
+//                            //Toast.makeText(context.getApplicationContext(), "//"+"liked"+response, Toast.LENGTH_SHORT).show();
+//                            if (response.isSuccessful()){
+//                                likesno+=1;
+//                                like_txt.setText(String.valueOf(likesno));
+//                            }
+//
+//
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<String> call, Throwable t) {
+////                            Toast.makeText(context.getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    });
+//                    like_image.setImageResource(R.drawable.ic_icon_material_favorite_red);
+//                    checklike=false;
+//                }
+//                else if (!checklike)
+//                {
+//                    JSONObject dislike = new JSONObject();
+//                    try {
+//                        dislike.put("video_id", GlobalVariables.getVideoid());
+//                        dislike.put("flag", "4");
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Retrofit.Builder retrofit = new Retrofit.Builder()
+//                            .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+//                            .addConverterFactory(ScalarsConverterFactory.create())
+//                            .addConverterFactory(GsonConverterFactory.create());
+//                    Retrofit retrofit2 = retrofit.build();
+//
+//                    //get client
+//                    ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
+//                    Call<String> call_like = apiInterface.getStringScalar(dislike.toString());
+//                    call_like.enqueue(new Callback<String>() {
+//                        @Override
+//                        public void onResponse(Call<String> call, Response<String> response) {
+//                            if (response.isSuccessful()){
+//                                likesno-=1;
+//                                Toast.makeText(getApplicationContext(), "//"+"disliked"+response, Toast.LENGTH_SHORT).show();
+//                                like_txt.setText(String.valueOf(likesno));
+//                            }
+//
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<String> call, Throwable t) {
+//                            Toast.makeText(getApplicationContext(), "/"+t, Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    });
+//
+//                    like_image.setImageResource(R.drawable.ic_icon_material_favorite);
+//                    checklike=true;
+//                }
+//            }
+//        });
+//
+//
+//        comment_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MyVideosScreen_Activity.this, P_Commnets.class);
+//                startActivity(intent);
+//
 //                final Dialog dialog = new Dialog(MyVideosScreen_Activity.this);
 //                dialog.setContentView(R.layout.comment_list);
 //                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -324,39 +355,36 @@ public class FollowingActivity extends AppCompatActivity {
 //                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 //                dialog.show();
 //
-//                recyclerview_cm = findViewById(R.id.recyclerview);
-//                // comment_screen=findViewById(R.id.comment_screen);
-//                cmsend_btn = findViewById(R.id.send_btn);
-//                cmGoback = findViewById(R.id.Goback);
+////                recyclerview_cm = findViewById(R.id.recyclerview);
+////                // comment_screen=findViewById(R.id.comment_screen);
+////                cmsend_btn = findViewById(R.id.send_btn);
+////                cmGoback = findViewById(R.id.Goback);
+////
+////                recyclerview_cm.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
+////                cmcomments_modelList = new ArrayList<>();
+////                cm_adapter = new Comments_Adapter(this,cmcomments_modelList);
+////                recyclerview_cm.setAdapter(cm_adapter);
+//            }
 //
-//                recyclerview_cm.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
-//                cmcomments_modelList = new ArrayList<>();
-//                cm_adapter = new Comments_Adapter(this,cmcomments_modelList);
-//                recyclerview_cm.setAdapter(cm_adapter);
-            }
-
-        });
-
-
-        ///// RecyclerView//////////
-
-        LinearLayoutManager layoutManager3 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        homefollowing_recyclerview.setLayoutManager(layoutManager3);
-        homeFollowingAdapter  = new homeFollowingAdapter(this, homeFollwoingmodelList);
-        homefollowing_recyclerview.setAdapter(homeFollowingAdapter);
-
-
-//        homefollowing_recyclerview = (VideoPlayerRecyclerView) findViewById(R.id.homefollowing_recyclerview);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//        layoutManager.setOrientation(RecyclerView.VERTICAL);
-//        homefollowing_recyclerview.setLayoutManager(layoutManager);
-//        layoutManager.setReverseLayout(true);
-//        layoutManager.setStackFromEnd(true);
-//        VerticalSpacingItemDecorator itemDecorator=new VerticalSpacingItemDecorator(0);
-//        homefollowing_recyclerview.addItemDecoration(itemDecorator);
+//        });
 //
-//        SnapHelper mSnapHelper = new PagerSnapHelper();
-//        mSnapHelper.attachToRecyclerView(homefollowing_recyclerview);
+//
+//        ///// RecyclerView//////////
+//
+//
+//
+//
+////        homefollowing_recyclerview = (VideoPlayerRecyclerView) findViewById(R.id.homefollowing_recyclerview);
+////        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+////        layoutManager.setOrientation(RecyclerView.VERTICAL);
+////        homefollowing_recyclerview.setLayoutManager(layoutManager);
+////        layoutManager.setReverseLayout(true);
+////        layoutManager.setStackFromEnd(true);
+////        VerticalSpacingItemDecorator itemDecorator=new VerticalSpacingItemDecorator(0);
+////        homefollowing_recyclerview.addItemDecoration(itemDecorator);
+////
+////        SnapHelper mSnapHelper = new PagerSnapHelper();
+////        mSnapHelper.attachToRecyclerView(homefollowing_recyclerview);
 
 
 
