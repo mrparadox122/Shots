@@ -3,22 +3,15 @@ package com.paradox.projectsp3.Profile;
 import static com.yalantis.ucrop.UCropFragment.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,7 +23,6 @@ import com.bumptech.glide.RequestManager;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.paradox.projectsp3.GlobalVariables;
-import com.paradox.projectsp3.Profile_Activity;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
 
@@ -38,10 +30,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -435,7 +425,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
         if(volumeControl != null){
             volumeControl.bringToFront();
             if(volumeState == VolumeState.OFF){
-                requestManager.load(R.drawable.pause_video)
+                requestManager.load(R.drawable.pause_video_o)
                         .into(volumeControl);
             }
             else if(volumeState == VolumeState.ON){

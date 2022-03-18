@@ -46,7 +46,6 @@ public class FollowingActivity extends AppCompatActivity {
 
         init();
 
-
         ImageView Ghar=(ImageView)findViewById(R.id.imageView14);
         ImageView profile=(ImageView)findViewById(R.id.imageView17);
         ImageView comment=(ImageView)findViewById(R.id.imageView16);
@@ -121,6 +120,7 @@ public class FollowingActivity extends AppCompatActivity {
                 comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
                 profile.setImageResource(R.drawable.ic_icon_awesome_user);
+
             }
         });
 

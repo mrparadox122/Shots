@@ -84,10 +84,8 @@
         app:layout_constraintTop_toTopOf="@+id/btn_flash"
         app:layout_constraintVertical_bias="0.16000003" />
 
-
   </LinearLayout>
-
-                           <ImageView
+  <ImageView
       android:id="@+id/imageView2"
       android:layout_width="30dp"
       android:layout_height="34dp"
@@ -99,7 +97,6 @@
       app:layout_constraintVertical_bias="0.97"
       app:srcCompat="@drawable/face"
       app:tint="#FFEB3B" />
-
   <ImageView
       android:id="@+id/btn_flash"
       android:layout_width="30dp"
@@ -112,7 +109,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.01999998" />
-
   <ImageView
       android:id="@+id/timer"
       android:layout_width="30dp"
@@ -124,7 +120,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.01999998" />
-
   <ImageView
 
       android:id="@+id/btn_switch_camera"
@@ -138,7 +133,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.97" />
-
   <ImageView
       android:id="@+id/photo_filter"
       android:layout_width="30dp"
@@ -152,8 +146,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.01999998" />
-
-
   <ImageView
       android:layout_marginTop="7dp"
       android:id="@+id/settings"
@@ -170,7 +162,6 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.0"
       app:tint="@color/white" />
-
   <TextView
       android:background="@drawable/follow_btn_back"
       android:id="@+id/button"
@@ -187,7 +178,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.0" />
-
   <ImageView
       android:id="@+id/record"
       android:layout_width="67dp"
@@ -195,13 +185,12 @@
       android:layout_alignParentBottom="true"
       android:layout_centerInParent="true"
       android:layout_marginTop="5dp"
-      android:src="@drawable/pause"
+      android:src="@drawable/pausee"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0" />
-
   <ImageView
       android:id="@+id/pause"
       android:layout_width="67dp"
@@ -217,13 +206,12 @@
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0" />
-
   <ImageView
      android:visibility="gone"
       android:id="@+id/pause_video"
       android:layout_width="30dp"
       android:layout_height="34dp"
-      android:src="@drawable/pause_video"
+      android:src="@drawable/pause_video_o"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.85"

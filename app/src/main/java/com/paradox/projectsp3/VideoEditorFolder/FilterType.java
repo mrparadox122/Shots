@@ -316,7 +316,7 @@ public enum FilterType {
                 return new FilterAdjuster() {
                     @Override
                     public void adjust(GlFilter filter, int percentage) {
-                        ((GlPixelationFilter) filter).setPixel(range(percentage, 1.0f, 100.0f));
+//                        ((GlPixelationFilter) filter).setPixel(range(percentage, 1.0f, 100.0f));
                     }
                 };
             case POSTERIZE:

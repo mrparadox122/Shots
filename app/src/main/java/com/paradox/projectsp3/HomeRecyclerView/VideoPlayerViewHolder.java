@@ -63,7 +63,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
     FrameLayout media_container;
     ImageView like,Share,Comment;
-
     TextView title,views;
     ImageView thumbnail, volumeControl,soundDisk;
     ProgressBar progressBar;
@@ -83,16 +82,12 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     int likesno;
     int likesnominus;
     int shareno;
-
-
     ImageView profilepic;
     TextView u_nam;
-
     Comments_Adapter cmadapter;
     List<Comments_Model> comments_model;
     Comments_Model comments_model1;
     int i;
-
     ImageView Goback,send_btn;
     RecyclerView rv_comments;
     String message_editst;
@@ -116,17 +111,14 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
         Share=itemView.findViewById(R.id.imageView6);
         CommentView=itemView.findViewById(R.id.commentView);
         share =itemView.findViewById(R.id.share);
-
-
         profilepic =itemView.findViewById(R.id.profilepic);
         u_nam =itemView.findViewById(R.id.textView4);
-
         checkKomment = false;
         comments_model = new ArrayList<>();
-
         Comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Context context1= itemView.getContext();
                 Dialog dialog=new Dialog(context1);
                 dialog.setContentView(R.layout.newcommentlist);
@@ -158,10 +150,6 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         Log.e(TAG, "Responsestring//////////////////////" + String.valueOf(response.body()));
-
-
-
-
                         Goback.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -172,9 +160,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                         send_btn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-
                                 message_editst = String.valueOf(message_edit.getText());
-
                                 if (GlobalVariables.getId() == null || GlobalVariables.getId() == "null"){
                                     Toast.makeText(context1.getApplicationContext(), "login to comment", Toast.LENGTH_SHORT).show();
                                 }
@@ -268,15 +254,10 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                                             comments_model1.setComment_id(dataobj.getString("comment_id"));
                                             comments_model1.setPost_id(dataobj.getString("post_id"));
                                             comments_model.add(comments_model1);
-
-
-
                                             rv_comments.setLayoutManager(new LinearLayoutManager(context1,RecyclerView.VERTICAL,false));
-
                                             cmadapter = new Comments_Adapter(context1,comments_model);
                                             rv_comments.setAdapter(cmadapter);
                                         }
-
                                     }else {
                                         rv_comments.setLayoutManager(new LinearLayoutManager(context1,RecyclerView.VERTICAL,false));
 

@@ -49,6 +49,7 @@ import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
 import com.paradox.projectsp3.Responses.Users;
 import com.paradox.projectsp3.VideoEditorFolder.PortraitCameraActivity;
+import com.paradox.projectsp3.VideoRecording.VideoRecording_Activity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -292,7 +293,7 @@ public class HomeActivty extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
+                Intent intent=new Intent(HomeActivty.this, VideoRecording_Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
 

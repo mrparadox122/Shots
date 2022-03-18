@@ -71,7 +71,6 @@ public class BaseCameraActivity extends AppCompatActivity {
     private TextView addSound;
     Dialog dialogSetting;
     CircleImageView showVideoPath;
-
     private ImageView recordBtn,pauseBtn,Face,Edit,Timer,setting,Pause_video,Play_video,Photo_filter,btn_switch_camera;
     protected LensFacing lensFacing = LensFacing.BACK;
     protected int cameraWidth = 1280;
@@ -82,12 +81,11 @@ public class BaseCameraActivity extends AppCompatActivity {
     TextView Time15,Time30,Time60;
     TextView sound_button;
     private MediaPlayer mp;
-
     private boolean toggleClick = false;
-
     private ListView lv;
-
     private String sound_url=null, sound_title=null;
+
+
 
     protected void onCreateActivity() {
         getSupportActionBar().hide();
@@ -615,10 +613,10 @@ public class BaseCameraActivity extends AppCompatActivity {
                         toggleClick = false;
                     }
 
-                    @Override
-                    public void onVideoFileReady() {
-
-                    }
+//                    @Override
+//                    public void onVideoFileReady() {
+//
+//                    }
                 })
                 .videoSize(videoWidth, videoHeight)
                 .cameraSize(cameraWidth, cameraHeight)
