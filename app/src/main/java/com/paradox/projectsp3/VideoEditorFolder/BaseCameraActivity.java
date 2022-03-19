@@ -8,15 +8,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.opengl.GLException;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -43,7 +46,10 @@ import com.daasuu.gpuv.camerarecorder.LensFacing;
 import com.paradox.projectsp3.FaceFilters.FaceFilterActivity;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.SegmentProgress.ProgressBarListener;
+import com.paradox.projectsp3.SegmentProgress.SegmentedProgressBar;
 import com.paradox.projectsp3.SoundActivity;
+import com.paradox.projectsp3.Variables;
 import com.paradox.projectsp3.VideoEditorFolder.widget.SampleCameraGLView;
 
 
@@ -85,6 +91,17 @@ public class BaseCameraActivity extends AppCompatActivity {
     private ListView lv;
     private String sound_url=null, sound_title=null;
 
+    long time_in_milis = 0;
+    int sec_passed = 0;
+    SegmentedProgressBar video_progress;
+    ImageView video_upload;
+    TextView txt_next;
+    boolean is_recording_timer_enable;
+    int recording_time = 3;
+
+
+
+
 
     protected void onCreateActivity() {
         getSupportActionBar().hide();
@@ -103,7 +120,42 @@ public class BaseCameraActivity extends AppCompatActivity {
         timerLayout=findViewById(R.id.timerlayout);
         Pause_video=findViewById(R.id.pause_video);
         Play_video=findViewById(R.id.play_video);
+
+        video_progress = findViewById(R.id.video_progress);
+        video_upload = findViewById(R.id.video_upload);
+        txt_next = findViewById(R.id.txt_next);
         final boolean[] timer = {false};
+
+
+            sec_passed = 0;
+            video_progress = findViewById(R.id.video_progress);
+            video_progress.enableAutoProgressView(Variables.recording_duration);
+            video_progress.setDividerColor(Color.WHITE);
+            video_progress.setDividerEnabled(true);
+            video_progress.setDividerWidth(4);
+            video_progress.setShader(new int[]{Color.CYAN, Color.CYAN, Color.CYAN});
+
+            video_progress.SetListener(new ProgressBarListener() {
+                @Override
+                public void TimeinMill(long mills) {
+                    time_in_milis = mills;
+                    sec_passed = (int) (mills / 1000);
+
+                    if (sec_passed > (Variables.recording_duration / 1000) - 1) {
+                        start_or_Stop_Recording();
+                    }
+
+                    if (is_recording_timer_enable && sec_passed >= recording_time) {
+                        is_recording_timer_enable = false;
+                        start_or_Stop_Recording();
+                    }
+
+                }
+            });
+
+
+
+
 
         Timer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,13 +170,16 @@ public class BaseCameraActivity extends AppCompatActivity {
                     timer[0] =false;
                 }
             }
-
         });
         showVideoPath=findViewById(R.id.profilepic);
         Photo_filter=findViewById(R.id.photo_filter);
+
         lv=findViewById(R.id.filter_list);
+
         final boolean[] photo_filter = {true};
+
         btn_switch_camera=findViewById(R.id.btn_switch_camera);
+
         Photo_filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -143,7 +198,6 @@ public class BaseCameraActivity extends AppCompatActivity {
         });
 
 
-
         final Boolean[] time15 = {false};
         final Boolean[] time30 = {false};
         final Boolean[] time60 = {false};
@@ -154,6 +208,7 @@ public class BaseCameraActivity extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
+
                 Time15.setBackgroundColor(getColor(R.color.colorwhite_50));
                 Time30.setBackgroundColor(getColor(R.color.app_color));
                 Time60.setBackgroundColor(getColor(R.color.app_color));
@@ -218,8 +273,6 @@ public class BaseCameraActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 dialogSetting=new Dialog(BaseCameraActivity.this);
-
-
                 dialogSetting.setContentView(R.layout.camera_setting);
                 dialogSetting.setCancelable(false);
                 ImageView close=dialogSetting.findViewById(R.id.back);
@@ -299,20 +352,19 @@ public class BaseCameraActivity extends AppCompatActivity {
 //cameyghhhj
         recordBtn.setOnClickListener(v -> {
 
-
-
-
             if(time15[0]||time30[0]| time60[0]) {
 
 //                lv.setVisibility(View.GONE);
                 filepath = getVideoFilePath();
                 GPUCameraRecorder.start(filepath);
                 btn_switch_camera.setVisibility(View.GONE);
+                btn_switch_camera.setVisibility(View.GONE);
                 Pause_video.setVisibility(View.VISIBLE);
 
-
-                
                 recordBtn.setVisibility(View.GONE);
+                txt_next.setVisibility(View.GONE);
+                video_upload.setVisibility(View.GONE);
+
 //                Face.setVisibility(View.VISIBLE);
                 //Edit.setVisibility(View.VISIBLE);
                 pauseBtn.setVisibility(View.VISIBLE);
@@ -344,55 +396,37 @@ public class BaseCameraActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-
-
                             GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
                             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
 
-
                             ///stop sound file///
                             if (sound_url != null) {
                                 try {
-
-
                                     mp.stop();
                                 } catch (IllegalStateException e) {
                                     e.printStackTrace();
                                 }
-
                             }
-
-
-                            sound_button.setText("Add Sound");
+//                            sound_button.setText("Add Sound");
                         }
 
                     }, 15000);
-
-
                 }
-
                 if(time30[0])
                 {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-
-
                             GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
                             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
 
-
                             ///stop sound file///
                             if (sound_url != null) {
                                 try {
-
-
                                     mp.stop();
                                 } catch (IllegalStateException e) {
                                     e.printStackTrace();
@@ -410,9 +444,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-
-
                             GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
@@ -438,9 +469,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                     }, 60000);
                 }
 
-
-
-
             }
             else
             {
@@ -463,7 +491,7 @@ public class BaseCameraActivity extends AppCompatActivity {
 //            Face.setVisibility(View.VISIBLE);
 //                            Edit.setVisibility(View.VISIBLE);
             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
-            sound_button.setText("Add Sound");
+//            sound_button.setText("Add Sound");
         });
         findViewById(R.id.btn_flash).setOnClickListener(v -> {
             if (GPUCameraRecorder != null && GPUCameraRecorder.isFlashSupport()) {
@@ -506,6 +534,11 @@ public class BaseCameraActivity extends AppCompatActivity {
         });
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+    }
+
+    private void start_or_Stop_Recording() {
+
 
     }
 

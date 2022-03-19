@@ -137,7 +137,6 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
     public void initlize_Video_progress() {
         sec_passed = 0;
         video_progress = findViewById(R.id.video_progress);
-
         video_progress.enableAutoProgressView(Variables.recording_duration);
         video_progress.setDividerColor(Color.WHITE);
         video_progress.setDividerEnabled(true);
@@ -351,7 +350,6 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
     }
 
-
     public void rotateCamera() {
         cameraView.toggleFacing();
     }
@@ -514,19 +512,15 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-
             if (requestCode == Sounds_list_Request_code) {
                 if (data != null) {
-
                     if (data.getStringExtra("isSelected").equals("yes")) {
                         add_sound_txt.setText(data.getStringExtra("sound_name"));
                         setSoundTxtWidthHeight(add_sound_txt);
                         Variables.selected_sound_id = data.getStringExtra("sound_id");
                         preparedAudio();
                     }
-
                 }
-
             } else if (requestCode == Variables.pick_video_from_gallery) {
                 Uri uri = data.getData();
                 try {
