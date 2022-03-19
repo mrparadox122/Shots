@@ -1,19 +1,33 @@
 package com.paradox.projectsp3.HomeFollowing;
 
-public class homeFollwoingmodel {
+public class HomeFollwoingmodel {
 
-    private String title,video_id,description,date,user_id,post_categories,post_id,views,user_name,url,thumbnail,likes,comments,shares;
+    private String title;
+    private String video_id;
+    private String description;
+    private String date;
+    private String user_id;
+    private String post_categories;
+    private String post_id;
+    private String views;
+    private String user_name;
+    private String url;
+    private String thumbnail;
+    private String likes;
+    private String comments;
+    private String profile_pic;
+    private String shares;
 
-    public homeFollwoingmodel(){
-    }
 
-    public homeFollwoingmodel(String title,String video_id,String description,String date,String user_id,String post_categories,String post_id,String view,String user_name,String media_url,String thumbnail)
+
+    public HomeFollwoingmodel(String title, String video_id, String description, String date, String user_id, String post_categories, String post_id, String views, String user_name, String media_url, String thumbnail,String profile_pic)
     {
         this.video_id = video_id;
         this.title = title;
         this.description = description;
         this.date = date;
         this.user_id =user_id;
+        this.profile_pic = profile_pic;
         this.post_categories = post_categories;
         this.post_id = post_id;
         this.views = views;
@@ -23,6 +37,31 @@ public class homeFollwoingmodel {
         this.likes = likes;
         this.shares = shares;
         this.comments = comments;
+        this.views = views;
+    }
+    public void setVideo_id(String video_id) {
+        this.video_id = video_id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getProfile_pic() {
+        return profile_pic;
+    }
+
+    public void setProfile_pic(String profile_pic) {
+        this.profile_pic = profile_pic;
+    }
+
+
+
+    public HomeFollwoingmodel(){
     }
     public String getVideo_id(){
         return video_id;
