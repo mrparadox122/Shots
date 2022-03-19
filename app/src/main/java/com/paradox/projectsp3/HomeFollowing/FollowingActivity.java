@@ -65,7 +65,7 @@ public class FollowingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_following);
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        somfolg = findViewById(R.id.somfolg);
+
 
 
         homeFollwoingmodelList = new ArrayList<>();
