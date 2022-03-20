@@ -42,4 +42,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="choose"><u>Choose</u></string>
 
+    <string name="version">2.1</string>
+    <string name="device">android</string>
+
 </resources>

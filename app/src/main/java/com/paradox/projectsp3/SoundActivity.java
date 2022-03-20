@@ -36,8 +36,8 @@ public class SoundActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound);
+        getSupportActionBar().hide();
         recyclerView=(RecyclerView) findViewById(R.id.recyclerview);
-//        apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
           apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
 
 
@@ -53,7 +53,6 @@ public class SoundActivity extends AppCompatActivity {
             public void onResponse(Call<Users> call, Response<Users> response) {
                 if(response.isSuccessful())
                 {
-
                     soundModelList=response.body().getAllSounds();
                     soundAdapter=new SoundAdapter(getApplicationContext(),soundModelList);
                     recyclerView.setAdapter(soundAdapter);
@@ -71,17 +70,7 @@ public class SoundActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
     }
-
-
-
-
-
 
 
     @Override

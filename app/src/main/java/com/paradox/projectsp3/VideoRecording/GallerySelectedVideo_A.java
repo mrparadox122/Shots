@@ -41,6 +41,7 @@ import com.googlecode.mp4parser.authoring.container.mp4.MovieCreator;
 import com.googlecode.mp4parser.authoring.tracks.AppendTrack;
 import com.paradox.projectsp3.Functions;
 import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.SoundsList.SoundList_Main_A;
 import com.paradox.projectsp3.Variables;
 
 import java.io.File;
@@ -71,12 +72,9 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         }
 
         Variables.selected_sound_id = "null";
-
         findViewById(R.id.Goback).setOnClickListener(this);
-
         add_sound_txt = findViewById(R.id.add_sound_txt);
         add_sound_txt.setOnClickListener(this);
-
         findViewById(R.id.next_btn).setOnClickListener(this);
 
         set_Player();
@@ -88,7 +86,6 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
     SimpleExoPlayer video_player;
 
     public void set_Player() {
-
         video_player = new SimpleExoPlayer.Builder(context).build();
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
                 Util.getUserAgent(this, "TikTok"));
@@ -114,7 +111,6 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         video_player.setPlayWhenReady(true);
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -125,9 +121,9 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
                 break;
 
             case R.id.add_sound_txt:
-//                Intent intent = new Intent(this, SoundList_Main_A.class);
-//                startActivityForResult(intent, Sounds_list_Request_code);
-//                overridePendingTransition(R.anim.in_from_bottom, R.anim.out_to_top);
+                Intent intent = new Intent(this, SoundList_Main_A.class);
+                startActivityForResult(intent, Sounds_list_Request_code);
+                overridePendingTransition(R.anim.in_from_bottom, R.anim.out_to_top);
                 break;
 
             case R.id.next_btn:
@@ -194,18 +190,14 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         new Thread(new Runnable() {
             @Override
             public void run() {
-
                 runOnUiThread(new Runnable() {
                     public void run() {
-
                         progressDialog.setMessage("Please wait..");
                         progressDialog.show();
                     }
                 });
 
-
                 ArrayList<String> video_list = new ArrayList<>();
-
                 File file = new File(path);
 
                 MediaMetadataRetriever retriever = new MediaMetadataRetriever();
@@ -216,7 +208,6 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
                 if (isVideo && file.length() > 3000) {
                     video_list.add(path);
                 }
-
 
                 try {
 
@@ -359,10 +350,8 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
 
     }
 
-
     @Override
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-
         if (playbackState == Player.STATE_ENDED) {
 
             video_player.seekTo(0);
@@ -410,7 +399,6 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         Log.d("resp", "smmdsmd");
     }
 
-
     // this will hide the bottom mobile navigation controll
     public void hide_navigation() {
 
@@ -446,7 +434,6 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         }
 
     }
-
 
     @SuppressLint("NewApi")
     @Override

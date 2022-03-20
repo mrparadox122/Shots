@@ -30,9 +30,5 @@ public class VideoEditor extends AppCompatActivity {
             storage = new File(path);
             Methodl.load_Directory_Files(storage);
         }
-
-
-
-
     }
 }

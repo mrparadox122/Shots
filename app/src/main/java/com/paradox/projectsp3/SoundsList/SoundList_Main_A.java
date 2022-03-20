@@ -13,13 +13,15 @@ import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.VideoRecording.Custom_ViewPager;
+
 public class SoundList_Main_A extends AppCompatActivity implements View.OnClickListener{
 
     protected TabLayout tablayout;
 
-//    protected Custom_ViewPager pager;
+    protected Custom_ViewPager pager;
 
-//    private ViewPagerAdapter adapter;
+    private ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +30,14 @@ public class SoundList_Main_A extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().hide();
 
         tablayout = (TabLayout) findViewById(R.id.groups_tab);
-//        pager = findViewById(R.id.viewpager);
-//        pager.setOffscreenPageLimit(2);
-//        pager.setPagingEnabled(false);
+        pager = findViewById(R.id.viewpager);
+        pager.setOffscreenPageLimit(2);
+        pager.setPagingEnabled(false);
 
-        // Note that we are passing childFragmentManager, not FragmentManager
-//        adapter = new ViewPagerAdapter(getResources(), getSupportFragmentManager());
-//        pager.setAdapter(adapter);
-//        tablayout.setupWithViewPager(pager);
+//         Note that we are passing childFragmentManager, not FragmentManager
+        adapter = new ViewPagerAdapter(getResources(), getSupportFragmentManager());
+        pager.setAdapter(adapter);
+        tablayout.setupWithViewPager(pager);
 
 
         findViewById(R.id.Goback).setOnClickListener(this);
@@ -56,79 +58,79 @@ public class SoundList_Main_A extends AppCompatActivity implements View.OnClickL
 
 
 
-//    class ViewPagerAdapter extends FragmentPagerAdapter {
-//
-//
-//        SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
-//
-//
-//        public ViewPagerAdapter(final Resources resources, FragmentManager fm) {
-//            super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-//        }
-//
-////        @Override
-////        public Fragment getItem(int position) {
-////            final Fragment result;
-////            switch (position) {
-////                case 0:
-//////                    result = new Discover_SoundList_F();
-////                    break;
-////                case 1:
-//////                    result = new Favourite_Sound_F();
-////                    break;
-////                default:
-////                    result = null;
-////                    break;
-////            }
-////
-////            return result;
-////        }
-//
-//        @Override
-//        public int getCount() {
-//            return 2;
-//        }
-//
-//        @Override
-//        public CharSequence getPageTitle(final int position) {
-//            switch (position) {
-//                case 0:
-//                    return "Discover";
-//                case 1:
-//                    return "My Favorites";
-//
-//                default:
-//                    return null;
-//            }
-//        }
-//
-//        @Override
-//        public Object instantiateItem(ViewGroup container, int position) {
-//            Fragment fragment = (Fragment) super.instantiateItem(container, position);
-//            registeredFragments.put(position, fragment);
-//            return fragment;
-//        }
-//
-//        @Override
-//        public void destroyItem(ViewGroup container, int position, Object object) {
-//            registeredFragments.remove(position);
-//            super.destroyItem(container, position, object);
-//        }
-//
-//
-//        /**
-//         * Get the Fragment by position
-//         *
-//         * @param position tab position of the fragment
-//         * @return
-//         */
-//
-//
-//        public Fragment getRegisteredFragment(int position) {
-//            return registeredFragments.get(position);
-//        }
-//
-//
-//    }
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+
+
+        SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
+
+
+        public ViewPagerAdapter(final Resources resources, FragmentManager fm) {
+            super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            final Fragment result;
+            switch (position) {
+                case 0:
+                    result = new Discover_SoundList_F();
+                    break;
+                case 1:
+                    result = new Favourite_Sound_F();
+                    break;
+                default:
+                    result = null;
+                    break;
+            }
+
+            return result;
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @Override
+        public CharSequence getPageTitle(final int position) {
+            switch (position) {
+                case 0:
+                    return "Discover";
+                case 1:
+                    return "My Favorites";
+
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Fragment fragment = (Fragment) super.instantiateItem(container, position);
+            registeredFragments.put(position, fragment);
+            return fragment;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            registeredFragments.remove(position);
+            super.destroyItem(container, position, object);
+        }
+
+
+        /**
+         * Get the Fragment by position
+         *
+         * @param position tab position of the fragment
+         * @return
+         */
+
+
+        public Fragment getRegisteredFragment(int position) {
+            return registeredFragments.get(position);
+        }
+
+
+    }
 
 }

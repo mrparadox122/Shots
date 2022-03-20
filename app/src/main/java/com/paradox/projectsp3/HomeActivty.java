@@ -280,7 +280,6 @@ public class HomeActivty extends AppCompatActivity {
 //            startActivity(intent);
 //            user = true ;
 //        }
-
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_bottom_sheet);
@@ -310,8 +309,6 @@ public class HomeActivty extends AppCompatActivity {
                 finish();
             }
         });
-
-
         ll_uploadvedio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -346,7 +343,6 @@ public class HomeActivty extends AppCompatActivity {
             }
 
         });
-
         ll_golive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -365,12 +361,15 @@ public class HomeActivty extends AppCompatActivity {
                 finish();
             }
         });
+
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setGravity(Gravity.BOTTOM);
         dialog.show();
 
     }
+
+
 
 //    @Override
 //    protected void onResume() {
@@ -398,12 +397,12 @@ public class HomeActivty extends AppCompatActivity {
             case CAMERA_PERMISSION_REQUEST:
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 {
-
+                    Toast.makeText(this, "Permission has been granted", Toast.LENGTH_SHORT).show();
 
                 }
                 else
                 {
-
+                    Toast.makeText(this, "[warning] Permission has been not granted", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

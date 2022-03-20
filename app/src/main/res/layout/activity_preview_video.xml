@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black75"
     tools:context=".VideoRecording.Preview_Video_A">
 
     <com.paradox.projectsp3.VideoRecording.MovieWrapperView

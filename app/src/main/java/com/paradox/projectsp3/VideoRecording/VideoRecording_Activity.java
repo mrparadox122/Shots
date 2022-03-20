@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,7 +63,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class VideoRecording_Activity extends AppCompatActivity implements View.OnClickListener  {
-
+    private static final String TAG = "VideoRecording_A";
     CameraView cameraView;
     int number = 0;
     ArrayList<String> videopaths = new ArrayList<>();
@@ -70,10 +71,8 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
     ImageButton done_btn;
     boolean is_recording = false;
     boolean is_flash_on = false;
-
     ImageButton flash_btn;
-
-
+    ImageView videopick_img;
     SegmentedProgressBar video_progress;
     LinearLayout camera_options, upload_layout;
     ImageButton rotate_camera, cut_video_btn;
@@ -84,6 +83,8 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
     TextView countdown_timer_txt;
     boolean is_recording_timer_enable;
     int recording_time = 3;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,20 +109,27 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
         rotate_camera = findViewById(R.id.rotate_camera);
         rotate_camera.setOnClickListener(this);
         flash_btn = findViewById(R.id.flash_camera);
+        videopick_img = findViewById(R.id.videopick_img);
+        videopick_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(VideoRecording_Activity.this, GallerySelectedVideo_A.class);
+                startActivity(intent);
+            }
+        });
+
         flash_btn.setOnClickListener(this);
-        findViewById(R.id.Goback).setOnClickListener(this);
+//        findViewById(R.id.Goback).setOnClickListener(this);
         add_sound_txt = findViewById(R.id.add_sound_txt);
         add_sound_txt.setOnClickListener(this);
 
 
-
         findViewById(R.id.time_btn).setOnClickListener(this);
+
         Intent intent = getIntent();
         if (intent.hasExtra("sound_name")) {
             add_sound_txt.setText(intent.getStringExtra("sound_name"));
-
             setSoundTxtWidthHeight(add_sound_txt);
-
             Variables.selected_sound_id = intent.getStringExtra("sound_id");
             preparedAudio();
         }
@@ -134,6 +142,9 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
         countdown_timer_txt = findViewById(R.id.countdown_timer_txt);
         initlize_Video_progress();
     }
+
+
+
     public void initlize_Video_progress() {
         sec_passed = 0;
         video_progress = findViewById(R.id.video_progress);
@@ -174,20 +185,15 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
             cameraView.captureVideo(file);
             if (audio != null)
                 audio.start();
-
             done_btn.setBackgroundResource(R.drawable.ic_not_done);
             done_btn.setEnabled(false);
-
             video_progress.resume();
-
             record_image.setImageDrawable(getResources().getDrawable(R.drawable.ic_recoding_yes));
-
             cut_video_btn.setVisibility(View.GONE);
             camera_options.setVisibility(View.GONE);
             add_sound_txt.setClickable(false);
             rotate_camera.setVisibility(View.GONE);
             upload_layout.setVisibility(View.GONE);
-
 
         } else if (is_recording) {
             is_recording = false;
@@ -208,7 +214,7 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
     public void check_done_btn_enable() {
         if (sec_passed > (Variables.min_time_recording / 1000)) {
-            done_btn.setBackgroundResource(R.drawable.ic_not_done);
+            done_btn.setBackgroundResource(R.drawable.ic_done);
             done_btn.setEnabled(true);
             Log.e(TAG, "Check_done_btn_enable: done");
         } else {
@@ -217,12 +223,9 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
         }
     }
 
-
     // this will apped all the videos parts in one  fullvideo
     private boolean append() {
-
         Log.e(TAG, "append: done clicked ");
-
         final ProgressDialog progressDialog = new ProgressDialog(VideoRecording_Activity.this);
         new Thread(new Runnable() {
             @Override
@@ -233,10 +236,8 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
                         progressDialog.show();
                     }
                 });
-
                 ArrayList<String> video_list = new ArrayList<>();
                 for (int i = 0; i < videopaths.size(); i++) {
-
                     File file = new File(videopaths.get(i));
                     if (file.exists()) {
                         try {
@@ -244,7 +245,6 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
                             retriever.setDataSource(VideoRecording_Activity.this, Uri.fromFile(file));
                             String hasVideo = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_HAS_VIDEO);
                             boolean isVideo = "yes".equals(hasVideo);
-
                             if (isVideo && file.length() > 3000) {
                                 Log.d("resp", videopaths.get(i));
                                 video_list.add(videopaths.get(i));
@@ -255,17 +255,11 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
                     }
                 }
 
-
                 try {
-
                     Movie[] inMovies = new Movie[video_list.size()];
-
                     for (int i = 0; i < video_list.size(); i++) {
-
                         inMovies[i] = MovieCreator.build(video_list.get(i));
                     }
-
-
                     List<Track> videoTracks = new LinkedList<Track>();
                     List<Track> audioTracks = new LinkedList<Track>();
                     for (Movie m : inMovies) {
@@ -303,57 +297,42 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
                     runOnUiThread(new Runnable() {
                         public void run() {
-
-
                             Log.e(TAG, "Go_To_preview_Activity: cameraview " + cameraView);
                             Log.e(TAG, "Go_To_preview_Activity: cameraview property " + cameraView.getFacing());
                             Log.e(TAG, "Go_To_preview_Activity: cameraview " + cameraView.getCameraProperties());
-
                             if (cameraView != null && cameraView.getFacing() == CameraKit.Constants.FACING_FRONT) {
                                 // flip horizontal video
                                 Variables.video_flipped = true;
                             } else {
                                 Variables.video_flipped = false;
                             }
-
                             progressDialog.dismiss();
                             if (audio != null)
                                 merge_withAudio();
                             else {
                                 go_To_preview_Activity();
                             }
-
-
                         }
                     });
-
-
                 } catch (Exception e) {
-
                 }
             }
         }).start();
-
-
         return true;
     }
 
 
     // this will add the select audio with the video
     public void merge_withAudio() {
-
         String audio_file;
         audio_file = Variables.app_folder + Variables.selectedAudio_AAC;
-
         Merge_Video_Audio merge_video_audio = new Merge_Video_Audio(VideoRecording_Activity.this);
         merge_video_audio.doInBackground(audio_file, Variables.outputfile, Variables.outputfile2);
-
     }
 
     public void rotateCamera() {
         cameraView.toggleFacing();
     }
-
     public void remove_Last_Section() {
         if (videopaths.size() > 0) {
             File file = new File(videopaths.get(videopaths.size() - 1));
@@ -379,7 +358,6 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
                 }
             }
-
             if (videopaths.isEmpty()) {
                 cut_video_btn.setVisibility(View.GONE);
                 add_sound_txt.setClickable(true);
@@ -387,24 +365,19 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
                 video_progress.reset();
                 preparedAudio();
             }
-
             file.delete();
         }
     }
 
-
     @SuppressLint("WrongConstant")
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.rotate_camera:
                 rotateCamera();
                 break;
-
             case R.id.upload_layout:
                 pick_video_from_gallery();
-
                 break;
 
             case R.id.done:
@@ -420,28 +393,22 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
                         }
                     }
                 });
-
                 break;
 
             case R.id.flash_camera:
-
                 if (is_flash_on) {
                     is_flash_on = false;
                     cameraView.setFlash(0);
                     flash_btn.setImageDrawable(getResources().getDrawable(R.drawable.ic_flash_on));
-
                 } else {
                     is_flash_on = true;
                     cameraView.setFlash(CameraKit.Constants.FLASH_TORCH);
                     flash_btn.setImageDrawable(getResources().getDrawable(R.drawable.ic_flash_off));
                 }
-
                 break;
-
-            case R.id.Goback:
-                onBackPressed();
-                break;
-
+//            case R.id.Goback:
+////                onBackPressed();
+//                break;
             case R.id.add_sound_txt:
                 Intent intent = new Intent(this, SoundList_Main_A.class);
                 startActivityForResult(intent, Sounds_list_Request_code);
@@ -464,12 +431,9 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
                                 new CountDownTimer(4000, 1000) {
                                     @Override
                                     public void onTick(long millisUntilFinished) {
-
                                         countdown_timer_txt.setText("" + (millisUntilFinished / 1000));
                                         countdown_timer_txt.setAnimation(scaleAnimation);
-
                                     }
-
                                     @Override
                                     public void onFinish() {
                                         record_image.setClickable(true);
@@ -486,18 +450,13 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
                         bundle.putInt("end_time", (sec_passed + 3));
                     else
                         bundle.putInt("end_time", (sec_passed + 1));
-
                     bundle.putInt("total_time", (Variables.recording_duration / 1000));
                     recordingTimeRang_f.setArguments(bundle);
                     recordingTimeRang_f.show(getSupportFragmentManager(), "");
                 }
                 break;
-
         }
-
-
     }
-
 
     public void pick_video_from_gallery() {
         Intent intent = new Intent(
@@ -525,10 +484,8 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
                 Uri uri = data.getData();
                 try {
                     File video_file = FileUtils.getFileFromUri(this, uri);
-
                     if (getfileduration(uri) < Variables.max_recording_duration) {
                         chnage_Video_size(video_file.getAbsolutePath(), Variables.gallery_resize_video);
-
                     } else {
                         try {
                             startTrim(video_file, new File(Variables.gallery_trimed_video), 1000, Variables.max_recording_duration);
@@ -549,22 +506,17 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
     public long getfileduration(Uri uri) {
         try {
-
             MediaMetadataRetriever mmr = new MediaMetadataRetriever();
             mmr.setDataSource(this, uri);
             String durationStr = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             final int file_duration = Integer.parseInt(durationStr);
-
             return file_duration;
         } catch (Exception e) {
-
         }
         return 0;
     }
 
-
     public void chnage_Video_size(String src_path, String destination_path) {
-
         Functions.show_determinent_loader(this, false, false);
         new GPUMp4Composer(src_path, destination_path)
                 .size(720, 1280)
@@ -572,31 +524,21 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
                 .listener(new GPUMp4Composer.Listener() {
                     @Override
                     public void onProgress(double progress) {
-
                         Log.d("resp", "" + (int) (progress * 100));
                         Functions.show_loading_progress((int) (progress * 100));
-
                     }
-
                     @Override
                     public void onCompleted() {
-
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-
                                 Functions.cancel_determinent_loader();
-
                                 Intent intent = new Intent(VideoRecording_Activity.this, GallerySelectedVideo_A.class);
                                 intent.putExtra("video_path", Variables.gallery_resize_video);
                                 startActivity(intent);
-
                             }
                         });
-
-
                     }
-
                     @Override
                     public void onCanceled() {
                         Log.d("resp", "onCanceled");
@@ -604,16 +546,12 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
                     @Override
                     public void onFailed(Exception exception) {
-
                         Log.d("resp", exception.toString());
-
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 try {
-
                                     Functions.cancel_determinent_loader();
-
                                     Toast.makeText(VideoRecording_Activity.this, "Try Again", Toast.LENGTH_SHORT).show();
                                 } catch (Exception e) {
 
@@ -767,35 +705,29 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
         }
     }
 
-
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Alert")
-                .setMessage("Are you Sure, you want to go back ?")
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-
-                        finish();
-                        overridePendingTransition(R.anim.in_from_top, R.anim.out_from_bottom);
-
-                    }
-                }).show();
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        new AlertDialog.Builder(this)
+//                .setTitle("Alert")
+//                .setMessage("Are you Sure, you want to go back ?")
+//                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                })
+//                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                        finish();
+//                        overridePendingTransition(R.anim.in_from_top, R.anim.out_from_bottom);
+//                    }
+//                }).show();
+//    }
 
 
     public void go_To_preview_Activity() {
-
         Intent intent = new Intent(this, Preview_Video_A.class);
         startActivity(intent);
         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
@@ -803,11 +735,10 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
 
     // this will delete all the video parts that is create during priviously created video
-    public void deleteFile() {
 
+    public void deleteFile() {
         File output = new File(Variables.outputfile);
         File output2 = new File(Variables.outputfile2);
-
         File gallery_trimed_video = new File(Variables.gallery_trimed_video);
         File gallery_resize_video = new File(Variables.gallery_resize_video);
 
@@ -827,19 +758,18 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
             gallery_resize_video.delete();
         }
 
-        for (int i = 0; i <= 12; i++) {
 
+        for (int i = 0; i <= 12; i++) {
             File file = new File(Variables.app_folder + "myvideo" + (i) + ".mp4");
             if (file.exists()) {
                 file.delete();
             }
         }
-
     }
 
     private void setSoundTxtWidthHeight(TextView textView) {
         ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) textView.getLayoutParams();
-//        params.width = getResources().getDimensionPixelSize(R.dimen.add_sound_txt_width);
+        params.width = getResources().getDimensionPixelSize(R.dimen.add_sound_txt_width);
         textView.setLayoutParams(params);
         add_sound_txt.setSelected(true);
 

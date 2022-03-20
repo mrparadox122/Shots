@@ -7,6 +7,7 @@
     android:keepScreenOn="true"
     android:layout_height="match_parent">
 
+
   <com.paradox.projectsp3.VideoEditorFolder.widget.PortraitFrameLayout
       android:id="@+id/wrap_view"
       android:layout_width="0dp"
@@ -20,7 +21,6 @@
 
   </com.paradox.projectsp3.VideoEditorFolder.widget.PortraitFrameLayout>
 
-
   <ImageView
       android:id="@+id/btn_switch_camera"
       android:layout_width="59dp"
@@ -30,7 +30,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.3"
       android:layout_marginTop="14dp"
-      app:layout_constraintStart_toEndOf="@+id/add_sound_txt"
+      app:layout_constraintStart_toEndOf="@+id/addSound123"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.0" />
   <LinearLayout
@@ -47,7 +47,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.92">
-
 
     <android.widget.TextView
         android:id="@+id/time15s"
@@ -79,7 +78,6 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginRight="25dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_flash"
         app:layout_constraintStart_toStartOf="@+id/btn_flash"
@@ -118,11 +116,12 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.01999998" />
 
+
   <ImageView
-      android:id="@+id/timer"
+      android:id="@+id/photo_filter"
       android:layout_width="30dp"
       android:layout_height="30dp"
-      android:src="@drawable/ic_timer"
+      android:src="@drawable/photo_filter"
       android:elevation="2dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
@@ -150,6 +149,8 @@
 
   </RelativeLayout>
 
+
+
   <ImageView
       android:layout_marginTop="7dp"
       android:id="@+id/settings"
@@ -168,7 +169,7 @@
       app:tint="@color/white" />
 
   <LinearLayout
-      android:id="@+id/add_sound_txt"
+      android:id="@+id/addSound123"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_centerHorizontal="true"
@@ -264,14 +265,20 @@
       app:layout_constraintStart_toStartOf="parent">
 
     <ImageView
-        android:id="@+id/photo_filter"
+        android:id="@+id/timer"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:src="@drawable/ic_timer"
+        android:elevation="2dp"
         android:layout_marginRight="25dp"
-        android:src="@drawable/photo_filter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+
 
     <ImageView
         android:id="@+id/video_upload"
@@ -297,19 +304,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-
-
-
     <TextView
         android:id="@+id/txt_next"
         android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-      android:text="Next"
+        android:text="Next"
         android:layout_marginLeft="35dp"
-      android:textColor="@color/white"
-      android:textSize="20sp"
-      android:textStyle="bold"/>
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
 
   </LinearLayout>

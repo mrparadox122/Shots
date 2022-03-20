@@ -49,6 +49,7 @@ import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.SegmentProgress.ProgressBarListener;
 import com.paradox.projectsp3.SegmentProgress.SegmentedProgressBar;
 import com.paradox.projectsp3.SoundActivity;
+import com.paradox.projectsp3.SoundsList.SoundList_Main_A;
 import com.paradox.projectsp3.Variables;
 import com.paradox.projectsp3.VideoEditorFolder.widget.SampleCameraGLView;
 
@@ -74,7 +75,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     private SampleCameraGLView sampleGLView;
     protected GPUCameraRecorder GPUCameraRecorder;
     private String filepath;
-    private TextView addSound;
+//    private TextView addSound123;
     Dialog dialogSetting;
     CircleImageView showVideoPath;
      ImageView recordBtn,pauseBtn,Face,Edit,Timer,setting,Pause_video,Play_video,Photo_filter,btn_switch_camera;
@@ -99,18 +100,18 @@ public class BaseCameraActivity extends AppCompatActivity {
     boolean is_recording_timer_enable;
     int recording_time = 3;
 
-
-
+    LinearLayout addSound123;
 
 
     protected void onCreateActivity() {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.record);
+
         Timer=findViewById(R.id.timer);
         pauseBtn= findViewById(R.id.pause);
         Face=findViewById(R.id.imageView2);
         setting=findViewById(R.id.settings);
-        addSound=findViewById(R.id.button);
+        addSound123=findViewById(R.id.addSound123);
         sound_url=getIntent().getStringExtra("sound_url");
         sound_title=getIntent().getStringExtra("sound_title");
         sound_button=findViewById(R.id.button);
@@ -124,8 +125,8 @@ public class BaseCameraActivity extends AppCompatActivity {
         video_progress = findViewById(R.id.video_progress);
         video_upload = findViewById(R.id.video_upload);
         txt_next = findViewById(R.id.txt_next);
-        final boolean[] timer = {false};
 
+        final boolean[] timer = {false};
 
             sec_passed = 0;
             video_progress = findViewById(R.id.video_progress);
@@ -140,11 +141,9 @@ public class BaseCameraActivity extends AppCompatActivity {
                 public void TimeinMill(long mills) {
                     time_in_milis = mills;
                     sec_passed = (int) (mills / 1000);
-
                     if (sec_passed > (Variables.recording_duration / 1000) - 1) {
                         start_or_Stop_Recording();
                     }
-
                     if (is_recording_timer_enable && sec_passed >= recording_time) {
                         is_recording_timer_enable = false;
                         start_or_Stop_Recording();
@@ -152,9 +151,6 @@ public class BaseCameraActivity extends AppCompatActivity {
 
                 }
             });
-
-
-
 
 
         Timer.setOnClickListener(new View.OnClickListener() {
@@ -227,11 +223,9 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Time15.setBackgroundColor(getColor(R.color.app_color));
                 Time30.setBackgroundColor(getColor(R.color.colorwhite_50));
                 Time60.setBackgroundColor(getColor(R.color.app_color));
-
                 time15[0] =false;
                 time30[0] =true;
                 time60[0] =false;
-
             }
         });
         Time60.setOnClickListener(new View.OnClickListener() {
@@ -242,36 +236,31 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Time15.setBackgroundColor(getColor(R.color.app_color));
                 Time30.setBackgroundColor(getColor(R.color.app_color));
                 Time60.setBackgroundColor(getColor(R.color.colorwhite_50));
-
                 time15[0] =false;
                 time30[0] =false;
                 time60[0] =true;
             }
         });
 
-
-
         if(sound_title !=null)
         {
             sound_button.setText(sound_title);
         }
 
+        addSound123.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(BaseCameraActivity.this, SoundList_Main_A.class);
+                startActivity(intent);
+                Animatoo.animateCard(BaseCameraActivity.this);
+                finish();
 
-//        addSound.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(BaseCameraActivity.this, SoundActivity.class);
-//                startActivity(intent);
-//                Animatoo.animateCard(BaseCameraActivity.this);
-//                finish();
-//
-//            }
-//        });
+            }
+        });
 
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 dialogSetting=new Dialog(BaseCameraActivity.this);
                 dialogSetting.setContentView(R.layout.camera_setting);
                 dialogSetting.setCancelable(false);
@@ -280,14 +269,11 @@ public class BaseCameraActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         dialogSetting.dismiss();
-
                     }
                 });
                 dialogSetting.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialogSetting.getWindow().setGravity(Gravity.TOP);
                 dialogSetting.show();
-
-
             }
         });
 
@@ -311,14 +297,10 @@ public class BaseCameraActivity extends AppCompatActivity {
 //                    toast.setGravity(Gravity.CENTER,0,0);
 //                    toast.show();
 //                }
-//
+
 //            }
 //
 //        });
-
-
-
-
 
         Pause_video.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -372,12 +354,10 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Glide.with(this).load(R.drawable.recording_video).into(pauseBtn);
 
 
-
 ///// play sound ///////////////
 
                 if (sound_url != null) {
                     try {
-
                         mp = new MediaPlayer();
                         mp.setDataSource(sound_url);
                         mp.prepare();
@@ -409,7 +389,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                             }
-//                            sound_button.setText("Add Sound");
+                            sound_button.setText("Add Sound");
                         }
 
                     }, 15000);
