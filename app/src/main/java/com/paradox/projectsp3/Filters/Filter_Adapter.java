@@ -16,6 +16,39 @@ import com.paradox.projectsp3.VideoRecording.Preview_Video_A;
 
 import java.util.List;
 
+import jp.co.cyberagent.android.gpuimage.GPUImageView;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageBilateralBlurFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageBoxBlurFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageBrightnessFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageCGAColorspaceFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageColorInvertFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageContrastFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageCrosshatchFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageExposureFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageGammaFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageGaussianBlurFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageGrayscaleFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageHalftoneFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageHazeFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageHighlightShadowFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageHueFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageLuminanceFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageLuminanceThresholdFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageMonochromeFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageOpacityFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImagePixelationFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImagePosterizeFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageRGBFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageSaturationFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageSepiaToneFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageSharpenFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageSolarizeFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageSphereRefractionFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageSwirlFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageToneCurveFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageVibranceFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageVignetteFilter;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageWeakPixelInclusionFilter;
 
 
 public class Filter_Adapter extends RecyclerView.Adapter<Filter_Adapter.CustomViewHolder>{
