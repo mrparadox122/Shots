@@ -119,10 +119,10 @@ public class MyVideoView_Activity extends AppCompatActivity {
             imageuri = data.getData();
             imageview.setImageURI(imageuri);
             btn_image.setText("Image Uploaded");
-        }
-        if (requestCode == 2) {
+        }if (requestCode == 2) {
             Uri vediouri = data.getData();
             Log.e(TAG, "onActivityResult: "+GlobalVariables.getId() );
+
             if (GlobalVariables.getId() != null && GlobalVariables.getId()!= "") {
 
                 JSONObject jsonObject = new JSONObject();

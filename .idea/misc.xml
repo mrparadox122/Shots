@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/ProjectSP3.3.72/app/src/main/res/layout/activity_following.xml" value="0.18" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/ProjectSP3.3.72/app/src/main/res/layout/activity_my_videos_screen.xml" value="0.29936594202898553" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/ProjectSP3.3.72/app/src/main/res/layout/layout_main_duplecate.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.0.3/app/src/main/res/layout/activity_following.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.0.3/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.0.3/app/src/main/res/layout/activity_main.xml" value="0.12771739130434784" />
@@ -82,13 +79,14 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_camera_portrate.xml" value="0.18" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_choose_yours_intrests.xml" value="0.22" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_comment.xml" value="0.22" />
-        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_following.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_following.xml" value="0.16" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_gallery_selected_video.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_go_live.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_home_comment.xml" value="0.22" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_login.xml" value="0.27403846153846156" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_main.xml" value="0.17760416666666667" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_my_video_view.xml" value="0.1" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_my_videos_screen.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_new_edit_profile.xml" value="0.12291666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/activity_new_register.xml" value="0.2" />
@@ -133,6 +131,7 @@
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/listitem_suggest.xml" value="0.33" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/newcommentlist.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/raw_vedio.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/layout/row_video_list.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.16" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/mipmap-anydpi-v26/ic_launcher_foreground.xml" value="0.145" />
         <entry key="..\:/Users/mdali/AndroidStudioProjects/ProjectSP3.3/app/src/main/res/mipmap-anydpi-v26/ic_launcher_foreground_round.xml" value="0.1" />

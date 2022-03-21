@@ -1,18 +1,24 @@
 package com.paradox.projectsp3.VideoRecording;
 
+import static android.content.ContentValues.TAG;
+import static com.paradox.projectsp3.Responses.ApiClient.retrofit;
 import static com.paradox.projectsp3.VideoRecording.VideoRecording_Activity.Sounds_list_Request_code;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,9 +46,16 @@ import com.googlecode.mp4parser.authoring.builder.DefaultMp4Builder;
 import com.googlecode.mp4parser.authoring.container.mp4.MovieCreator;
 import com.googlecode.mp4parser.authoring.tracks.AppendTrack;
 import com.paradox.projectsp3.Functions;
+import com.paradox.projectsp3.GlobalVariables;
+import com.paradox.projectsp3.MyVideoView_Activity;
 import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.Responses.ApiInterface;
+import com.paradox.projectsp3.Responses.Users;
 import com.paradox.projectsp3.SoundsList.SoundList_Main_A;
 import com.paradox.projectsp3.Variables;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,23 +64,36 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class GallerySelectedVideo_A extends AppCompatActivity implements View.OnClickListener, Player.EventListener {
     private Context context = this;
     String path;
     TextView add_sound_txt;
     String draft_file;
+    Uri imageuri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hide_navigation();
         setContentView(R.layout.activity_gallery_selected_video);
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("video/*");
+        startActivityForResult(intent,2);
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            path = intent.getStringExtra("video_path");
-            draft_file = intent.getStringExtra("draft_file");
-        }
+
+//        Intent intent = getIntent();
+//        if (intent != null) {
+//            path = intent.getStringExtra("video_path");
+//            Log.e(TAG, "onCreate: "+path);
+//            draft_file = intent.getStringExtra("draft_file");
+//        }
 
         Variables.selected_sound_id = "null";
         findViewById(R.id.Goback).setOnClickListener(this);
@@ -76,6 +102,19 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         findViewById(R.id.next_btn).setOnClickListener(this);
         set_Player();
     }
+   
+    public String getPath(Uri uri)
+    {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor == null) return null;
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String s=cursor.getString(column_index);
+        cursor.close();
+        return s;
+    }
+
 
     // this will call when swipe for another video and
     // this function will set the player to the current video
