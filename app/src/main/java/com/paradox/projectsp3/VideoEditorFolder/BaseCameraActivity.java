@@ -52,6 +52,8 @@ import com.paradox.projectsp3.SoundActivity;
 import com.paradox.projectsp3.SoundsList.SoundList_Main_A;
 import com.paradox.projectsp3.Variables;
 import com.paradox.projectsp3.VideoEditorFolder.widget.SampleCameraGLView;
+import com.paradox.projectsp3.VideoRecording.GallerySelectedVideo_A;
+import com.paradox.projectsp3.VideoRecording.VideoRecording_Activity;
 
 
 import javax.microedition.khronos.egl.EGL10;
@@ -121,10 +123,19 @@ public class BaseCameraActivity extends AppCompatActivity {
         timerLayout=findViewById(R.id.timerlayout);
         Pause_video=findViewById(R.id.pause_video);
         Play_video=findViewById(R.id.play_video);
-
         video_progress = findViewById(R.id.video_progress);
         video_upload = findViewById(R.id.video_upload);
         txt_next = findViewById(R.id.txt_next);
+
+        video_upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BaseCameraActivity.this, GallerySelectedVideo_A.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         final boolean[] timer = {false};
 
@@ -254,7 +265,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                 startActivity(intent);
                 Animatoo.animateCard(BaseCameraActivity.this);
                 finish();
-
             }
         });
 
@@ -460,10 +470,8 @@ public class BaseCameraActivity extends AppCompatActivity {
         });
         pauseBtn.setOnClickListener(v -> {
             btn_switch_camera.setVisibility(View.VISIBLE);
-
             Pause_video.setVisibility(View.GONE);
             Play_video.setVisibility(View.GONE);
-
 
             GPUCameraRecorder.stop();
             recordBtn.setVisibility(View.VISIBLE);
@@ -471,7 +479,7 @@ public class BaseCameraActivity extends AppCompatActivity {
 //            Face.setVisibility(View.VISIBLE);
 //                            Edit.setVisibility(View.VISIBLE);
             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
-//            sound_button.setText("Add Sound");
+            sound_button.setText("Add Sound");
         });
         findViewById(R.id.btn_flash).setOnClickListener(v -> {
             if (GPUCameraRecorder != null && GPUCameraRecorder.isFlashSupport()) {

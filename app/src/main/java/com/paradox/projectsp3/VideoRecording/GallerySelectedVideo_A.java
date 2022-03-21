@@ -52,7 +52,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GallerySelectedVideo_A extends AppCompatActivity implements View.OnClickListener, Player.EventListener {
-
     private Context context = this;
     String path;
     TextView add_sound_txt;
@@ -63,7 +62,6 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         hide_navigation();
         setContentView(R.layout.activity_gallery_selected_video);
-
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -76,9 +74,7 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         add_sound_txt = findViewById(R.id.add_sound_txt);
         add_sound_txt.setOnClickListener(this);
         findViewById(R.id.next_btn).setOnClickListener(this);
-
         set_Player();
-
     }
 
     // this will call when swipe for another video and
