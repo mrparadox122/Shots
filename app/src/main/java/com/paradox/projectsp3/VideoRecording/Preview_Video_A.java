@@ -73,11 +73,11 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
             flipVideoHorizontal();
 
         } else {
-
             video_url = Variables.outputfile2;
             findViewById(R.id.next_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    gotopostScreen();
 
                     if (select_postion == 0) {
                         try {
@@ -93,6 +93,9 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
                         save_Video(Variables.outputfile2, Variables.output_filter_file);
                 }
             });
+
+
+
 
             set_Player(video_url);
 
@@ -347,7 +350,7 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
 
     public void gotopostScreen() {
         Intent intent = new Intent(Preview_Video_A.this, Post_Video_A.class);
-        intent.putExtra("draft_file", draft_file);
+        intent.putExtra("draft_file", video_url);
         startActivity(intent);
         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
 
