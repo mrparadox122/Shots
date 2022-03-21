@@ -5,8 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-    android:background="#FFC0B4">
+    android:background="@color/black">
 
+
+
+<!--    <VideoView-->
+<!--        android:background="@color/white"-->
+<!--        android:id="@+id/veideo_recyclerview"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="fill_parent"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        tools:ignore="MissingConstraints" />-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:layout_marginEnd="5dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent">-->
+<!--        <TextView-->
+<!--            android:id="@+id/des"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="desc"/>-->
+<!--        </LinearLayout>-->
     <FrameLayout
         android:id="@+id/media_container"
         android:layout_width="0dp"
@@ -17,17 +43,23 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="DuplicateIds">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/purple_700">
 
             <VideoView
+                android:id="@+id/videov"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/black"
-                android:id="@+id/veideo_recyclerview"
-                android:orientation="vertical"/>
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true" />
+
+
 
             <ImageView
                 android:id="@+id/thumbnail"

@@ -79,6 +79,8 @@ public interface ApiInterface {
 
     @POST("get_suggested.php")
     Call<String> getUserdetails_suggestion(@Body String body);
+    @POST("fol.php")
+    Call<String> getUserdetails_d(@Body String body);
     @POST("UserVideos.php")
     Call<String> getUserdetails_videos(@Body String body);
     @POST("Sv.php")

@@ -1,11 +1,15 @@
 package com.paradox.projectsp3.HomeFollowing;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -16,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.paradox.projectsp3.HomeRecyclerView.VideoPlayerRecyclerView;
 import com.paradox.projectsp3.R;
 
+import java.net.URI;
 import java.util.List;
 
 public class homeFollowingAdapter extends RecyclerView.Adapter<homeFollowingAdapter.myviewholder> {
@@ -33,7 +38,9 @@ public class homeFollowingAdapter extends RecyclerView.Adapter<homeFollowingAdap
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_main_duplecate,parent,false);
+//        return new myviewholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_main_duplecate, parent, false));
         return new homeFollowingAdapter.myviewholder(view);
+
 
 
 
@@ -41,6 +48,39 @@ public class homeFollowingAdapter extends RecyclerView.Adapter<homeFollowingAdap
 
     @Override
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
+
+
+        holder.veideo_recyclerview.setVideoURI(Uri.parse(homeFollwoingmodelList.get(position).getMedia_url()));
+        holder.veideo_recyclerview.requestFocus();
+        holder.veideo_recyclerview.start();
+
+        holder.veideo_recyclerview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                holder.veideo_recyclerview.start();
+
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.video_p_p){
+
+                    holder.veideo_recyclerview.pause();
+
+                    holder.video_p_p = false;
+
+                }
+                else {
+                    holder.veideo_recyclerview.start();
+                    holder.video_p_p = true;
+
+                }
+
+            }
+        });
+
+//        holder.veideo_recyclerview.setBackgroundColor(Color.TRANSPARENT);
 
 //        videoView.setVideoURI(vuri);
 //        videoView.requestFocus();
@@ -108,19 +148,20 @@ public class homeFollowingAdapter extends RecyclerView.Adapter<homeFollowingAdap
         return homeFollwoingmodelList.size();
     }
 
-    public class myviewholder extends RecyclerView.ViewHolder {
+    public static class myviewholder extends RecyclerView.ViewHolder {
 
         VideoView veideo_recyclerview;
         ImageView imageView9,imageView8,imageView6,imageView7,profilepic,imageView3;
         TextView likesn,comments,share,noViews,textView3,textView2,textView4;
         Button textButton;
+        Boolean video_p_p = true ;
 
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
 
 
-            veideo_recyclerview = itemView.findViewById(R.id.veideo_recyclerview);
+            veideo_recyclerview = (VideoView) itemView.findViewById(R.id.videov);
 
             //Images
             imageView9 = itemView.findViewById(R.id.imageView9);

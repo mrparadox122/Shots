@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -51,9 +52,10 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class FollowingActivity extends AppCompatActivity {
 
 
-    private RecyclerView homefollowing_recyclerview;
+    private ViewPager2 homefollowing_recyclerview;
     List<HomeFollwoingmodel>homeFollwoingmodelList;
     homeFollowingAdapter homeFollowingAdapter;
+
     int i;
 
     public boolean user = true;
@@ -63,6 +65,8 @@ public class FollowingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_following);
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+
+
 
         homeFollwoingmodelList = new ArrayList<>();
 
@@ -76,75 +80,75 @@ public class FollowingActivity extends AppCompatActivity {
 
         homefollowing_recyclerview = findViewById(R.id.homefollowing_recyclerview);
 
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (user ==true){
-                    Intent intent = new Intent(FollowingActivity.this, MessageMainActivity.class);
-                    startActivity(intent);
-                    user = false;
-                }else {
-                    Intent intent = new Intent(FollowingActivity.this,MessageMainActivity.class);
-                    startActivity(intent);
-                    user = true;
-                }
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (user ==true){
+//                    Intent intent = new Intent(FollowingActivity.this, MessageMainActivity.class);
+//                    startActivity(intent);
+//                    user = false;
+//                }else {
+//                    Intent intent = new Intent(FollowingActivity.this,MessageMainActivity.class);
+//                    startActivity(intent);
+//                    user = true;
+//                }
+//
+//                Ghar.setImageResource(R.drawable.ic_icon_feather_home);
+//                comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
+//                Search.setImageResource(R.drawable.ic_icon_feather_search);
+//                profile.setImageResource(R.drawable.ic_icon_awesome_user_1);
+//
+//                Intent intent=new Intent(FollowingActivity.this, Profile_Activity.class);
+//                startActivity(intent);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                Animatoo.animateSlideUp(FollowingActivity.this);
+//                finish();
+//            }
+//        });
 
-                Ghar.setImageResource(R.drawable.ic_icon_feather_home);
-                comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
-                Search.setImageResource(R.drawable.ic_icon_feather_search);
-                profile.setImageResource(R.drawable.ic_icon_awesome_user_1);
-
-                Intent intent=new Intent(FollowingActivity.this, Profile_Activity.class);
-                startActivity(intent);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                Animatoo.animateSlideUp(FollowingActivity.this);
-                finish();
-            }
-        });
-
-        comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                comment.setImageResource(R.drawable.aaa);
-                Ghar.setImageResource(R.drawable.ic_icon_feather_home);
-                Search.setImageResource(R.drawable.ic_icon_feather_search);
-                profile.setImageResource(R.drawable.ic_icon_awesome_user);
-
-
-                Intent intent=new Intent(FollowingActivity.this,MessageMainActivity.class);
-                startActivity(intent);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                Animatoo.animateSlideUp(FollowingActivity.this);
-                finish();
-            }
-        });
-        Search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Search.setImageResource(R.drawable.ic_icon_feather_search_1);
-                Ghar.setImageResource(R.drawable.ic_icon_feather_home);
-                comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
-                profile.setImageResource(R.drawable.ic_icon_awesome_user);
-
-
-                Intent intent=new Intent(FollowingActivity.this, SearchActivity.class);
-                startActivity(intent);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                Animatoo.animateSlideUp(FollowingActivity.this);
-                finish();
-            }
-        });
-
-        Ghar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Ghar.setImageResource(R.drawable.ic_icon_feather_home_1);
-                comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
-                Search.setImageResource(R.drawable.ic_icon_feather_search);
-                profile.setImageResource(R.drawable.ic_icon_awesome_user);
-            }
-        });
+//        comment.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                comment.setImageResource(R.drawable.aaa);
+//                Ghar.setImageResource(R.drawable.ic_icon_feather_home);
+//                Search.setImageResource(R.drawable.ic_icon_feather_search);
+//                profile.setImageResource(R.drawable.ic_icon_awesome_user);
+//
+//
+//                Intent intent=new Intent(FollowingActivity.this,MessageMainActivity.class);
+//                startActivity(intent);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                Animatoo.animateSlideUp(FollowingActivity.this);
+//                finish();
+//            }
+//        });
+//        Search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Search.setImageResource(R.drawable.ic_icon_feather_search_1);
+//                Ghar.setImageResource(R.drawable.ic_icon_feather_home);
+//                comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
+//                profile.setImageResource(R.drawable.ic_icon_awesome_user);
+//
+//
+//                Intent intent=new Intent(FollowingActivity.this, SearchActivity.class);
+//                startActivity(intent);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                Animatoo.animateSlideUp(FollowingActivity.this);
+//                finish();
+//            }
+//        });
+//
+//        Ghar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Ghar.setImageResource(R.drawable.ic_icon_feather_home_1);
+//                comment.setImageResource(R.drawable.ic_icon_feather_message_circle);
+//                Search.setImageResource(R.drawable.ic_icon_feather_search);
+//                profile.setImageResource(R.drawable.ic_icon_awesome_user);
+//            }
+//        });
 
     }
 
@@ -167,7 +171,7 @@ public class FollowingActivity extends AppCompatActivity {
         JSONObject data = new JSONObject();
         try {
 
-            data.put("username", GlobalVariables.suggestlist.toString());
+            data.put("username", GlobalVariables.folglist.toString());
             Log.e(TAG, "getResponse:json data put for api ///////////////" + GlobalVariables.suggestlist.toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -179,7 +183,7 @@ public class FollowingActivity extends AppCompatActivity {
                 .build();
 
         ApiInterface apii = retrofitt.create(ApiInterface.class);
-        Call<String> calll = apii.getUserdetails_suggestion(data.toString());
+        Call<String> calll = apii.getUserdetails_d(data.toString());
         calll.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -215,11 +219,16 @@ public class FollowingActivity extends AppCompatActivity {
                                     homeFollwoingmodel.setPost_id(dataobj.getString("post_id"));
                                     homeFollwoingmodel.setUser_id(dataobj.getString("user_id"));
                                     homeFollwoingmodel.setVideo_id(dataobj.getString("videoid"));
+
+
                                     homeFollwoingmodelList.add(homeFollwoingmodel);
-                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-                                    homefollowing_recyclerview.setLayoutManager(layoutManager3);
-                                    homeFollowingAdapter  = new homeFollowingAdapter(getApplicationContext(), homeFollwoingmodelList);
-                                    homefollowing_recyclerview.setAdapter(homeFollowingAdapter);
+                                    homefollowing_recyclerview.setAdapter(new homeFollowingAdapter(getApplicationContext(),homeFollwoingmodelList));
+
+//                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+//                                    homefollowing_recyclerview.setLayoutManager(layoutManager3);
+//                                    homeFollowingAdapter  = new homeFollowingAdapter(getApplicationContext(), homeFollwoingmodelList);
+//                                    homefollowing_recyclerview.setAdapter(homeFollowingAdapter);
+
 
 //                                    suggestmodel.add(suggest_model);
 //                                    LinearLayoutManager layoutManager3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -231,6 +240,7 @@ public class FollowingActivity extends AppCompatActivity {
 
                                     //Log.e(TAG, "writeTv: "+ GlobalVariables.getFullname()+GlobalVariables.getUsername()+following_model+following_model1.getUsername() );
                                 }
+
                                 for (int j = 0; j < UserDetailsArrayList.size(); j++){
 //                    Log.e(TAG, "writeTv: "+ userDetailsArrayList.get(j));
                                 }
@@ -253,6 +263,7 @@ public class FollowingActivity extends AppCompatActivity {
 
             }
         });
+
 
 
 
