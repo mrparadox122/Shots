@@ -51,11 +51,11 @@
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recylerview"
-        android:paddingBottom="20dp"
+        android:layout_alignParentBottom="true"
         android:background="@color/fifty_transparent_black"
-        android:layout_alignParentBottom="true"/>
+        android:paddingBottom="20dp" />
 
 </RelativeLayout>
