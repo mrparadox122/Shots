@@ -150,9 +150,8 @@ public class GlFilter {
         if (location == -1) {
             throw new IllegalStateException("Could not get attrib or uniform location for " + name);
         }
-//        handleMap.put(name, Integer.valueOf(location));
+        handleMap.put(name, Integer.valueOf(location));
         return location;
     }
-
 
 }

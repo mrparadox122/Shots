@@ -19,7 +19,7 @@
             android:adjustViewBounds="true"
             app:ckFacing="back"
             app:ckLockVideoAspectRatio="true"
-            app:ckVideoQuality="max480p" />
+            app:ckVideoQuality="max480p"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

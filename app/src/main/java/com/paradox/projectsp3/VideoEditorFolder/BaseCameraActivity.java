@@ -386,7 +386,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            GPUCameraRecorder.stop();
+//                            GPUCameraRecorder.stop();
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
                             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
@@ -399,7 +399,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                             }
-                            sound_button.setText("Add Sound");
+//                            sound_button.setText("Add Sound");
                         }
 
                     }, 15000);
@@ -441,7 +441,6 @@ public class BaseCameraActivity extends AppCompatActivity {
 //                            Edit.setVisibility(View.VISIBLE);
                             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
 
-
                             ///stop sound file///
                             if (sound_url != null) {
                                 try {
@@ -479,7 +478,7 @@ public class BaseCameraActivity extends AppCompatActivity {
 //            Face.setVisibility(View.VISIBLE);
 //                            Edit.setVisibility(View.VISIBLE);
             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
-            sound_button.setText("Add Sound");
+//            sound_button.setText("Add Sound");
         });
         findViewById(R.id.btn_flash).setOnClickListener(v -> {
             if (GPUCameraRecorder != null && GPUCameraRecorder.isFlashSupport()) {
@@ -719,16 +718,13 @@ public class BaseCameraActivity extends AppCompatActivity {
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
                 Uri.parse("file://" + filePath)));
     }
-
     @SuppressLint("SimpleDateFormat")
     public static String getVideoFilePath() {
         return getAndroidMoviesFolder().getAbsolutePath() + "/" + new SimpleDateFormat("yyyyMM_dd-HHmmss").format(new Date()) + "GPUCameraRecorder.mp4";
     }
-
     public static File getAndroidMoviesFolder() {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
     }
-
     private static void exportPngToGallery(Context context, String filePath) {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(filePath);
@@ -736,19 +732,14 @@ public class BaseCameraActivity extends AppCompatActivity {
         mediaScanIntent.setData(contentUri);
         context.sendBroadcast(mediaScanIntent);
     }
-
     public static String getImageFilePath() {
         return getAndroidImageFolder().getAbsolutePath() + "/" + new SimpleDateFormat("yyyyMM_dd-HHmmss").format(new Date()) + "GPUCameraRecorder.png";
     }
-
     public static File getAndroidImageFolder() {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
     }
-
     public void  checkPermission()
     {
-
-
         if(Build.VERSION.SDK_INT <Build.VERSION_CODES.M)
         {
             return;

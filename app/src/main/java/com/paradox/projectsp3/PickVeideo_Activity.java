@@ -22,6 +22,7 @@ import static com.google.android.gms.vision.L.TAG;
 
 public class PickVeideo_Activity extends AppCompatActivity {
 
+
     Button btn_video;
     VideoView v_video;
     MediaController mc;

@@ -102,7 +102,7 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         findViewById(R.id.next_btn).setOnClickListener(this);
         set_Player();
     }
-   
+
     public String getPath(Uri uri)
     {
         String[] projection = { MediaStore.Images.Media.DATA };
