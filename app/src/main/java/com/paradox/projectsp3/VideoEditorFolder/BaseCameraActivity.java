@@ -631,9 +631,9 @@ public class BaseCameraActivity extends AppCompatActivity {
                         toggleClick = false;
                     }
 
-                    @Override
+                    
                     public void onVideoFileReady() {
-                        
+
                     }
 
 //                    @Override
