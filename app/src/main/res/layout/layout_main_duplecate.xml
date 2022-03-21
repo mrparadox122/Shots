@@ -50,7 +50,7 @@
             android:background="@color/purple_700">
 
             <VideoView
-                android:id="@+id/videov"
+                android:id="@+id/videovv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"

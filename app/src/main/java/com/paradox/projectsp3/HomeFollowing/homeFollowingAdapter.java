@@ -38,8 +38,8 @@ public class homeFollowingAdapter extends RecyclerView.Adapter<homeFollowingAdap
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_main_duplecate,parent,false);
-//        return new myviewholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_main_duplecate, parent, false));
-        return new homeFollowingAdapter.myviewholder(view);
+        return new myviewholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_main_duplecate, parent, false));
+//        return new homeFollowingAdapter.myviewholder(view);
 
 
 
@@ -161,7 +161,7 @@ public class homeFollowingAdapter extends RecyclerView.Adapter<homeFollowingAdap
             super(itemView);
 
 
-            veideo_recyclerview = (VideoView) itemView.findViewById(R.id.videov);
+            veideo_recyclerview = (VideoView) itemView.findViewById(R.id.videovv);
 
             //Images
             imageView9 = itemView.findViewById(R.id.imageView9);
