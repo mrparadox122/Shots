@@ -83,9 +83,9 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         hide_navigation();
         setContentView(R.layout.activity_gallery_selected_video);
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("video/*");
-        startActivityForResult(intent,2);
+//        Intent intent = new Intent(Intent.ACTION_PICK);
+//        intent.setType("video/*");
+//        startActivityForResult(intent,2);
 
 
 //        Intent intent = getIntent();
@@ -94,6 +94,7 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
 //            Log.e(TAG, "onCreate: "+path);
 //            draft_file = intent.getStringExtra("draft_file");
 //        }
+
 
         Variables.selected_sound_id = "null";
         findViewById(R.id.Goback).setOnClickListener(this);

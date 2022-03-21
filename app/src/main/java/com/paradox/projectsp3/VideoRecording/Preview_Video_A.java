@@ -75,7 +75,6 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
         } else {
 
             video_url = Variables.outputfile2;
-            video_url = GlobalVariables.mp4Path;
             findViewById(R.id.next_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

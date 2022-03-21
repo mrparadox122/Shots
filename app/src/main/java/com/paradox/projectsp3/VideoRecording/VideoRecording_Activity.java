@@ -565,6 +565,7 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     public void startTrim(final File src, final File dst, final int startMs, final int endMs) throws IOException {
 
         new AsyncTask<String, Void, String>() {

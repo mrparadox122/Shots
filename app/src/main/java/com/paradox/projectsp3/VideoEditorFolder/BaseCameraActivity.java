@@ -612,6 +612,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                         exportMp4ToGallery(getApplicationContext(), filepath);
                         Log.e(TAG, "onRecordComplete: "+filepath );
                         GlobalVariables.mp4Path = filepath;
+                        Variables.outputfile2 = filepath;
                         Intent intent = new Intent(BaseCameraActivity.this, Preview_Video_A.class);
                         startActivity(intent);
 //                        lv.setVisibility(View.VISIBLE);
