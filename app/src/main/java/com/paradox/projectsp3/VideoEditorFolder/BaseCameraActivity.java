@@ -1,5 +1,7 @@
 package com.paradox.projectsp3.VideoEditorFolder;
 
+import static com.yalantis.ucrop.UCropFragment.TAG;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -44,6 +46,7 @@ import com.daasuu.gpuv.camerarecorder.GPUCameraRecorder;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorderBuilder;
 import com.daasuu.gpuv.camerarecorder.LensFacing;
 import com.paradox.projectsp3.FaceFilters.FaceFilterActivity;
+import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.SegmentProgress.ProgressBarListener;
@@ -53,6 +56,7 @@ import com.paradox.projectsp3.SoundsList.SoundList_Main_A;
 import com.paradox.projectsp3.Variables;
 import com.paradox.projectsp3.VideoEditorFolder.widget.SampleCameraGLView;
 import com.paradox.projectsp3.VideoRecording.GallerySelectedVideo_A;
+import com.paradox.projectsp3.VideoRecording.Preview_Video_A;
 import com.paradox.projectsp3.VideoRecording.VideoRecording_Activity;
 
 
@@ -606,6 +610,10 @@ public class BaseCameraActivity extends AppCompatActivity {
                     @Override
                     public void onRecordComplete() {
                         exportMp4ToGallery(getApplicationContext(), filepath);
+                        Log.e(TAG, "onRecordComplete: "+filepath );
+                        GlobalVariables.mp4Path = filepath;
+                        Intent intent = new Intent(BaseCameraActivity.this, Preview_Video_A.class);
+                        startActivity(intent);
 //                        lv.setVisibility(View.VISIBLE);
                     }
 
@@ -631,7 +639,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                         toggleClick = false;
                     }
 
-                    
+
                     public void onVideoFileReady() {
 
                     }
@@ -725,7 +733,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     }
     @SuppressLint("SimpleDateFormat")
     public static String getVideoFilePath() {
-        return getAndroidMoviesFolder().getAbsolutePath() + "/" + new SimpleDateFormat("yyyyMM_dd-HHmmss").format(new Date()) + "GPUCameraRecorder.mp4";
+        return getAndroidMoviesFolder().getAbsolutePath() + "/" + new SimpleDateFormat("yyyyMM_dd-HHmmss").format(new Date()) + "Gbggggg.mp4";
     }
     public static File getAndroidMoviesFolder() {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);

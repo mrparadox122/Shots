@@ -33,6 +33,7 @@ import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoListener;
 import com.paradox.projectsp3.Filters.Filter_Adapter;
 import com.paradox.projectsp3.Functions;
+import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Variables;
 import com.paradox.projectsp3.VideoEditorFolder.FilterType;
@@ -74,6 +75,7 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
         } else {
 
             video_url = Variables.outputfile2;
+            video_url = GlobalVariables.mp4Path;
             findViewById(R.id.next_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
