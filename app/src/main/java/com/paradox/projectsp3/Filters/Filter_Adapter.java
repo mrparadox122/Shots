@@ -120,126 +120,96 @@ public class Filter_Adapter extends RecyclerView.Adapter<Filter_Adapter.CustomVi
                 case "BRIGHTNESS":
                     holder.ivPhoto.setFilter(new GPUImageBrightnessFilter());
                     break;
-
                 case "EXPOSURE":
                     holder.ivPhoto.setFilter(new GPUImageExposureFilter());
                     break;
-
                 case "FILTER_GROUP_SAMPLE":
                     holder.ivPhoto.setFilter(new GPUImageVignetteFilter());
                     break;
-
                 case "GAMMA":
                     holder.ivPhoto.setFilter(new GPUImageGammaFilter());
                     break;
-
                 case "GRAY_SCALE":
                     holder.ivPhoto.setFilter(new GPUImageGrayscaleFilter());
                     break;
-
                 case "HAZE":
                     holder.ivPhoto.setFilter(new GPUImageHazeFilter());
                     break;
-
                 case "HIGHLIGHT_SHADOW":
                     holder.ivPhoto.setFilter(new GPUImageHighlightShadowFilter());
                     break;
-
                 case "HUE":
                     holder.ivPhoto.setFilter(new GPUImageHueFilter());
                     break;
                 case "INVERT":
                     holder.ivPhoto.setFilter(new GPUImageColorInvertFilter());
                     break;
-
                 case "LUMINANCE":
                     holder.ivPhoto.setFilter(new GPUImageLuminanceFilter());
                     break;
-
                 case "MONOCHROME":
                     holder.ivPhoto.setFilter(new GPUImageMonochromeFilter());
                     break;
-
                 case "OPACITY":
                     holder.ivPhoto.setFilter(new GPUImageOpacityFilter());
                     break;
-
                 case "PIXELATION":
                     holder.ivPhoto.setFilter(new GPUImagePixelationFilter());
                     break;
-
                 case "POSTERIZE":
                     holder.ivPhoto.setFilter(new GPUImagePosterizeFilter());
                     break;
-
                 case "RGB":
                     holder.ivPhoto.setFilter(new GPUImageRGBFilter());
                     break;
-
                 case "SATURATION":
                     holder.ivPhoto.setFilter(new GPUImageSaturationFilter());
                     break;
-
                 case "SEPIA":
                     holder.ivPhoto.setFilter(new GPUImageSepiaToneFilter());
                     break;
-
                 case "SHARP":
                     holder.ivPhoto.setFilter(new GPUImageSharpenFilter());
                     break;
-
                 case "BILATERAL_BLUR":
                     holder.ivPhoto.setFilter(new GPUImageBilateralBlurFilter());
                     break;
-
                 case "BOX_BLUR":
                     holder.ivPhoto.setFilter(new GPUImageBoxBlurFilter());
                     break;
-
                 case "BULGE_DISTORTION":
                     holder.ivPhoto.setFilter(new GPUImageLuminanceFilter());
                     break;
-
                 case "CGA_COLORSPACE":
                     holder.ivPhoto.setFilter(new GPUImageCGAColorspaceFilter());
                     break;
-
                 case "CONTRAST":
                     holder.ivPhoto.setFilter(new GPUImageContrastFilter());
                     break;
-
                 case "CROSSHATCH":
                     holder.ivPhoto.setFilter(new GPUImageCrosshatchFilter());
                     break;
-
                 case "GAUSSIAN_FILTER":
                     holder.ivPhoto.setFilter(new GPUImageGaussianBlurFilter());
                     break;
-
                 case "HALFTONE":
                     holder.ivPhoto.setFilter(new GPUImageHalftoneFilter());
                     break;
-
                 case "LUMINANCE_THRESHOLD":
                     holder.ivPhoto.setFilter(new GPUImageLuminanceThresholdFilter());
                     break;
-
                 case "SOLARIZE":
                     holder.ivPhoto.setFilter(new GPUImageSolarizeFilter());
                     break;
-
                 case "SPHERE_REFRACTION":
                     holder.ivPhoto.setFilter(new GPUImageSphereRefractionFilter());
                     break;
-
                 case "SWIRL":
                     holder.ivPhoto.setFilter(new GPUImageSwirlFilter());
                     break;
-
                 case "TONE":
                     holder.ivPhoto.setFilter(new GPUImageToneCurveFilter());
                     break;
-
 
                 case "VIBRANCE":
                     holder.ivPhoto.setFilter(new GPUImageVibranceFilter());
@@ -248,7 +218,6 @@ public class Filter_Adapter extends RecyclerView.Adapter<Filter_Adapter.CustomVi
                 case "VIGNETTE":
                     holder.ivPhoto.setFilter(new GPUImageVignetteFilter());
                     break;
-
 
                 case "WEAK_PIXEL":
                     holder.ivPhoto.setFilter(new GPUImageWeakPixelInclusionFilter());
