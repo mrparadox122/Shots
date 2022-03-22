@@ -85,7 +85,6 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
     int recording_time = 3;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,7 +172,6 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
         });
     }
 
-
     // if the Recording is stop then it we start the recording
     // and if the mobile is recording the video then it will stop the recording
     public void start_or_Stop_Recording() {
@@ -207,10 +205,12 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
             record_image.setImageDrawable(getResources().getDrawable(R.drawable.ic_recoding_no));
             camera_options.setVisibility(View.VISIBLE);
             upload_layout.setVisibility(View.VISIBLE);
+
         } else if (sec_passed > (Variables.recording_duration / 1000)) {
             Functions.show_Alert(this, "Alert", "Video only can be a " + (int) Variables.recording_duration / 1000 + " S");
         }
     }
+
 
     public void check_done_btn_enable() {
         if (sec_passed > (Variables.min_time_recording / 1000)) {

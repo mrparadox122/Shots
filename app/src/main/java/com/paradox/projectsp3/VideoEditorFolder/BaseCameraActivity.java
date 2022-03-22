@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -46,6 +47,7 @@ import com.daasuu.gpuv.camerarecorder.GPUCameraRecorder;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorderBuilder;
 import com.daasuu.gpuv.camerarecorder.LensFacing;
 import com.paradox.projectsp3.FaceFilters.FaceFilterActivity;
+import com.paradox.projectsp3.Functions;
 import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.R;
@@ -58,6 +60,7 @@ import com.paradox.projectsp3.VideoEditorFolder.widget.SampleCameraGLView;
 import com.paradox.projectsp3.VideoRecording.GallerySelectedVideo_A;
 import com.paradox.projectsp3.VideoRecording.Preview_Video_A;
 import com.paradox.projectsp3.VideoRecording.VideoRecording_Activity;
+import com.wonderkiln.camerakit.CameraView;
 
 
 import javax.microedition.khronos.egl.EGL10;
@@ -70,13 +73,12 @@ import java.io.IOException;
 import java.nio.IntBuffer;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BaseCameraActivity extends AppCompatActivity {
-
     private SampleCameraGLView sampleGLView;
     protected GPUCameraRecorder GPUCameraRecorder;
     private String filepath;
@@ -96,7 +98,8 @@ public class BaseCameraActivity extends AppCompatActivity {
     private boolean toggleClick = false;
     private ListView lv;
     private String sound_url=null, sound_title=null;
-
+    LinearLayout camera_options, upload_layout;
+    ImageButton rotate_camera, cut_video_btn;
     long time_in_milis = 0;
     int sec_passed = 0;
     SegmentedProgressBar video_progress;
@@ -104,8 +107,14 @@ public class BaseCameraActivity extends AppCompatActivity {
     TextView txt_next;
     boolean is_recording_timer_enable;
     int recording_time = 3;
-
+    boolean is_recording = false;
+    int number = 0;
     LinearLayout addSound123;
+    ArrayList<String> videopaths = new ArrayList<>();
+    CameraView cameraView;
+    MediaPlayer audio;
+    ImageButton done_btn;
+    ImageButton record_image;
 
 
     protected void onCreateActivity() {
@@ -526,9 +535,40 @@ public class BaseCameraActivity extends AppCompatActivity {
 
     }
 
-    private void start_or_Stop_Recording() {
+    public void start_or_Stop_Recording() {
+        if (!is_recording && sec_passed < (Variables.recording_duration / 1000) - 1) {
+            number = number + 1;
+            is_recording = true;
+            File file = new File(Variables.app_folder + "myvideo" + (number) + ".mp4");
+            videopaths.add(Variables.app_folder + "myvideo" + (number) + ".mp4");
+            cameraView.captureVideo(file);
+            if (audio != null)
+                audio.start();
+            done_btn.setBackgroundResource(R.drawable.ic_not_done);
+            done_btn.setEnabled(false);
+            video_progress.resume();
+            record_image.setImageDrawable(getResources().getDrawable(R.drawable.ic_recoding_yes));
+            cut_video_btn.setVisibility(View.GONE);
+            camera_options.setVisibility(View.GONE);
+//            add_sound_txt.setClickable(false);
+            rotate_camera.setVisibility(View.GONE);
+            upload_layout.setVisibility(View.GONE);
 
-
+        } else if (is_recording) {
+            is_recording = false;
+            video_progress.pause();
+            video_progress.addDivider();
+            if (audio != null)
+                audio.pause();
+            cameraView.stopVideo();
+//            check_done_btn_enable();
+            cut_video_btn.setVisibility(View.VISIBLE);
+            record_image.setImageDrawable(getResources().getDrawable(R.drawable.ic_recoding_no));
+            camera_options.setVisibility(View.VISIBLE);
+            upload_layout.setVisibility(View.VISIBLE);
+        } else if (sec_passed > (Variables.recording_duration / 1000)) {
+            Functions.show_Alert(this, "Alert", "Video only can be a " + (int) Variables.recording_duration / 1000 + " S");
+        }
     }
 
     @Override
@@ -637,7 +677,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                         }
                         toggleClick = false;
                     }
-
 
                     public void onVideoFileReady() {
 

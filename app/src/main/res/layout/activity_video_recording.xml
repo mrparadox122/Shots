@@ -200,11 +200,9 @@
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/white"
-                        android:visibility="gone"
-                        />
+                        android:visibility="gone" />
 
                 </LinearLayout>
-
 
             </RelativeLayout>
 
@@ -216,7 +214,6 @@
                 android:background="@color/transparent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_recoding_no" />
-
 
             <ImageButton
                 android:id="@+id/done"

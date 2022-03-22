@@ -30,7 +30,6 @@ import java.util.List;
 
 // this is the class which will add the selected soung to the created video
 public class Merge_Video_Audio extends AsyncTask<String, String, String> {
-
     ProgressDialog progressDialog;
     Context context;
     String audio, video, output, draft_file;
@@ -46,7 +45,6 @@ public class Merge_Video_Audio extends AsyncTask<String, String, String> {
         super.onPreExecute();
     }
 
-
     @Override
     public String doInBackground(String... strings) {
         try {
@@ -60,29 +58,24 @@ public class Merge_Video_Audio extends AsyncTask<String, String, String> {
         if (strings.length == 4) {
             draft_file = strings[3];
         }
-
         Log.e("resp", audio + "----" + video + "-----" + output);
-
         Thread thread = new Thread(runnable);
         thread.start();
-
         return null;
     }
-
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
     }
 
-
     public void go_To_preview_Activity() {
+
         Intent intent = new Intent(context, Preview_Video_A.class);
         intent.putExtra("path", Variables.outputfile2);
         intent.putExtra("draft_file", draft_file);
         context.startActivity(intent);
     }
-
 
     public Track cropAudio(String videopath, Track fullAudio) {
         try {
@@ -119,15 +112,12 @@ public class Merge_Video_Audio extends AsyncTask<String, String, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return fullAudio;
     }
-
 
     public Runnable runnable = new Runnable() {
         @Override
         public void run() {
-
             try {
                 Movie m = MovieCreator.build(video);
                 List nuTracks = new ArrayList<>();
@@ -136,7 +126,6 @@ public class Merge_Video_Audio extends AsyncTask<String, String, String> {
                         nuTracks.add(t);
                     }
                 }
-
                 Track nuAudio = new AACTrackImpl(new FileDataSourceImpl(audio));
                 Track crop_track = cropAudio(video, nuAudio);
                 nuTracks.add(crop_track);
@@ -157,7 +146,6 @@ public class Merge_Video_Audio extends AsyncTask<String, String, String> {
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.d(Variables.tag, e.toString());
-
             }
 
         }

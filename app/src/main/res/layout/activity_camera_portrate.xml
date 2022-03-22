@@ -48,6 +48,7 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.92">
 
+
     <android.widget.TextView
         android:id="@+id/time15s"
         android:layout_width="wrap_content"
@@ -67,6 +68,8 @@
         app:layout_constraintTop_toTopOf="@+id/btn_flash"
         app:layout_constraintVertical_bias="0.16000003" />
 
+
+
     <android.widget.TextView
         android:id="@+id/time30s"
         android:layout_width="wrap_content"
@@ -85,6 +88,7 @@
         app:layout_constraintVertical_bias="0.26999998" />
 
 
+
     <android.widget.TextView
         android:id="@+id/time60s"
         android:layout_width="wrap_content"
@@ -101,8 +105,8 @@
         app:layout_constraintStart_toStartOf="@+id/btn_flash"
         app:layout_constraintTop_toTopOf="@+id/btn_flash"
         app:layout_constraintVertical_bias="0.16000003" />
-
   </LinearLayout>
+
 
   <ImageView
       android:id="@+id/btn_flash"
@@ -117,6 +121,7 @@
       app:layout_constraintVertical_bias="0.01999998" />
 
 
+
   <ImageView
       android:id="@+id/photo_filter"
       android:layout_width="30dp"
@@ -129,6 +134,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.01999998" />
+
 
   <RelativeLayout
       android:id="@+id/relativeLayout"
@@ -147,8 +153,8 @@
         android:layout_marginRight="10dp"
         android:background="@color/fifty_transparent_black" />
 
-  </RelativeLayout>
 
+  </RelativeLayout>
 
 
   <ImageView

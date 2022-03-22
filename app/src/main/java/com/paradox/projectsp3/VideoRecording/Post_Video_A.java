@@ -41,7 +41,6 @@ public class Post_Video_A extends AppCompatActivity implements ServiceCallback, 
 
     ImageView video_thumbnail;
     String video_path;
-
     ServiceCallback serviceCallback;
     EditText description_edit;
     String draft_file;
@@ -81,6 +80,7 @@ public class Post_Video_A extends AppCompatActivity implements ServiceCallback, 
         comment_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
 
             }
         });
