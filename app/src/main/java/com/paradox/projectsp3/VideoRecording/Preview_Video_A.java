@@ -60,9 +60,7 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview_video);
-
         select_postion = 0;
-
         Intent intent = getIntent();
         if (intent != null) {
             draft_file = intent.getStringExtra("draft_file");
@@ -124,7 +122,6 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
     }
 
     private void flipVideoHorizontal() {
-
         Functions.show_determinent_loader(this, false, false);
         new GPUMp4Composer(Variables.outputfile2, Variables.outputflipped2)
                 .flipHorizontal(true)

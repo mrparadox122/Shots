@@ -44,5 +44,6 @@
 
     <string name="version">2.1</string>
     <string name="device">android</string>
+    <string name="title_activity_sound_actvity">SoundActvity</string>
 
 </resources>

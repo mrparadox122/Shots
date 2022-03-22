@@ -48,7 +48,7 @@ import com.paradox.projectsp3.Interface.Fragment_Callback;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.SegmentProgress.ProgressBarListener;
 import com.paradox.projectsp3.SegmentProgress.SegmentedProgressBar;
-import com.paradox.projectsp3.SoundsList.SoundList_Main_A;
+import com.paradox.projectsp3.SoundsList.SoundActivity;
 import com.paradox.projectsp3.Variables;
 import com.rachitgoyal.durationitem.DurationView;
 import com.wonderkiln.camerakit.CameraKit;
@@ -410,7 +410,7 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 ////                onBackPressed();
 //                break;
             case R.id.add_sound_txt:
-                Intent intent = new Intent(this, SoundList_Main_A.class);
+                Intent intent = new Intent(this, SoundActivity.class);
                 startActivityForResult(intent, Sounds_list_Request_code);
                 overridePendingTransition(R.anim.in_from_bottom, R.anim.out_to_top);
                 break;

@@ -12,12 +12,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
     <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-feature android:name="android.hardware.camera2.full"
-                  android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera2.full"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -29,8 +30,10 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SoundsList.SoundList_Main_A"
+            android:name=".SoundsList.SoundActivity"
             android:exported="false" />
+
+
         <activity
             android:name=".VideoRecording.Post_Video_A"
             android:exported="false" />
@@ -137,9 +140,7 @@
         <activity
             android:name=".PickImage_Activity"
             android:exported="false" />
-        <activity
-            android:name=".SoundActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MyVideoView_Activity"
             android:exported="false" />
@@ -184,6 +185,12 @@
         <activity
             android:name=".VideoEditorFolder.PortraitCameraActivity"
             android:screenOrientation="nosensor" />
+
+        <activity
+            android:name=".VideoEditorFolder.BaseCameraActivity"
+            android:screenOrientation="nosensor"
+            tools:ignore="DuplicateActivity" />
+
         <activity
             android:name=".NewSplash_Activity"
             android:exported="true"
