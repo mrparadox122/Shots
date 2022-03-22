@@ -7,7 +7,6 @@
     android:keepScreenOn="true"
     android:layout_height="match_parent">
 
-
   <com.paradox.projectsp3.VideoEditorFolder.widget.PortraitFrameLayout
       android:id="@+id/wrap_view"
       android:layout_width="0dp"
@@ -23,9 +22,9 @@
 
   <ImageView
       android:id="@+id/btn_switch_camera"
-      android:layout_width="59dp"
-      android:layout_height="34dp"
-      android:src="@drawable/ic_rotate_cam"
+      android:layout_width="28dp"
+      android:layout_height="28dp"
+      android:src="@drawable/cameraclip"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.3"
@@ -53,12 +52,11 @@
         android:id="@+id/time15s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/timer_back"
         android:text="15s"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginRight="25dp"
-        android:textColor="@color/black75"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         android:padding="5dp"
@@ -74,10 +72,9 @@
         android:id="@+id/time30s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/timer_back"
         android:text="30s"
         android:padding="5dp"
-        android:textColor="@color/black_65"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginRight="25dp"
@@ -93,11 +90,10 @@
         android:id="@+id/time60s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/timer_back"
         android:text="60s"
         android:padding="5dp"
         android:paddingStart="10dp"
-        android:textColor="@color/ic_launcher_background"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,28 +108,54 @@
       android:id="@+id/btn_flash"
       android:layout_width="30dp"
       android:layout_height="30dp"
-      android:src="@drawable/ic_flash_off"
+      android:src="@drawable/flash"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.2"
+      app:layout_constraintHorizontal_bias="0.16"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.01999998" />
 
-
-
   <ImageView
-      android:id="@+id/photo_filter"
+      android:id="@+id/btn_speed"
       android:layout_width="30dp"
       android:layout_height="30dp"
-      android:src="@drawable/photo_filter"
+      android:src="@drawable/ic_speed"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.28"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.01999998" />
+
+  <ImageView
+      android:id="@+id/timer"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:src="@drawable/timer"
       android:elevation="2dp"
+      android:layout_marginRight="25dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.05"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.01999998" />
+
+
+<!--  <ImageView-->
+<!--      android:id="@+id/photo_filter"-->
+<!--      android:layout_width="30dp"-->
+<!--      android:layout_height="30dp"-->
+<!--      android:src="@drawable/photo_filter"-->
+<!--      android:elevation="2dp"-->
+<!--      app:layout_constraintBottom_toBottomOf="parent"-->
+<!--      app:layout_constraintEnd_toEndOf="parent"-->
+<!--      app:layout_constraintHorizontal_bias="0.05"-->
+<!--      app:layout_constraintStart_toStartOf="parent"-->
+<!--      app:layout_constraintTop_toTopOf="parent"-->
+<!--      app:layout_constraintVertical_bias="0.01999998" />-->
 
 
   <RelativeLayout
@@ -186,13 +208,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:layout_width="21dp"
-        android:layout_height="21dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_music_note_black_24dp" />
-
-
     <TextView
         android:id="@+id/add_sound_txtv"
         android:layout_width="wrap_content"
@@ -200,7 +215,7 @@
         android:padding="5dp"
         android:text="Add Sound"
         android:textColor="@color/white"
-        android:textSize="13dp"
+        android:textSize="15dp"
         android:textStyle="bold" />
   </LinearLayout>
 
@@ -264,58 +279,58 @@
       android:layout_height="wrap_content"
       android:gravity="center"
       android:orientation="horizontal"
-      android:weightSum="3"
       android:layout_marginBottom="10dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent">
 
-    <ImageView
-        android:id="@+id/timer"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_timer"
-        android:elevation="2dp"
-        android:layout_marginRight="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01999998" />
+<!--    <ImageView-->
+<!--        android:id="@+id/timer"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:src="@drawable/timer"-->
+<!--        android:elevation="2dp"-->
+<!--        android:layout_marginRight="25dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.05"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.01999998" />-->
 
 
 
     <ImageView
         android:id="@+id/video_upload"
-        android:layout_width="58dp"
-        android:layout_height="58dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:padding="5dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:src="@drawable/ic_gallery_icon"/>
+        android:layout_marginStart="20dp"
+        android:layout_gravity="start|center"
+        android:src="@drawable/ic_gallary"/>
 
     <ImageView
         android:id="@+id/record"
-        android:layout_width="67dp"
-        android:layout_height="63dp"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginTop="5dp"
         android:src="@drawable/pausee"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        />
+
+
 
     <TextView
         android:id="@+id/txt_next"
-        android:padding="10dp"
+        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:drawableLeft="@drawable/ic_navigate_next"
         android:layout_marginLeft="35dp"
         android:textColor="@color/white"
         android:textSize="20sp"

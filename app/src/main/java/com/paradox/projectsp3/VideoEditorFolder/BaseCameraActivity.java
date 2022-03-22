@@ -122,6 +122,7 @@ public class BaseCameraActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.record);
 
+
         Timer=findViewById(R.id.timer);
         pauseBtn= findViewById(R.id.pause);
         Face=findViewById(R.id.imageView2);
@@ -192,30 +193,30 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
         });
         showVideoPath=findViewById(R.id.profilepic);
-        Photo_filter=findViewById(R.id.photo_filter);
+//        Photo_filter=findViewById(R.id.photo_filter);
 
         lv=findViewById(R.id.filter_list);
 
-        final boolean[] photo_filter = {true};
+//        final boolean[] photo_filter = {true};
 
         btn_switch_camera=findViewById(R.id.btn_switch_camera);
 
-        Photo_filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(photo_filter[0])
-                {
-                    lv.setVisibility(View.VISIBLE);
-                    photo_filter[0] =false;
-                }
-                else
-                {
-                    lv.setVisibility(View.GONE);
-                    photo_filter[0] =true;
-                }
-
-            }
-        });
+//        Photo_filter.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(photo_filter[0])
+//                {
+//                    lv.setVisibility(View.VISIBLE);
+//                    photo_filter[0] =false;
+//                }
+//                else
+//                {
+//                    lv.setVisibility(View.GONE);
+//                    photo_filter[0] =true;
+//                }
+//
+//            }
+//        });
 
 
         final Boolean[] time15 = {false};

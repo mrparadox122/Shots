@@ -174,7 +174,7 @@ public class VideoRecording_Activity extends AppCompatActivity implements View.O
 
     // if the Recording is stop then it we start the recording
     // and if the mobile is recording the video then it will stop the recording
-    public void start_or_Stop_Recording() {
+    public void start_or_Stop_Recording()  {
         if (!is_recording && sec_passed < (Variables.recording_duration / 1000) - 1) {
             number = number + 1;
             is_recording = true;
