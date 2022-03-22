@@ -32,6 +32,7 @@
       app:layout_constraintStart_toEndOf="@+id/addSound123"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.0" />
+
   <LinearLayout
      android:visibility="gone"
       android:id="@+id/timerlayout"
