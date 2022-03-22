@@ -51,7 +51,7 @@ import com.paradox.projectsp3.MyVideoView_Activity;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Responses.ApiInterface;
 import com.paradox.projectsp3.Responses.Users;
-import com.paradox.projectsp3.SoundsList.SoundList_Main_A;
+import com.paradox.projectsp3.SoundsList.SoundActivity;
 import com.paradox.projectsp3.Variables;
 
 import org.json.JSONException;
@@ -83,19 +83,6 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         hide_navigation();
         setContentView(R.layout.activity_gallery_selected_video);
-//        Intent intent = new Intent(Intent.ACTION_PICK);
-//        intent.setType("video/*");
-//        startActivityForResult(intent,2);
-
-
-//        Intent intent = getIntent();
-//        if (intent != null) {
-//            path = intent.getStringExtra("video_path");
-//            Log.e(TAG, "onCreate: "+path);
-//            draft_file = intent.getStringExtra("draft_file");
-//        }
-
-
         Variables.selected_sound_id = "null";
         findViewById(R.id.Goback).setOnClickListener(this);
         add_sound_txt = findViewById(R.id.add_sound_txt);
@@ -157,7 +144,7 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
                 break;
 
             case R.id.add_sound_txt:
-                Intent intent = new Intent(this, SoundList_Main_A.class);
+                Intent intent = new Intent(this, SoundActivity.class);
                 startActivityForResult(intent, Sounds_list_Request_code);
                 overridePendingTransition(R.anim.in_from_bottom, R.anim.out_to_top);
                 break;

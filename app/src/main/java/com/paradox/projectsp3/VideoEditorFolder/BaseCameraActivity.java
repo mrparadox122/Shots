@@ -51,8 +51,8 @@ import com.paradox.projectsp3.HomeActivty;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.SegmentProgress.ProgressBarListener;
 import com.paradox.projectsp3.SegmentProgress.SegmentedProgressBar;
-import com.paradox.projectsp3.SoundActivity;
-import com.paradox.projectsp3.SoundsList.SoundList_Main_A;
+
+import com.paradox.projectsp3.SoundsList.SoundActivity;
 import com.paradox.projectsp3.Variables;
 import com.paradox.projectsp3.VideoEditorFolder.widget.SampleCameraGLView;
 import com.paradox.projectsp3.VideoRecording.GallerySelectedVideo_A;
@@ -74,7 +74,6 @@ import java.util.Date;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
 
 public class BaseCameraActivity extends AppCompatActivity {
 
@@ -166,7 +165,6 @@ public class BaseCameraActivity extends AppCompatActivity {
 
                 }
             });
-
 
         Timer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -265,7 +263,7 @@ public class BaseCameraActivity extends AppCompatActivity {
         addSound123.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(BaseCameraActivity.this, SoundList_Main_A.class);
+                Intent intent=new Intent(BaseCameraActivity.this, SoundActivity.class);
                 startActivity(intent);
                 Animatoo.animateCard(BaseCameraActivity.this);
                 finish();
