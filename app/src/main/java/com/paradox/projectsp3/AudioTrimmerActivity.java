@@ -15,8 +15,6 @@
 package com.paradox.projectsp3;
 
 
-import static com.yalantis.ucrop.UCropFragment.TAG;
-
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -957,7 +955,6 @@ public class AudioTrimmerActivity extends AppCompatActivity implements View.OnCl
                     return;
                 }
                 File outFile = new File(outPath);
-                Log.e(TAG, "run: "+outFile );
                 try {
                     // Write the new file
                     mRecordedSoundFile.WriteFile(outFile, startFrame, endFrame - startFrame);
@@ -1038,7 +1035,7 @@ public class AudioTrimmerActivity extends AppCompatActivity implements View.OnCl
         if (!externalRootDir.endsWith("/")) {
             externalRootDir += "/";
         }
-        subDir = "media/audio/music/";
+        subDir = "Music/";
         String parentDir = externalRootDir + subDir;
 
         // Create the parent directory
@@ -1078,7 +1075,7 @@ public class AudioTrimmerActivity extends AppCompatActivity implements View.OnCl
             }
         }
 
-        Log.e(TAG, "makeRingtoneFilename: "+path );
+
         return path;
     }
 
