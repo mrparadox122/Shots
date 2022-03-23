@@ -39,7 +39,7 @@ public class PostVideo_Activity extends AppCompatActivity implements AdapterView
         description_edit = findViewById(R.id.description_edit);
         privcy_type_txt = findViewById(R.id.privcy_type_txt);
         comment_switch = findViewById(R.id.comment_switch);
-        spinneracces = findViewById(R.id.spinneracces);
+
 
         comment_switch.setChecked(true);
 

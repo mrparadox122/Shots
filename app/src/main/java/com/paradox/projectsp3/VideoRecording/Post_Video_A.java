@@ -51,7 +51,6 @@ public class Post_Video_A extends AppCompatActivity implements ServiceCallback, 
 
     private Context context =this;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +90,7 @@ public class Post_Video_A extends AppCompatActivity implements ServiceCallback, 
 
         findViewById(R.id.Goback).setOnClickListener(this);
         findViewById(R.id.privacy_type_layout).setOnClickListener(this);
-        findViewById(R.id.post_btn).setOnClickListener(this);
+        findViewById(R.id.post_bt).setOnClickListener(this);
         findViewById(R.id.save_draft_btn).setOnClickListener(this);
 
 
@@ -113,7 +112,7 @@ public class Post_Video_A extends AppCompatActivity implements ServiceCallback, 
                 save_file_in_draft();
                 break;
 
-            case R.id.post_btn:
+            case R.id.post_bt:
                 start_Service();
                 break;
         }

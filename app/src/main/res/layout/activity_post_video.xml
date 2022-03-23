@@ -124,31 +124,31 @@
                     android:id="@+id/spinner"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_toStartOf="@+id/right_arrow"
+                    android:layout_toStartOf="@+id/right_arrow1"
                     android:backgroundTintMode="src_over" />
 
 
                 <!--                <Spinner-->
-<!--                    android:id="@+id/spinner"-->
-<!--                    android:layout_width="150dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_toStartOf="@+id/right_arrow"-->
-<!--                    android:backgroundTintMode="src_over" />-->
+                <!--                    android:id="@+id/spinner"-->
+                <!--                    android:layout_width="150dp"-->
+                <!--                    android:layout_height="50dp"-->
+                <!--                    android:layout_toStartOf="@+id/right_arrow"-->
+                <!--                    android:backgroundTintMode="src_over" />-->
 
 
                 <TextView
-                    android:visibility="gone"
-                    android:id="@+id/privcy_type_txt"
+                    android:id="@+id/privcy_type_txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="5dp"
                     android:layout_toStartOf="@+id/right_arrow"
                     android:text="public"
-                    android:textColor="@color/gray" />
+                    android:textColor="@color/gray"
+                    android:visibility="gone" />
 
                 <ImageView
-                    android:id="@+id/right_arrow"
+                    android:id="@+id/right_arrow1"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_alignParentEnd="true"
@@ -236,7 +236,6 @@
 
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/privcy_type_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -244,7 +243,8 @@
                     android:layout_marginEnd="5dp"
                     android:layout_toStartOf="@+id/right_arrow"
                     android:text="public"
-                    android:textColor="@color/gray" />
+                    android:textColor="@color/gray"
+                    android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/right_arrow"
@@ -254,9 +254,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="15dp"
                     android:src="@drawable/ic_next"
-                    android:tint="@color/white"
-
-                    />
+                    android:tint="@color/white" />
 
             </RelativeLayout>
 
@@ -332,7 +330,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/post_btn"
+                android:id="@+id/post_bt"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_margin="15dp"
