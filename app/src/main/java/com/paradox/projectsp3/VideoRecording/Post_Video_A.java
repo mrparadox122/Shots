@@ -44,8 +44,11 @@ public class Post_Video_A extends AppCompatActivity implements ServiceCallback, 
     ServiceCallback serviceCallback;
     EditText description_edit;
     String draft_file;
+
     TextView privcy_type_txt;
+
     Switch comment_switch;
+
     private Context context =this;
 
 
@@ -53,6 +56,7 @@ public class Post_Video_A extends AppCompatActivity implements ServiceCallback, 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_video2);
+        getSupportActionBar().hide();
 
         Intent intent=getIntent();
         if(intent!=null){
@@ -127,25 +131,16 @@ public class Post_Video_A extends AppCompatActivity implements ServiceCallback, 
         builder.setTitle(null);
 
         builder.setItems(options, new DialogInterface.OnClickListener() {
-
             @Override
-
             public void onClick(DialogInterface dialog, int item) {
                 privcy_type_txt.setText(options[item]);
-
             }
-
         });
-
         builder.show();
-
     }
-
     // this will start the service for uploading the video into database
     public void start_Service(){
-
         serviceCallback=this;
-
         Upload_Service mService = new Upload_Service(serviceCallback);
         if (!Functions.isMyServiceRunning(this,mService.getClass())) {
             Intent mServiceIntent = new Intent(this.getApplicationContext(), mService.getClass());
