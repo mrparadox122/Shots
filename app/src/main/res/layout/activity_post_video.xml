@@ -120,8 +120,24 @@
                     android:text="Who can view this video"
                     android:textColor="@color/gray" />
 
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_toStartOf="@+id/right_arrow"
+                    android:backgroundTintMode="src_over" />
+
+
+                <!--                <Spinner-->
+<!--                    android:id="@+id/spinner"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_toStartOf="@+id/right_arrow"-->
+<!--                    android:backgroundTintMode="src_over" />-->
+
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/privcy_type_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -151,6 +167,7 @@
                 android:background="@color/black75" />
 
             <RelativeLayout
+                android:id="@+id/allow_rl"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/black_65">
@@ -182,9 +199,67 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="15dp"
                     android:checked="true"
-                    android:theme="@style/SwitchTheme"></Switch>
+                    android:theme="@style/SwitchTheme" />
 
             </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/categorylayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/black_65">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:text="Choose Category"
+                    android:textColor="@color/gray" />
+
+                <Spinner
+                    android:id="@+id/spinner_category"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_toStartOf="@+id/right_arrow"
+                    android:backgroundTintMode="src_over" />
+
+
+                <!--                <Spinner-->
+                <!--                    android:id="@+id/spinner"-->
+                <!--                    android:layout_width="150dp"-->
+                <!--                    android:layout_height="50dp"-->
+                <!--                    android:layout_toStartOf="@+id/right_arrow"-->
+                <!--                    android:backgroundTintMode="src_over" />-->
+
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/privcy_type_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toStartOf="@+id/right_arrow"
+                    android:text="public"
+                    android:textColor="@color/gray" />
+
+                <ImageView
+                    android:id="@+id/right_arrow"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_next"
+                    android:tint="@color/white"
+
+                    />
+
+            </RelativeLayout>
+
 
         </LinearLayout>
 
@@ -243,7 +318,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_file_upload_white" />
+                    android:src="@drawable/ic_download" />
 
                 <TextView
                     android:layout_width="wrap_content"
