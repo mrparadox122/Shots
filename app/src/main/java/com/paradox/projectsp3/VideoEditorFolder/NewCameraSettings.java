@@ -22,11 +22,8 @@ public class NewCameraSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_camera_settings);
 
-
-
         resolution = findViewById(R.id.resolution);
         sutterSound = findViewById(R.id.sutterSound);
-
 
         resolution.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +42,7 @@ public class NewCameraSettings extends AppCompatActivity {
 
     }
 
+
         private void ResolutionIt() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setTitle("Single Choice Dialog");
@@ -61,7 +59,6 @@ public class NewCameraSettings extends AppCompatActivity {
                         case 1:
                         Toast.makeText(getApplication() , "Off", Toast.LENGTH_SHORT).show();
                         break;
-
                 }
             }
         });

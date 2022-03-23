@@ -83,7 +83,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
     LinearLayout ll_verify,ll_phoneverify;
 
     TextView nameedit_btn,emailedit_btn,phoneedit_btn,datePickerButton,bioedit_btn,editname_txt,
-            editemail_txt,phonenumber_txt,dobtext_txt,gendertext_txt,bio_txt,user_id;
+            editemail_txt,phonenumber_txt,dobtext_txt,gendertext_txt,bio_txt,user_id,catedit_btn;
     EditText editname_et,editphone_et,editgender_et,editeamil_et,editdob_et,editbio_et,verificationphone_et,verifycode_et;
     Button btn_savephone,btn_savename,btn_savegender,btn_saveemail,btn_savedob,btn_savebio,btn_verification,btn_verifyemail;
     Spinner genderedit_btnS;
@@ -128,9 +128,17 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
         dobtext_txt = findViewById(R.id.dobtext_txt);
         gendertext_txt = findViewById(R.id.gendertext_txt);
         bio_txt = findViewById(R.id.bio_txt);
+        catedit_btn = findViewById(R.id.catedit_btn);
+
+        catedit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewEditProfile_Activity.this, ChooseYoursIntrests_Activity.class);
+                startActivity(intent);
+            }
+        });
+
         mAuth = FirebaseAuth.getInstance();
-
-
 
         datePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
