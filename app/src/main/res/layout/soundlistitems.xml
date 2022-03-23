@@ -23,12 +23,28 @@
             android:layout_marginStart="5dp"
             android:src="@drawable/ic_music"/>
 
+        <ImageButton
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="146dp"
+            android:clickable="true"
+            android:layout_marginEnd="43dp"
+            android:layout_toEndOf="@+id/songttx"
+
+            android:id="@+id/btnAudioTrim"
+            android:src="@drawable/ic_baseline_add_24">
+
+        </ImageButton>
+
         <TextView
             android:id="@+id/songttx"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginStart="1dp"
             android:layout_toEndOf="@+id/songim"
+            android:clickable="true"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="10"
             android:padding="6dp"
