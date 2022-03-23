@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8C8C8C"
+    android:orientation="vertical"
     tools:context=".SoundsList.SoundActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Songs"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@android:color/transparent"
         android:padding="9dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/sounlst"
         android:dividerHeight="10.sp"
-
         >
-
-
     </ListView>
 
-</RelativeLayout>
+</LinearLayout>

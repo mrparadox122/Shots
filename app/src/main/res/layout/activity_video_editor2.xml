@@ -20,16 +20,17 @@
 
     <VideoView
         android:id="@+id/video"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="34dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_width="match_parent"
         android:layout_height="250dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Videoview"
+        android:gravity="center"
         android:layout_marginStart="5dp"
         android:textColor="@color/red"
         android:textStyle="bold"/>
@@ -68,14 +69,18 @@
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:tint="@color/red"
+                android:layout_marginRight="15dp"
                 android:src="@drawable/ic_volume"/>
 
             <ImageView
+                android:id="@+id/playid"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:tint="#081F7C"
+                android:layout_marginRight="15dp"
                 android:src="@drawable/ic_play"/>
             <ImageView
+                android:id="@+id/doneid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:tint="#065706"
@@ -96,6 +101,24 @@
                 android:layout_height="wrap_content"
                 android:text="Choose Text styles "
                 android:textColor="@color/teal_700"
+                android:textStyle="bold"
+                android:textSize="21sp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#B3B4B6"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colours "
+                android:textColor="@color/purple_500"
                 android:textStyle="bold"
                 android:textSize="21sp"/>
 
@@ -125,7 +148,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#B3B4B6"
-            android:layout_marginTop="155dp"
+            android:layout_marginTop="105dp"
             android:orientation="horizontal">
 
             <TextView

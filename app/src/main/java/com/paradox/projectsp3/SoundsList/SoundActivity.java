@@ -34,12 +34,8 @@ import java.util.ArrayList;
 
 public class SoundActivity extends AppCompatActivity {
 
-
-
     ListView sounlst;
-
     String[] itms;
-
 
 
     @Override
@@ -89,45 +85,27 @@ public class SoundActivity extends AppCompatActivity {
                }
            }
        }
-
-
-
-
-
-
         return arrayList;
-
-
     }
 
 
     public void Displysog(){
         new Thread(new Runnable() { @Override public void run() {
-
             final ArrayList<File> mySongs = findSn(Environment.getExternalStorageDirectory());
             itms = new String[mySongs.size()];
             for (int i=0; i <mySongs.size();i++){
                 itms[i]=mySongs.get(i).getName().toString().replace(".mp3","").replace(".wav","");
             }
             runOnUiThread(new Runnable() {
-
                 @Override
                 public void run() {
-
                     customAdaptor custmAdaptor = new customAdaptor();
                     sounlst.setAdapter(custmAdaptor);
-
                 }
             });
             Log.e(TAG, "run://////////////////////////////////////////////////// " );
 
-
-
         } }).start();
-
-
-
-
     }
 
     class customAdaptor extends BaseAdapter{

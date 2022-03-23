@@ -149,7 +149,6 @@ public class BaseCameraActivity extends AppCompatActivity {
         });
 
 
-
         final boolean[] timer = {false};
 
             sec_passed = 0;
