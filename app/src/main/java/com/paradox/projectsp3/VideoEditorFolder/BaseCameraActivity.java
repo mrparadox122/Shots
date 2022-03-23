@@ -282,19 +282,10 @@ public class BaseCameraActivity extends AppCompatActivity {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialogSetting=new Dialog(BaseCameraActivity.this);
-                dialogSetting.setContentView(R.layout.camera_setting);
-                dialogSetting.setCancelable(false);
-                ImageView close=dialogSetting.findViewById(R.id.back);
-                close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialogSetting.dismiss();
-                    }
-                });
-                dialogSetting.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialogSetting.getWindow().setGravity(Gravity.TOP);
-                dialogSetting.show();
+
+                Intent intent = new Intent(BaseCameraActivity.this,NewCameraSettings.class);
+                startActivity(intent);
+
             }
         });
 

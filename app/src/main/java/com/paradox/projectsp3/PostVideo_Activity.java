@@ -50,8 +50,6 @@ public class PostVideo_Activity extends AppCompatActivity implements AdapterView
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(ad);
 
-
-
         spinner_category = findViewById(R.id.spinner_category);
         spinner.setOnItemSelectedListener(this);
 
@@ -85,7 +83,6 @@ public class PostVideo_Activity extends AppCompatActivity implements AdapterView
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
 
 
     }

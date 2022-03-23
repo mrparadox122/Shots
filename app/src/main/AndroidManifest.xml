@@ -30,6 +30,9 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".VideoEditorFolder.NewCameraSettings"
+            android:exported="false" />
+        <activity
             android:name=".VideoRecording.VideoEditorActivity"
             android:exported="false" />
         <activity
