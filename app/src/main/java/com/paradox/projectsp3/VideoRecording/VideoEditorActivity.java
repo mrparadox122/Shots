@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -16,6 +17,8 @@ public class VideoEditorActivity extends AppCompatActivity {
     VideoView video;
 //    ImageView volumeID,playid,doneid;
 
+    LinearLayout edit_pencil,edit_colour;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +28,26 @@ public class VideoEditorActivity extends AppCompatActivity {
 
 
         video = findViewById(R.id.video);
+        edit_colour = findViewById(R.id.edit_colour);
+        edit_pencil = findViewById(R.id.edit_pencil);
 //        volumeID = findViewById(R.id.volumeID);
 //        playid = findViewById(R.id.playid);
 //        doneid = findViewById(R.id.doneid);
 
+
+        edit_colour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(VideoEditorActivity.this, "Colour Click", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        edit_pencil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(VideoEditorActivity.this, "Pencil Click", Toast.LENGTH_SHORT).show();
+            }
+        });
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
