@@ -6,19 +6,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +37,7 @@ import io.paperdb.Paper;
 
 public class Login extends AppCompatActivity {
 
+    private static  final String  FILE_Email = "rememberne";
     public boolean bool;
     Button btn_login;
     EditText mobileNumbr,pin;
@@ -40,7 +45,6 @@ public class Login extends AppCompatActivity {
     TextView createnewACC,skip_txt,firebase_login_btn;
     CheckBox rememberme;
     FirebaseAuth mauth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,21 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
+        SharedPreferences sharedPreferences = getSharedPreferences(FILE_Email, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String saveemail = sharedPreferences.getString("svemail","");
+        String savepassword = sharedPreferences.getString("svpasswprd","");
+
+        if (sharedPreferences.contains("checked")&& sharedPreferences.getBoolean("checked",false) == true){
+            rememberme.setChecked(true);
+        }else {
+
+            rememberme.setChecked(false);
+        }
+
+
+        mobileNumbr.setText(saveemail);
+        pin.setText(savepassword);
 
         mobileNumbr = findViewById(R.id.et_mobile);
         btn_login = findViewById(R.id.login_bt);
@@ -62,16 +81,47 @@ public class Login extends AppCompatActivity {
         firebase_login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Logintofirebase();
+                String useremail = mobileNumbr.getText().toString().trim();
+                String userpassword = pin.getText().toString().trim();
+
+                if (rememberme.isChecked()){
+                    editor.putBoolean("checked",true);
+                    editor.apply();
+                    StoredatausingSharepref(saveemail,savepassword);
+                }else {
+
+                    
+
+                }
+
+                if (TextUtils.isEmpty(useremail)){
+                    Toast.makeText(Login.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
+                }
+                if (TextUtils.isEmpty(userpassword)){
+                    Toast.makeText(Login.this, "Plase Enter Password", Toast.LENGTH_SHORT).show();
+                }
+                if (userpassword.length()< 6){
+                    Toast.makeText(Login.this, "Password Must be 6 digits", Toast.LENGTH_SHORT).show();
+                }
+
+                mauth.signInWithEmailAndPassword(useremail,userpassword)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(Login.this, "Login Sucessful", Toast.LENGTH_SHORT).show();
+                                }else {
+
+                                    Toast.makeText(Login.this, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
-
 
         mauth = FirebaseAuth.getInstance();
 
         rememberme = (CheckBox) findViewById(R.id.remember_check);
-        Paper.init(this);
-
 
         skip_txt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,41 +195,14 @@ public class Login extends AppCompatActivity {
 
     }
 
+    private void StoredatausingSharepref(String saveemail, String savepassword) {
+
+
+    }
+
     public void Logintofirebase() {
 
-            String useremail = mobileNumbr.getText().toString().trim();
-            String userpassword = pin.getText().toString().trim();
 
-            if (TextUtils.isEmpty(useremail)){
-                Toast.makeText(this, "Please Enter Email", Toast.LENGTH_SHORT).show();
-            }
-            if (TextUtils.isEmpty(userpassword)){
-                Toast.makeText(this, "Plase Enter Password", Toast.LENGTH_SHORT).show();
-            }
-            if (userpassword.length()< 6){
-                Toast.makeText(this, "Password Must be 6 digits", Toast.LENGTH_SHORT).show();
-            }
-
-
-            mauth.signInWithEmailAndPassword(useremail,userpassword)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-
-                                if (rememberme.isChecked())
-                                {
-//                                    Paper.book().write(prevalentt.UserEmailKey);
-                                }
-
-
-                                Toast.makeText(Login.this, "Login Sucessful", Toast.LENGTH_SHORT).show();
-                            }else {
-
-                                Toast.makeText(Login.this, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
 
 
     }
@@ -190,8 +213,6 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
     public void login_btn(View view) {
 
 //        Intent intent = new Intent(Login.this, PinNumber_Activity.class);
@@ -199,7 +220,6 @@ public class Login extends AppCompatActivity {
     }
 
     public void firebaselogin(View view) {
-
 
 
     }

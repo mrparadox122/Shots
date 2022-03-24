@@ -20,6 +20,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -51,6 +52,7 @@ import com.paradox.projectsp3.Responses.Users;
 import com.paradox.projectsp3.VideoEditorFolder.PortraitCameraActivity;
 import com.paradox.projectsp3.VideoRecording.VideoRecording_Activity;
 
+import io.paperdb.Paper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -79,6 +81,19 @@ public class HomeActivty extends AppCompatActivity {
         ImageView comment=(ImageView)findViewById(R.id.imageView16);
         ImageView Search=(ImageView)findViewById(R.id.imageView15) ;
         checkPermission();
+
+
+
+        String UserEmailKey  = Paper.book().read(prevalentt.UserEmailKey);
+        String UserPasswordKey  = Paper.book().read(prevalentt.UserPasswordKey);
+
+        if (UserEmailKey != "" && UserPasswordKey != "" )
+        {
+            if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey))
+                AllowAcces(UserEmailKey,UserPasswordKey);
+        }
+
+
 
         //// onclick///
 
@@ -151,6 +166,13 @@ public class HomeActivty extends AppCompatActivity {
                 profile.setImageResource(R.drawable.ic_icon_awesome_user);
             }
         });
+
+
+    }
+
+    private void AllowAcces(String userEmailKey, String userPasswordKey) {
+
+
 
 
     }
