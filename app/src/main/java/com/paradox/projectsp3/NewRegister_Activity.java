@@ -13,6 +13,7 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -28,6 +29,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.PhoneAuthOptions;
+import com.google.firebase.database.FirebaseDatabase;
+import com.paradox.projectsp3.Model.UserModel;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.text.ParseException;
@@ -54,18 +57,14 @@ import java.util.regex.Pattern;
 public class NewRegister_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText et_name,et_Remail ,et_Rphonenumber,et_Rpassword, et_RConfirmpassword,et_veryfi;
-    Button btn_signup,btn_submit,datePickerButton;
+    Button btn_signup,btn_submit,datePickerButton,btn_firebase_submit;
     String Dob,gender;
-
     TextView date_et,terms,privacy;
-
     String[] Gender = {"Male", "Female", "Others"};
     String[] Options = {"Phone"};
-
     private FirebaseAuth mAuth;
-
+    FirebaseDatabase database;
     private String verificationId;
-
 
     @SuppressLint("SimpleDateFormat")
     SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");
@@ -82,7 +81,6 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     public NewRegister_Activity() throws ParseException {
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,25 +89,18 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         getSupportActionBar().hide();
         setContentView(R.layout.activity_new_register);
 
+
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
-
-
-
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Gender);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(ad);
-
-
         Spinner spinner01 = findViewById(R.id.spinner01);
         spinner01.setOnItemSelectedListener(this);
-
         ArrayAdapter add = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Options);
         add.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner01.setAdapter(add);
-
         mAuth = FirebaseAuth.getInstance();
-
         et_name = findViewById(R.id.et_name);
         et_Remail = findViewById(R.id.et_Remail);
         et_Rphonenumber = findViewById(R.id.et_Rphonenumber);
@@ -119,15 +110,25 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         btn_signup = findViewById(R.id.btn_signup);
         btn_submit = findViewById(R.id.btn_submit);
         date_et = findViewById(R.id.date_et);
-
         verification = findViewById(R.id.verification);
         terms = findViewById(R.id.terms);
         privacy = findViewById(R.id.privacy);
+        btn_firebase_submit = findViewById(R.id.btn_firebase_submit);
+        mAuth = FirebaseAuth.getInstance();
+        database= FirebaseDatabase.getInstance();
+
+
+        btn_firebase_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createUsers();
+            }
+        });
+
 
         terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/Terms&conditions.html"));
                 startActivity(browserIntent);
             }
@@ -138,7 +139,6 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
             public void onClick(View view) {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/index.html"));
                 startActivity(browserIntent);
-
             }
         });
 
@@ -334,9 +334,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
 //                            }
 //                        }
 //                    });
-
                 }
-
                else
                 {
 //                    et_RConfirmpassword.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP);
@@ -344,8 +342,48 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                 }
             }
         });
-
     }
+
+    private void createUsers() {
+        String username = et_name.getText().toString().trim();
+        String useremail = et_Remail.getText().toString().trim();
+        String userpassword = et_Rpassword.getText().toString().trim();
+
+        if (TextUtils.isEmpty(username)){
+            Toast.makeText(this, "Username is Empty", Toast.LENGTH_SHORT).show();
+        }
+
+        if (TextUtils.isEmpty(useremail)){
+            Toast.makeText(this, "Email is Empty", Toast.LENGTH_SHORT).show();
+        }
+
+        if (TextUtils.isEmpty(userpassword)){
+            Toast.makeText(this, "Password is Empty", Toast.LENGTH_SHORT).show();
+        }
+
+        if (userpassword.length()< 6){
+            Toast.makeText(this, "Password lenght must be greter then 6 Digits", Toast.LENGTH_SHORT).show();
+        }
+
+        mAuth.createUserWithEmailAndPassword(useremail,userpassword )
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            UserModel userModel = new UserModel(username,useremail,userpassword);
+                            String id = task.getResult().getUser().getUid();
+                            database.getReference().child("User").child(id).setValue(userModel);
+                            startActivity(new Intent(NewRegister_Activity.this,Login.class));
+                            Toast.makeText(NewRegister_Activity.this, "Registration is Success", Toast.LENGTH_SHORT).show();
+                        }else {
+
+                            Toast.makeText(NewRegister_Activity.this, "Registration is Failed"+task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+
 
     private void initDatePicker() {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
