@@ -14,7 +14,7 @@ public class VideoEditorActivity extends AppCompatActivity {
 
 
     VideoView video;
-    ImageView volumeID,playid,doneid;
+//    ImageView volumeID,playid,doneid;
 
 
     @Override
@@ -25,9 +25,9 @@ public class VideoEditorActivity extends AppCompatActivity {
 
 
         video = findViewById(R.id.video);
-        volumeID = findViewById(R.id.volumeID);
-        playid = findViewById(R.id.playid);
-        doneid = findViewById(R.id.doneid);
+//        volumeID = findViewById(R.id.volumeID);
+//        playid = findViewById(R.id.playid);
+//        doneid = findViewById(R.id.doneid);
 
         video.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,35 +36,35 @@ public class VideoEditorActivity extends AppCompatActivity {
             }
         });
 
-        volumeID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Toast.makeText(VideoEditorActivity.this, "Volume Click", Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
-
-        playid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Toast.makeText(VideoEditorActivity.this, "Play Click", Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
-
-        doneid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Toast.makeText(VideoEditorActivity.this, "Sound done Click", Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
+//        volumeID.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Toast.makeText(VideoEditorActivity.this, "Volume Click", Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//        });
+//
+//        playid.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Toast.makeText(VideoEditorActivity.this, "Play Click", Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//        });
+//
+//        doneid.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Toast.makeText(VideoEditorActivity.this, "Sound done Click", Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//        });
 
 
 

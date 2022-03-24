@@ -51,7 +51,6 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-
         mobileNumbr = findViewById(R.id.et_mobile);
         btn_login = findViewById(R.id.login_bt);
         pin = findViewById(R.id.et_pin);
@@ -146,7 +145,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void Logintofirebase() {
+    public void Logintofirebase() {
 
             String useremail = mobileNumbr.getText().toString().trim();
             String userpassword = pin.getText().toString().trim();
@@ -160,17 +159,20 @@ public class Login extends AppCompatActivity {
             if (userpassword.length()< 6){
                 Toast.makeText(this, "Password Must be 6 digits", Toast.LENGTH_SHORT).show();
             }
+
+
             mauth.signInWithEmailAndPassword(useremail,userpassword)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-
-
                             if (task.isSuccessful()){
+
                                 if (rememberme.isChecked())
                                 {
-//                                    Paper.book().write()
+//                                    Paper.book().write(prevalentt.UserEmailKey);
                                 }
+
+
                                 Toast.makeText(Login.this, "Login Sucessful", Toast.LENGTH_SHORT).show();
                             }else {
 

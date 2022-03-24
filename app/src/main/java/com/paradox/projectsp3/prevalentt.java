@@ -1,6 +1,6 @@
-package com.paradox.projectsp3.Prevalent;
+package com.paradox.projectsp3;
 
-public class prevalent {
+public class prevalentt {
 
     public   static  final String UserEmailKey = "UserEmail";
     public   static  final String UserPasswordKey = "UserPasssword";
