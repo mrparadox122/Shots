@@ -93,6 +93,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
     String message_editst;
     EditText message_edit;
 
+    
+
     public VideoPlayerViewHolder(@NonNull View itemView) {
         super(itemView);
         parent = itemView;
@@ -674,6 +676,8 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //
 //            }
 //        });
+
     }
+
 
 }

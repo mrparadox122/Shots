@@ -32,6 +32,7 @@ public class GlobalVariables {
     static String Gender;
     static String profile_pic;
     static String bio;
+    public static String sound_url,sound_title;
     public static String mp4Path;
 
     public static int j = 0;

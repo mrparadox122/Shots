@@ -98,7 +98,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     private MediaPlayer mp;
     private boolean toggleClick = false;
     private ListView lv;
-    private String sound_url=null, sound_title=null;
+    private String sound_url = GlobalVariables.sound_url, sound_title = GlobalVariables.sound_title;
     LinearLayout camera_options, upload_layout;
     ImageButton rotate_camera, cut_video_btn;
     long time_in_milis = 0;
@@ -128,9 +128,9 @@ public class BaseCameraActivity extends AppCompatActivity {
         Face=findViewById(R.id.imageView2);
         setting=findViewById(R.id.settings);
         addSound123=findViewById(R.id.addSound123);
-        sound_url=getIntent().getStringExtra("sound_url");
-        sound_title=getIntent().getStringExtra("sound_title");
-        sound_button=findViewById(R.id.button);
+//        sound_url=getIntent().getStringExtra("sound_url");
+//        sound_title=getIntent().getStringExtra("sound_title");
+        sound_button=findViewById(R.id.add_sound_txtv);
         Time15=findViewById(R.id.time15s);
         Time30=findViewById(R.id.time30s);
         Time60=findViewById(R.id.time60s);
@@ -140,6 +140,7 @@ public class BaseCameraActivity extends AppCompatActivity {
         video_progress = findViewById(R.id.video_progress);
         video_upload = findViewById(R.id.video_upload);
         txt_next = findViewById(R.id.txt_next);
+        Toast.makeText(this, "start", Toast.LENGTH_SHORT).show();
 
         video_upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -265,9 +266,9 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
         });
 
-        if(sound_title !=null)
+        if(GlobalVariables.sound_title !=null)
         {
-            sound_button.setText(sound_title);
+            sound_button.setText(GlobalVariables.sound_title);
         }
 
         addSound123.setOnClickListener(new View.OnClickListener() {
@@ -276,6 +277,8 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Intent intent=new Intent(BaseCameraActivity.this, AudioTrimmerActivity.class);
                 startActivity(intent);
                 Animatoo.animateCard(BaseCameraActivity.this);
+                finish();
+
 
             }
         });
@@ -283,7 +286,6 @@ public class BaseCameraActivity extends AppCompatActivity {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(BaseCameraActivity.this,NewCameraSettings.class);
                 startActivity(intent);
 
@@ -375,6 +377,12 @@ public class BaseCameraActivity extends AppCompatActivity {
                         mp.setDataSource(sound_url);
                         mp.prepare();
                         mp.start();
+                        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                GPUCameraRecorder.stop();
+                            }
+                        });
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -522,6 +530,24 @@ public class BaseCameraActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ///////////////////////
+        ///////////////////////
+        if (GlobalVariables.sound_url != null){
+            Toast.makeText(this, String.valueOf(GlobalVariables.sound_url), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, String.valueOf(GlobalVariables.sound_title), Toast.LENGTH_SHORT).show();
+        }
+
+
+        Log.e(TAG, String.valueOf(GlobalVariables.sound_url) );
+        Log.e(TAG, String.valueOf(GlobalVariables.sound_title) );
+
+        ////////////////////////
+        ////////////////////////
+
+
+
+
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
