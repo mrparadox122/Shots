@@ -12,15 +12,14 @@ import android.widget.Toast;
 import com.paradox.projectsp3.R;
 
 public class NewCameraSettings extends AppCompatActivity {
-
-
-
+    
     Button sutterSound,resolution;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_camera_settings);
+        getSupportActionBar().hide();
 
         resolution = findViewById(R.id.resolution);
         sutterSound = findViewById(R.id.sutterSound);

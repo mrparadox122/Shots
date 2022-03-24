@@ -25,8 +25,8 @@ public class PostVideo_Activity extends AppCompatActivity implements AdapterView
     String[] Section = { "Public", "Following", "Followers" };
 
     String[] Category = { "Dance", "Fashion", "Comedy","Food","Motivational", "News", "Medical","Gaming",
-
-            "Traditional", "Fitness", "Duet","Health","Jobs", "Entertainment", "Cooking","Science" };
+                           "Fitness", "Duet","Traditional","medical","Health","Jobs", "Entertainment",
+                           "Cooking","Science", "traditional","pop culture","Celebration","Songs","Sports" };
     Spinner spinneracces,spinner_category;
 
     @Override
@@ -79,6 +79,7 @@ public class PostVideo_Activity extends AppCompatActivity implements AdapterView
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
         Toast.makeText(getApplicationContext(), Section[i], Toast.LENGTH_LONG).show();
+
     }
 
     @Override
