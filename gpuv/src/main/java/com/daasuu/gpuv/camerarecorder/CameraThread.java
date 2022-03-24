@@ -76,7 +76,7 @@ public class CameraThread extends Thread {
         }
         return handler;
     }
-
+    @SuppressLint("NewApi")
     private CameraDevice.StateCallback cameraDeviceCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(CameraDevice camera) {
@@ -99,7 +99,7 @@ public class CameraThread extends Thread {
             CameraThread.this.cameraDevice = null;
         }
     };
-
+    @SuppressLint("NewApi")
     private CameraCaptureSession.StateCallback cameraCaptureSessionCallback = new CameraCaptureSession.StateCallback() {
         @Override
         public void onConfigured(CameraCaptureSession session) {
@@ -114,6 +114,7 @@ public class CameraThread extends Thread {
     };
 
 
+    @SuppressLint("NewApi")
     private void updatePreview() {
 
         requestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_VIDEO);
@@ -160,7 +161,7 @@ public class CameraThread extends Thread {
      * @param width
      * @param height
      */
-    @SuppressLint("MissingPermission")
+    @SuppressLint({"MissingPermission", "NewApi"})
     final void startPreview(final int width, final int height) {
         Log.v(TAG, "startPreview:");
 
@@ -201,6 +202,7 @@ public class CameraThread extends Thread {
 
     }
 
+    @SuppressLint("NewApi")
     private void createCaptureSession() {
         surfaceTexture.setDefaultBufferSize(cameraSize.getWidth(), cameraSize.getHeight());
         Surface surface = new Surface(surfaceTexture);
@@ -225,6 +227,7 @@ public class CameraThread extends Thread {
     private static Size getClosestSupportedSize(List<Size> supportedSizes, final int requestedWidth, final int requestedHeight) {
         return Collections.min(supportedSizes, new Comparator<Size>() {
 
+            @SuppressLint("NewApi")
             private int diff(final Size size) {
                 return Math.abs(requestedWidth - size.getWidth()) + Math.abs(requestedHeight - size.getHeight());
             }
@@ -240,6 +243,7 @@ public class CameraThread extends Thread {
     /**
      * stop camera preview
      */
+    @SuppressLint("NewApi")
     void stopPreview() {
         Log.v(TAG, "stopPreview:");
         isFlashTorch = false;
@@ -259,13 +263,14 @@ public class CameraThread extends Thread {
     /**
      * change focus
      */
+    @SuppressLint("NewApi")
     void changeManualFocusPoint(float eventX, float eventY, int viewWidth, int viewHeight) {
 
         final int y = (int) ((eventX / (float) viewWidth) * (float) sensorArraySize.height());
         final int x = (int) ((eventY / (float) viewHeight) * (float) sensorArraySize.width());
         final int halfTouchWidth = 400;
         final int halfTouchHeight = 400;
-        MeteringRectangle focusAreaTouch = new MeteringRectangle(Math.max(x - halfTouchWidth, 0),
+        @SuppressLint({"NewApi", "LocalSuppress"}) MeteringRectangle focusAreaTouch = new MeteringRectangle(Math.max(x - halfTouchWidth, 0),
                 Math.max(y - halfTouchHeight, 0),
                 halfTouchWidth * 2,
                 halfTouchHeight * 2,
@@ -292,6 +297,7 @@ public class CameraThread extends Thread {
 
 
     // フラッシュ切り替え
+    @SuppressLint("NewApi")
     void switchFlashMode() {
         if (!flashSupport) return;
 
@@ -310,6 +316,7 @@ public class CameraThread extends Thread {
         }
     }
 
+    @SuppressLint("NewApi")
     void changeAutoFocus() {
         requestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_VIDEO);
         requestBuilder.set(CaptureRequest.CONTROL_AF_TRIGGER, CameraMetadata.CONTROL_AF_TRIGGER_CANCEL);
