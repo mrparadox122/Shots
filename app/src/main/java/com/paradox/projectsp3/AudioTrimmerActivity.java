@@ -44,6 +44,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.paradox.projectsp3.SoundsList.SoundActivity;
+import com.paradox.projectsp3.VideoEditorFolder.BaseCameraActivity;
+import com.paradox.projectsp3.VideoEditorFolder.PortraitCameraActivity;
 import com.paradox.projectsp3.customAudioViews.MarkerView;
 import com.paradox.projectsp3.customAudioViews.SamplePlayer;
 import com.paradox.projectsp3.customAudioViews.SoundFile;
@@ -1512,6 +1515,12 @@ public class AudioTrimmerActivity extends AppCompatActivity implements View.OnCl
         Uri uri = MediaStore.Audio.Media.getContentUriForPath(outPath);
         final Uri newUri = getContentResolver().insert(uri, values);
         Log.e("final URI >> ", newUri + " >> " + outPath);
+        Intent intent1 = new Intent(AudioTrimmerActivity.this, PortraitCameraActivity.class);
+        intent1.putExtra("sound_url", outPath);  // pass your values and retrieve them in the other Activity using keyName
+        intent1.putExtra("sound_title", new File(outPath).getName());
+        GlobalVariables.sound_url = outPath;
+        GlobalVariables.sound_title = new File(outPath).getName();
+        startActivity(intent1);
 
         if (finish == 0) {
             loadFromFile(outPath);
