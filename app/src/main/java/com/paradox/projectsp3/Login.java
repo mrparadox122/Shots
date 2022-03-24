@@ -29,13 +29,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import io.paperdb.Paper;
+
 public class Login extends AppCompatActivity {
+
     public boolean bool;
     Button btn_login;
     EditText mobileNumbr,pin;
     String PhoneNumber,password;
     TextView createnewACC,skip_txt,firebase_login_btn;
-    CheckBox remember_check;
+    CheckBox rememberme;
     FirebaseAuth mauth;
 
 
@@ -48,11 +51,12 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
+
         mobileNumbr = findViewById(R.id.et_mobile);
         btn_login = findViewById(R.id.login_bt);
         pin = findViewById(R.id.et_pin);
         createnewACC = findViewById(R.id.createnewACC);
-        remember_check = findViewById(R.id.remember_check);
+        rememberme = findViewById(R.id.remember_check);
         skip_txt = findViewById(R.id.skip_txt);
         firebase_login_btn = findViewById(R.id.firebase_login_btn);
 
@@ -66,13 +70,9 @@ public class Login extends AppCompatActivity {
 
         mauth = FirebaseAuth.getInstance();
 
+        rememberme = (CheckBox) findViewById(R.id.remember_check);
+        Paper.init(this);
 
-        remember_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         skip_txt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,8 +164,13 @@ public class Login extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
 
+
+                            if (task.isSuccessful()){
+                                if (rememberme.isChecked())
+                                {
+//                                    Paper.book().write()
+                                }
                                 Toast.makeText(Login.this, "Login Sucessful", Toast.LENGTH_SHORT).show();
                             }else {
 
