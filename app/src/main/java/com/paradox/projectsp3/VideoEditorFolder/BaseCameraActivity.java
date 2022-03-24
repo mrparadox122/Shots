@@ -46,6 +46,7 @@ import com.daasuu.gpuv.camerarecorder.CameraRecordListener;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorder;
 import com.daasuu.gpuv.camerarecorder.GPUCameraRecorderBuilder;
 import com.daasuu.gpuv.camerarecorder.LensFacing;
+import com.paradox.projectsp3.AudioTrimmerActivity;
 import com.paradox.projectsp3.FaceFilters.FaceFilterActivity;
 import com.paradox.projectsp3.Functions;
 import com.paradox.projectsp3.GlobalVariables;
@@ -272,10 +273,10 @@ public class BaseCameraActivity extends AppCompatActivity {
         addSound123.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(BaseCameraActivity.this, SoundActivity.class);
+                Intent intent=new Intent(BaseCameraActivity.this, AudioTrimmerActivity.class);
                 startActivity(intent);
                 Animatoo.animateCard(BaseCameraActivity.this);
-                finish();
+
             }
         });
 

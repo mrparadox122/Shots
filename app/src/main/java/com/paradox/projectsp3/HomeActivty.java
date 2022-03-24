@@ -61,8 +61,9 @@ public class HomeActivty extends AppCompatActivity {
     private VideoPlayerRecyclerView  recyclerview;
     public static ApiInterface apiInterface;
     private static final int CAMERA_PERMISSION_REQUEST=888;
+    Dialog dialog;
 
-     public boolean user = true;
+    public boolean user = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,6 +232,7 @@ public class HomeActivty extends AppCompatActivity {
     }
     @Override
     protected void onDestroy() {
+        dialog.dismiss();
         if(recyclerview!=null)
         recyclerview.releasePlayer();
         super.onDestroy();
@@ -280,7 +282,7 @@ public class HomeActivty extends AppCompatActivity {
 //            startActivity(intent);
 //            user = true ;
 //        }
-        Dialog dialog = new Dialog(this);
+        dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_bottom_sheet);
 
@@ -367,7 +369,10 @@ public class HomeActivty extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
         dialog.show();
 
+
     }
+
+
 
 
 

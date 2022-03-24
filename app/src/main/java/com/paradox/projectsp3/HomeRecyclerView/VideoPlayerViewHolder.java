@@ -488,7 +488,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
                             for (i = 0; i < dataArray.length(); i++) {
                                 JSONObject dataobj = dataArray.getJSONObject(i);
                                 u_nam.setText(dataobj.getString("fullname"));
-                                Glide.with(context).load(dataobj.getString("profile_pic")).into(profilepic);
+                                Glide.with(itemView.getContext()).load(dataobj.getString("profile_pic")).into(profilepic);
 
 
 
