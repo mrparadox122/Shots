@@ -46,6 +46,8 @@
                 android:padding="10dp"
                 android:gravity="center"/>
 
+
+
             <EditText
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
@@ -78,22 +80,40 @@
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/et_Rphonenumber"
+            <LinearLayout
+                android:id="@+id/ll_mobile"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
                 android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
-                android:background="@drawable/signuptext_bg"
-                android:fontFamily="@font/calibri"
-                android:hint="Phone Number"
-                android:paddingStart="20dp"
-                android:inputType="phone"
-                android:imeOptions="actionNext"
-                android:padding="10dp"
-                android:maxLength="10"
-                android:textColor="#000000"
-                android:textSize="18sp" />
+                <com.hbb20.CountryCodePicker
+                    android:layout_weight="0.7"
+                    app:ccp_arrowColor="@color/white"
+                    app:ccp_contentColor="@color/white"
+                    android:id="@+id/countryCode_picker"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    />
+
+                <EditText
+                    android:id="@+id/et_Rphonenumber"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:layout_height="45dp"
+                    android:background="@drawable/signuptext_bg"
+                    android:fontFamily="@font/calibri"
+                    android:hint="Phone Number"
+                    android:paddingStart="20dp"
+                    android:inputType="phone"
+                    android:imeOptions="actionNext"
+                    android:padding="10dp"
+                    android:maxLength="10"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/et_Rpassword"
@@ -188,19 +208,19 @@
                 android:textStyle="bold"/>
 
 
-            <Button
-                android:id="@+id/btn_firebase_submit"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:text="Submit"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/buttonshape"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_firebase_submit"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:text="Submit"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:background="@drawable/buttonshape"-->
+<!--                android:textAllCaps="true"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textStyle="bold"/>-->
 
 
 

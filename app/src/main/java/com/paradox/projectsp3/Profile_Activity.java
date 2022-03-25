@@ -2,6 +2,7 @@ package com.paradox.projectsp3;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -153,7 +155,6 @@ public class Profile_Activity extends AppCompatActivity {
         profilemenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 final Dialog dialog = new Dialog(Profile_Activity.this);
                 dialog.setContentView(R.layout.bottomsheetlayout);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -165,41 +166,33 @@ public class Profile_Activity extends AppCompatActivity {
                 reffer_txt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
                         startActivity(intent);
                     }
                 });
 
                 TextView diamonds_txt = dialog.findViewById(R.id.diamonds_txt);
-
                 diamonds_txt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
 
                     }
                 });
 
                 TextView settings_txt = dialog.findViewById(R.id.settings_txt);
-
                 settings_txt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         Intent intent = new Intent(Profile_Activity.this,ProfileSettings_Activity.class);
                         startActivity(intent);
                     }
                 });
 
                 TextView language_txt = dialog.findViewById(R.id.language_txt);
-
                 language_txt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
-                        startActivity(intent);
+                        languageselect();
                     }
                 });
 
@@ -207,7 +200,6 @@ public class Profile_Activity extends AppCompatActivity {
                 notification_txt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
                         startActivity(intent);
                     }
@@ -218,11 +210,11 @@ public class Profile_Activity extends AppCompatActivity {
                 inbox_txt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         Intent intent = new Intent(Profile_Activity.this,RefferandEarn_Activity.class);
                         startActivity(intent);
                     }
                 });
+
 
 
             }
@@ -331,7 +323,6 @@ public class Profile_Activity extends AppCompatActivity {
         share_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent myIntent = new Intent(Intent.ACTION_SEND);
                 myIntent.setType("video/mp4");
                 String body = "Shots Commming Soon";
@@ -339,7 +330,6 @@ public class Profile_Activity extends AppCompatActivity {
                 myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
                 myIntent.putExtra(Intent.EXTRA_TEXT,body);
                 startActivity(Intent.createChooser(myIntent, "Share Using"));
-
             }
         });
 
@@ -462,6 +452,56 @@ public class Profile_Activity extends AppCompatActivity {
         }
 
     }
+
+    private void languageselect() {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setTitle("Single Choice Dialog");
+            alertDialog.setPositiveButton("OK", null);
+            alertDialog.setNeutralButton("Cancel", null);
+            String[] items = {"English", "Hindi","Telugu","Kannada","Bengali","Malayalam","Panjabi","Marathi",
+                    "Urdu","Sanskrit"};
+            int checkItem = 1;
+            alertDialog.setSingleChoiceItems(items, checkItem, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case 0:
+                            Toast.makeText(getApplication(), "English", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 1:
+                            Toast.makeText(getApplication() , "Hindi", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 2:
+                            Toast.makeText(getApplication() , "Telugu", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 3:
+                            Toast.makeText(getApplication() , "Kannada", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 4:
+                            Toast.makeText(getApplication() , "Bengali", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 5:
+                            Toast.makeText(getApplication() , "Malayalam", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 6:
+                            Toast.makeText(getApplication() , "Panjabi", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 7:
+                            Toast.makeText(getApplication() , "Marathi", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 8:
+                            Toast.makeText(getApplication() , "Sanskrit", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 9:
+                            Toast.makeText(getApplication() , "Urdu", Toast.LENGTH_SHORT).show();
+                            break;
+
+                    }
+                }
+            });
+            alertDialog.show();
+        }
+
 
 //    private void followinglist() {
 //        JsonObject jsonObject = new JsonObject();

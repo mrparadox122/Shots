@@ -36,6 +36,34 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:weightSum="2"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/mobile_button"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile"/>
+
+
+            <Button
+                android:id="@+id/email_button"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
@@ -44,15 +72,50 @@
             android:orientation="vertical"
             android:padding="10dp">
 
+
+
+            <LinearLayout
+                android:id="@+id/ll_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.hbb20.CountryCodePicker
+                    app:ccp_arrowColor="@color/white"
+                    app:ccp_contentColor="@color/white"
+                    android:id="@+id/countryCode_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <EditText
+                    android:id="@+id/et_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/signuptext_bg"
+                    android:fontFamily="@font/calibri"
+                    android:hint="Enter MobileNumber"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:maxLength="10"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
             <EditText
-                android:id="@+id/et_mobile"
+                android:visibility="gone"
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/signuptext_bg"
                 android:fontFamily="@font/calibri"
-                android:hint="Enter Email or  Mobilenumber"
-                android:inputType="text"
+                android:hint="Enter Email"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:padding="10dp"
                 android:paddingStart="20dp"
@@ -85,27 +148,32 @@
                 android:padding="10dp">
 
                <CheckBox
-                   android:id="@+id/remember_check"
+                   android:id="@+id/check_remember"
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
+                   android:layout_height="25dp"
                    android:text="Remember"
-                   android:checked="true"
-                   android:textColor="@color/gray"
+                   android:checked="false"
+                   android:paddingRight="10dp"
+                   android:background="@color/white"
+                   android:textColor="@color/black"
                    android:textStyle="bold"/>
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_gravity="center|end"
                     android:gravity="center"
+                    android:padding="3dp"
+                    android:background="@color/white"
+                    android:layout_marginStart="130dp"
                     android:fontFamily="@font/gotham"
                     android:onClick="foegot_pass"
                     android:text="@string/forgot"
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="normal" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
 
             </LinearLayout>
 
@@ -117,6 +185,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:backgroundTintMode="src_over"
+                android:backgroundTint="@color/white"
                 android:background="@drawable/buttonshape"
                 android:fontFamily="@font/gotham"
                 android:paddingStart="35dp"
@@ -142,6 +212,7 @@
 
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/firebase_login_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

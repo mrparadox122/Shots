@@ -83,18 +83,6 @@ public class HomeActivty extends AppCompatActivity {
         checkPermission();
 
 
-
-        String UserEmailKey  = Paper.book().read(prevalentt.UserEmailKey);
-        String UserPasswordKey  = Paper.book().read(prevalentt.UserPasswordKey);
-
-        if (UserEmailKey != "" && UserPasswordKey != "" )
-        {
-            if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey))
-                AllowAcces(UserEmailKey,UserPasswordKey);
-        }
-
-
-
         //// onclick///
 
         profile.setOnClickListener(new View.OnClickListener() {
@@ -254,7 +242,7 @@ public class HomeActivty extends AppCompatActivity {
     }
     @Override
     protected void onDestroy() {
-        dialog.dismiss();
+//        dialog.dismiss();
         if(recyclerview!=null)
         recyclerview.releasePlayer();
         super.onDestroy();

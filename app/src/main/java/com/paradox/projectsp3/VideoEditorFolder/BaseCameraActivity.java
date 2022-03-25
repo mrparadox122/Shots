@@ -152,7 +152,6 @@ public class BaseCameraActivity extends AppCompatActivity {
 
 
         final boolean[] timer = {false};
-
             sec_passed = 0;
             video_progress = findViewById(R.id.video_progress);
             video_progress.enableAutoProgressView(Variables.recording_duration);
@@ -229,9 +228,9 @@ public class BaseCameraActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Time15.setBackgroundColor(getColor(R.color.colorwhite_50));
-                Time30.setBackgroundColor(getColor(R.color.app_color));
-                Time60.setBackgroundColor(getColor(R.color.app_color));
+                Time15.setTextColor(getColor(R.color.ic_launcher_background));
+                Time30.setTextColor(getColor(R.color.white));
+                Time60.setTextColor(getColor(R.color.white));
 
                 time15[0] =true;
                 time30[0] =false;
@@ -244,9 +243,11 @@ public class BaseCameraActivity extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                Time15.setBackgroundColor(getColor(R.color.app_color));
-                Time30.setBackgroundColor(getColor(R.color.colorwhite_50));
-                Time60.setBackgroundColor(getColor(R.color.app_color));
+
+                Time15.setTextColor(getColor(R.color.white));
+                Time30.setTextColor(getColor(R.color.ic_launcher_background));
+                Time60.setTextColor(getColor(R.color.white));
+
                 time15[0] =false;
                 time30[0] =true;
                 time60[0] =false;
@@ -257,9 +258,10 @@ public class BaseCameraActivity extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                Time15.setBackgroundColor(getColor(R.color.app_color));
-                Time30.setBackgroundColor(getColor(R.color.app_color));
-                Time60.setBackgroundColor(getColor(R.color.colorwhite_50));
+                Time15.setTextColor(getColor(R.color.white));
+                Time30.setTextColor(getColor(R.color.white));
+                Time60.setTextColor(getColor(R.color.ic_launcher_background));
+
                 time15[0] =false;
                 time30[0] =false;
                 time60[0] =true;
@@ -278,8 +280,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                 startActivity(intent);
                 Animatoo.animateCard(BaseCameraActivity.this);
                 finish();
-
-
             }
         });
 
@@ -290,7 +290,6 @@ public class BaseCameraActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
 //        Face.setOnClickListener(new View.OnClickListener() {
 //            @Override

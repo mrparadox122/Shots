@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".VideoEditorFolder.NewCameraSettings">
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -21,7 +22,6 @@
             android:gravity="center"
             android:textSize="21sp"
             android:textStyle="bold"
-
             android:textColor="@color/black"/>
     </LinearLayout>
 
@@ -29,28 +29,25 @@
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="end"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:orientation="vertical">
 
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sutterSound"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:text="Shutter Sound"
+            android:text="Resulution"
             android:textAllCaps="false"
             android:backgroundTint="@color/colorAccent"
-            android:textColor="@color/colorWhite"
-            />
+            android:textColor="@color/colorWhite" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/resolution"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:text="Resulution"
+            android:text="Shutter Sound"
             android:textAllCaps="false"
             android:backgroundTint="@color/colorBlue"
             android:textColor="@color/colorWhite"

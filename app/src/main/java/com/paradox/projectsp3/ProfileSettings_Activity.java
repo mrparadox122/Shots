@@ -36,10 +36,8 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_profile_settings);
 
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions
+                .DEFAULT_SIGN_IN).requestEmail().build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 

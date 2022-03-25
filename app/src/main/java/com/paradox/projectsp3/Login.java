@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,21 +32,25 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.paradox.projectsp3.Model.UserModel;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import io.paperdb.Paper;
 
+
 public class Login extends AppCompatActivity {
-
     private static  final String  FILE_Email = "rememberne";
-    public boolean bool;
-    Button btn_login;
-    EditText mobileNumbr,pin;
+    public boolean checkbool;
+    Button btn_login,email_button,mobile_button;
+    EditText mobileNumbr,pin,et_email;
     String PhoneNumber,password;
-    TextView createnewACC,skip_txt,firebase_login_btn;
+    TextView createnewACC,skip_txt;
     CheckBox rememberme;
-    FirebaseAuth mauth;
+    LinearLayout ll_mobile;
 
+
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,74 +59,43 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(FILE_Email, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        String saveemail = sharedPreferences.getString("svemail","");
-        String savepassword = sharedPreferences.getString("svpasswprd","");
-
-        if (sharedPreferences.contains("checked")&& sharedPreferences.getBoolean("checked",false) == true){
-            rememberme.setChecked(true);
-        }else {
-
-            rememberme.setChecked(false);
-        }
-
-
-        mobileNumbr.setText(saveemail);
-        pin.setText(savepassword);
-
         mobileNumbr = findViewById(R.id.et_mobile);
         btn_login = findViewById(R.id.login_bt);
         pin = findViewById(R.id.et_pin);
         createnewACC = findViewById(R.id.createnewACC);
-        rememberme = findViewById(R.id.remember_check);
+        rememberme = findViewById(R.id.check_remember);
         skip_txt = findViewById(R.id.skip_txt);
-        firebase_login_btn = findViewById(R.id.firebase_login_btn);
+        mobile_button = findViewById(R.id.mobile_button);
+        email_button = findViewById(R.id.email_button);
+        rememberme = (CheckBox) findViewById(R.id.check_remember);
+        et_email = findViewById(R.id.et_email);
+        ll_mobile = findViewById(R.id.ll_mobile);
 
-        firebase_login_btn.setOnClickListener(new View.OnClickListener() {
+        rememberme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String useremail = mobileNumbr.getText().toString().trim();
-                String userpassword = pin.getText().toString().trim();
-
-                if (rememberme.isChecked()){
-                    editor.putBoolean("checked",true);
-                    editor.apply();
-                    StoredatausingSharepref(saveemail,savepassword);
-                }else {
-
-                    
-
+                if (((CheckBox) view).isChecked()) {
+                    Toast.makeText(Login.this, "Checked", Toast.LENGTH_LONG).show();
                 }
-
-                if (TextUtils.isEmpty(useremail)){
-                    Toast.makeText(Login.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
-                }
-                if (TextUtils.isEmpty(userpassword)){
-                    Toast.makeText(Login.this, "Plase Enter Password", Toast.LENGTH_SHORT).show();
-                }
-                if (userpassword.length()< 6){
-                    Toast.makeText(Login.this, "Password Must be 6 digits", Toast.LENGTH_SHORT).show();
-                }
-
-                mauth.signInWithEmailAndPassword(useremail,userpassword)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()){
-                                    Toast.makeText(Login.this, "Login Sucessful", Toast.LENGTH_SHORT).show();
-                                }else {
-
-                                    Toast.makeText(Login.this, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
             }
         });
 
-        mauth = FirebaseAuth.getInstance();
+        email_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_email.setVisibility(View.VISIBLE);
+                ll_mobile.setVisibility(View.GONE);
+            }
+        });
 
-        rememberme = (CheckBox) findViewById(R.id.remember_check);
+        mobile_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_email.setVisibility(View.GONE);
+                ll_mobile.setVisibility(View.VISIBLE);
+            }
+        });
+
 
         skip_txt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +112,7 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,20 +167,9 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
     }
 
-    private void StoredatausingSharepref(String saveemail, String savepassword) {
 
-
-    }
-
-    public void Logintofirebase() {
-
-
-
-
-    }
 
     public void foegot_pass(View view) {
 

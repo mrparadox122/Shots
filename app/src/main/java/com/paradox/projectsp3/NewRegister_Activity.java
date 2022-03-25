@@ -113,17 +113,17 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         verification = findViewById(R.id.verification);
         terms = findViewById(R.id.terms);
         privacy = findViewById(R.id.privacy);
-        btn_firebase_submit = findViewById(R.id.btn_firebase_submit);
+
         mAuth = FirebaseAuth.getInstance();
         database= FirebaseDatabase.getInstance();
 
 
-        btn_firebase_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createUsers();
-            }
-        });
+//        btn_firebase_submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                createUsers();
+//            }
+//        });
 
 
         terms.setOnClickListener(new View.OnClickListener() {
@@ -344,45 +344,44 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         });
     }
 
-    private void createUsers() {
-        String username = et_name.getText().toString().trim();
-        String useremail = et_Remail.getText().toString().trim();
-        String userpassword = et_Rpassword.getText().toString().trim();
-
-        if (TextUtils.isEmpty(username)){
-            Toast.makeText(this, "Username is Empty", Toast.LENGTH_SHORT).show();
-        }
-
-        if (TextUtils.isEmpty(useremail)){
-            Toast.makeText(this, "Email is Empty", Toast.LENGTH_SHORT).show();
-        }
-
-        if (TextUtils.isEmpty(userpassword)){
-            Toast.makeText(this, "Password is Empty", Toast.LENGTH_SHORT).show();
-        }
-
-        if (userpassword.length()< 6){
-            Toast.makeText(this, "Password lenght must be greter then 6 Digits", Toast.LENGTH_SHORT).show();
-        }
-
-        mAuth.createUserWithEmailAndPassword(useremail,userpassword )
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            UserModel userModel = new UserModel(username,useremail,userpassword);
-                            String id = task.getResult().getUser().getUid();
-                            database.getReference().child("User").child(id).setValue(userModel);
-                            startActivity(new Intent(NewRegister_Activity.this,Login.class));
-                            Toast.makeText(NewRegister_Activity.this, "Registration is Success", Toast.LENGTH_SHORT).show();
-                        }else {
-
-                            Toast.makeText(NewRegister_Activity.this, "Registration is Failed"+task.getException(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
+//    private void createUsers() {
+//        String username = et_name.getText().toString().trim();
+//        String useremail = et_Remail.getText().toString().trim();
+//        String userpassword = et_Rpassword.getText().toString().trim();
+//
+//        if (TextUtils.isEmpty(username)){
+//            Toast.makeText(this, "Username is Empty", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        if (TextUtils.isEmpty(useremail)){
+//            Toast.makeText(this, "Email is Empty", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        if (TextUtils.isEmpty(userpassword)){
+//            Toast.makeText(this, "Password is Empty", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        if (userpassword.length()< 6){
+//            Toast.makeText(this, "Password lenght must be greter then 6 Digits", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        mAuth.createUserWithEmailAndPassword(useremail,userpassword )
+//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()){
+//                            UserModel userModel = new UserModel(username,useremail,userpassword);
+//                            String id = task.getResult().getUser().getUid();
+//                            database.getReference().child("User").child(id).setValue(userModel);
+//                            startActivity(new Intent(NewRegister_Activity.this,Login.class));
+//                            Toast.makeText(NewRegister_Activity.this, "Registration is Success", Toast.LENGTH_SHORT).show();
+//                        }else {
+//
+//                            Toast.makeText(NewRegister_Activity.this, "Registration is Failed"+task.getException(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//    }
 
 
     private void initDatePicker() {

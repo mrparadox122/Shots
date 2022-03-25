@@ -22,7 +22,7 @@
             android:layout_gravity="start|center"
             android:padding="10dp"
             android:src="@drawable/ic_arrowback"
-            app:tint="@color/white"/>
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
             android:text="Push Notifications"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -55,7 +55,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:text="INTRACTIONS"
-                android:textColor="#7E7C7C"
+                android:textColor="@color/white"
                 android:textSize="14dp" />
 
             <RelativeLayout
@@ -66,9 +66,9 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
+                android:background="#B8B4B4"
                 android:gravity="center"
-                android:padding="5dp">
+                android:padding="2dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -76,16 +76,17 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="New Followers"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <Switch
                     android:id="@+id/switch1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:checked="true"
+                    android:layout_marginTop="8dp"
+                    android:checked="false"
                     android:switchMinWidth="56dp"
-                    android:text="Switch1:"
                     android:textOff="OFF"
                     android:textOn="ON" />
 
@@ -100,6 +101,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
+                android:background="#B8B4B4"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -109,54 +111,55 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Likes"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <Switch
                     android:id="@+id/switch2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:checked="true"
+                    android:layout_marginTop="8dp"
+                    android:checked="false"
                     android:switchMinWidth="56dp"
-                    android:text="Switch1:"
                     android:textOff="OFF"
                     android:textOn="ON" />
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/ll_privacysettings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+            <!--            <RelativeLayout-->
+            <!--                android:id="@+id/ll_privacysettings"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_marginStart="5dp"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:layout_marginEnd="5dp"-->
+            <!--                android:layout_marginBottom="5dp"-->
+            <!--                android:gravity="center"-->
+            <!--                android:padding="5dp">-->
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Likes In Comments"
-                    android:textColor="@color/white" />
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_alignParentStart="true"-->
+            <!--                    android:padding="10dp"-->
+            <!--                    android:text="Likes In Comments"-->
+            <!--                    android:textColor="@color/white" />-->
 
-                <Switch
-                    android:id="@+id/switch3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:checked="true"
-                    android:switchMinWidth="56dp"
+            <!--                <Switch-->
+            <!--                    android:id="@+id/switch3"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_alignParentEnd="true"-->
+            <!--                    android:checked="true"-->
+            <!--                    android:switchMinWidth="56dp"-->
 
-                    android:textOff="OFF"
-                    android:textOn="ON" />
+            <!--                    android:textOff="OFF"-->
+            <!--                    android:textOn="ON" />-->
 
-            </RelativeLayout>
+            <!--            </RelativeLayout>-->
 
 
             <RelativeLayout
@@ -168,6 +171,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
+                android:background="#B8B4B4"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -178,16 +182,16 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Comments"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <Switch
                     android:id="@+id/switch4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:checked="true"
+                    android:checked="false"
                     android:switchMinWidth="56dp"
-
                     android:textOff="OFF"
                     android:textOn="ON" />
 
@@ -202,6 +206,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
+                android:background="#B8B4B4"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -212,14 +217,16 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Replies on Comments"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <Switch
                     android:id="@+id/switch5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:checked="true"
+                    android:layout_marginTop="8dp"
+                    android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
                     android:textOn="ON" />
@@ -232,6 +239,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:background="#B8B4B4"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -242,14 +250,16 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Mentions"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <Switch
                     android:id="@+id/switch6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:checked="true"
+                    android:layout_marginTop="8dp"
+                    android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
                     android:textOn="ON" />
@@ -274,6 +284,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:background="#B8B4B4"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -283,16 +294,17 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Direct Messages"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <Switch
                     android:id="@+id/switch7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:checked="true"
+                    android:layout_marginTop="8dp"
+                    android:checked="false"
                     android:switchMinWidth="56dp"
-
                     android:textOff="OFF"
                     android:textOn="ON" />
 
@@ -316,6 +328,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:background="#B8B4B4"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -326,14 +339,16 @@
                     android:layout_marginStart="4dp"
                     android:padding="10dp"
                     android:text="Videos from Accounts You Follow"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <Switch
                     android:id="@+id/switch8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:checked="true"
+                    android:layout_marginTop="8dp"
+                    android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textColor="@color/white"
                     android:textOff="OFF"
@@ -347,6 +362,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:background="#B8B4B4"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -356,59 +372,49 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Videos Suggestions"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <Switch
                     android:id="@+id/switch9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:checked="true"
+                    android:layout_marginTop="8dp"
+                    android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
                     android:textOn="ON" />
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:text="Others"
-                android:textColor="#7E7C7C"
-                android:textSize="14dp" />
+            <!--            <RelativeLayout-->
+            <!--                android:id="@+id/ll_update_more"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_margin="5dp"-->
+            <!--                android:gravity="center"-->
+            <!--                android:padding="5dp">-->
 
-            <RelativeLayout
-                android:id="@+id/ll_update_more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_alignParentStart="true"-->
+            <!--                    android:padding="10dp"-->
+            <!--                    android:text="Customised Updates and More"-->
+            <!--                    android:textColor="@color/white" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Customised Updates and More"
-                    android:textColor="@color/white" />
-
-                <Switch
-                    android:id="@+id/switch10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="6dp"
-                    android:checked="true"
-                    android:switchMinWidth="56dp"
-                    android:textOff="OFF"
-                    android:textOn="ON" />
-            </RelativeLayout>
+            <!--                <Switch-->
+            <!--                    android:id="@+id/switch10"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_alignParentEnd="true"-->
+            <!--                    android:layout_marginEnd="6dp"-->
+            <!--                    android:checked="true"-->
+            <!--                    android:switchMinWidth="56dp"-->
+            <!--                    android:textOff="OFF"-->
+            <!--                    android:textOn="ON" />-->
+            <!--            </RelativeLayout>-->
 
 
         </LinearLayout>

@@ -41,7 +41,6 @@ public class NewCameraSettings extends AppCompatActivity {
 
     }
 
-
         private void ResolutionIt() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setTitle("Single Choice Dialog");
@@ -64,9 +63,7 @@ public class NewCameraSettings extends AppCompatActivity {
         alertDialog.show();
     }
 
-
     private void sutterSoundinIt() {
-
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setTitle("Single Choice Dialog");
         alertDialog.setPositiveButton("OK", null);
