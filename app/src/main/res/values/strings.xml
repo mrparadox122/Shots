@@ -12,7 +12,10 @@
     <string name="pause">pause</string>
     <string name="app_record">Record Video</string>
 
-
+    <string name="select_video_text">Select 1 min video</string>
+    <string name="video_length_validation">Video should be of minimum 3 seconds</string>
+    <string name="app_provider">com.demo.videotrimmer.provider</string>
+    
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>

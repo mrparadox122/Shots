@@ -288,11 +288,7 @@ public class HomeActivty extends AppCompatActivity {
 
     public void addBtn(View view) {
         showbottomsheet();
-        Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        Animatoo.animateSlideUp(this);
-        finish();
+
     }
 
     public void showbottomsheet() {
@@ -320,10 +316,11 @@ public class HomeActivty extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-
+                Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                Animatoo.animateSlideUp(getApplicationContext());
+                finish();
 
 
 

@@ -58,8 +58,6 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Gender);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(ad);
-
-
         pin = findViewById(R.id.et_Rpassword);
         cpass = findViewById(R.id.et_RConfirmpassword);
         datePickerButton = findViewById(R.id.datePickerButton);
@@ -151,7 +149,6 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                                         Intent intent = new Intent(GmailFields_Activity.this, Login.class);
                                         startActivity(intent);
                                     }
-
                                 }
                             }
                         }

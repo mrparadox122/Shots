@@ -34,9 +34,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".VideoEditorFolder.CameraTransperent_Activity"
-            android:exported="false" />
+
+        <activity android:name=".VideoTrimmerActivity"
+            android:exported="false"/>
         <activity
             android:name=".VideoEditorFolder.NewCameraSettings"
             android:exported="false" />
