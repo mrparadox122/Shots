@@ -129,7 +129,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/Terms&conditions.html"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://shotsparadox.ddns.net/dashboard/ShotsLegal/Terms&conditions.html"));
                 startActivity(browserIntent);
             }
         });
@@ -137,7 +137,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://13.127.217.99/dashboard/ShotsLegal/index.html"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://shotsparadox.ddns.net/dashboard/ShotsLegal/index.html"));
                 startActivity(browserIntent);
             }
         });
@@ -508,7 +508,7 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
                                     data[5] = dob;
                                     data[6] = gndr;
 //                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
-                                    PutData putData = new PutData("http://13.127.217.99/dashboard/paradoxApi/signup.php", "POST", field, data);
+                                    PutData putData = new PutData("http://shotsparadox.ddns.net/dashboard/paradoxApi/signup.php", "POST", field, data);
                                     if (putData.startPut()) {
                                         if (putData.onComplete()) {
                                             String result = putData.getResult();

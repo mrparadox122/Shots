@@ -58,8 +58,6 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Gender);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(ad);
-
-
         pin = findViewById(R.id.et_Rpassword);
         cpass = findViewById(R.id.et_RConfirmpassword);
         datePickerButton = findViewById(R.id.datePickerButton);
@@ -138,7 +136,7 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                             data[5] = dob;
                             data[6] = gndr;
 //                            Toast.makeText(GmailFields_Activity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
-                            PutData putData = new PutData("http://13.127.217.99/dashboard/paradoxApi/signup.php","POST",field,data);
+                            PutData putData = new PutData("http://shotsparadox.ddns.net/dashboard/paradoxApi/signup.php","POST",field,data);
                             if (putData.startPut()){
                                 if (putData.onComplete()){
                                     String result = putData.getResult();
@@ -151,7 +149,6 @@ public class GmailFields_Activity extends AppCompatActivity implements AdapterVi
                                         Intent intent = new Intent(GmailFields_Activity.this, Login.class);
                                         startActivity(intent);
                                     }
-
                                 }
                             }
                         }

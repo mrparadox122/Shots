@@ -733,6 +733,8 @@ public class AudioTrimmerActivity extends AppCompatActivity implements View.OnCl
                 mRecordingKeepGoing = true;
             }
         } else if (view == txtAudioCancel) {
+            Intent intent1 = new Intent(AudioTrimmerActivity.this, PortraitCameraActivity.class);
+            startActivity(intent1);
             finish();
         } else if (view == txtAudioRecordUpdate) {
             rlAudioEdit.setVisibility(View.GONE);
@@ -1206,20 +1208,46 @@ public class AudioTrimmerActivity extends AppCompatActivity implements View.OnCl
         handlePause();
     }
 
-    public void markerTouchMove(MarkerView marker, float x) {
-        float delta = x - mTouchStart;
 
+    public void markerTouchMove(MarkerView marker, float x) {
+
+        float delta = x - mTouchStart;
         if (marker == markerStart) {
-            mStartPos = trap((int) (mTouchInitialStartPos + delta));
-            mEndPos = trap((int) (mTouchInitialEndPos + delta));
+
+            if(delta>=0){
+                mStartPos = trap((int) (mTouchInitialStartPos + delta));
+            }
+
+            if (Float.parseFloat(formatTime(mEndPos)) -
+                    (Float.parseFloat(formatTime(mStartPos)))<=60.00) {
+                mStartPos = trap((int) (mTouchInitialStartPos + delta));
+                //registrationView2.mEndPos = registrationView2.trap((int) (registrationView2.mTouchInitialEndPos + delta));
+            }
+
         } else {
-            mEndPos = trap((int) (mTouchInitialEndPos + delta));
-            if (mEndPos < mStartPos)
-                mEndPos = mStartPos;
+            if(delta<-1){
+                mEndPos = trap((int) (mTouchInitialEndPos + delta));
+            }
+
+            Log.d("CHECK",":::"+(Float.parseFloat(formatTime(mEndPos)))+"|||"+(Float.parseFloat(formatTime(mStartPos))));
+
+            if ((Float.parseFloat(formatTime(mEndPos)) -
+                    (Float.parseFloat(formatTime(mStartPos))))<=60.00) {
+
+                mEndPos = trap((int) (mTouchInitialEndPos + delta));
+                if (mEndPos < mStartPos)
+                    mEndPos = mStartPos;
+
+            }
+
         }
 
         updateDisplay();
     }
+
+
+
+
 
     public void markerTouchEnd(MarkerView marker) {
         mTouchDragging = false;

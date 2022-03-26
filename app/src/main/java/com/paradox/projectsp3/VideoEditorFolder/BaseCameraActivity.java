@@ -321,6 +321,8 @@ public class BaseCameraActivity extends AppCompatActivity {
 
                 Pause_video.setVisibility(View.GONE);
                 Play_video.setVisibility(View.VISIBLE);
+
+
                 Toast.makeText(BaseCameraActivity.this,"Paused",Toast.LENGTH_SHORT).show();
 
             }
@@ -330,6 +332,7 @@ public class BaseCameraActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Play_video.setVisibility(View.GONE);
                 Pause_video.setVisibility(View.VISIBLE);
+
                 Toast.makeText(BaseCameraActivity.this,"Play",Toast.LENGTH_SHORT).show();
             }
         });
@@ -549,6 +552,18 @@ public class BaseCameraActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        // Always call the superclass so it can restore the view hierarchy
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // Restore state members from saved instance
     }
 
     public void start_or_Stop_Recording() {

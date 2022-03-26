@@ -1,5 +1,7 @@
 package com.paradox.projectsp3.VideoRecording;
 
+import static com.yalantis.ucrop.UCropFragment.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -327,9 +329,11 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
 
                                     Functions.cancel_determinent_loader();
 
+                                    Log.e(TAG, exception.toString() );
                                     Toast.makeText(Preview_Video_A.this, "Try Again", Toast.LENGTH_SHORT).show();
                                 } catch (Exception e) {
 
+                                    Log.e(TAG, e.toString() );
                                 }
                             }
                         });
@@ -343,7 +347,7 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
 
 
     public void gotopostScreen() {
-        Intent intent = new Intent(Preview_Video_A.this, Post_Video_A.class);
+        Intent intent = new Intent(Preview_Video_A.this, VideoEditorActivity.class);
         intent.putExtra("draft_file", draft_file);
         startActivity(intent);
         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);

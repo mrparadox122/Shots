@@ -23,8 +23,8 @@ import retrofit2.http.Part;
 
 public interface ApiInterface {
 
-    String userdetailurl = "http://13.127.217.99/dashboard/paradoxApi/read.php/";
-    String userfoto = "http://13.127.217.99/dashboard/paradoxApi/profile_pic/";
+    String userdetailurl = "http://shotsparadox.ddns.net/dashboard/paradoxApi/read.php/";
+    String userfoto = "http://shotsparadox.ddns.net/dashboard/paradoxApi/profile_pic/";
     @POST("read.php")
     Call<String> getUserdetails(@Body String body);
     @POST("getUsersOp.php")
@@ -34,7 +34,7 @@ public interface ApiInterface {
     Call<String> upload_pic(@Part("subject") String data,@Part MultipartBody.Part file);
 
 
-    String userdetail_following_url = "http://13.127.217.99/dashboard/paradoxApi/";
+    String userdetail_following_url = "http://shotsparadox.ddns.net/dashboard/paradoxApi/";
     @POST("get_following.php")
     Call<String> getUserdetails_following(@Body String body);
     @POST("us_c.php")

@@ -28,15 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-import com.paradox.projectsp3.Model.UserModel;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
-
-import io.paperdb.Paper;
 
 
 public class Login extends AppCompatActivity {
@@ -134,7 +126,7 @@ public class Login extends AppCompatActivity {
                         data[1] = password;
 
 //                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
-                        PutData putData = new PutData("http://13.127.217.99/dashboard/paradoxApi/login.php", "POST", field, data);
+                        PutData putData = new PutData("http://shotsparadox.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
                         if (putData.startPut()) {
                             Log.e(TAG, "im here1 "+data );
                             if (putData.onComplete()) {

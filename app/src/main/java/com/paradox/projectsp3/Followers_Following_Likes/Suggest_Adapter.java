@@ -75,7 +75,7 @@ public class Suggest_Adapter extends RecyclerView.Adapter<Suggest_Adapter.myview
             public void onClick(View view) {
                 holder.cardView.setVisibility(View.GONE);
                 Retrofit.Builder retrofit = new Retrofit.Builder()
-                        .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                        .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
                         .addConverterFactory(ScalarsConverterFactory.create())
                         .addConverterFactory(GsonConverterFactory.create());
                 Retrofit retrofit2 = retrofit.build();
