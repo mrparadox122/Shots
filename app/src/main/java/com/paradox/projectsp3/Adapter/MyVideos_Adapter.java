@@ -46,7 +46,6 @@ public class MyVideos_Adapter extends RecyclerView.Adapter<MyVideos_Adapter.myvi
     int i;
 //    GlobalVariables g = new GlobalVariables();
 
-
     public MyVideos_Adapter(Context context, List<My_VideosModel> provedio) {
         this.context = context;
         this.provedio = provedio;

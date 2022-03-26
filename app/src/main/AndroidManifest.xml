@@ -16,6 +16,9 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+
+
     <uses-feature
         android:name="android.hardware.camera2.full"
         android:required="false" />
@@ -29,6 +32,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".NotificationView_Activity"
+            android:exported="false"
+            android:label="notification"
+            android:parentActivityName=".NewPushNotifications_Activity"/>
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".PushNotification_Activity"/>
+        <activity
+            android:name=".NewPushNotifications_Activity"
+            android:exported="false" />
         <activity
             android:name=".VideoEditorFolder.NewCameraSettings"
             android:exported="false" />

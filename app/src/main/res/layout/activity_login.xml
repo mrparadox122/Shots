@@ -138,14 +138,12 @@
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="20dp"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="5dp">
 
                <CheckBox
                    android:id="@+id/check_remember"
@@ -163,10 +161,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_gravity="center|end"
-                    android:gravity="center"
+                    android:gravity="center|end"
                     android:padding="3dp"
+                    android:layout_alignParentEnd="true"
                     android:background="@color/white"
-                    android:layout_marginStart="130dp"
                     android:fontFamily="@font/gotham"
                     android:onClick="foegot_pass"
                     android:text="@string/forgot"
@@ -175,7 +173,7 @@
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
 
             <Button

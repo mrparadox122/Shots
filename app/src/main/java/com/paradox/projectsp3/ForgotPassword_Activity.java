@@ -178,8 +178,6 @@ public class ForgotPassword_Activity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             GlobalVariables.setPhonenumber(et_mobile.getText().toString());
-
-
                             Intent intent = new Intent(ForgotPassword_Activity.this,PhoneNewPinActivity.class);
                             startActivity(intent);
 
