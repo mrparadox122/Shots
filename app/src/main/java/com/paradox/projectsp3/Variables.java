@@ -21,7 +21,7 @@ public class Variables {
     public static final String selectedAudio_AAC = "SelectedAudio.aac";
 
     public static final String root = Environment.getExternalStorageDirectory().toString();
-    public static final String app_folder = root + "/PikPok/";
+    public static final String app_folder = root + "/DCIM/";
     public static final String draft_app_folder = app_folder + "Draft/";
 
 

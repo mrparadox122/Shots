@@ -2,8 +2,11 @@ package com.paradox.projectsp3;
 
 import static android.content.ContentValues.TAG;
 
+import static java.security.AccessController.getContext;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,10 +30,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -38,7 +42,9 @@ import com.bumptech.glide.request.RequestOptions;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 import com.paradox.projectsp3.HomeFollowing.FollowingActivity;
@@ -50,9 +56,7 @@ import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
 import com.paradox.projectsp3.Responses.Users;
 import com.paradox.projectsp3.VideoEditorFolder.PortraitCameraActivity;
-import com.paradox.projectsp3.VideoRecording.VideoRecording_Activity;
 
-import io.paperdb.Paper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -63,6 +67,17 @@ public class HomeActivty extends AppCompatActivity {
     private VideoPlayerRecyclerView  recyclerview;
     public static ApiInterface apiInterface;
     private static final int CAMERA_PERMISSION_REQUEST=888;
+
+    private static final String[] VIDEO_PERMISSIONS = new String[]{
+            Manifest.permission.CAMERA,
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.WAKE_LOCK,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+    };
+
+    private static final int REQUEST_VIDEO_PERMISSIONS_REQUEST = 1000;
+
+    // Ui components
     Dialog dialog;
 
     public boolean user = true;
@@ -75,7 +90,7 @@ public class HomeActivty extends AppCompatActivity {
         getSupportActionBar().hide();
      setContentView(R.layout.home_activty);
         apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
-        init();
+       init();
         ImageView Ghar=(ImageView)findViewById(R.id.imageView14);
         ImageView profile=(ImageView)findViewById(R.id.imageView17);
         ImageView comment=(ImageView)findViewById(R.id.imageView16);
@@ -164,6 +179,7 @@ public class HomeActivty extends AppCompatActivity {
 
 
     }
+
 
     private void init(){
         //////////////////////////////////////////////////////////////
@@ -272,11 +288,11 @@ public class HomeActivty extends AppCompatActivity {
 
     public void addBtn(View view) {
         showbottomsheet();
-//        Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        startActivity(intent);
-//        Animatoo.animateSlideUp(this);
-//        finish();
+        Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        Animatoo.animateSlideUp(this);
+        finish();
     }
 
     public void showbottomsheet() {
@@ -304,9 +320,12 @@ public class HomeActivty extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+//                Intent intent=new Intent(HomeActivty.this, PortraitCameraActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+
+
+
 
                 Log.e(TAG, "onClick: //////////////////////////////////" );
                 //Animatoo.animateSlideUp(this);

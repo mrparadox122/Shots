@@ -103,7 +103,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.myvi
                 //Toast.makeText(context, followingModels.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
                 holder.ll_relative.setVisibility(View.GONE);
                 Retrofit.Builder retrofit = new Retrofit.Builder()
-                        .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                        .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
                         .addConverterFactory(ScalarsConverterFactory.create())
                         .addConverterFactory(GsonConverterFactory.create());
                 Retrofit retrofit2 = retrofit.build();

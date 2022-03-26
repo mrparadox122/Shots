@@ -250,7 +250,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                                 e.printStackTrace();
                             }
                             Retrofit.Builder retrofit = new Retrofit.Builder()
-                                    .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                                    .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
                                     .addConverterFactory(ScalarsConverterFactory.create())
                                     .addConverterFactory(GsonConverterFactory.create());
                             Retrofit retrofit2 = retrofit.build();
@@ -329,7 +329,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                                 e.printStackTrace();
                             }
                             Retrofit.Builder retrofit = new Retrofit.Builder()
-                                    .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                                    .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
                                     .addConverterFactory(ScalarsConverterFactory.create())
                                     .addConverterFactory(GsonConverterFactory.create());
                             Retrofit retrofit2 = retrofit.build();
@@ -699,7 +699,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                                 e.printStackTrace();
                             }
                             Retrofit.Builder retrofit = new Retrofit.Builder()
-                                    .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                                    .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
                                     .addConverterFactory(ScalarsConverterFactory.create())
                                     .addConverterFactory(GsonConverterFactory.create());
                             Retrofit retrofit2 = retrofit.build();
@@ -771,7 +771,7 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                                 e.printStackTrace();
                             }
                             Retrofit.Builder retrofit = new Retrofit.Builder()
-                                    .baseUrl("http://13.127.217.99/dashboard/paradoxApi/")
+                                    .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
                                     .addConverterFactory(ScalarsConverterFactory.create())
                                     .addConverterFactory(GsonConverterFactory.create());
                             Retrofit retrofit2 = retrofit.build();
