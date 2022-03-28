@@ -36,6 +36,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.paradox.projectsp3.VideoEditorFolder.AddText_Activity;
 import com.paradox.projectsp3.customVideoViews.BackgroundTask;
 import com.paradox.projectsp3.customVideoViews.BarThumb;
 import com.paradox.projectsp3.customVideoViews.CustomRangeSeekBar;
@@ -136,6 +137,8 @@ public class VideoTrimmerActivity extends AppCompatActivity implements View.OnCl
         reset_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
+                startActivity(getIntent());
                 Toast.makeText(VideoTrimmerActivity.this, "Refresh", Toast.LENGTH_SHORT).show();
             }
         });
@@ -150,7 +153,10 @@ public class VideoTrimmerActivity extends AppCompatActivity implements View.OnCl
         edit_pencil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(VideoTrimmerActivity.this, "Pencil", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(VideoTrimmerActivity.this, "Pencil", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(VideoTrimmerActivity.this, AddText_Activity.class);
+                startActivity(intent);
             }
         });
 

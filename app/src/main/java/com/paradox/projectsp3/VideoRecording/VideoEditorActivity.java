@@ -1,6 +1,8 @@
 package com.paradox.projectsp3.VideoRecording;
 
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -23,13 +25,21 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.kbeanie.multipicker.api.CameraVideoPicker;
+import com.kbeanie.multipicker.api.entity.ChosenImage;
+import com.kbeanie.multipicker.api.entity.ChosenVideo;
+import com.paradox.projectsp3.PreviewVideoActivity;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Variables;
+import com.paradox.projectsp3.VideoPreviewActivity;
 import com.paradox.projectsp3.VideoTrimmerActivity;
+import com.paradox.projectsp3.databinding.ActivityMainBinding;
+import com.paradox.projectsp3.utils.CameraUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.List;
 
 public class VideoEditorActivity extends AppCompatActivity {
 
@@ -39,9 +49,11 @@ public class VideoEditorActivity extends AppCompatActivity {
 //    ImageView volumeID,playid,doneid;
 
     private static Uri contentUri = null;
-    private static final int REQUEST_ID_STORAGE_PERMISSIONS = 1;
-    private static final int REQUEST_TAKE_GALLERY_VIDEO = 100;
-    private static final int VIDEO_TRIM = 101;
+    private CameraUtils cameraUtils;
+    private ActivityMainBinding activityMainBinding;
+    private CameraVideoPicker cameraVideoPicker;
+
+
 
     LinearLayout edit_pencil,edit_colour;
 
@@ -52,6 +64,7 @@ public class VideoEditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_editor2);
 
 
+        cameraUtils = new CameraUtils(this, (CameraUtils.OnCameraResult) this);
 
         video = findViewById(R.id.video);
         edit_colour = findViewById(R.id.edit_colour);
@@ -73,24 +86,14 @@ public class VideoEditorActivity extends AppCompatActivity {
         edit_pencil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cameraUtils.alertVideoSelcetion();
                 Toast.makeText(VideoEditorActivity.this, "Pencil Click", Toast.LENGTH_SHORT).show();
             }
         });
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String path = Variables.output_filter_file;
-                if (path != null) {
-                    File file = new File(path);
-                    if (file.exists()) {
-                        startActivityForResult(new Intent(VideoEditorActivity.this,
-                                        VideoTrimmerActivity.class).putExtra("EXTRA_PATH", path),
-                                VIDEO_TRIM);
-                        overridePendingTransition(0, 0);
-                    } else {
-                        Toast.makeText(VideoEditorActivity.this, "Please select proper video", Toast.LENGTH_LONG);
-                    }
-                }
+
                 Toast.makeText(VideoEditorActivity.this, "Video Click", Toast.LENGTH_SHORT).show();
             }
         });
@@ -493,5 +496,47 @@ public class VideoEditorActivity extends AppCompatActivity {
 
     private  boolean isGoogleDriveUri(Uri uri) {
         return "com.google.android.apps.docs.storage".equals(uri.getAuthority()) || "com.google.android.apps.docs.storage.legacy".equals(uri.getAuthority());
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        cameraUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
+    public void onSuccess(List<ChosenImage> images) {
+        if (images != null && images.size() > 0) {
+            Intent i = new Intent(VideoEditorActivity.this, VideoPreviewActivity.class);
+            i.putExtra("DATA", images.get(0).getOriginalPath());
+            //binding.ivProfilePic.setImageURI(Uri.fromFile(selectedImageFile));
+            startActivity(i);
+
+        }
+    }
+
+
+    public void onError(String error) {
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        cameraUtils.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+
+
+    public void onVideoSuccess(List<ChosenVideo> list) {
+        if (list != null && list.size() > 0) {
+            Intent i = new Intent(VideoEditorActivity.this, PreviewVideoActivity.class);
+            i.putExtra("DATA", list.get(0).getOriginalPath());
+            //binding.ivProfilePic.setImageURI(Uri.fromFile(selectedImageFile));
+            startActivity(i);
+
+        }
     }
 }

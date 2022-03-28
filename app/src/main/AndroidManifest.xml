@@ -37,9 +37,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".VideoTrimmerActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".VideoEditorFolder.AddText_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".VideoTrimmerActivity"
+            android:exported="false" />
         <activity
             android:name=".NotificationView_Activity"
             android:exported="false"
