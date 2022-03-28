@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121111"
     tools:context=".PushNotification_Activity">
+
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -36,6 +36,54 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <LinearLayout
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/toolbar">
+
+        <EditText
+            android:id="@+id/shots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Shots"
+            android:paddingStart="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="#676666" />
+
+        <EditText
+            android:id="@+id/wishes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Wishes"
+            android:paddingStart="15dp"
+            android:textColorHint="#676666"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Body"
+            android:paddingStart="15dp"
+            android:textColorHint="#676666"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/notification_btn"
+            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Push Notification"
+            android:textAllCaps="false"/>
+
+
+    </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,7 +92,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,9 +115,9 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="#B8B4B4"
+                android:background="#4E4D4D"
                 android:gravity="center"
-                android:padding="2dp">
+                android:padding="3dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -76,7 +125,7 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="New Followers"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <Switch
@@ -101,7 +150,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="#B8B4B4"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -111,7 +160,7 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Likes"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <Switch
@@ -171,7 +220,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="#B8B4B4"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -182,7 +231,7 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Comments"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <Switch
@@ -206,7 +255,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="#B8B4B4"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -217,7 +266,7 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Replies on Comments"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <Switch
@@ -239,7 +288,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="#B8B4B4"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -250,7 +299,7 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Mentions"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <Switch
@@ -275,7 +324,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:text="Massages"
-                android:textColor="#7E7C7C"
+                android:textColor="@color/white"
                 android:textSize="14dp" />
 
             <RelativeLayout
@@ -284,7 +333,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="#B8B4B4"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -294,7 +343,7 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Direct Messages"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <Switch
@@ -319,7 +368,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:text="Vedio Updates"
-                android:textColor="#7E7C7C"
+                android:textColor="@color/white"
                 android:textSize="14dp" />
 
             <RelativeLayout
@@ -328,7 +377,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="#B8B4B4"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -339,7 +388,7 @@
                     android:layout_marginStart="4dp"
                     android:padding="10dp"
                     android:text="Videos from Accounts You Follow"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <Switch
@@ -362,7 +411,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="#B8B4B4"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -372,7 +421,7 @@
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
                     android:text="Videos Suggestions"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <Switch
@@ -419,6 +468,5 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 
 </RelativeLayout>

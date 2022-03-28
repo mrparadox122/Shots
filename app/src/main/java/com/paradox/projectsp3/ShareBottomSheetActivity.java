@@ -19,8 +19,6 @@ import android.widget.Toast;
 
 public class ShareBottomSheetActivity extends AppCompatActivity {
 
-
-
     LinearLayout btnwhatsup,btnfacebook,btncopylink;
     String mediaObjectUrl;
     ImageView btn_more;

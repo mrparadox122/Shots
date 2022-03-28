@@ -15,9 +15,9 @@
         android:gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cemera Settings"
+            android:text="Camera Settings"
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="21sp"
@@ -29,23 +29,23 @@
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
+        android:gravity="center"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:orientation="vertical">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sutterSound"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Resulution"
             android:textAllCaps="false"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/colorBlue"
             android:textColor="@color/colorWhite" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/resolution"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Shutter Sound"
             android:textAllCaps="false"

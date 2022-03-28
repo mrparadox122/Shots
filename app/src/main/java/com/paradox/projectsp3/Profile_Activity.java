@@ -308,7 +308,7 @@ public class Profile_Activity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show();
             }
 
         });

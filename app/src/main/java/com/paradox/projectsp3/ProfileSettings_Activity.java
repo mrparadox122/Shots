@@ -96,7 +96,7 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         ll_pushnotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProfileSettings_Activity.this, PushNotification_Activity.class);
+                Intent intent = new Intent(ProfileSettings_Activity.this, NewPushNotifications_Activity.class);
                 startActivity(intent);
                 finish();
             }
