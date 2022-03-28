@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Shots</string>
-    <string name="username">Username</string>
-    <string name="password">password</string>
-    <string name="cancel">Cancel</string>
-    <string name="upload">Upload</string>
+    <string name="username" translatable="false">Username</string>
+    <string name="password" translatable="false">password</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="upload" translatable="false">Upload</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
 
     <string name="play">play</string>
@@ -72,7 +72,7 @@
     <string name="max_recording_time">Max recording (s)</string>
     <string name="min_recording_time">Min recording (s)</string>
     <string name="output_format">Output Format</string>
-    <string name="recording">Recording</string>
+    <string name="recording" translatable="false">Recording</string>
     <string name="recording_options">Recording Options</string>
     <string name="results">Results</string>
     <string name="success">Success</string>
@@ -97,5 +97,12 @@
     <string name="thumbnail">Thumbnail</string>
     <string name="thumbnail_file_size">Thumbnail File Size</string>
     <string name="unknown">Unknown</string>
+    <string name="login_login" translatable="false">Login</string>
+    <string name="remember" translatable="false">Remember</string>
+    <string name="forgot_pin" translatable="false">Forgot Pin</string>
+    <string name="mobile" translatable="false">Mobile</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="create_new_account" translatable="false">Create New Account</string>
+    <string name="skip_login" translatable="false">Skip</string>
 
 </resources>

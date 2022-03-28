@@ -3,11 +3,15 @@ package com.paradox.projectsp3;
 import static com.google.android.gms.vision.L.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -25,6 +29,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,17 +37,23 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 
 public class Login extends AppCompatActivity {
+
     private static  final String  FILE_Email = "rememberne";
     public boolean checkbool;
     Button btn_login,email_button,mobile_button;
     EditText mobileNumbr,pin,et_email;
     String PhoneNumber,password;
-    TextView createnewACC,skip_txt;
+    TextView createnewACC,skip_txt,back_btn;
     CheckBox rememberme;
     LinearLayout ll_mobile;
+    Context context;
+    Resources resources;
 
 
-    
+
+    int lang_selected;
+    RelativeLayout show_lan_dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +73,14 @@ public class Login extends AppCompatActivity {
         rememberme = (CheckBox) findViewById(R.id.check_remember);
         et_email = findViewById(R.id.et_email);
         ll_mobile = findViewById(R.id.ll_mobile);
+        back_btn = findViewById(R.id.back_btn);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         rememberme.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +144,6 @@ public class Login extends AppCompatActivity {
                         data[0] = PhoneNumber;
                         data[1] = password;
 
-//                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
                         PutData putData = new PutData("http://shotsparadox.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
                         if (putData.startPut()) {
                             Log.e(TAG, "im here1 "+data );
@@ -159,6 +177,82 @@ public class Login extends AppCompatActivity {
             }
         });
 
+
+        if(LocaleHelper.getLanguage(Login.this).equalsIgnoreCase("en"))
+        {
+            context = LocaleHelper.setLocale(Login.this,"en");
+            resources =context.getResources();
+            skip_txt.setText("SKIP");
+            createnewACC.setText("CreateNew Account");
+//            helloworld.setText(resources.getString(R.string.hello_world));
+            setTitle(resources.getString(R.string.app_name));
+            lang_selected = 0;
+        }else if(LocaleHelper.getLanguage(Login.this).equalsIgnoreCase("hi")){
+            context = LocaleHelper.setLocale(Login.this,"hi");
+            resources =context.getResources();
+            skip_txt.setText("छोड़ें");
+            btn_login.setText("लॉग इन करें");
+//            helloworld.setText(resources.getString(R.string.hello_world));
+            setTitle(resources.getString(R.string.app_name));
+            lang_selected =1;
+        }
+        else if(LocaleHelper.getLanguage(Login.this).equalsIgnoreCase("kn")){
+            context = LocaleHelper.setLocale(Login.this,"kn");
+            resources =context.getResources();
+//            dialog_language.setText("ಕನ್ನಡ");
+//            helloworld.setText(resources.getString(R.string.hello_world));
+            setTitle(resources.getString(R.string.app_name));
+            lang_selected =2;
+        }
+//        show_lan_dialog.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final String[] Language = {"ENGLISH","हिन्दी","ಕನ್ನಡ"};
+//                final int checkItem;
+//                Log.d("Clicked","Clicked");
+//                final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Login.this);
+//                dialogBuilder.setTitle("Select a Language")
+//                        .setSingleChoiceItems(Language, lang_selected, new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+////                                dialog_language.setText(Language[i]);
+//                                if(Language[i].equals("ENGLISH")){
+//                                    context = LocaleHelper.setLocale(Login.this,"en");
+//                                    resources =context.getResources();
+//                                    lang_selected = 0;
+////                                    helloworld.setText(resources.getString(R.string.hello_world));
+//                                    setTitle(resources.getString(R.string.app_name));
+//                                }
+//                                if(Language[i].equals("हिन्दी"))
+//                                {
+//                                    context = LocaleHelper.setLocale(Login.this,"hi");
+//                                    resources =context.getResources();
+//                                    lang_selected = 1;
+////                                    helloworld.setText(resources.getString(R.string.hello_world));
+//                                    setTitle(resources.getString(R.string.app_name));
+//                                }
+//                                if(Language[i].equals("ಕನ್ನಡ"))
+//                                {
+//                                    context = LocaleHelper.setLocale(Login.this,"kn");
+//                                    resources =context.getResources();
+//                                    lang_selected = 2;
+////                                    helloworld.setText(resources.getString(R.string.hello_world));
+//                                    setTitle(resources.getString(R.string.app_name));
+//                                }
+//                            }
+//                        })
+//                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                dialogInterface.dismiss();
+//                            }
+//                        });
+//                dialogBuilder.create().show();
+//            }
+//        });
+
+
+
     }
 
 
@@ -179,4 +273,6 @@ public class Login extends AppCompatActivity {
 
 
     }
+
+
 }

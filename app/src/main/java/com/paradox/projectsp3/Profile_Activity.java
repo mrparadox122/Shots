@@ -14,6 +14,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -104,6 +105,11 @@ public class Profile_Activity extends AppCompatActivity {
     Context context;
 //    List<My_VideosModel> my_videosModelList;
 
+    Resources resources;
+    int lang_selected;
+    Button btn_login,email_button,mobile_button;
+    TextView createnewACC,skip_txt,back_btn;
+
     @SuppressLint({"ResourceAsColor", "NewApi"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +141,42 @@ public class Profile_Activity extends AppCompatActivity {
         recyclerview = findViewById(R.id.recyclerview);
         profilemenu = findViewById(R.id.profilemenu);
 
+        btn_login = findViewById(R.id.login_bt);
+        skip_txt = findViewById(R.id.skip_txt);
+
+
+
+        if(LocaleHelper.getLanguage(Profile_Activity.this).equalsIgnoreCase("en"))
+        {
+            context = LocaleHelper.setLocale(Profile_Activity.this,"en");
+            resources =context.getResources();
+//            btn_login = findViewById(R.id.login_bt);
+//           skip_txt = findViewById(R.id.skip_txt);
+//            btn_login.setText(resources.getString(R.string.login));
+//            skip_txt.setText(resources.getString(R.string.skip_login));
+            setTitle(resources.getString(R.string.app_name));
+            lang_selected = 0;
+        }else if(LocaleHelper.getLanguage(Profile_Activity.this).equalsIgnoreCase("hi")){
+            context = LocaleHelper.setLocale(Profile_Activity.this,"hi");
+            resources =context.getResources();
+            skip_txt = findViewById(R.id.skip_txt);
+            btn_login.setText(resources.getString(R.string.login));
+            skip_txt.setText(resources.getString(R.string.skip_login));
+
+            setTitle(resources.getString(R.string.app_name));
+            lang_selected =1;
+        }
+        else if(LocaleHelper.getLanguage(Profile_Activity.this).equalsIgnoreCase("kn")){
+            context = LocaleHelper.setLocale(Profile_Activity.this,"kn");
+            resources =context.getResources();
+//            skip_txt = findViewById(R.id.skip_txt);
+//            btn_login.setText(resources.getString(R.string.login));
+//            skip_txt.setText(resources.getString(R.string.skip_login));
+//            setTitle(resources.getString(R.string.app_name));
+            setTitle(resources.getString(R.string.app_name));
+            lang_selected =2;
+        }
+
 
         follower_ll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,7 +185,6 @@ public class Profile_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         following_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -352,7 +393,6 @@ public class Profile_Activity extends AppCompatActivity {
             }
         });
 
-
         follower_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -450,56 +490,60 @@ public class Profile_Activity extends AppCompatActivity {
             Glide.with(this).load(String.valueOf(personPhoto)).into(pro_pic);
             LoadAllDetails();
         }
-
     }
 
     private void languageselect() {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-            alertDialog.setTitle("Single Choice Dialog");
-            alertDialog.setPositiveButton("OK", null);
-            alertDialog.setNeutralButton("Cancel", null);
-            String[] items = {"English", "Hindi","Telugu","Kannada","Bengali","Malayalam","Panjabi","Marathi",
-                    "Urdu","Sanskrit"};
+        Login login = new Login();
+            AlertDialog.Builder dialogBuilder  = new AlertDialog.Builder(this);
+        dialogBuilder .setTitle("Select a Language");
+        dialogBuilder .setPositiveButton("OK", null);
+        dialogBuilder .setNeutralButton("Cancel", null);
+            String[] Language = {"ENGLISH", "हिन्दी","తెలుగు"};
             int checkItem = 1;
-            alertDialog.setSingleChoiceItems(items, checkItem, new DialogInterface.OnClickListener() {
+        dialogBuilder .setSingleChoiceItems(Language, checkItem, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    switch (which) {
-                        case 0:
-                            Toast.makeText(getApplication(), "English", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 1:
-                            Toast.makeText(getApplication() , "Hindi", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 2:
-                            Toast.makeText(getApplication() , "Telugu", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 3:
-                            Toast.makeText(getApplication() , "Kannada", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 4:
-                            Toast.makeText(getApplication() , "Bengali", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 5:
-                            Toast.makeText(getApplication() , "Malayalam", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 6:
-                            Toast.makeText(getApplication() , "Panjabi", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 7:
-                            Toast.makeText(getApplication() , "Marathi", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 8:
-                            Toast.makeText(getApplication() , "Sanskrit", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 9:
-                            Toast.makeText(getApplication() , "Urdu", Toast.LENGTH_SHORT).show();
-                            break;
-
+                    if(Language[i].equals("ENGLISH")){
+                        context = LocaleHelper.setLocale(Profile_Activity.this,"en");
+                        resources =context.getResources();
+                        lang_selected = 0;
+                            login.btn_login = findViewById(R.id.login_bt);
+                            login.skip_txt = findViewById(R.id.skip_txt);
+                            login.btn_login.setText(resources.getString(R.string.login));
+                            login.skip_txt.setText(resources.getString(R.string.skip_login));
+                            setTitle(resources.getString(R.string.app_name));
+                    }
+                    if(Language[i].equals("हिन्दी"))
+                    {
+                        context = LocaleHelper.setLocale(Profile_Activity.this,"hi");
+                        resources =context.getResources();
+                        lang_selected = 1;
+                        login.btn_login = findViewById(R.id.login_bt);
+                        login.skip_txt = findViewById(R.id.skip_txt);
+                        login.btn_login.setText(resources.getString(R.string.login));
+                        login.skip_txt.setText(resources.getString(R.string.skip_login));
+                        setTitle(resources.getString(R.string.app_name));
+                    }
+                    if(Language[i].equals("తెలుగు"))
+                    {
+                        context = LocaleHelper.setLocale(Profile_Activity.this,"kn");
+                        resources =context.getResources();
+                        lang_selected = 2;
+                        login.btn_login = findViewById(R.id.login_bt);
+                        login.skip_txt = findViewById(R.id.skip_txt);
+                        login.btn_login.setText(resources.getString(R.string.login));
+                        login.skip_txt.setText(resources.getString(R.string.skip_login));
+                        setTitle(resources.getString(R.string.app_name));
                     }
                 }
-            });
-            alertDialog.show();
+        })
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        dialogBuilder .show();
         }
 
 

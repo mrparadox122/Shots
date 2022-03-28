@@ -50,6 +50,7 @@ public class ChooseYoursIntrests_Activity extends AppCompatActivity {
         celebration = findViewById(R.id.celebration);
         songs = findViewById(R.id.songs);
         sports = findViewById(R.id.sports);
+
         Boolean checkselect = true;
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
