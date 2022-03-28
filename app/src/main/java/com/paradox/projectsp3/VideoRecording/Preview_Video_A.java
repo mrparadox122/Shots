@@ -35,10 +35,10 @@ import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoListener;
 import com.paradox.projectsp3.Filters.Filter_Adapter;
 import com.paradox.projectsp3.Functions;
-import com.paradox.projectsp3.GlobalVariables;
 import com.paradox.projectsp3.R;
 import com.paradox.projectsp3.Variables;
 import com.paradox.projectsp3.VideoEditorFolder.FilterType;
+import com.paradox.projectsp3.VideoTrimmerActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +46,12 @@ import java.util.List;
 
 
 public class Preview_Video_A extends AppCompatActivity implements Player.EventListener {
+
+
+
+    private static final int REQUEST_ID_STORAGE_PERMISSIONS = 1;
+    private static final int REQUEST_TAKE_GALLERY_VIDEO = 100;
+    private static final int VIDEO_TRIM = 101;
 
 
     String video_url;
@@ -61,7 +67,7 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preview_video);
+        setContentView(R.layout.activity_preview_videooo);
         select_postion = 0;
         Intent intent = getIntent();
         if (intent != null) {
@@ -347,9 +353,18 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
 
 
     public void gotopostScreen() {
-        Intent intent = new Intent(Preview_Video_A.this, VideoEditorActivity.class);
-        intent.putExtra("draft_file", draft_file);
-        startActivity(intent);
+        String path = Variables.output_filter_file;
+        if (path != null) {
+            File file = new File(path);
+            if (file.exists()) {
+                startActivityForResult(new Intent(Preview_Video_A.this,
+                                VideoTrimmerActivity.class).putExtra("EXTRA_PATH", path),
+                        VIDEO_TRIM);
+                overridePendingTransition(0, 0);
+            } else {
+                Toast.makeText(Preview_Video_A.this, "Please select proper video", Toast.LENGTH_LONG);
+            }
+        }
         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
 
     }
