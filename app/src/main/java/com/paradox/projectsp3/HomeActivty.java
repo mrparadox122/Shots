@@ -91,7 +91,6 @@ public class HomeActivty extends AppCompatActivity {
      setContentView(R.layout.home_activty);
         apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
        init();
-
         ImageView Ghar=(ImageView)findViewById(R.id.imageView14);
         ImageView profile=(ImageView)findViewById(R.id.imageView17);
         ImageView comment=(ImageView)findViewById(R.id.imageView16);

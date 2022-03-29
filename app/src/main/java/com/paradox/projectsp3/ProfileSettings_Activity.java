@@ -26,7 +26,7 @@ public class ProfileSettings_Activity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     ImageView back;
     TextView logout;
-    RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_language,ll_communityguidelines,ll_Leagal;
+    RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_communityguidelines,ll_Leagal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
