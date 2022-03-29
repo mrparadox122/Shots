@@ -42,7 +42,7 @@ import static android.media.effect.EffectFactory.EFFECT_SHARPEN;
 import static android.media.effect.EffectFactory.EFFECT_TEMPERATURE;
 import static android.media.effect.EffectFactory.EFFECT_TINT;
 import static android.media.effect.EffectFactory.EFFECT_VIGNETTE;
-import static com.imagevideoeditor.photoeditor.PhotoFilter.NONE;
+import static com.paradox.projectsp3.photoeditor.PhotoFilter.NONE;
 
 /**
  * <p>

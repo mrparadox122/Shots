@@ -7,10 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.view.PagerAdapter;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,9 +15,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.imagevideoeditor.R;
-import com.imagevideoeditor.Utils.InfinitePagerAdapter;
-import com.imagevideoeditor.Utils.InfiniteViewPager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.viewpager.widget.PagerAdapter;
+
+import com.paradox.projectsp3.R;
+import com.paradox.projectsp3.utils.InfinitePagerAdapter;
+import com.paradox.projectsp3.utils.InfiniteViewPager;
 
 
 /**

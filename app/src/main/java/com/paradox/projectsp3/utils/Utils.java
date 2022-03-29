@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.imagevideoeditor.BuildConfig;
+import com.paradox.projectsp3.BuildConfig;
 
 
 public class Utils {

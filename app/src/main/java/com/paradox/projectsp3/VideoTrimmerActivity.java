@@ -36,7 +36,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.paradox.projectsp3.VideoEditorFolder.AddText_Activity;
+import com.paradox.projectsp3.AddText_Activity;
 import com.paradox.projectsp3.customVideoViews.BackgroundTask;
 import com.paradox.projectsp3.customVideoViews.BarThumb;
 import com.paradox.projectsp3.customVideoViews.CustomRangeSeekBar;

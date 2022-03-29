@@ -3,9 +3,10 @@ package com.paradox.projectsp3.photoeditor;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,14 +57,14 @@ public class TextStyleBuilder {
     /**
      * Set this background color
      *
-     * @param background Background color to apply on text, this method overrides the preview set on {@link ja.burhanrashid52.photoeditor.TextStyleBuilder#withBackgroundDrawable(Drawable)}
+     * @param background Background color to apply on text, this method overrides the preview set on {@link (Drawable)}
      */
     public void withBackgroundColor(@NonNull int background) {
         values.put(TextStyle.BACKGROUND, background);
     }
 
     /**
-     * Set this background {@link Drawable}, this method overrides the preview set on {@link ja.burhanrashid52.photoeditor.TextStyleBuilder#withBackgroundColor(int)}
+     * Set this background {@link Drawable}, this method overrides the preview set on {@link (int)}
      *
      * @param bgDrawable Background drawable to apply on text
      */
@@ -172,7 +173,7 @@ public class TextStyleBuilder {
     }
 
     /**
-     * Enum to maintain current supported style properties used on on {@link PhotoEditor#addText(String, ja.burhanrashid52.photoeditor.TextStyleBuilder)} and {@link PhotoEditor#editText(View, String, ja.burhanrashid52.photoeditor.TextStyleBuilder)}
+     * Enum to maintain current supported style properties used on on {@link PhotoEditor#)}
      */
     protected enum TextStyle {
         SIZE("TextSize"),

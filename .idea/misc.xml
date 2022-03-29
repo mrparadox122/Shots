@@ -45,15 +45,27 @@
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_camera_portrate.xml" value="0.33" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_camera_transperent.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_following.xml" value="0.1265625" />
-        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_preview_video.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_preview.xml" value="0.1" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_preview_video.xml" value="0.24427480916030533" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_preview_videooo.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_sound.xml" value="0.18" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_video_editor2.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_video_preview.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_video_preview.xml" value="0.24427480916030533" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/activity_video_trim.xml" value="0.33" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/add_text_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/fragment_bottom_properties_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/fragment_bottom_sticker_emoji_dialog.xml" value="0.1" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/fragment_video_recorder_request.xml" value="0.25" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/item_font_select.xml" value="0.1" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/item_slider_filter.xml" value="0.1" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/item_watch_layout.xml" value="0.1" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/layout_main_duplecate.xml" value="0.1265625" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/raw_vedio.xml" value="0.1" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/row_sticker.xml" value="0.1" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/row_text.xml" value="0.1" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/soundlistitems.xml" value="0.22" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/view_photo_editor_image.xml" value="0.1" />
+        <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/view_photo_editor_text.xml" value="0.1" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.3__]]/app/src/main/res/layout/view_video_file.xml" value="0.1" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.6.1/app/src/main/res/layout/activity_camera_portrate.xml" value="0.25" />
         <entry key="..\:/Users/Soosle Infotech/AndroidStudioProjects/ProjectSP3.6.1/app/src/main/res/layout/activity_login.xml" value="0.12771739130434784" />
