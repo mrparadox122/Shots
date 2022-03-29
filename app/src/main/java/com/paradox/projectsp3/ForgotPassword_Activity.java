@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -40,12 +41,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ForgotPassword_Activity extends AppCompatActivity {
-
     EditText et_mobile,et_verify;
     Button send_btn, btn_verify;
     LinearLayout verification;
     private FirebaseAuth mAuth;
     private String verificationId;
+    ImageView back_img;
 
 
     @Override
@@ -61,17 +62,24 @@ public class ForgotPassword_Activity extends AppCompatActivity {
         btn_verify = findViewById(R.id.btn_verify);
         verification = findViewById(R.id.verification);
         et_verify = findViewById(R.id.et_verify);
-        mAuth = FirebaseAuth.getInstance();
+        back_img = findViewById(R.id.back_img);
 
+        back_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+        mAuth = FirebaseAuth.getInstance();
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!et_mobile.getText().equals("") && !et_mobile.equals(null)) {
-
                     Toast.makeText(ForgotPassword_Activity.this, "Verification code has been sent to: " + et_mobile.getText().toString(), Toast.LENGTH_LONG).show();
                     String phone = "+91" + et_mobile.getText().toString();
                     sendVerificationCode(phone);
-//
 //                    ll_verify.setVisibility(View.VISIBLE);
                     verification.setVisibility(View.VISIBLE);
                 } else {
@@ -81,16 +89,11 @@ public class ForgotPassword_Activity extends AppCompatActivity {
         });
 
 
-
-
-
-
         btn_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 verifyCode(et_verify.getText().toString());
-
-
             }
         });
     }

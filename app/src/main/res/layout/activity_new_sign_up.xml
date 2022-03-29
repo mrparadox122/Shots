@@ -13,7 +13,15 @@
         android:id="@+id/skip_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_gravity="center"
+            android:padding="5dp"/>
 
         <TextView
             android:id="@+id/btn_skip"
@@ -21,6 +29,7 @@
             android:layout_height="wrap_content"
             android:textSize="21dp"
             android:text="Skip"
+            android:fontFamily="@font/droid_bold"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="15dp"
             android:textColor="@color/red"
@@ -46,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
-                android:fontFamily="serif"
+                android:fontFamily="@font/droidserif"
                 android:gravity="center"
                 android:text="Sign up for Shots"
                 android:textColor="@color/white"
@@ -58,8 +67,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Create a profile, follow other creators\n build your fan following by creating\n your own videos"
-                android:textColor="@color/cyan"
+                android:fontFamily="@font/droidserif"
+                android:text="Create a profile, follow other creators\n build your fan following by creating\n your own Creativity"
+                android:textColor="@color/white"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -102,6 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="15dp"
+                android:fontFamily="@font/droid_bold"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/signuptext_bg"
                 android:drawableLeft="@drawable/ic_phone"
@@ -126,6 +137,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="55dp"
+        android:fontFamily="@font/droidserif"
         android:gravity="center"
         android:paddingTop="15dp"
         android:text="By signing up, you confirm that you agree to our \n Terms of Use and have read and understood \n our Privacy Policy."

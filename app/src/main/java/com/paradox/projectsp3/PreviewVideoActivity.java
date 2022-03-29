@@ -48,10 +48,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.databinding.DataBindingUtil;
-
-import nl.bravobit.ffmpeg.FFcommandExecuteResponseHandler;
-import nl.bravobit.ffmpeg.FFmpeg;
 
 public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEditorListener, PropertiesBSFragment.Properties,
         View.OnClickListener,
@@ -91,7 +87,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_preview_videooo);
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_preview_videooo);
 
         initViews();
 //        Drawable transparentDrawable = new ColorDrawable(Color.TRANSPARENT);
