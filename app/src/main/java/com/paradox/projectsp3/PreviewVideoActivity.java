@@ -31,6 +31,7 @@ import com.bumptech.glide.Glide;
 import com.paradox.projectsp3.databinding.ActivityPreviewVideoBinding;
 import com.paradox.projectsp3.photoeditor.OnPhotoEditorListener;
 import com.paradox.projectsp3.photoeditor.PhotoEditor;
+import com.paradox.projectsp3.photoeditor.PhotoEditorView;
 import com.paradox.projectsp3.photoeditor.SaveSettings;
 import com.paradox.projectsp3.photoeditor.TextStyleBuilder;
 import com.paradox.projectsp3.photoeditor.ViewType;
@@ -72,7 +73,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
     FFmpeg fFmpeg;
     private String[] newCommand;
     private ProgressDialog progressDialog;
-
+    PhotoEditorView ivImage;
     private int originalDisplayWidth;
     private int originalDisplayHeight;
     private int newCanvasWidth, newCanvasHeight;
@@ -92,6 +93,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_preview_video);
+        ivImage = findViewById(R.id.ivImage);
 
         initViews();
 //        Drawable transparentDrawable = new ColorDrawable(Color.TRANSPARENT);
@@ -128,7 +130,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
         mStickerBSFragment.setStickerListener(this);
         propertiesBSFragment = new PropertiesBSFragment();
         propertiesBSFragment.setPropertiesChangeListener(this);
-        mPhotoEditor = new PhotoEditor.Builder(this, binding.ivImage.getSource())
+        mPhotoEditor = new PhotoEditor.Builder(this, ivImage)
                 .setPinchTextScalable(true) // set flag to make text scalable when pinch
                 .setDeleteView(binding.imgDelete)
                 //.setDefaultTextTypeface(mTextRobotoTf)
