@@ -9,9 +9,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiClient {
-   public static final String BASE_URL="http://shotsparadox.ddns.net:8080/soosleApi/soosle/";
-   public static final String BASE_URL2="http://shotsparadox.ddns.net:/dashboard/paradoxApi/";
-   public static final String BASE_URL1="http://shotsparadox.ddns.net/dashboard/";
+   public static final String BASE_URL="http://shots.ddns.net:8080/soosleApi/soosle/";
+   public static final String BASE_URL2="http://shots.ddns.net:/dashboard/paradoxApi/";
+   public static final String BASE_URL1="http://shots.ddns.net/dashboard/";
    public static Retrofit retrofit;
    public static Retrofit retrofit2;
    public static Retrofit retrofit1;

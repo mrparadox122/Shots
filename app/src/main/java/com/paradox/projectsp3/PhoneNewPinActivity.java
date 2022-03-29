@@ -53,7 +53,7 @@ public class PhoneNewPinActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     Retrofit.Builder retrofit = new Retrofit.Builder()
-                            .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
+                            .baseUrl("http://shots.ddns.net/dashboard/paradoxApi/")
                             .addConverterFactory(ScalarsConverterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create());
                     Retrofit retrofit2 = retrofit.build();
