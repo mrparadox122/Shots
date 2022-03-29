@@ -14,7 +14,7 @@
             android:textColor="#000000"
             android:padding="10dp"
             android:textSize="50sp"
-            tools:text="Burhanuddin"
+            tools:text="s"
             tools:textColor="@android:color/black" />
 
 

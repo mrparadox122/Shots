@@ -1,24 +1,31 @@
 package com.paradox.projectsp3;
 
-import android.databinding.DataBindingUtil;
+
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
 
-import com.imagevideoeditor.Utils.DimensionData;
-import com.imagevideoeditor.databinding.ActivityVideoPreviewBinding;
+
 
 import java.io.IOException;
 
 import static android.media.MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION;
-import static com.imagevideoeditor.Utils.Utils.getScaledDimension;
+
+import static com.paradox.projectsp3.utils.Utils.getScaledDimension;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.paradox.projectsp3.databinding.ActivityVideoPreviewBinding;
+import com.paradox.projectsp3.utils.DimensionData;
+
 
 public class VideoPreviewActivity extends AppCompatActivity {
 
@@ -68,7 +75,7 @@ public class VideoPreviewActivity extends AppCompatActivity {
 
                 try {
                     mediaPlayer = new MediaPlayer();
-//                    mediaPlayer.setDataSource("http://daily3gp.com/vids/747.3gp");
+
                     Log.d("VideoPath>>", videoPath);
                     mediaPlayer.setDataSource(videoPath);
                     mediaPlayer.setSurface(surface);

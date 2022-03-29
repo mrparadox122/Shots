@@ -38,7 +38,10 @@
         android:theme="@style/Theme.ProjectSP3"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".VideoEditorFolder.AddText_Activity"
+            android:name=".AddText_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".PreviewVideoActivity"
             android:exported="false" />
         <activity
             android:name=".VideoTrimmerActivity"

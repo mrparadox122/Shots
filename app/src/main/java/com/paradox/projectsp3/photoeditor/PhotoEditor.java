@@ -50,7 +50,7 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
     private Typeface mDefaultEmojiTypeface;
 
 
-    private PhotoEditor(Builder builder) {
+    public PhotoEditor(Builder builder) {
         this.context = builder.context;
         this.parentView = builder.parentView;
         this.imageView = builder.imageView;
@@ -60,7 +60,7 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
         this.mDefaultTextTypeface = builder.textTypeface;
         this.mDefaultEmojiTypeface = builder.emojiTypeface;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        brushDrawingView.setBrushViewChangeListener(this);
+//        brushDrawingView.setBrushViewChangeListener(this);
         addedViews = new ArrayList<>();
         redoViews = new ArrayList<>();
     }
@@ -138,7 +138,7 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
      */
     @SuppressLint("ClickableViewAccessibility")
     public void addText(String text, @Nullable TextStyleBuilder styleBuilder, int position) {
-        brushDrawingView.setBrushDrawingMode(false);
+//        brushDrawingView.setBrushDrawingMode(false);
         final View textRootView = getLayout(ViewType.TEXT);
         final TextView textInputTv = textRootView.findViewById(R.id.tvPhotoEditorText);
         textInputTv.setTag(position);
@@ -820,7 +820,7 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
     public static class Builder {
 
         private Context context;
-        private PhotoEditorView parentView;
+        private ParentView parentView;
         private ImageView imageView;
         private View deleteView;
         private BrushDrawingView brushDrawingView;
@@ -832,15 +832,14 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
         /**
          * Building a PhotoEditor which requires a Context and PhotoEditorView
          * which we have setup in our xml layout
-         *
-         * @param context         context
+         *  @param context         context
          * @param photoEditorView {@link PhotoEditorView}
          */
-        public Builder(Context context, PhotoEditorView photoEditorView) {
+        public Builder(Context context, ImageView photoEditorView) {
             this.context = context;
             parentView = photoEditorView;
-            imageView = photoEditorView.getSource();
-            brushDrawingView = photoEditorView.getBrushDrawingView();
+//            imageView = photoEditorView.getSource();
+//            brushDrawingView = photoEditorView.getBrushDrawingView();
         }
 
         public Builder setDeleteView(View deleteView) {

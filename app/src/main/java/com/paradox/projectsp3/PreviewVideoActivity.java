@@ -48,6 +48,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.databinding.DataBindingUtil;
+
+import nl.bravobit.ffmpeg.FFcommandExecuteResponseHandler;
+import nl.bravobit.ffmpeg.FFmpeg;
 
 public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEditorListener, PropertiesBSFragment.Properties,
         View.OnClickListener,
@@ -87,14 +91,14 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_preview_videooo);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_preview_video);
 
         initViews();
 //        Drawable transparentDrawable = new ColorDrawable(Color.TRANSPARENT);
 //        Glide.with(this).load(getIntent().getStringExtra("DATA")).into(binding.ivImage.getSource());
         Glide.with(this).load(R.drawable.trans).centerCrop().into(binding.ivImage.getSource());
 
-        videoPath = getIntent().getStringExtra("DATA");
+        videoPath = Variables.output_filter_file;
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         retriever.setDataSource(videoPath);
         String metaRotation = retriever.extractMetadata(METADATA_KEY_VIDEO_ROTATION);
@@ -124,14 +128,14 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
         mStickerBSFragment.setStickerListener(this);
         propertiesBSFragment = new PropertiesBSFragment();
         propertiesBSFragment.setPropertiesChangeListener(this);
-        mPhotoEditor = new PhotoEditor.Builder(this, binding.ivImage)
+        mPhotoEditor = new PhotoEditor.Builder(this, binding.ivImage.getSource())
                 .setPinchTextScalable(true) // set flag to make text scalable when pinch
                 .setDeleteView(binding.imgDelete)
                 //.setDefaultTextTypeface(mTextRobotoTf)
                 //.setDefaultEmojiTypeface(mEmojiTypeFace)
                 .build(); // build photo editor sdk
 
-        mPhotoEditor.setOnPhotoEditorListener(this);
+//        mPhotoEditor.setOnPhotoEditorListener(this);
 
         binding.imgClose.setOnClickListener(this);
         binding.imgDone.setOnClickListener(this);
