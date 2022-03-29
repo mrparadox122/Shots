@@ -120,7 +120,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
 //            Log.e(TAG, "onBind://////////// "+response);
 
         Retrofit.Builder retrofit1 = new Retrofit.Builder()
-                .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
+                .baseUrl("http://shots.ddns.net/dashboard/paradoxApi/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit3 = retrofit1.build();
@@ -199,7 +199,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     Retrofit.Builder retrofit = new Retrofit.Builder()
-                            .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
+                            .baseUrl("http://shots.ddns.net/dashboard/paradoxApi/")
                             .addConverterFactory(ScalarsConverterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create());
                     Retrofit retrofit2 = retrofit.build();
@@ -239,7 +239,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     Retrofit.Builder retrofit = new Retrofit.Builder()
-                            .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
+                            .baseUrl("http://shots.ddns.net/dashboard/paradoxApi/")
                             .addConverterFactory(ScalarsConverterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create());
                     Retrofit retrofit2 = retrofit.build();
@@ -316,7 +316,7 @@ public class MyVideosScreen_Activity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Retrofit.Builder retrofit = new Retrofit.Builder()
-                        .baseUrl("http://shotsparadox.ddns.net/dashboard/paradoxApi/")
+                        .baseUrl("http://shots.ddns.net/dashboard/paradoxApi/")
                         .addConverterFactory(ScalarsConverterFactory.create())
                         .addConverterFactory(GsonConverterFactory.create());
                 Retrofit retrofit2 = retrofit.build();

@@ -126,7 +126,7 @@ public class Login extends AppCompatActivity {
                         data[1] = password;
 
 //                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
-                        PutData putData = new PutData("http://shotsparadox.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
+                        PutData putData = new PutData("http://shots.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
                         if (putData.startPut()) {
                             Log.e(TAG, "im here1 "+data );
                             if (putData.onComplete()) {
