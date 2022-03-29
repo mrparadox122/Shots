@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,11 +38,8 @@ public class NewSignUpActivity extends AppCompatActivity {
     String perEmail,perName,perusrn,perPass;
     private static int RC_SIGN_IN = 100;
     TextView mobile_btn,btn_skip;
+    ImageView img_back;
 
-//    CallbackManager callbackManager;
-//    private LoginManager loginManager;
-//    LoginButton btn_facebook;
-//    private static final String EMAIL = "email,birthday";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +63,18 @@ public class NewSignUpActivity extends AppCompatActivity {
 //        callbackManager = CallbackManager.Factory.create();
         btn_skip = findViewById(R.id.btn_skip);
         mobile_btn = findViewById(R.id.mobile_btn);
+        img_back = findViewById(R.id.img_back);
+
+
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+
         // Set the dimensions of the sign-in button.
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -182,7 +192,6 @@ public class NewSignUpActivity extends AppCompatActivity {
 //                })
 //                .executeAsync();
 //    }
-
 
 
     private void signIn() {

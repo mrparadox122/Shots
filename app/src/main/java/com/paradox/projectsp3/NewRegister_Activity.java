@@ -23,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -65,6 +66,8 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
     private FirebaseAuth mAuth;
     FirebaseDatabase database;
     private String verificationId;
+
+    ImageView back_btn;
 
     @SuppressLint("SimpleDateFormat")
     SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");
@@ -113,6 +116,15 @@ public class NewRegister_Activity extends AppCompatActivity implements AdapterVi
         verification = findViewById(R.id.verification);
         terms = findViewById(R.id.terms);
         privacy = findViewById(R.id.privacy);
+        back_btn = findViewById(R.id.back_btn);
+
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         database= FirebaseDatabase.getInstance();

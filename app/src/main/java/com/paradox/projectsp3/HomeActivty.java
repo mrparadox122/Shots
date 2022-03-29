@@ -97,7 +97,6 @@ public class HomeActivty extends AppCompatActivity {
         ImageView Search=(ImageView)findViewById(R.id.imageView15) ;
         checkPermission();
 
-
         //// onclick///
 
         profile.setOnClickListener(new View.OnClickListener() {
@@ -133,8 +132,6 @@ public class HomeActivty extends AppCompatActivity {
                 Ghar.setImageResource(R.drawable.ic_icon_feather_home);
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
                 profile.setImageResource(R.drawable.ic_icon_awesome_user);
-
-
                 Intent intent=new Intent(HomeActivty.this,MessageMainActivity.class);
                 startActivity(intent);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

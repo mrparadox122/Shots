@@ -46,6 +46,7 @@
                 android:layout_marginLeft="5dp"
                 android:shadowColor="@color/darkgray"
                 android:shadowDx="2"
+                android:fontFamily="@font/droidserif"
                 android:shadowDy="2"
                 android:shadowRadius="3"
                 android:textColor="@color/white"/>

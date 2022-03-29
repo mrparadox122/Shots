@@ -3,11 +3,15 @@ package com.paradox.projectsp3;
 import static com.google.android.gms.vision.L.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -25,6 +29,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,17 +37,21 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 
 public class Login extends AppCompatActivity {
+
     private static  final String  FILE_Email = "rememberne";
     public boolean checkbool;
     Button btn_login,email_button,mobile_button;
     EditText mobileNumbr,pin,et_email;
     String PhoneNumber,password;
-    TextView createnewACC,skip_txt;
+    TextView createnewACC,skip_txt,back_btn;
     CheckBox rememberme;
     LinearLayout ll_mobile;
+    Context context;
+    Resources resources;
 
+    int lang_selected;
+    RelativeLayout show_lan_dialog;
 
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +71,14 @@ public class Login extends AppCompatActivity {
         rememberme = (CheckBox) findViewById(R.id.check_remember);
         et_email = findViewById(R.id.et_email);
         ll_mobile = findViewById(R.id.ll_mobile);
+        back_btn = findViewById(R.id.back_btn);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         rememberme.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +126,6 @@ public class Login extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 PhoneNumber = String.valueOf(mobileNumbr.getText());
                 password = String.valueOf(pin.getText());
                 Log.e(TAG, "onClick: "+PhoneNumber+password );
@@ -125,8 +141,7 @@ public class Login extends AppCompatActivity {
                         data[0] = PhoneNumber;
                         data[1] = password;
 
-//                            Toast.makeText(NewRegister_Activity.this, dob, Toast.LENGTH_LONG).show();
-                        PutData putData = new PutData("http://shots.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
+                        PutData putData = new PutData("http://shotsparadox.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
                         if (putData.startPut()) {
                             Log.e(TAG, "im here1 "+data );
                             if (putData.onComplete()) {
@@ -155,13 +170,10 @@ public class Login extends AppCompatActivity {
                     }
                 });
 
-
             }
         });
 
     }
-
-
 
     public void foegot_pass(View view) {
 
@@ -169,14 +181,5 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void login_btn(View view) {
 
-//        Intent intent = new Intent(Login.this, PinNumber_Activity.class);
-//        startActivity(intent);
-    }
-
-    public void firebaselogin(View view) {
-
-
-    }
 }

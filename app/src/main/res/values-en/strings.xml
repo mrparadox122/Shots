@@ -1,4 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Shots</string>
+    <string name="play">play</string>
+    <string name="pause">pause</string>
+    <string name="app_record">Record Video</string>
+
+    <string name="select_video_text">Select 1 min video</string>
+    <string name="video_length_validation">Video should be of minimum 3 seconds</string>
+    <string name="app_provider">com.demo.videotrimmer.provider</string>
+
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="altaf_raja_song">Altaf raja song...</string>
+
+
+    <string name="login"><u>Sign in</u></string>
+    <string name="register_text" translatable="false"><u>Create Account</u></string>
+    <string name="login_text" translatable="false"><u>Mobile Login</u></string>
+    <string name="gmaillogin_text"><u>Gmail Login</u></string>
+
+    <string name="forgot"><u>Forgot Pin</u></string>
+    <string name="pin"><u>Mobile Login</u></string>
+
+
+    //facebook
+    <string name="facebook_app_id">465458918616657</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">c5e97f4a37dd509630508d7370e47e99</string>
+    <string name="title_activity_profile_menu">ProfileMenu_Activity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="choose"><u>Choose</u></string>
+
+    <string name="version">2.1</string>
+    <string name="device">android</string>
+    <string name="title_activity_sound_actvity">SoundActvity</string>
+    <string name="audio_bitrate">Audio Bitrate (bytes/s)</string>
+    <string name="audio_channel_count">Audio Channel Count</string>
+    <string name="audio_codec">Audio Codec</string>
+    <string name="audio_options">Audio Options</string>
+    <string name="audio_sample_rate">Audio Sample Rate</string>
+    <string name="audio_sample_rate_hz">Audio Sample Rate (Hz)</string>
+    <string name="can_crop_video">Can crop video</string>
+    <string name="can_pad_video">Can pad video</string>
+    <string name="can_upscale_video">Can upscale video</string>
+    <string name="delete_all">Delete All</string>
+    <string name="delete_all_video_files">Are you sure you want to delete all video files?</string>
+    <string name="delete_video_file">Are you sure you want to delete the video file?</string>
+    <string name="error">Error</string>
+    <string name="error_value_is_empty">Value is empty</string>
+    <string name="error_value_is_negative">Value is negative</string>
+    <string name="error_value_is_not_a_number">Value is not a number</string>
+    <string name="error_value_is_zero">Value is zero</string>
+    <string name="launch_video_recorder">Launch Video Recorder</string>
+    <string name="max_file_size">Max file size (MB)</string>
+    <string name="max_recording_time">Max recording (s)</string>
+    <string name="min_recording_time">Min recording (s)</string>
+    <string name="output_format">Output Format</string>
+    <string name="recording">Recording</string>
+    <string name="recording_options">Recording Options</string>
+    <string name="results">Results</string>
+    <string name="success">Success</string>
+    <string name="thumbnail_preview">Thumbnail Preview</string>
+    <string name="video_bitrate">Video Bitrate</string>
+    <string name="video_bitrate_bytes">Video Bitrate (bytes/s)</string>
+    <string name="video_camera_facing">Video Camera Facing</string>
+    <string name="video_codec">Video Codec</string>
+    <string name="video_date">Video Date</string>
+    <string name="video_file_format">Video File Format</string>
+    <string name="video_file_size">Video File Size</string>
+    <string name="video_frames_per_second">Video Frames Per Second</string>
+    <string name="video_frame_rate">Video Frame Rate</string>
+    <string name="video_height">Video Height</string>
+    <string name="video_height_px">Video Height (px)</string>
+    <string name="video_length">Video Length</string>
+    <string name="video_options">Video Options</string>
+    <string name="video_scale_direction">Video Scale Direction</string>
+    <string name="video_scale_fit">Video Scale Fit</string>
+    <string name="video_width">Video Width</string>
+    <string name="video_width_px">Video Width (px)</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="thumbnail_file_size">Thumbnail File Size</string>
+    <string name="unknown">Unknown</string>
+    <string name="login_login">Login</string>
+    <string name="remember">Remember</string>
+    <string name="forgot_pin">Forgot Pin</string>
+    <string name="mobile">Mobile</string>
+    <string name="email">Email</string>
+    <string name="create_new_account">Create New Account</string>
 </resources>

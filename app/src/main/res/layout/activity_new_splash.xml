@@ -7,6 +7,8 @@
     android:background="@color/black"
     tools:context=".NewSplash_Activity">
 
+
+
     <ImageView
         android:id="@+id/s_logo"
         android:layout_width="416dp"

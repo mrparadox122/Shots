@@ -70,7 +70,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
     private String videoPath = "";
     private String imagePath = "";
     private ArrayList<String> exeCmd;
-    FFmpeg fFmpeg;
+
     private String[] newCommand;
     private ProgressDialog progressDialog;
     PhotoEditorView ivImage;
@@ -124,7 +124,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
     }
 
     private void initViews() {
-        fFmpeg = FFmpeg.getInstance(this);
+//        fFmpeg = FFmpeg.getInstance(this);
         progressDialog = new ProgressDialog(this);
         mStickerBSFragment = new StickerBSFragment();
         mStickerBSFragment.setStickerListener(this);
@@ -229,44 +229,44 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
 
     }
 
-    public void executeCommand(String[] command, final String absolutePath) {
-        try {
-            fFmpeg.execute(command, new FFcommandExecuteResponseHandler() {
-                @Override
-                public void onSuccess(String message) {
-                    Log.d("CommandExecute", "onSuccess" + "  " + message);
-                    Toast.makeText(getApplicationContext(), "Sucess", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(PreviewVideoActivity.this, VideoPreviewActivity.class);
-                    i.putExtra("DATA", absolutePath);
-                    startActivity(i);
-                }
-
-                @Override
-                public void onProgress(String message) { Log.d("CommandExecute", "onProgress" + "  " + message);  progressDialog.setMessage(message);
-                }
-
-                @Override
-                public void onFailure(String message) {    Log.d("CommandExecute", "onFailure" + "  " + message);
-                    progressDialog.hide();
-
-                }
-
-                @Override
-                public void onStart() {   progressDialog.setTitle("Preccesing");
-                    progressDialog.setMessage("Starting");
-                    progressDialog.show();
-
-                }
-
-                @Override
-                public void onFinish() {
-
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void executeCommand(String[] command, final String absolutePath) {
+//        try {
+//            fFmpeg.execute(command, new FFcommandExecuteResponseHandler() {
+//                @Override
+//                public void onSuccess(String message) {
+//                    Log.d("CommandExecute", "onSuccess" + "  " + message);
+//                    Toast.makeText(getApplicationContext(), "Sucess", Toast.LENGTH_SHORT).show();
+//                    Intent i = new Intent(PreviewVideoActivity.this, VideoPreviewActivity.class);
+//                    i.putExtra("DATA", absolutePath);
+//                    startActivity(i);
+//                }
+//
+//                @Override
+//                public void onProgress(String message) { Log.d("CommandExecute", "onProgress" + "  " + message);  progressDialog.setMessage(message);
+//                }
+//
+//                @Override
+//                public void onFailure(String message) {    Log.d("CommandExecute", "onFailure" + "  " + message);
+//                    progressDialog.hide();
+//
+//                }
+//
+//                @Override
+//                public void onStart() {   progressDialog.setTitle("Preccesing");
+//                    progressDialog.setMessage("Starting");
+//                    progressDialog.show();
+//
+//                }
+//
+//                @Override
+//                public void onFinish() {
+//
+//                }
+//            });
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public void onClick(View v) {
@@ -423,7 +423,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
             }
 
 //            newCommand = new String[]{"-i", videoPath, "-i", imagePath, "-preset", "ultrafast", "-filter_complex", "[1:v]scale=2*trunc(" + (width / 2) + "):2*trunc(" + (height/ 2) + ") [ovrl], [0:v][ovrl]overlay=0:0" , output.getAbsolutePath()};
-            executeCommand(newCommand, output.getAbsolutePath());
+//            executeCommand(newCommand, output.getAbsolutePath());
         } catch (Exception e) {
             e.printStackTrace();
         }
