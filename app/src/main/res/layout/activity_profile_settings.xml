@@ -32,6 +32,7 @@
             android:layout_marginStart="25dp"
             android:gravity="center"
             android:text="Settings"
+            android:fontFamily="@font/droidserif"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -63,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Manage Account"
                     android:textColor="@color/white" />
@@ -92,6 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Push Notifications"
                     android:textColor="@color/white" />
@@ -122,6 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Privacy settings"
                     android:textColor="@color/white" />
@@ -134,34 +138,34 @@
                     android:src="@drawable/ic_arrowforward" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/ll_language"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:padding="5dp">
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/ll_language"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginStart="5dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:layout_marginEnd="5dp"-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="5dp">-->
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:padding="10dp"
-                    android:text="Content Languages"
-                    android:textColor="@color/white" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentStart="true"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="Content Languages"-->
+<!--                    android:textColor="@color/white" />-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrowforward" />
-            </RelativeLayout>
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:src="@drawable/ic_arrowforward" />-->
+<!--            </RelativeLayout>-->
 
             <RelativeLayout
                 android:id="@+id/ll_accessibility"
@@ -180,6 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Accessibility"
                     android:textColor="@color/white" />
@@ -210,6 +215,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Check For Updates"
                     android:textColor="@color/white" />
@@ -237,6 +243,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Frequently Asked Questions (FAQ)"
                     android:textColor="@color/white" />
@@ -263,6 +270,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Community Guidelines"
                     android:textColor="@color/white" />
@@ -289,6 +297,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Leagal"
                     android:textColor="@color/white" />
@@ -315,6 +324,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="About"
                     android:textColor="@color/white" />
@@ -342,6 +352,7 @@
                     android:layout_alignParentStart="true"
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/ic_logout"
+                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Logout"
                     android:textColor="@color/white" />

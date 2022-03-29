@@ -38,7 +38,7 @@
                 android:id="@+id/commentLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:layout_editor_absoluteX="-49dp"
+                tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp">
             </FrameLayout>
 
@@ -61,7 +61,6 @@
         app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
 
 
     <TextView
@@ -164,6 +163,21 @@
         android:src="@drawable/disk_for_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_more"
+        android:textColor="@color/white"
+        android:padding="5dp"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:textSize="21sp"
+        android:id="@+id/img_more"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView9"
+        app:layout_constraintEnd_toEndOf="@+id/media_container"
+        app:tint="@color/white" />
 
     <ImageView
         android:id="@+id/imageView9"

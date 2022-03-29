@@ -73,7 +73,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Profile_Activity extends AppCompatActivity {
-
     public String id;
    ImageView settings , back,share_img,profilemenu;
    CircleImageView pro_pic;
@@ -81,30 +80,20 @@ public class Profile_Activity extends AppCompatActivity {
 //   private Button edit_profile;
    private ArrayList<UserDetails> userDetailsArrayList = new ArrayList<>();
    public static ApiInterface apiInterface;
-
    List<UserDetails> userDetails;
-
    LinearLayout following_ll,follower_ll;
-
    public TextView following_text,followers_text,likes_text;
-
    RecyclerView suggest_rv;
     int i;
     List<Suggest_Model> suggestmodel;
     List<My_VideosModel> videomodle;
     SwipeRefreshLayout refrestly;
-
-
     String suggest;
-
     UserDetails UserDetails = new UserDetails();
-
     public RecyclerView recyclerview;
-
     MyVideos_Adapter myVideos_adapter;
     Context context;
 //    List<My_VideosModel> my_videosModelList;
-
     Resources resources;
     int lang_selected;
     Button btn_login,email_button,mobile_button;

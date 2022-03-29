@@ -52,7 +52,7 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
 
     public PhotoEditor(Builder builder) {
         this.context = builder.context;
-        this.parentView = builder.parentView;
+//        this.parentView = builder.parentView;
         this.imageView = builder.imageView;
         this.deleteView = builder.deleteView;
         this.brushDrawingView = builder.brushDrawingView;
@@ -820,7 +820,7 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
     public static class Builder {
 
         private Context context;
-        private ParentView parentView;
+//        private ParentView parentView;
         private ImageView imageView;
         private View deleteView;
         private BrushDrawingView brushDrawingView;
@@ -837,7 +837,7 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
          */
         public Builder(Context context, ImageView photoEditorView) {
             this.context = context;
-            parentView = photoEditorView;
+//            parentView = photoEditorView;
 //            imageView = photoEditorView.getSource();
 //            brushDrawingView = photoEditorView.getBrushDrawingView();
         }

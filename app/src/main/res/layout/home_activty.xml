@@ -126,7 +126,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:textStyle="bold"
-
+        android:fontFamily="@font/droid_bold"
         android:text="For You"
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="@+id/divider"
@@ -144,6 +144,7 @@
         android:layout_marginRight="16dp"
         android:textColor="#EAE3E3"
         android:text="Following"
+        android:fontFamily="@font/droid_bold"
         app:layout_constraintBottom_toBottomOf="@+id/divider"
         app:layout_constraintEnd_toStartOf="@+id/divider"
         app:layout_constraintTop_toTopOf="@+id/divider"

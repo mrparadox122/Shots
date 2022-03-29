@@ -91,12 +91,12 @@ public class HomeActivty extends AppCompatActivity {
      setContentView(R.layout.home_activty);
         apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
        init();
+
         ImageView Ghar=(ImageView)findViewById(R.id.imageView14);
         ImageView profile=(ImageView)findViewById(R.id.imageView17);
         ImageView comment=(ImageView)findViewById(R.id.imageView16);
         ImageView Search=(ImageView)findViewById(R.id.imageView15) ;
         checkPermission();
-
 
         //// onclick///
 
@@ -133,8 +133,6 @@ public class HomeActivty extends AppCompatActivity {
                 Ghar.setImageResource(R.drawable.ic_icon_feather_home);
                 Search.setImageResource(R.drawable.ic_icon_feather_search);
                 profile.setImageResource(R.drawable.ic_icon_awesome_user);
-
-
                 Intent intent=new Intent(HomeActivty.this,MessageMainActivity.class);
                 startActivity(intent);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
