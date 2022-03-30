@@ -8,7 +8,7 @@
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
 
-<string name="chooseOption">Choose From</string>
+    <string name="chooseOption">Choose From</string>
     <string name="camera_open">Take Photo</string>
     <string name="msg_permission_rationale">Linebully requires to access camera service so you can upload best pictures, Turn on camera and storage permission from setting.</string>
     <string name="take_photo">Take Photo</string>
@@ -18,7 +18,7 @@
     <string name="take_video">Take Video</string>
     <string name="gallery_open">Choose from Library</string>
     <string name="msg_camera_storage_setting">Linebully requires to access camera service so you can upload best pictures, Turn on camera and storage permission from setting.</string>
-     <string name="settings">Settings</string>
+    <string name="settings">Settings</string>
     <string name="play">play</string>
     <string name="pause">pause</string>
     <string name="app_record">Record Video</string>
@@ -115,5 +115,6 @@
     <string name="email" translatable="false">Email</string>
     <string name="create_new_account" translatable="false">Create New Account</string>
     <string name="skip_login" translatable="false">Skip</string>
+    <string name="suggested_profile">Suggested Profile</string>
 
 </resources>

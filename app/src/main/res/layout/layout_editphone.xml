@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Edit Phone"
+            android:fontFamily="@font/droidserif"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="normal"/>
@@ -30,6 +31,7 @@
             android:inputType="number"
             android:maxLength="10"
             android:maxLines="1"
+            android:fontFamily="@font/droidserif"
             android:textColorHint="@color/gray"
             android:layout_marginTop="20dp"/>
 
@@ -38,6 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/droid_bold"
             android:textAllCaps="false"
             android:text="Submit" />
 

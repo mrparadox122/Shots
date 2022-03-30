@@ -7,12 +7,12 @@
     android:background="#A89999"
     tools:context=".Followers_Following_Likes.Following_Fragment">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="5dp"
         android:id="@+id/rv_following"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:listitem="@layout/listitem_following"
         android:orientation="vertical"
         />
 

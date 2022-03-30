@@ -97,7 +97,7 @@ public class Profile_Activity extends AppCompatActivity {
     Resources resources;
     int lang_selected;
     Button btn_login,email_button,mobile_button;
-    TextView createnewACC,skip_txt,back_btn;
+    TextView createnewACC,skip_txt,back_btn,more_txt;
 
     @SuppressLint({"ResourceAsColor", "NewApi"})
     @Override
@@ -132,39 +132,15 @@ public class Profile_Activity extends AppCompatActivity {
 
         btn_login = findViewById(R.id.login_bt);
         skip_txt = findViewById(R.id.skip_txt);
+        more_txt = findViewById(R.id.more_txt);
 
+        more_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
 
-        if(LocaleHelper.getLanguage(Profile_Activity.this).equalsIgnoreCase("en"))
-        {
-            context = LocaleHelper.setLocale(Profile_Activity.this,"en");
-            resources =context.getResources();
-//            btn_login = findViewById(R.id.login_bt);
-//           skip_txt = findViewById(R.id.skip_txt);
-//            btn_login.setText(resources.getString(R.string.login));
-//            skip_txt.setText(resources.getString(R.string.skip_login));
-            setTitle(resources.getString(R.string.app_name));
-            lang_selected = 0;
-        }else if(LocaleHelper.getLanguage(Profile_Activity.this).equalsIgnoreCase("hi")){
-            context = LocaleHelper.setLocale(Profile_Activity.this,"hi");
-            resources =context.getResources();
-            skip_txt = findViewById(R.id.skip_txt);
-            btn_login.setText(resources.getString(R.string.login));
-            skip_txt.setText(resources.getString(R.string.skip_login));
-
-            setTitle(resources.getString(R.string.app_name));
-            lang_selected =1;
-        }
-        else if(LocaleHelper.getLanguage(Profile_Activity.this).equalsIgnoreCase("kn")){
-            context = LocaleHelper.setLocale(Profile_Activity.this,"kn");
-            resources =context.getResources();
-//            skip_txt = findViewById(R.id.skip_txt);
-//            btn_login.setText(resources.getString(R.string.login));
-//            skip_txt.setText(resources.getString(R.string.skip_login));
-//            setTitle(resources.getString(R.string.app_name));
-            setTitle(resources.getString(R.string.app_name));
-            lang_selected =2;
-        }
 
 
         follower_ll.setOnClickListener(new View.OnClickListener() {

@@ -22,7 +22,6 @@
             android:layout_height="match_parent"
             android:background="@color/purple_700">
 
-
             <ImageView
                 android:id="@+id/thumbnail"
                 android:layout_width="0dp"

@@ -8,12 +8,25 @@
     tools:context=".RefferandEarn_Activity">
 
 
+    <ImageView
+        android:id="@+id/back_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
+        android:fontFamily="@font/droid_bold"
         android:text="Reffer and Earn"
         android:textColor="@color/white"
         android:textSize="21dp"
@@ -23,10 +36,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_person_24"
+        android:text="WebView Connection"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:fontFamily="@font/droidserif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

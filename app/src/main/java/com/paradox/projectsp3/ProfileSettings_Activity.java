@@ -26,7 +26,7 @@ public class ProfileSettings_Activity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     ImageView back;
     TextView logout;
-    RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_communityguidelines,ll_Leagal;
+    RelativeLayout ll_manageACC,ll_pushnotification,ll_privacysettings,ll_communityguidelines,ll_Leagal,ll_about;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
         setContentView(R.layout.activity_profile_settings);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions
@@ -44,10 +45,20 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         ll_manageACC= findViewById(R.id.ll_manageACC);
         ll_pushnotification= findViewById(R.id.ll_pushnotification);
         ll_privacysettings= findViewById(R.id.ll_privacysettings);
+
         back= findViewById(R.id.back);
         logout= findViewById(R.id.logout);
         ll_Leagal= findViewById(R.id.ll_Leagal);
         ll_communityguidelines= findViewById(R.id.ll_communityguidelines);
+        ll_about= findViewById(R.id.ll_about);
+
+        ll_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileSettings_Activity.this,AboutAs_Activity.class);
+                startActivity(intent);
+            }
+        });
 
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +92,6 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         });
 
 
-
         ll_manageACC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,7 +104,7 @@ public class ProfileSettings_Activity extends AppCompatActivity {
         ll_pushnotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProfileSettings_Activity.this, NewPushNotifications_Activity.class);
+                Intent intent = new Intent(ProfileSettings_Activity.this, PushNotification_Activity.class);
                 startActivity(intent);
                 finish();
             }

@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Edit Bio"
+            android:fontFamily="@font/droid_bold"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="normal"/>
@@ -26,7 +27,8 @@
             android:id="@+id/editbio_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="enter Bio"
+            android:hint="Enter Bio"
+            android:fontFamily="@font/droidserif"
             android:maxLength="250"
             android:inputType="text"
             android:textColorHint="@color/gray"
@@ -37,6 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"
+            android:textAllCaps="false"
+            android:fontFamily="@font/droid_bold"
             android:layout_marginTop="10dp"/>
 
 
