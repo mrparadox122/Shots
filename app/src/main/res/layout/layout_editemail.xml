@@ -27,7 +27,7 @@
             android:id="@+id/editeamil_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="enter new email"
+            android:hint="Enter new email"
             android:maxLines="1"
             android:fontFamily="@font/droidserif"
             android:inputType="textEmailAddress"

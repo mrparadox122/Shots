@@ -33,6 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/droidserif"
                     android:text="Post"
                     android:textColor="@color/white"
                     android:textSize="18dp"
@@ -75,6 +76,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="@color/transparent"
+                    android:fontFamily="@font/droidserif"
                     android:gravity="start"
                     android:hint="Describe your video"
                     android:paddingStart="15dp"
@@ -117,6 +119,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@+id/lock_img"
+                    android:fontFamily="@font/droidserif"
                     android:text="Who can view this video"
                     android:textColor="@color/gray" />
 
@@ -187,6 +190,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@+id/comment_img"
+                    android:fontFamily="@font/droidserif"
                     android:text="Allow Comments"
                     android:textColor="@color/gray" />
 
@@ -216,6 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"
+                    android:fontFamily="@font/droidserif"
                     android:text="Choose Category"
                     android:textColor="@color/gray" />
 
@@ -322,6 +327,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/droidserif"
                     android:text="Save Video"
                     android:textColor="@color/white"
                     android:textSize="14dp"
@@ -348,6 +354,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/droidserif"
                     android:text="Post Video"
                     android:textColor="@color/white"
                     android:textSize="14dp"

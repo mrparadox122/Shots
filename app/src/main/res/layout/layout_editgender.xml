@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Select Gender"
+            android:fontFamily="@font/droidserif"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="normal" />
@@ -26,7 +27,8 @@
             android:id="@+id/editgender_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="enter name"
+            android:hint="Enter name"
+            android:fontFamily="@font/droidserif"
             android:textColorHint="@color/gray"
             android:layout_marginTop="20dp"/>
 
@@ -35,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"
+            android:fontFamily="@font/droid_bold"
             android:layout_marginTop="10dp"/>
 
 

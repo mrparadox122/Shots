@@ -100,6 +100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="# Soosle Infotech"
+                        android:fontFamily="@font/droidserif"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -107,6 +108,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Trending Hashtag"
+                        android:fontFamily="@font/droidserif"
                         android:textColor="#9A9696"
                         android:textStyle="normal" />
                 </LinearLayout>
@@ -118,6 +120,7 @@
                     android:drawableEnd="@drawable/ic_arrowforward"
                     android:gravity="center"
                     android:padding="15dp"
+                    android:fontFamily="@font/droidserif"
                     android:text="171.views"
                     android:textColor="#9A9696"
                     android:textStyle="normal" />
@@ -165,6 +168,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="# Ali"
+                        android:fontFamily="@font/droidserif"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -173,6 +177,7 @@
                         android:layout_height="wrap_content"
                         android:text="Trending Hashtag"
                         android:textColor="#9A9696"
+                        android:fontFamily="@font/droidserif"
                         android:textStyle="normal" />
                 </LinearLayout>
 
@@ -183,6 +188,7 @@
                     android:drawableEnd="@drawable/ic_arrowforward"
                     android:gravity="center"
                     android:padding="15dp"
+                    android:fontFamily="@font/droidserif"
                     android:text="171.views"
                     android:textColor="#9A9696"
                     android:textStyle="normal" />
@@ -230,6 +236,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="# Prashanth"
+                        android:fontFamily="@font/droidserif"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -238,6 +245,7 @@
                         android:layout_height="wrap_content"
                         android:text="Trending Hashtag"
                         android:textColor="#9A9696"
+                        android:fontFamily="@font/droidserif"
                         android:textStyle="normal" />
                 </LinearLayout>
 
@@ -247,6 +255,7 @@
                     android:layout_alignParentEnd="true"
                     android:drawableEnd="@drawable/ic_arrowforward"
                     android:gravity="center"
+                    android:fontFamily="@font/droidserif"
                     android:padding="15dp"
                     android:text="171.views"
                     android:textColor="#9A9696"
@@ -295,6 +304,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="# Rabindra"
+                        android:fontFamily="@font/droidserif"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -302,6 +312,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Trending Hashtag"
+                        android:fontFamily="@font/droidserif"
                         android:textColor="#9A9696"
                         android:textStyle="normal"/>
                 </LinearLayout>
@@ -314,6 +325,7 @@
                     android:drawableEnd="@drawable/ic_arrowforward"
                     android:gravity="center"
                     android:padding="15dp"
+                    android:fontFamily="@font/droidserif"
                     android:text="171.views"
                     android:textColor="#9A9696"
                     android:textStyle="normal" />

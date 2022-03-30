@@ -163,7 +163,6 @@ public class Login extends AppCompatActivity {
                                 }
                                 if (result.equals("Username or Password wrong")){
                                     Toast.makeText(Login.this, "enter correct username and password", Toast.LENGTH_SHORT).show();
-
                                 }
                             }
                         }
