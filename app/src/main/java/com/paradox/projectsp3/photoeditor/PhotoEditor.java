@@ -667,7 +667,11 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
                         if (e == null) {
                             //Clear all views if its enabled in save settings
                             if (saveSettings.isClearViewsEnabled()) clearAllViews();
-                            onSaveListener.onSuccess(imagePath);
+                            try {
+                                onSaveListener.onSuccess(imagePath);
+                            } catch (Shell.ClosedException closedException) {
+                                closedException.printStackTrace();
+                            }
                         } else {
                             onSaveListener.onFailure(e);
                         }

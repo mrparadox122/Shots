@@ -329,8 +329,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
                 else {
                     Log.d(TAG, "onClick: //////////////////////////////////////////////////////////////////////////////////////");
                     requestPermission();
-                    Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-                    startActivity(intent);
+
                 }
                 
                 break;
@@ -392,6 +391,8 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                                 != PackageManager.PERMISSION_GRANTED) {
+                            Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                            startActivity(intent);
                             showMessageOKCancel("You need to allow access permissions",
                                     new DialogInterface.OnClickListener() {
                                         @Override
@@ -502,6 +503,8 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
             height = tempWidth;
         }
 
+        
+
         Log.d(">>", "width>> " + width + "height>> " + height);
         retriever.release();
 
@@ -548,6 +551,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
         }
 
     }
+
 
     @Override
     public void onStickerClick(Bitmap bitmap) {
