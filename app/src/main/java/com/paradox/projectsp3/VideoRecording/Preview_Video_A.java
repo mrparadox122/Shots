@@ -53,7 +53,7 @@ public class Preview_Video_A extends AppCompatActivity implements Player.EventLi
     private static final int REQUEST_TAKE_GALLERY_VIDEO = 100;
     private static final int VIDEO_TRIM = 101;
 
-
+//
     String video_url;
     GPUPlayerView gpuPlayerView;
     public static int select_postion = 0;

@@ -1,6 +1,9 @@
 package com.paradox.projectsp3.photoeditor;
 
+import static android.content.ContentValues.TAG;
+
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -54,8 +57,9 @@ class MultiTouchListener implements OnTouchListener {
         if (deleteView != null) {
             outRect = new Rect(deleteView.getLeft(), deleteView.getTop(),
                     deleteView.getRight(), deleteView.getBottom());
+            Log.e(TAG, "MultiTouchListener: /////////////////////////////////////////////////////////"+outRect );
         } else {
-            outRect = new Rect(0, 0, 0, 0);
+            outRect = new Rect(deleteView.getLeft(), deleteView.getTop(), deleteView.getRight(), deleteView.getBottom());
         }
     }
 

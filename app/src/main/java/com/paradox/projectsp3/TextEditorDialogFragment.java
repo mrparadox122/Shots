@@ -155,25 +155,13 @@ public class TextEditorDialogFragment extends DialogFragment {
 
     public static List<Integer> getDefaultFontIds(Context context) {
         fontIds = new ArrayList<>();
-        fontIds.add(R.font.wonderland);
-        fontIds.add(R.font.cinzel);
-        fontIds.add(R.font.emojione);
-        fontIds.add(R.font.josefinsans);
-        fontIds.add(R.font.merriweather);
-        fontIds.add(R.font.raleway);
-        fontIds.add(R.font.roboto);
+        fontIds.add(R.font.calibri);
         return fontIds;
     }
 
     public static List<String> getDefaultFonts(Context context) {
         fontNames = new ArrayList<>();
-        fontNames.add("Wonderland");
-        fontNames.add("Cinzel");
-        fontNames.add("Emojione");
-        fontNames.add("Josefinsans");
-        fontNames.add("Merriweather");
-        fontNames.add("Raleway");
-        fontNames.add("Roboto");
+        fontNames.add("calibri");
         return fontNames;
     }
 

@@ -141,7 +141,7 @@ public class Login extends AppCompatActivity {
                         data[0] = PhoneNumber;
                         data[1] = password;
 
-                        PutData putData = new PutData("http://shotsparadox.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
+                        PutData putData = new PutData("http://shots.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
                         if (putData.startPut()) {
                             Log.e(TAG, "im here1 "+data );
                             if (putData.onComplete()) {
