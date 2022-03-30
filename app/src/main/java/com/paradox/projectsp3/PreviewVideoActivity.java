@@ -2,9 +2,12 @@ package com.paradox.projectsp3;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
@@ -18,6 +21,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Surface;
@@ -28,6 +32,11 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
+import com.github.hiteshsondhi88.libffmpeg.FFmpegExecuteResponseHandler;
+import com.github.hiteshsondhi88.libffmpeg.FFmpegLoadBinaryResponseHandler;
+import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException;
+import com.jaredrummler.ktsh.Shell;
 import com.paradox.projectsp3.databinding.ActivityPreviewVideoBinding;
 import com.paradox.projectsp3.photoeditor.OnPhotoEditorListener;
 import com.paradox.projectsp3.photoeditor.PhotoEditor;
@@ -47,17 +56,17 @@ import static com.paradox.projectsp3.utils.Utils.getScaledDimension;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 
-import nl.bravobit.ffmpeg.FFcommandExecuteResponseHandler;
-import nl.bravobit.ffmpeg.FFmpeg;
 
 public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEditorListener, PropertiesBSFragment.Properties,
         View.OnClickListener,
         StickerBSFragment.StickerListener {
 
+    private static final int PERMISSION_REQUEST_CODE = 200;
     private ActivityPreviewVideoBinding binding;
     private static final String TAG = PreviewVideoActivity.class.getSimpleName();
     private static final int CAMERA_REQUEST = 52;
@@ -79,6 +88,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
     private int newCanvasWidth, newCanvasHeight;
     private int DRAW_CANVASW = 0;
     private int DRAW_CANVASH = 0;
+    FFmpeg fFmpeg;
 
     private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -124,7 +134,7 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
     }
 
     private void initViews() {
-//        fFmpeg = FFmpeg.getInstance(this);
+        fFmpeg = FFmpeg.getInstance(this);
         progressDialog = new ProgressDialog(this);
         mStickerBSFragment = new StickerBSFragment();
         mStickerBSFragment.setStickerListener(this);
@@ -197,40 +207,73 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
         });
 
         exeCmd = new ArrayList<>();
-//        try {
-//            fFmpeg.loadBinary(new FFmpegLoadBinaryResponseHandler() {
-//                @Override
-//                public void onFailure() {
-//                    Log.d("binaryLoad", "onFailure");
-//
-//                }
-//
-//                @Override
-//                public void onSuccess() {
-//                    Log.d("binaryLoad", "onSuccess");
-//                }
-//
-//                @Override
-//                public void onStart() {
-//                    Log.d("binaryLoad", "onStart");
-//
-//                }
-//
-//                @Override
-//                public void onFinish() {
-//                    Log.d("binaryLoad", "onFinish");
-//
-//                }
-//            });
-//        } catch (FFmpegNotSupportedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            fFmpeg.loadBinary(new FFmpegLoadBinaryResponseHandler() {
+                @Override
+                public void onFailure() {
+                    Log.d("binaryLoad", "onFailure");
+
+                }
+
+                @Override
+                public void onSuccess() {
+                    Log.d("binaryLoad", "onSuccess");
+                }
+
+                @Override
+                public void onStart() {
+                    Log.d("binaryLoad", "onStart");
+
+                }
+
+                @Override
+                public void onFinish() {
+                    Log.d("binaryLoad", "onFinish");
+
+                }
+            });
+        } catch (FFmpegNotSupportedException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
-//    public void executeCommand(String[] command, final String absolutePath) {
-//        try {
+    public void executeCommand(String[] command, final String absolutePath) {
+        try {
+            fFmpeg.execute(command, new FFmpegExecuteResponseHandler() {
+                @Override
+                public void onSuccess(String message) {
+                    Toast.makeText(getApplicationContext(), "Sucess", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(PreviewVideoActivity.this, VideoPreviewActivity.class);
+                    i.putExtra("DATA", absolutePath);
+                    startActivity(i);
+                }
+
+                @Override
+                public void onProgress(String message) {
+                    Log.d("CommandExecute", "onProgress" + "  " + message);
+                    progressDialog.setMessage(message);
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    Log.d("CommandExecute", "onFailure" + "  " + message);
+                    progressDialog.hide();
+                }
+
+                @Override
+                public void onStart() {
+                    progressDialog.setTitle("Preccesing");
+                    progressDialog.setMessage("Starting");
+                    progressDialog.show();
+                }
+
+                @Override
+                public void onFinish() {
+
+                }
+            });
 //            fFmpeg.execute(command, new FFcommandExecuteResponseHandler() {
 //                @Override
 //                public void onSuccess(String message) {
@@ -242,17 +285,21 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
 //                }
 //
 //                @Override
-//                public void onProgress(String message) { Log.d("CommandExecute", "onProgress" + "  " + message);  progressDialog.setMessage(message);
+//                public void onProgress(String message) {
+//                    Log.d("CommandExecute", "onProgress" + "  " + message);
+//                    progressDialog.setMessage(message);
 //                }
 //
 //                @Override
-//                public void onFailure(String message) {    Log.d("CommandExecute", "onFailure" + "  " + message);
+//                public void onFailure(String message) {
+//                    Log.d("CommandExecute", "onFailure" + "  " + message);
 //                    progressDialog.hide();
 //
 //                }
 //
 //                @Override
-//                public void onStart() {   progressDialog.setTitle("Preccesing");
+//                public void onStart() {
+//                    progressDialog.setTitle("Preccesing");
 //                    progressDialog.setMessage("Starting");
 //                    progressDialog.show();
 //
@@ -263,10 +310,10 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
 //
 //                }
 //            });
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -275,7 +322,17 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
                 onBackPressed();
                 break;
             case R.id.imgDone:
-                saveImage();
+                if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    saveImage();
+                    return;
+                }
+                else {
+                    Log.d(TAG, "onClick: //////////////////////////////////////////////////////////////////////////////////////");
+                    requestPermission();
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                    startActivity(intent);
+                }
+                
                 break;
             case R.id.imgDraw:
                 setDrawingMode();
@@ -304,6 +361,63 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
 
         }
     }
+    private boolean checkPermission() {
+        if (ContextCompat.checkSelfPermission(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            return false;
+        }
+        return true;
+    }
+
+    private void requestPermission() {
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                PERMISSION_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+                    saveImage();
+
+                    // main logic
+                } else {
+                    Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            showMessageOKCancel("You need to allow access permissions",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                requestPermission();
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+                }
+                break;
+        }
+    }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(PreviewVideoActivity.this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+
+
 
     private void setCanvasAspectRatio() {
 
@@ -317,8 +431,6 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
         newCanvasHeight = displayDiamenion.height;
 
     }
-
-
 
 
     private void setDrawingMode() {
@@ -346,14 +458,21 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
                     .setTransparencyEnabled(false)
                     .build();
 
+            
             mPhotoEditor.saveAsFile(file.getAbsolutePath(), saveSettings, new PhotoEditor.OnSaveListener() {
                 @Override
-                public void onSuccess(@NonNull String imagePath) {
+                public void onSuccess(@NonNull String imagePath) throws Shell.ClosedException {
                     PreviewVideoActivity.this.imagePath = imagePath;
                     Log.d("imagePath>>", imagePath);
                     Log.d("imagePath2>>", Uri.fromFile(new File(imagePath)).toString());
                     binding.ivImage.getSource().setImageURI(Uri.fromFile(new File(imagePath)));
                     Toast.makeText(PreviewVideoActivity.this, "Saved successfully...", Toast.LENGTH_SHORT).show();
+                    String basedir = getApplicationInfo().nativeLibraryDir;
+                    String command = String.format("cd %s;./ffmpeg", basedir);
+                    Shell shell = new Shell("sh");
+                    Shell.Command.Result result = shell.run(command);
+                    System.out.println(result.stdout());
+                    System.out.println(result.stderr());
                     applayWaterMark();
                 }
 
@@ -371,20 +490,20 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
 
     private void applayWaterMark() {
 
-//        imagePath = generatePath(Uri.fromFile(new File(imagePath)),PreviewVideoActivity.this);
+        imagePath = generatePath(Uri.fromFile(new File(imagePath)),PreviewVideoActivity.this);
 
-//        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-//        retriever.setDataSource(videoPath);
-//        int width = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH));
-//        int height = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT));
-        /*if (width > height) {
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        retriever.setDataSource(videoPath);
+        int width = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH));
+        int height = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT));
+        if (width > height) {
             int tempWidth = width;
             width = height;
             height = tempWidth;
-        }*/
+        }
 
-//        Log.d(">>", "width>> " + width + "height>> " + height);
-//        retriever.release();
+        Log.d(">>", "width>> " + width + "height>> " + height);
+        retriever.release();
 
         File output = new File(Environment.getExternalStorageDirectory()
                 + File.separator + ""
@@ -422,8 +541,8 @@ public class PreviewVideoActivity extends AppCompatActivity implements OnPhotoEd
                 Log.d("CMD==>>", newCommand[k] + "");
             }
 
-//            newCommand = new String[]{"-i", videoPath, "-i", imagePath, "-preset", "ultrafast", "-filter_complex", "[1:v]scale=2*trunc(" + (width / 2) + "):2*trunc(" + (height/ 2) + ") [ovrl], [0:v][ovrl]overlay=0:0" , output.getAbsolutePath()};
-//            executeCommand(newCommand, output.getAbsolutePath());
+            newCommand = new String[]{"-i", videoPath, "-i", imagePath, "-preset", "ultrafast", "-filter_complex", "[1:v]scale=2*trunc(" + (width / 2) + "):2*trunc(" + (height/ 2) + ") [ovrl], [0:v][ovrl]overlay=0:0" , output.getAbsolutePath()};
+            executeCommand(newCommand, output.getAbsolutePath());
         } catch (Exception e) {
             e.printStackTrace();
         }

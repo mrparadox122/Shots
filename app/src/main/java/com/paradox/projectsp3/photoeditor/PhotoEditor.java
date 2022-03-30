@@ -25,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresPermission;
 import androidx.annotation.UiThread;
 
+import com.jaredrummler.ktsh.Shell;
 import com.paradox.projectsp3.R;
 
 import java.io.File;
@@ -587,7 +588,7 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
          *
          * @param imagePath path on which image is saved
          */
-        void onSuccess(@NonNull String imagePath);
+        void onSuccess(@NonNull String imagePath) throws Shell.ClosedException;
 
         /**
          * Call when failed to saved image on given path
