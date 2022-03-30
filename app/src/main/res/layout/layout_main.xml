@@ -48,7 +48,6 @@
 
     </FrameLayout>
 
-
     <TextView
         android:id="@+id/comments"
         android:layout_width="wrap_content"
@@ -61,7 +60,6 @@
         app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
 
     <TextView
         android:id="@+id/noViews"
