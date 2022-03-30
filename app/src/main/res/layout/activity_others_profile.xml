@@ -31,6 +31,7 @@
             android:layout_alignStart="@+id/back"
             android:layout_marginStart="2dp"
             android:text="Profile"
+            android:fontFamily="@font/droidserif"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="20dp"
@@ -119,6 +120,7 @@
                         android:layout_height="wrap_content"
                         android:text="Pet lover Karma\nFollow for awesome content"
                         android:textSize="15dp"
+                        android:fontFamily="@font/droidserif"
                         android:textColor="#8f8f8f"
                         android:textStyle="bold"
                         android:gravity="center"
@@ -155,6 +157,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/droidserif"
                                 android:textColor="@color/white"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
@@ -164,6 +167,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Fallowing"
                                 android:textSize="12dp"
+                                android:fontFamily="@font/droidserif"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"/>
 
@@ -183,6 +187,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/droidserif"
                                 android:textSize="14dp"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"/>
@@ -192,6 +197,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Folowers"
                                 android:textSize="12dp"
+                                android:fontFamily="@font/droidserif"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"/>
 
@@ -210,6 +216,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:fontFamily="@font/droidserif"
                                 android:textSize="14dp"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"/>
@@ -219,6 +226,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Likes"
                                 android:textSize="12dp"
+                                android:fontFamily="@font/droidserif"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"/>
 
