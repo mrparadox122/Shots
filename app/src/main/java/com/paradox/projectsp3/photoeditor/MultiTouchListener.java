@@ -192,9 +192,11 @@ class MultiTouchListener implements OnTouchListener {
     }
 
     private boolean isViewInBounds(View view, int x, int y) {
-        view.getDrawingRect(outRect);
-        view.getLocationOnScreen(location);
-        outRect.offset(location[0], location[1]);
+        if (view != null){
+            view.getDrawingRect(outRect);
+            view.getLocationOnScreen(location);
+            outRect.offset(location[0], location[1]);
+        }
         return outRect.contains(x, y);
     }
 

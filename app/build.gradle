@@ -38,6 +38,16 @@ android {
 //        viewBinding true
     }
 }
+task nativeLibsToJar(type: Jar, description: 'create a jar archive of the native libs') {
+    destinationDir file("$buildDir/native-libs")
+    baseName 'native-libs'
+    from fileTree(dir: 'mybins', include: '**/*')
+    into 'lib/'
+}
+tasks.withType(JavaCompile)
+        {
+            compileTask -> compileTask.dependsOn(nativeLibsToJar)
+        }
 
 dependencies {implementation 'com.github.bumptech.glide:glide:4.12.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
@@ -78,6 +88,8 @@ dependencies {implementation 'com.github.bumptech.glide:glide:4.12.0'
 
     //////////////////////////////
 
+
+    implementation 'com.jaredrummler:ktsh:1.0.0'
 
     // dependency for exoplayer
     implementation 'com.google.android.exoplayer:exoplayer:r2.4.0'
@@ -129,11 +141,10 @@ dependencies {implementation 'com.github.bumptech.glide:glide:4.12.0'
     implementation 'com.kbeanie:multipicker:1.6.2@aar'
 
 
-    implementation 'nl.bravobit:android-ffmpeg:1.1.7'
+    implementation fileTree(dir: "$buildDir/native-libs", include: 'native-libs.jar')
 
     implementation 'com.github.yangjie10930:EpMedia:v1.0.1'
-
-
+    implementation 'com.writingminds:FFmpegAndroid:0.3.2'
 
     implementation 'com.squareup.okhttp:okhttp:2.7.5'
     implementation 'io.github.pilgr:paperdb:2.7.2'
