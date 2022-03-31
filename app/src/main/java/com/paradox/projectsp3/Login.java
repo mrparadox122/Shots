@@ -60,7 +60,6 @@ public class Login extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
-
         mobileNumbr = findViewById(R.id.et_mobile);
         btn_login = findViewById(R.id.login_bt);
         pin = findViewById(R.id.et_pin);
@@ -73,6 +72,7 @@ public class Login extends AppCompatActivity {
         et_email = findViewById(R.id.et_email);
         ll_mobile = findViewById(R.id.ll_mobile);
         back_btn = findViewById(R.id.back_btn);
+
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,15 +125,14 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (em = false){
-                    PhoneNumber = String.valueOf(mobileNumbr.getText());
+                Log.e(TAG, String.valueOf(em));
+                if (em){
+                    PhoneNumber = String.valueOf(et_email.getText());
                     password = String.valueOf(pin.getText());
-                    Log.e(TAG, "onClick: "+PhoneNumber+password );
-
+                    Log.e(TAG, "onClick:////////////////// "+PhoneNumber+password);
                     Handler handler = new Handler();
                     handler.post(new Runnable() {
                         @Override
@@ -174,8 +173,8 @@ public class Login extends AppCompatActivity {
                         }
                     });
                 }
-                else {
-                    PhoneNumber = String.valueOf(et_email.getText());
+                else{
+                    PhoneNumber = String.valueOf(mobileNumbr.getText());
                     password = String.valueOf(pin.getText());
                     Log.e(TAG, "onClick: "+PhoneNumber+password );
 
@@ -224,6 +223,19 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        em = false;
+
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
 
     }
 
