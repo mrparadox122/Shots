@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.opengl.GLException;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -104,8 +105,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     long time_in_milis = 0;
     int sec_passed = 0;
     SegmentedProgressBar video_progress;
-    ImageView video_upload;
-    TextView txt_next;
+    TextView rocordtim;
     boolean is_recording_timer_enable;
     int recording_time = 3;
     boolean is_recording = false;
@@ -113,6 +113,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     LinearLayout addSound123;
     ArrayList<String> videopaths = new ArrayList<>();
     CameraView cameraView;
+    Thread myThread;
     MediaPlayer audio;
     ImageButton done_btn;
     ImageButton record_image;
@@ -121,8 +122,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected void onCreateActivity() {
         getSupportActionBar().hide();
         recordBtn = findViewById(R.id.record);
-
-
+        rocordtim = findViewById(R.id.rocordtim);
         Timer=findViewById(R.id.timer);
         pauseBtn= findViewById(R.id.pause);
         Face=findViewById(R.id.imageView2);
@@ -138,17 +138,9 @@ public class BaseCameraActivity extends AppCompatActivity {
         Pause_video=findViewById(R.id.pause_video);
         Play_video=findViewById(R.id.play_video);
         video_progress = findViewById(R.id.video_progress);
-        video_upload = findViewById(R.id.video_upload);
-        txt_next = findViewById(R.id.txt_next);
         Toast.makeText(this, "start", Toast.LENGTH_SHORT).show();
 
-        video_upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BaseCameraActivity.this, GallerySelectedVideo_A.class);
-                startActivity(intent);
-            }
-        });
+
 
 
         final boolean[] timer = {false};
@@ -352,6 +344,8 @@ public class BaseCameraActivity extends AppCompatActivity {
 
             if(time15[0]||time30[0]| time60[0]) {
 
+                timerLayout.setVisibility(View.GONE);
+                rocordtim.setVisibility(View.VISIBLE);
 //                lv.setVisibility(View.GONE);
                 filepath = getVideoFilePath();
                 GPUCameraRecorder.start(filepath);
@@ -360,8 +354,7 @@ public class BaseCameraActivity extends AppCompatActivity {
                 Pause_video.setVisibility(View.VISIBLE);
 
                 recordBtn.setVisibility(View.GONE);
-                txt_next.setVisibility(View.GONE);
-                video_upload.setVisibility(View.GONE);
+
 
 //                Face.setVisibility(View.VISIBLE);
                 //Edit.setVisibility(View.VISIBLE);
@@ -382,6 +375,8 @@ public class BaseCameraActivity extends AppCompatActivity {
                             @Override
                             public void onCompletion(MediaPlayer mediaPlayer) {
                                 GPUCameraRecorder.stop();
+                                rocordtim.setVisibility(View.INVISIBLE);
+                                myThread.interrupt();
                             }
                         });
 
@@ -395,10 +390,12 @@ public class BaseCameraActivity extends AppCompatActivity {
 
                 if(time15[0])
                 {
+                    initCountDownTimer(15000);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-//                            GPUCameraRecorder.stop();
+
+                            rocordtim.setVisibility(View.INVISIBLE);
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
                             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
@@ -418,10 +415,15 @@ public class BaseCameraActivity extends AppCompatActivity {
                 }
                 if(time30[0])
                 {
+
+                    initCountDownTimer(30000);
+
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            GPUCameraRecorder.stop();
+
+                            myThread.interrupt();
+                            rocordtim.setVisibility(View.INVISIBLE);
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
                             Toast.makeText(BaseCameraActivity.this, "Recording Stopped", Toast.LENGTH_SHORT).show();
@@ -443,10 +445,14 @@ public class BaseCameraActivity extends AppCompatActivity {
 
                 if(time60[0])
                 {
+
+                    initCountDownTimer(60000);
+
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             GPUCameraRecorder.stop();
+                            rocordtim.setVisibility(View.INVISIBLE);
                             recordBtn.setVisibility(View.VISIBLE);
                             pauseBtn.setVisibility(View.GONE);
                             Face.setVisibility(View.VISIBLE);
@@ -473,6 +479,8 @@ public class BaseCameraActivity extends AppCompatActivity {
             }
             else
             {
+                timerLayout.setVisibility(View.VISIBLE);
+                timer[0] =true;
                 Toast toast=Toast.makeText(BaseCameraActivity.this," Plz Select Time",Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER,0,0);
                 toast.show();
@@ -485,6 +493,7 @@ public class BaseCameraActivity extends AppCompatActivity {
             Play_video.setVisibility(View.GONE);
 
             GPUCameraRecorder.stop();
+            myThread.interrupt();
             recordBtn.setVisibility(View.VISIBLE);
             pauseBtn.setVisibility(View.GONE);
 //            Face.setVisibility(View.VISIBLE);
@@ -552,7 +561,30 @@ public class BaseCameraActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
+
     }
+
+    public void initCountDownTimer(int time) {
+        new CountDownTimer(time, 1000) {
+            @SuppressLint("SetTextI18n")
+            public void onTick(long millisUntilFinished) {
+                Log.e(TAG, String.valueOf(millisUntilFinished / 1000));
+                rocordtim.setText("00:"+ String.valueOf(millisUntilFinished / 1000));
+            }
+
+            public void onFinish() {
+//                textView.setText("done!");
+            }
+        }.start();
+
+        myThread = new Thread(new Runnable(){
+            public void run(){
+            }
+        });
+         myThread.start();
+    }
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save the user's current game state
@@ -612,6 +644,7 @@ public class BaseCameraActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         releaseCamera();
+        finish();
     }
 
     @Override
@@ -620,6 +653,7 @@ public class BaseCameraActivity extends AppCompatActivity {
 
         if (GPUCameraRecorder != null) {
             GPUCameraRecorder.stop();
+            rocordtim.setVisibility(View.INVISIBLE);
             GPUCameraRecorder.release();
             GPUCameraRecorder = null;
         }
@@ -637,6 +671,7 @@ public class BaseCameraActivity extends AppCompatActivity {
 
         if (GPUCameraRecorder != null) {
             GPUCameraRecorder.stop();
+            myThread.interrupt();
             GPUCameraRecorder.release();
             GPUCameraRecorder = null;
         }
@@ -682,6 +717,9 @@ public class BaseCameraActivity extends AppCompatActivity {
                         Log.e(TAG, "onRecordComplete: "+filepath );
                         GlobalVariables.mp4Path = filepath;
                         Variables.outputfile2 = filepath;
+                        GPUCameraRecorder.stop();
+                        myThread.interrupt();
+                        rocordtim.setVisibility(View.INVISIBLE);
                         Intent intent = new Intent(BaseCameraActivity.this, Preview_Video_A.class);
                         startActivity(intent);
 //                        lv.setVisibility(View.VISIBLE);

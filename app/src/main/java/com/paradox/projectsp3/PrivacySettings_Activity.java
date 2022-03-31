@@ -13,7 +13,7 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
 public class PrivacySettings_Activity extends AppCompatActivity {
 
-      ImageView back;
+ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,9 @@ public class PrivacySettings_Activity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
     }
+
 
     @Override
     public void onBackPressed() {

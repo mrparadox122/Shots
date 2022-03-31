@@ -20,7 +20,6 @@
             android:textSize="21dp"
             android:textStyle="bold"
             android:padding="10dp"
-            android:fontFamily="@font/droidserif"
             android:textColor="@color/white"
             android:layout_gravity="center"
             android:gravity="center"/>
@@ -54,7 +53,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Followers"
-                android:fontFamily="@font/droidserif"
                 android:layout_gravity="center"
                 android:textColor="@color/white"/>
 
@@ -75,7 +73,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mentations"
-                android:fontFamily="@font/droidserif"
                 android:layout_gravity="center"
                 android:textColor="@color/white"/>
 
@@ -96,7 +93,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Likes"
-                android:fontFamily="@font/droidserif"
                 android:layout_gravity="center"
                 android:textColor="@color/white"/>
 
@@ -117,7 +113,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Comments"
-                android:fontFamily="@font/droidserif"
                 android:layout_gravity="center"
                 android:textColor="@color/white"/>
         </LinearLayout>
@@ -160,7 +155,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Trending Events"
-                android:fontFamily="@font/droidserif"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -169,7 +163,6 @@
                 android:layout_height="wrap_content"
                 android:text="Bollywood Style Hashtag"
                 android:textColor="#9A9696"
-                android:fontFamily="@font/droidserif"
                 android:textStyle="normal" />
         </LinearLayout>
 

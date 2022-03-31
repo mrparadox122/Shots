@@ -29,22 +29,9 @@
         <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
 
+
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
 
-    </style>
-
-
-    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
-        <!-- active thumb & track color (30% transparency) -->
-        <item name="colorControlActivated">@color/green_color_picker</item>
-
-        <!-- inactive thumb color -->
-        <item name="colorSwitchThumbNormal">#42221f1f
-        </item>
-
-        <!-- inactive track color (30% transparency) -->
-        <item name="android:colorForeground">@color/black_65
-        </item>
     </style>
 
 </resources>

@@ -29,7 +29,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tint="#3F3F40"
             android:src="@drawable/ic_camera"/>
 
         <TextView
@@ -38,7 +37,6 @@
             android:text="Create a Shots"
             android:textStyle="normal"
             android:textSize="18dp"
-            android:fontFamily="@font/droidserif"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:paddingStart="25dp"
@@ -64,7 +62,6 @@
             android:layout_height="wrap_content"
             android:text="Upload a Video"
             android:textStyle="normal"
-            android:fontFamily="@font/droidserif"
             android:textSize="18dp"
             android:textColor="@color/black"
             android:layout_gravity="center"
@@ -92,7 +89,6 @@
             android:text="Go Live"
             android:textStyle="normal"
             android:textSize="18dp"
-            android:fontFamily="@font/droidserif"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:paddingStart="25dp"

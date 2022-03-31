@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -87,15 +87,13 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:background="@color/black_65">
+        android:layout_below="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/black_65"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -104,7 +102,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/droid_bold"
                 android:padding="10dp"
                 android:text="INTRACTIONS"
                 android:textColor="@color/white"
@@ -118,7 +115,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="3dp">
 
@@ -126,7 +123,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="New Followers"
                     android:textColor="@color/white"
@@ -141,8 +137,7 @@
                     android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
-                    android:textOn="ON"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -155,7 +150,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -163,7 +158,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Likes"
                     android:textColor="@color/white"
@@ -178,8 +172,7 @@
                     android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
-                    android:textOn="ON"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -227,6 +220,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -235,7 +229,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Comments"
                     android:textColor="@color/white"
@@ -249,8 +242,7 @@
                     android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
-                    android:textOn="ON"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -263,7 +255,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -272,7 +264,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Replies on Comments"
                     android:textColor="@color/white"
@@ -287,8 +278,7 @@
                     android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
-                    android:textOn="ON"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -298,7 +288,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -307,7 +297,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Mentions"
                     android:textColor="@color/white"
@@ -322,10 +311,21 @@
                     android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
-                    android:textOn="ON"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOn="ON" />
 
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:text="Massages"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
 
             <RelativeLayout
                 android:id="@+id/ll_communityguidelines"
@@ -333,6 +333,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -340,7 +341,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Direct Messages"
                     android:textColor="@color/white"
@@ -355,11 +355,21 @@
                     android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
-                    android:textOn="ON"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:text="Vedio Updates"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
 
             <RelativeLayout
                 android:id="@+id/ll_Leagal"
@@ -367,7 +377,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -376,7 +386,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="4dp"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Videos from Accounts You Follow"
                     android:textColor="@color/white"
@@ -392,8 +401,7 @@
                     android:switchMinWidth="56dp"
                     android:textColor="@color/white"
                     android:textOff="OFF"
-                    android:textOn="ON"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -403,6 +411,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:background="#4E4D4D"
                 android:gravity="center"
                 android:padding="5dp">
 
@@ -410,7 +419,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Videos Suggestions"
                     android:textColor="@color/white"
@@ -425,8 +433,7 @@
                     android:checked="false"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
-                    android:textOn="ON"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOn="ON" />
             </RelativeLayout>
 
             <!--            <RelativeLayout-->

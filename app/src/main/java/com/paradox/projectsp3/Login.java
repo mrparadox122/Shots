@@ -51,6 +51,7 @@ public class Login extends AppCompatActivity {
 
     int lang_selected;
     RelativeLayout show_lan_dialog;
+    boolean em = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +95,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 et_email.setVisibility(View.VISIBLE);
                 ll_mobile.setVisibility(View.GONE);
+                em = true;
             }
         });
 
@@ -102,6 +104,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 et_email.setVisibility(View.GONE);
                 ll_mobile.setVisibility(View.VISIBLE);
+                em = false;
             }
         });
 
@@ -126,48 +129,98 @@ public class Login extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PhoneNumber = String.valueOf(mobileNumbr.getText());
-                password = String.valueOf(pin.getText());
-                Log.e(TAG, "onClick: "+PhoneNumber+password );
+                if (em = false){
+                    PhoneNumber = String.valueOf(mobileNumbr.getText());
+                    password = String.valueOf(pin.getText());
+                    Log.e(TAG, "onClick: "+PhoneNumber+password );
 
-                Handler handler = new Handler();
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        String[] field = new String[2];
-                        field[0] = "username";
-                        field[1] = "password";
-                        String[] data = new String[2];
-                        data[0] = PhoneNumber;
-                        data[1] = password;
+                    Handler handler = new Handler();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            String[] field = new String[2];
+                            field[0] = "username";
+                            field[1] = "password";
+                            String[] data = new String[2];
+                            data[0] = PhoneNumber;
+                            data[1] = password;
 
-                        PutData putData = new PutData("http://shots.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
-                        if (putData.startPut()) {
-                            Log.e(TAG, "im here1 "+data );
-                            if (putData.onComplete()) {
-                                Log.e(TAG, "run: ime here 2 "+data+field);
-                                String result = putData.getResult();
-                                Log.e(TAG, "run: "+result );
-                                Toast.makeText(Login.this, result, Toast.LENGTH_SHORT).show();
-                                Log.e(TAG, "run: " + result);
-                                Log.e(TAG, "field: " + field);
-                                Log.e(TAG, "data: " + data);
-                                if (result.equals("Login Success")) {
+                            PutData putData = new PutData("http://shots.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
+                            if (putData.startPut()) {
+                                Log.e(TAG, "im here1 "+data );
+                                if (putData.onComplete()) {
+                                    Log.e(TAG, "run: ime here 2 "+data+field);
+                                    String result = putData.getResult();
+                                    Log.e(TAG, "run: "+result );
                                     Toast.makeText(Login.this, result, Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Login.this, Profile_Activity.class);
-                                    GlobalVariables globalVariables = new GlobalVariables();
-                                    Log.e(TAG, "run: before init "+globalVariables.username+PhoneNumber );
-                                    globalVariables.setUsername(String.valueOf(PhoneNumber));
-                                    Log.e(TAG, "run: after init "+globalVariables.username+PhoneNumber);
-                                    startActivity(intent);
-                                }
-                                if (result.equals("Username or Password wrong")){
-                                    Toast.makeText(Login.this, "enter correct username and password", Toast.LENGTH_SHORT).show();
+                                    Log.e(TAG, "run: " + result);
+                                    Log.e(TAG, "field: " + field);
+                                    Log.e(TAG, "data: " + data);
+                                    if (result.equals("Login Success")) {
+                                        Toast.makeText(Login.this, result, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(Login.this, Profile_Activity.class);
+                                        GlobalVariables globalVariables = new GlobalVariables();
+                                        Log.e(TAG, "run: before init "+globalVariables.username+PhoneNumber );
+                                        globalVariables.setUsername(String.valueOf(PhoneNumber));
+                                        Log.e(TAG, "run: after init "+globalVariables.username+PhoneNumber);
+                                        startActivity(intent);
+                                    }
+                                    if (result.equals("Username or Password wrong")){
+                                        Toast.makeText(Login.this, "enter correct username and password", Toast.LENGTH_SHORT).show();
+
+                                    }
                                 }
                             }
                         }
-                    }
-                });
+                    });
+                }
+                else {
+                    PhoneNumber = String.valueOf(et_email.getText());
+                    password = String.valueOf(pin.getText());
+                    Log.e(TAG, "onClick: "+PhoneNumber+password );
+
+                    Handler handler = new Handler();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            String[] field = new String[2];
+                            field[0] = "username";
+                            field[1] = "password";
+                            String[] data = new String[2];
+                            data[0] = PhoneNumber;
+                            data[1] = password;
+
+                            PutData putData = new PutData("http://shots.ddns.net/dashboard/paradoxApi/login.php", "POST", field, data);
+                            if (putData.startPut()) {
+                                Log.e(TAG, "im here1 "+data );
+                                if (putData.onComplete()) {
+                                    Log.e(TAG, "run: ime here 2 "+data+field);
+                                    String result = putData.getResult();
+                                    Log.e(TAG, "run: "+result );
+                                    Toast.makeText(Login.this, result, Toast.LENGTH_SHORT).show();
+                                    Log.e(TAG, "run: " + result);
+                                    Log.e(TAG, "field: " + field);
+                                    Log.e(TAG, "data: " + data);
+                                    if (result.equals("Login Success")) {
+                                        Toast.makeText(Login.this, result, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(Login.this, Profile_Activity.class);
+                                        GlobalVariables globalVariables = new GlobalVariables();
+                                        Log.e(TAG, "run: before init "+globalVariables.username+PhoneNumber );
+                                        globalVariables.setUsername(String.valueOf(PhoneNumber));
+                                        Log.e(TAG, "run: after init "+globalVariables.username+PhoneNumber);
+                                        startActivity(intent);
+                                    }
+                                    if (result.equals("Username or Password wrong")){
+                                        Toast.makeText(Login.this, "enter correct username and password", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                }
+
 
             }
         });

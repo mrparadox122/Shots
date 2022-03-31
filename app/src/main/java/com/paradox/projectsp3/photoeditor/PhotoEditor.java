@@ -25,7 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresPermission;
 import androidx.annotation.UiThread;
 
-
+import com.jaredrummler.ktsh.Shell;
 import com.paradox.projectsp3.R;
 
 import java.io.File;
@@ -588,7 +588,7 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
          *
          * @param imagePath path on which image is saved
          */
-//        void onSuccess(@NonNull String imagePath) throws Shell.ClosedException;
+        void onSuccess(@NonNull String imagePath) throws Shell.ClosedException;
 
         /**
          * Call when failed to saved image on given path
@@ -667,7 +667,11 @@ public class PhotoEditor implements BrushViewChangeListener, MultiTouchListener.
                         if (e == null) {
                             //Clear all views if its enabled in save settings
                             if (saveSettings.isClearViewsEnabled()) clearAllViews();
-//                            onSaveListener.onSuccess(imagePath);
+                            try {
+                                onSaveListener.onSuccess(imagePath);
+                            } catch (Shell.ClosedException closedException) {
+                                closedException.printStackTrace();
+                            }
                         } else {
                             onSaveListener.onFailure(e);
                         }

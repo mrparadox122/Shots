@@ -27,7 +27,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/droidserif"
             android:gravity="center"
             android:text="Privacy Settings  "
             android:textColor="@color/white"
@@ -58,7 +57,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Private Account"
                     android:textColor="@color/white" />
@@ -71,7 +69,8 @@
                     android:layout_marginEnd="8dp"
                     android:checked="true"
                     android:switchMinWidth="56dp"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -88,7 +87,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:fontFamily="@font/droidserif"
                     android:padding="10dp"
                     android:text="Allow others to download my videos"
                     android:textColor="@color/white" />
@@ -99,8 +97,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="8dp"
+                    android:checked="true"
                     android:switchMinWidth="56dp"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -118,7 +119,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:fontFamily="@font/droidserif"
                     android:text="Show my Liked List"
                     android:textColor="@color/white" />
 
@@ -130,7 +130,8 @@
                     android:layout_marginEnd="8dp"
                     android:checked="true"
                     android:switchMinWidth="56dp"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -150,7 +151,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:fontFamily="@font/droidserif"
                     android:text="Who can send me messages"
                     android:textColor="@color/white" />
 
@@ -162,7 +162,8 @@
                     android:layout_marginEnd="8dp"
                     android:checked="true"
                     android:switchMinWidth="56dp"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
 
@@ -181,7 +182,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:padding="10dp"
-                    android:fontFamily="@font/droidserif"
                     android:text="Bloked users"
                     android:textColor="@color/white" />
 
@@ -193,7 +193,8 @@
                     android:layout_marginEnd="8dp"
                     android:checked="true"
                     android:switchMinWidth="56dp"
-                    android:theme="@style/SCBSwitch" />
+                    android:textOff="OFF"
+                    android:textOn="ON" />
 
             </RelativeLayout>
 

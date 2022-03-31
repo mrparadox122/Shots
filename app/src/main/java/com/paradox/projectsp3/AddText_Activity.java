@@ -43,10 +43,10 @@ public class AddText_Activity extends AppCompatActivity implements CameraUtils.O
     @Override
     public void onVideoSuccess(List<ChosenVideo> list) {
         if (list != null && list.size() > 0) {
-            Intent i = new Intent(AddText_Activity.this, PreviewVideoActivity.class);
-            i.putExtra("DATA", list.get(0).getOriginalPath());
-            //binding.ivProfilePic.setImageURI(Uri.fromFile(selectedImageFile));
-            startActivity(i);
+//            Intent i = new Intent(AddText_Activity.this, PreviewVideoActivity.class);
+//            i.putExtra("DATA", list.get(0).getOriginalPath());
+//            //binding.ivProfilePic.setImageURI(Uri.fromFile(selectedImageFile));
+//            startActivity(i);
 
         }
     }

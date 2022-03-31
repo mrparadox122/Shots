@@ -22,6 +22,7 @@
             android:layout_height="match_parent"
             android:background="@color/purple_700">
 
+
             <ImageView
                 android:id="@+id/thumbnail"
                 android:layout_width="0dp"
@@ -47,6 +48,7 @@
 
     </FrameLayout>
 
+
     <TextView
         android:id="@+id/comments"
         android:layout_width="wrap_content"
@@ -59,6 +61,7 @@
         app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
 
     <TextView
         android:id="@+id/noViews"

@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Switch;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
@@ -23,8 +22,6 @@ public class PushNotification_Activity extends AppCompatActivity {
 
     EditText shots,wishes,body;
     Button notification_btn;
-
-    Switch switch1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +37,6 @@ public class PushNotification_Activity extends AppCompatActivity {
         wishes = findViewById(R.id.wishes);
         body = findViewById(R.id.body);
         notification_btn = findViewById(R.id.notification_btn);
-        switch1 = findViewById(R.id.switch1);
 
 
 
@@ -51,16 +47,23 @@ public class PushNotification_Activity extends AppCompatActivity {
                 String subject=wishes.getText().toString();
                 String bodi =body.getText().toString();
 
+
                 NotificationManager notif = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
                 Notification notify
                         = new Notification.Builder(getApplicationContext()).setContentTitle(tittle).setContentText(bodi)
                         .setContentTitle(subject).setSmallIcon(R.drawable.shots_icon).build();
 
+
+
                 notify.flags|= Notification.FLAG_AUTO_CANCEL;
                 notif.notify(0,  notify);
 
+
             }
         });
+
+
+
 
 
         back.setOnClickListener(new View.OnClickListener() {

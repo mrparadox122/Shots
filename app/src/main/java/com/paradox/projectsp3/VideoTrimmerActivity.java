@@ -74,7 +74,7 @@ public class VideoTrimmerActivity extends AppCompatActivity implements View.OnCl
 
     private ProgressDialog mProgressDialog;
     String srcFile;
-    String dstFile;
+    public String dstFile;
 
     LinearLayout edit_pencil,edit_colour;
 
@@ -130,8 +130,8 @@ public class VideoTrimmerActivity extends AppCompatActivity implements View.OnCl
         txtVideoLength = (TextView) findViewById(R.id.txtVideoLength);
 
 
-        edit_colour =  findViewById(R.id.edit_colour);
-        edit_pencil =  findViewById(R.id.edit_pencil);
+//        edit_colour =  findViewById(R.id.edit_colour);
+//        edit_pencil =  findViewById(R.id.edit_pencil);
         reset_btn =  findViewById(R.id.reset_btn);
 
         reset_btn.setOnClickListener(new View.OnClickListener() {
@@ -143,30 +143,30 @@ public class VideoTrimmerActivity extends AppCompatActivity implements View.OnCl
             }
         });
 
-        edit_colour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(VideoTrimmerActivity.this, "Colour", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        edit_colour.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(VideoTrimmerActivity.this, "Colour", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        edit_pencil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(VideoTrimmerActivity.this, "Pencil", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(VideoTrimmerActivity.this, AddText_Activity.class);
-                startActivity(intent);
-            }
-        });
+//        edit_pencil.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                Toast.makeText(VideoTrimmerActivity.this, "Pencil", Toast.LENGTH_SHORT).show();
+//
+//                Intent intent = new Intent(VideoTrimmerActivity.this, AddText_Activity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
 
         if (getIntent().getExtras() != null) {
-            srcFile = getIntent().getExtras().getString("EXTRA_PATH");
+            srcFile = Variables.output_filter_file;
         }
-        dstFile = Environment.getExternalStorageDirectory() + "/" + getString(R.string.app_name) + new Date().getTime()
+        dstFile = Environment.getExternalStorageDirectory() + "/" + "DICM/" + new Date().getTime()
                 + Utility.VIDEO_FORMAT;
 
         tileView.post(new Runnable() {
@@ -251,7 +251,7 @@ public class VideoTrimmerActivity extends AppCompatActivity implements View.OnCl
             }
         });
     }
-
+//
     @Override
     public void onClick(View view) {
         if (view == txtVideoCancel) {
@@ -280,6 +280,9 @@ public class VideoTrimmerActivity extends AppCompatActivity implements View.OnCl
                                 } catch (final Throwable e) {
                                     Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
                                 }
+                                Variables.output_filter_file = dstFile;
+                                Intent intent = new Intent(VideoTrimmerActivity.this, PostVideo_Activity.class);
+                                startActivity(intent);
                             }
                         }
                 );

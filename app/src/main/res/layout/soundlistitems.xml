@@ -51,7 +51,6 @@
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:text="Song Name"
-            android:fontFamily="@font/droidserif"
             android:textColor="@color/black"
             android:textSize="15dp"
             android:textStyle="bold" />

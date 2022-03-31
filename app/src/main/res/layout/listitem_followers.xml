@@ -33,7 +33,6 @@
             <TextView
                 android:id="@+id/usenname_txt"
                 android:layout_gravity="center"
-                android:fontFamily="@font/droidserif"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Username" />
@@ -48,7 +47,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:fontFamily="@font/droidserif"
             android:text="Remove"
             android:textAllCaps="false"
             app:cornerRadius="5dp" />

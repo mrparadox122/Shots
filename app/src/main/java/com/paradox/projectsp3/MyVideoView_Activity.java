@@ -29,6 +29,7 @@ import com.gowtham.library.utils.FileUtils;
 import com.paradox.projectsp3.Responses.ApiClient;
 import com.paradox.projectsp3.Responses.ApiInterface;
 import com.paradox.projectsp3.Responses.Users;
+import com.paradox.projectsp3.VideoRecording.Preview_Video_A;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,6 +64,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
     Button btn_image;
     Uri imageuri;
     Bitmap bitmap;
+    private static final int VIDEO_TRIM = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +123,25 @@ public class MyVideoView_Activity extends AppCompatActivity {
             btn_image.setText("Image Uploaded");
         }if (requestCode == 2) {
             Uri vediouri = data.getData();
+
+            File file = new File(getPath(vediouri));
+            File f = new File(getPath(vediouri));
+
+            String path = getPath(vediouri);
+            if (path != null) {
+                File file2 = new File(path);
+                if (file2.exists()) {
+                    startActivityForResult(new Intent(MyVideoView_Activity.this,
+                                    VideoTrimmerActivity.class).putExtra("EXTRA_PATH", path),
+                            VIDEO_TRIM);
+                    overridePendingTransition(0, 0);
+                } else {
+                    Toast.makeText(MyVideoView_Activity.this, "Please select proper video", Toast.LENGTH_LONG);
+                }
+            }
+            overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+
+
             Log.e(TAG, "onActivityResult: "+GlobalVariables.getId() );
 
             if (GlobalVariables.getId() != null && GlobalVariables.getId()!= "") {
@@ -133,8 +154,7 @@ public class MyVideoView_Activity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                File file = new File(getPath(vediouri));
-                File f = new File(getPath(vediouri));
+
 
 
 //Convert bitmap to byte array

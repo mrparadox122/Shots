@@ -373,6 +373,61 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
 
     }
 
+//    private void showGenderDialog() {
+//        final Dialog genderdialog = new Dialog(NewEditProfile_Activity.this);
+//        genderdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        genderdialog.setContentView(R.layout.layout_editgender);
+//        genderdialog.setCancelable(true);
+//
+//// set texts here
+//
+//
+//        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+//        lp.copyFrom(genderdialog.getWindow().getAttributes());
+//        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+//        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//
+//        editgender_et = genderdialog.findViewById(R.id.editgender_et);
+//        btn_savegender = genderdialog.findViewById(R.id.btn_savegender);
+//
+//        btn_savegender.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+//
+//        genderdialog.show();
+//        genderdialog.getWindow().setAttributes(lp);
+//    }
+
+    private void showDoBDialog() {
+        final Dialog doBdialog = new Dialog(NewEditProfile_Activity.this);
+        doBdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        doBdialog.setContentView(R.layout.layout_editdob);
+        doBdialog.setCancelable(true);
+
+        // set texts here
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(doBdialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        editdob_et = doBdialog.findViewById(R.id.editdob_et);
+        btn_savedob = doBdialog.findViewById(R.id.btn_savedob);
+
+        btn_savedob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        doBdialog.show();
+        doBdialog.getWindow().setAttributes(lp);
+    }
+
     private void showPhoneDialog() {
         final Dialog phonedialog = new Dialog(NewEditProfile_Activity.this);
         phonedialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -565,11 +620,14 @@ public class NewEditProfile_Activity extends AppCompatActivity implements Adapte
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
-
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
+            // initializing our callbacks for on
+            // verification callback method.
             mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
+        // below method is used when
+        // OTP is sent from Firebase
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
